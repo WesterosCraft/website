@@ -1,0 +1,233 @@
+---
+import escapeHTML from "escape-html";
+import Video from "./video.astro";
+
+const isText = (value: any): boolean =>
+  typeof value === "object" && value !== null && typeof value.text === "string";
+
+type Node = {
+  type: string;
+  value?: {
+    url: string;
+    alt: string;
+  };
+  children?: Node[];
+  url?: string;
+  [key: string]: unknown;
+  newTab?: boolean;
+};
+
+export type CustomRenderers = {
+  // @ts-ignore
+  [key: string]: (args: {
+    node: Node;
+    Serialize: SerializeFunction;
+    index: number;
+  }) => JSX.Element; // eslint-disable-line
+};
+
+interface SerializeFunction {
+  content?: Node[];
+  customRenderers?: CustomRenderers;
+}
+
+interface Props extends SerializeFunction {}
+
+const { content, customRenderers } = Astro.props;
+---
+
+<Fragment>
+  {
+    content?.map((node, i) => {
+      if (isText(node)) {
+        let text = (
+          <span set:html={escapeHTML(node.text as string | null | undefined)} />
+        );
+
+        if (node.bold) {
+          text = <strong>{text}</strong>;
+        }
+
+        if (node.code) {
+          text = <code>{text}</code>;
+        }
+
+        if (node.italic) {
+          text = <em>{text}</em>;
+        }
+
+        if (node.underline) {
+          text = <span style={{ textDecoration: "underline" }}>{text}</span>;
+          // text = <Highlight  {...node} />
+        }
+
+        if (node.strikethrough) {
+          text = <span style={{ textDecoration: "line-through" }}>{text}</span>;
+        }
+
+        return <Fragment>{text}</Fragment>;
+      }
+
+      if (!node) {
+        return null;
+      }
+
+      if (
+        customRenderers &&
+        customRenderers[node.type] &&
+        typeof customRenderers[node.type] === "function"
+      ) {
+        return customRenderers[node.type]({
+          node,
+          Serialize: <Astro.self />,
+          index: i,
+        });
+      }
+
+      switch (node.type) {
+        case "br":
+          return <br />;
+        case "h1":
+          return (
+            <h1>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h1>
+          );
+        case "h2":
+          return (
+            <h2>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h2>
+          );
+        case "h3":
+          return (
+            <h3>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h3>
+          );
+        case "h4":
+          return (
+            <h4>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h4>
+          );
+        case "h5":
+          return (
+            <h5>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h5>
+          );
+        case "h6":
+          return (
+            <h6>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </h6>
+          );
+        case "quote":
+          return (
+            <blockquote>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </blockquote>
+          );
+        case "ul":
+          return (
+            <ul>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </ul>
+          );
+        case "ol":
+          return (
+            <ol>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </ol>
+          );
+        case "li":
+          return (
+            <li>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </li>
+          );
+        // case 'link':
+        //   return (
+        //     <CMSLink
+        //       type={node.linkType === 'internal' ? 'reference' : 'custom'}
+        //       url={node.url}
+        //       reference={node.doc as Reference}
+        //       newTab={node?.newTab}
+        //     >
+        //       <Serialize content={node.children} customRenderers={customRenderers} />
+        //     </CMSLink>
+        //   )
+
+        // case 'upload': {
+        //   return <RichTextUpload  node={node} />
+        // }
+
+        // case 'label':
+        //   return (
+        //     <Label >
+        //       <Serialize content={node.children} customRenderers={customRenderers} />
+        //     </Label>
+        //   )
+
+        // case 'large-body': {
+        //   return (
+        //     <LargeBody >
+        //       <Serialize content={node.children} customRenderers={customRenderers} />
+        //     </LargeBody>
+        //   )
+        // }
+        //
+        case "video": {
+          const { source, id: videoID } = node;
+
+          if (source === "youtube") {
+            return <Video platform={source} id={videoID as string} />;
+          }
+
+          return null;
+        }
+
+        default:
+          return (
+            <p>
+              <Astro.self
+                content={node.children}
+                customRenderers={customRenderers}
+              />
+            </p>
+          );
+      }
+    })
+  }
+</Fragment>

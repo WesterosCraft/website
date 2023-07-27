@@ -1,0 +1,57 @@
+---
+import type { Location } from "@lib/payload-types";
+
+interface Props {
+  content: Location["layout"];
+}
+
+const { content } = Astro.props;
+
+interface Heading {
+  type: "h1" | "h2" | "h3" | "h4";
+  text: string;
+}
+
+function extractHeadings(obj: any, depth = 0): Heading[] {
+  const headings: Heading[] = [];
+
+  if (Array.isArray(obj)) {
+    for (const item of obj) {
+      headings.push(...extractHeadings(item, depth));
+    }
+  } else if (typeof obj === "object" && obj !== null) {
+    if (
+      obj.type === "h1" ||
+      obj.type === "h2" ||
+      obj.type === "h3" ||
+      obj.type === "h4"
+    ) {
+      headings.push({
+        type: obj.type,
+        text: obj?.children?.[0]?.text,
+      });
+    }
+
+    for (const key in obj) {
+      headings.push(...extractHeadings(obj[key], depth + 1));
+    }
+  }
+
+  return headings;
+}
+
+const headings = extractHeadings(content);
+---
+
+<div class='mb-10'>
+  <p class='mb-4 text-sm font-semibold tracking-tight'>On This Page</p>
+  <ul>
+    {
+      headings.map((h) => (
+        <li class='text-sm my-2 scroll-my-6 scroll-py-6'>
+          <a>{h.text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

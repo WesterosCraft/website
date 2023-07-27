@@ -1,0 +1,44 @@
+---
+import type { Location } from "@lib/payload-types";
+import RichText from "./rich-text/rich-text.astro";
+
+interface Props {
+  content: Location["layout"];
+}
+
+const { content } = Astro.props;
+---
+
+{
+  content?.map((item) => {
+    if (item.blockType === "content") {
+      return item.columns.map((column) => (
+        <div>
+          <RichText content={column?.richText} />
+        </div>
+      ));
+    }
+
+    if (item.blockType === "media") {
+      return <div>media</div>;
+    }
+
+    if (item.blockType === "mediaContent") {
+      return (
+        <div>
+          <RichText content={item?.richText} />
+        </div>
+      );
+    }
+
+    if (item.blockType === "mediaSlider") {
+      return (
+        <div>
+          <RichText client:visible content={item?.introContent} />
+        </div>
+      );
+    }
+
+    return null;
+  })
+}

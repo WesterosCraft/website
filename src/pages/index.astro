@@ -1,0 +1,104 @@
+---
+import Banner from "@components/home/banner.astro";
+import Hero from "@components/home/hero.astro";
+import StartYourJourney from "@components/home/start-your-journey.astro";
+import ExploreTheRealm from "@components/home/explore-the-realm.astro";
+import WesteroscraftDescription from "@components/home/westeroscraft-description";
+import RootLayout from "@layouts/root.astro";
+import BannerGrid from "@components/home/banner-grid";
+import TenYears from "@components/home/ten-years.astro";
+import { Video } from "@components/home/video";
+import ContainerBorder from "@components/container-border.astro";
+import Testimonials from "@components/home/testimonials";
+import FeaturedLocations from "@components/home/featured-locations";
+import AlternatingFeature from "@components/home/alternating-feature";
+import FeaturedServers from "@components/home/featured-servers";
+import { TypographyH1, TypographyH4 } from "@components/typography";
+import { Button } from "@components/ui/button";
+---
+
+<RootLayout>
+  <main class='flex min-h-screen flex-col items-center'>
+    <!-- <div class='w-full p-6 pb-0'>
+      <div
+        class='border-2 border-black border-b-0 w-full pt-[196px] pb-[196px] relative bg-gradient-radial'
+      >
+        <div
+          class='flex flex-col items-center max-w-2xl mx-auto text-center relative z-40'
+        >
+          <img
+            src='https://westeroscraft.s3.amazonaws.com/media/images/shield_160x160.png'
+            class='w-16 h-16 mb-6'
+          />
+          <TypographyH1 className='!text-6xl'>
+            Explore the world of <span class='text-primaryRed'
+              >Westeros inside Minecraft</span
+            >
+          </TypographyH1>
+          <TypographyH4 className='mt-4 w-full'>
+            An open world, creative Minecraft server
+          </TypographyH4>
+          <div class='flex flex-col sm:flex-row mt-4 sm:mt-8 gap-4'>
+            <Button size='lg' className='rounded-none text-lg'>
+              Join the Server
+            </Button>
+            <Button
+              size='lg'
+              variant='outline'
+              className='rounded-none text-lg bg-white hover:bg-primaryRed hover:text-white'
+            >
+              View the Wiki
+            </Button>
+          </div>
+        </div>
+        <div>
+          <span class='overflow-hidden max-w-1'>
+            <img
+              src='https://westeroscraft.s3.amazonaws.com/media/images/Screenshot_2023-05-28_184738-removebg-preview.png'
+              alt="King's Landing"
+              sizes='80vw'
+              class='object-cover top-0 left-0 right-0 bottom-0 min-w-full minh-full max-w-full max-h-full absolute'
+            />
+          </span>
+        </div>
+      </div>
+    </div> -->
+
+    <Hero />
+    <Banner />
+    <div class='w-full bg-primaryDark'>
+      <StartYourJourney />
+      <ContainerBorder variant='dark' className='pt-20 sm:pt-24 px-4'>
+        <WesteroscraftDescription client:visible />
+      </ContainerBorder>
+      <ContainerBorder variant='dark' className='px-4 pb-24 sm:pb-32'>
+        <BannerGrid client:visible />
+      </ContainerBorder>
+      <ContainerBorder
+        variant='dark'
+        className='flex px-4 flex-col-reverse lg:flex-row gap-8 pb-24'
+      >
+        <FeaturedServers client:visible />
+      </ContainerBorder>
+
+      <TenYears />
+      <ContainerBorder variant='dark' className='pb-24 px-4'>
+        <Video />
+      </ContainerBorder>
+    </div>
+    <div class='w-full'>
+      <ExploreTheRealm />
+      <ContainerBorder
+        className='flex-col py-24 sm:py-32 px-4 md:px-10 lg:flex-row items-center justify-center gap-y-16 gap-x-8'
+      >
+        <FeaturedLocations client:visible />
+      </ContainerBorder>
+      <ContainerBorder
+        className='pb-24 sm:pb-32 px-4 md:px-10 gap-16 lg:gap-24'
+      >
+        <AlternatingFeature client:visible />
+      </ContainerBorder>
+    </div>
+    <Testimonials client:visible />
+  </main>
+</RootLayout>

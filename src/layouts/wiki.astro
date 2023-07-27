@@ -1,0 +1,149 @@
+---
+import RootLayout from "@layouts/root.astro";
+import Prose from "@components/prose.astro";
+import Navigation from "@components/wiki/navigation.astro";
+const pathname = Astro.url.pathname;
+
+const navigation = [
+  {
+    title: "Introduction",
+    links: [
+      { title: "Getting started", href: "/" },
+      { title: "Installation", href: "/docs/installation" },
+    ],
+  },
+  {
+    title: "Regions",
+    links: [
+      { title: "Beyond The Wall", href: "/docs/understanding-caching" },
+      {
+        title: "Crownlands",
+        href: "/docs/predicting-user-behavior",
+      },
+      { title: "Reach", href: "/docs/basics-of-time-travel" },
+      {
+        title: "Stormlands",
+        href: "/docs/introduction-to-string-theory",
+      },
+      { title: "Riverlands", href: "/docs/the-butterfly-effect" },
+      { title: "Dorne", href: "/docs/the-butterfly-effect" },
+      { title: "The Wall", href: "/docs/the-butterfly-effect" },
+      { title: "North", href: "/docs/the-butterfly-effect" },
+      { title: "Vale", href: "/docs/the-butterfly-effect" },
+      { title: "Iron Islands", href: "/docs/the-butterfly-effect" },
+      { title: "Westerlands", href: "/docs/the-butterfly-effect" },
+    ],
+  },
+  {
+    title: "Advanced guides",
+    links: [
+      { title: "Writing plugins", href: "/docs/writing-plugins" },
+      { title: "Neuralink integration", href: "/docs/neuralink-integration" },
+      { title: "Temporal paradoxes", href: "/docs/temporal-paradoxes" },
+      { title: "Testing", href: "/docs/testing" },
+      { title: "Compile-time caching", href: "/docs/compile-time-caching" },
+      {
+        title: "Predictive data generation",
+        href: "/docs/predictive-data-generation",
+      },
+    ],
+  },
+  {
+    title: "API reference",
+    links: [
+      { title: "CacheAdvance.predict()", href: "/docs/cacheadvance-predict" },
+      { title: "CacheAdvance.flush()", href: "/docs/cacheadvance-flush" },
+      { title: "CacheAdvance.revert()", href: "/docs/cacheadvance-revert" },
+      { title: "CacheAdvance.regret()", href: "/docs/cacheadvance-regret" },
+    ],
+  },
+  {
+    title: "Contributing",
+    links: [
+      { title: "How to contribute", href: "/docs/how-to-contribute" },
+      { title: "Architecture guide", href: "/docs/architecture-guide" },
+      { title: "Design principles", href: "/docs/design-principles" },
+    ],
+  },
+];
+
+const { title } = Astro.props;
+---
+
+<RootLayout title={title}>
+  <div
+    class='relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 w-full'
+  >
+    <div class='hidden lg:relative lg:block lg:flex-none'>
+      <div class='absolute inset-y-0 right-0 w-[50vw] bg-slate-50 dark:hidden'>
+      </div>
+      <div
+        class='sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5'
+      >
+        <div
+          class='absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block'
+        >
+        </div>
+        <div
+          class='absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block'
+        >
+        </div>
+        <Navigation
+          navigation={navigation}
+          className='w-64 pr-8 xl:w-72 xl:pr-16'
+        />
+      </div>
+    </div>
+    <div
+      class='min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'
+    >
+      <article>
+        <Prose>
+          <slot />
+        </Prose>
+      </article>
+      <!-- <dl class='mt-12 flex border-t border-slate-200 pt-6 dark:border-slate-800'>
+        {
+          previousPage && (
+            <div>
+              <dt class='font-display text-sm font-medium text-slate-900 dark:text-white'>
+                Previous
+              </dt>
+              <dd class='mt-1'>
+                <Link
+                  class='text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300'
+                  href={previousPage.href}
+                >
+                  &larr; {previousPage.title}
+                </Link>
+              </dd>
+            </div>
+          )
+        }
+        {
+          nextPage && (
+            <div class='ml-auto text-right'>
+              <dt class='font-display text-sm font-medium text-slate-900 dark:text-white'>
+                Next
+              </dt>
+              <dd class='mt-1'>
+                <Link
+                  class='text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300'
+                  href={nextPage.href}
+                >
+                  {nextPage.title} &rarr;
+                </Link>
+              </dd>
+            </div>
+          )
+        }
+      </dl> -->
+    </div>
+    <div
+      class='divide-y hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16'
+    >
+      <slot name='toc' />
+      <slot name='project-details' />
+    </div>
+  </div>
+</RootLayout>

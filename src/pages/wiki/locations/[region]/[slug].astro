@@ -1,0 +1,40 @@
+---
+import type { Location } from "@lib/payload-types";
+import WikiLayout from "@layouts/wiki.astro";
+import WikiSlice from "@components/wiki-slice.astro";
+import { slugify } from "@lib/utils";
+
+import ProjectDetailsCard from "@components/project-details-card.astro";
+import TableOfContents from "@components/table-of-contents.astro";
+
+interface Props extends Location {}
+
+export async function getStaticPaths() {
+  let data = await fetch("http://localhost:3000/api/locations");
+  let locations: { docs: Location[] } = await data.json();
+
+  return locations.docs.map((location) => {
+    return {
+      params: {
+        region: slugify(location.projectDetails.information.region),
+        slug: location.slug,
+      },
+      props: {
+        ...location,
+      },
+    };
+  });
+}
+
+const { layout, locationName, projectDetails } = Astro.props;
+---
+
+<WikiLayout title={locationName}>
+  <TableOfContents slot='toc' content={layout} />
+  <ProjectDetailsCard slot='project-details' projectDetails={projectDetails} />
+
+  <h1>{locationName}</h1>
+  <div>
+    <WikiSlice content={layout} />
+  </div>
+</WikiLayout>

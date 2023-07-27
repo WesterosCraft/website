@@ -1,0 +1,30 @@
+---
+import WikiLayout from "@layouts/wiki.astro";
+import { slugify } from "@lib/utils";
+
+export async function getStaticPaths() {
+  const regions = [
+    "Dorne",
+    "The Wall",
+    "North",
+    "Vale",
+    "Iron Islands",
+    "Westerlands",
+    "Crownlands",
+    "Riverlands",
+    "Stormlands",
+    "Reach",
+    "Beyond The Wall",
+  ];
+
+  return regions.map((region) => {
+    return {
+      params: {
+        region: slugify(region),
+      },
+    };
+  });
+}
+---
+
+<WikiLayout title='Region apge'>region page</WikiLayout>

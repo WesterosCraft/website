@@ -1,0 +1,182 @@
+---
+import RootLayout from "@layouts/root.astro";
+import ContainerBorder from "@components/container-border.astro";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyH3,
+  TypographyH4,
+  TypographyP,
+} from "@components/typography";
+import { Button } from "@components/ui/button";
+import PageHeader from "@components/page-header.astro";
+import GuideCard from "@components/guide-card.astro";
+---
+
+<RootLayout title='Join WesterosCraft'>
+  <div class='flex flex-col w-full'>
+    <PageHeader
+      borderBottom
+      title='Join the Watch'
+      copy='We have several different ways to start exploring the server and have compiled guides on all the suggested ways below! Be sure to read the guides in full.'
+    />
+    <div class='w-full'>
+      <ContainerBorder variant='light' className='py-24 sm:py-32'>
+        <div
+          class='px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-10 sm:flex-row justify-between items-center'
+        >
+          <div class='flex max-w-xl px-4 text-left flex-col mx-auto'>
+            <TypographyH2 className='text-primaryRed'>
+              Getting Started
+            </TypographyH2>
+            <TypographyH4 className='mt-6'>
+              WesterosCraft uses several mods and plugins to aid our realistic
+              and book accurate version of Westeros. In order to get you in the
+              server and exploring what we've built so far as easy as possible,
+              we've compiled several ways you can get the mods and plugins you
+              need to be able to connect below. Be sure to read the guides
+              thoroughly, and if you need any help, feel free to check out the
+              tech support forum or the #techsupport Discord channel!
+            </TypographyH4>
+            <div class='mt-6'>
+              <TypographyH3>Requirements</TypographyH3>
+              <ul>
+                <li>A valid Java Minecraft account</li>
+                <li>Supports mod authors</li>
+                <li>Connected to central modpack repository</li>
+                <li>Built in mods manager</li>
+                <li>Auto java setup</li>
+              </ul>
+            </div>
+          </div>
+          <GuideCard
+            isRecommended
+            title='CurseForge Launcher'
+            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
+          />
+        </div>
+      </ContainerBorder>
+      <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
+        <div class='flex flex-col justify-center items-center'>
+          <TypographyH2>Other Launchers</TypographyH2>
+        </div>
+      </ContainerBorder>
+      <ContainerBorder>
+        <div class='flex flex-row py-24 sm:py-32 justify-evenly items-center'>
+          <GuideCard
+            title='CurseForge Launcher'
+            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
+          />
+          <GuideCard
+            title='CurseForge Launcher'
+            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
+          />
+        </div>
+      </ContainerBorder>
+
+      <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
+        <div
+          class='flex flex-col justify-center items-center max-w-2xl text-center mx-auto'
+        >
+          <TypographyH2>More Ways To Play</TypographyH2>
+          <TypographyH4 className='mt-6'>
+            Don't want to download a third party program or for running into
+            issues getting them to work? There are still more options for you!
+          </TypographyH4>
+        </div>
+      </ContainerBorder>
+    </div>
+  </div>
+</RootLayout>
+
+<!-- bg="primaryRed"
+              position="absolute"
+              right={-20}
+              top={6}
+              width="240px"
+              transform="rotate(45deg)"
+              py={2}
+              justifyContent="center"
+              alignItems="center"
+              {...flexProps} --
+<!-- export default function JoinPage({ pageData }: { pageData: JoinPageData }) {
+    return (
+      <>
+        <Seo title={pageData?.seo?.title || pageData?.title} />
+        <Flex flexDir="column" w="full">
+          <ContainerBorder
+            variant="light"
+            as={VStack}
+            w="full"
+            mx="auto"
+            py={{ base: '16', sm: '20' }}
+          >
+            <HStack spacing={{ base: 4, sm: 12 }}>
+              <Img mt="12" width="80px" alt="Longclaw" src={Longclaw.src} />
+              <Box maxW="2xl">
+                <Heading size={{ base: '2xl', sm: '3xl', lg: '4xl' }}>{pageData?.heading}</Heading>
+                <Text fontSize="2xl" maxW="3xl" mt="6">
+                  {pageData?.subheading}
+                </Text>
+              </Box>
+            </HStack>
+          </ContainerBorder>
+          <Box w="full" bg="primaryDark">
+            <ContainerBorder variant="dark" py={{ base: '24', sm: '32' }}>
+              <Center
+                px="4"
+                textAlign="center"
+                flexDirection="column"
+                color="white"
+                maxW="2xl"
+                mx="auto"
+              >
+                <Heading size={{ base: 'xl', sm: '3xl' }} color="primaryGold">
+                  {pageData?.startedHeading}
+                </Heading>
+                <Text mt="6" fontSize="xl">
+                  {pageData?.startedSubheading}
+                </Text>
+              </Center>
+            </ContainerBorder>
+            <PricingTiers data={pageData?.guides} />
+          </Box>
+          <TwoTiers data={pageData?.otherGuides} />
+        </Flex>
+      </>
+    );
+  }
+  
+  export const getStaticProps: GetStaticProps = async () => {
+    const pageData = await sanityClient.fetch(`*[_type == "join"]{
+      ...,
+      guides[] {
+        ...,
+        guideRef->{
+          slug,
+          guideCategory->{ title }
+        }
+      },
+      otherGuides[]->{
+        slug,
+        guideCategory->{ title },
+        description,
+        title,
+        icon {
+          asset->{
+            url
+          }
+        }
+      }
+    }[0]`);
+  
+    return {
+      props: {
+        pageData,
+      },
+    };
+  };
+  
+  JoinPage.getLayout = function getLayout(page: ReactElement) {
+    return <OneColumnLayout>{page}</OneColumnLayout>;
+  }; -->

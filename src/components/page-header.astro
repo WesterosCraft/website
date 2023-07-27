@@ -1,0 +1,43 @@
+---
+import ContainerBorder from "./container-border.astro";
+import type { Media } from "@lib/payload-types";
+
+interface Props {
+  title: string;
+  copy: string;
+  borderBottom?: boolean;
+  bannerUrl?: string | Media;
+}
+
+const { title, copy, borderBottom = false, bannerUrl } = Astro.props;
+---
+
+<div class='relative'>
+  <ContainerBorder borderBottom={borderBottom}>
+    <div class='relative max-w-7xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8'>
+      <div class='flex flex-row gap-12'>
+        {
+          bannerUrl && (
+            <img
+              class='w-[100px] md:w-[120px]'
+              alt='Banner'
+              src={
+                typeof bannerUrl !== "string" ? bannerUrl?.url : bannerUrl || ""
+              }
+            />
+          )
+        }
+        <div class='flex flex-col max-w-3xl'>
+          <h1
+            class='text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl'
+          >
+            {title}
+          </h1>
+          <p class='mt-6 max-w-2xl text-xl text-gray-800'>
+            {copy}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ContainerBorder>
+</div>

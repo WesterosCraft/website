@@ -1,0 +1,10 @@
+---
+import { AspectRatio } from "../ui/aspect-ratio";
+import YouTubePlayer from "./youtube.astro";
+
+const { platform = "youtube", id } = Astro.props;
+---
+
+<AspectRatio ratio={16 / 9}>
+  {platform === "youtube" && <YouTubePlayer videoID={id} />}
+</AspectRatio>

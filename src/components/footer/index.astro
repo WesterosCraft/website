@@ -1,0 +1,33 @@
+---
+import { TypographyP } from "../typography";
+import LinkGrid from "./link-grid.astro";
+import SocialMediaLinks from "./social-media-links.astro";
+import { Separator } from "../ui/separator";
+---
+
+<footer class='bg-primaryDark py-12 px-4 md:px-8 text-white'>
+  <div class='flex flex-col max-w-7xl mx-auto gap-10 divide-solid'>
+    <div class='flex flex-col lg:flex-row gap-10 lg:gap-28 justify-between'>
+      <div class='flex flex-col align-start gap-4'>
+        <img
+          src='/westeroscraft.svg'
+          alt='WesterosCraft Logo'
+          width={176}
+          height={24}
+        /><a href='mailto:westeroscraft@gmail.com'>westeroscraft@gmail.com</a>
+      </div>
+
+      <div class='flex flex-col md:flex-row gap-10 md:gap-20'>
+        <LinkGrid />
+      </div>
+    </div>
+    <Separator />
+    <div class='flex flex-col-reverse md:flex-row justify-between items-center'>
+      <TypographyP>
+        WesterosCraft is a free, volunteer fan project not affiliated in any way
+        with GRRM, Mojang, or HBO.
+      </TypographyP>
+      <SocialMediaLinks />
+    </div>
+  </div>
+</footer>

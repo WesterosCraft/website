@@ -1,0 +1,13 @@
+---
+import { AnimatedLetters } from "@components/ui/animated-letters";
+import { TypographyH1 } from "@components/typography";
+import ContainerBorder from "@components/container-border.astro";
+---
+
+<ContainerBorder className='pt-14 pb-8 px-4' borderBottom>
+  <div class='flex justify-center items-center'>
+    <TypographyH1>
+      <AnimatedLetters client:visible text='Explore the Realm' />
+    </TypographyH1>
+  </div>
+</ContainerBorder>

@@ -1,0 +1,18 @@
+---
+import ReactPlayer from "react-player/youtube";
+
+interface Props {
+  videoID?: string;
+}
+
+const { videoID } = Astro.props;
+---
+
+<ReactPlayer
+  client:only='react'
+  url={`https://www.youtube.com/embed/${videoID}`}
+  width='100%'
+  height='100%'
+  controls={true}
+  className='youtubeContainer'
+/>

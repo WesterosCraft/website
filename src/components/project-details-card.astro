@@ -1,0 +1,45 @@
+---
+import type { Location } from "@lib/payload-types";
+import { titleize } from "@lib/utils";
+import dayjs from "dayjs";
+
+interface Props {
+  projectDetails: Location["projectDetails"];
+}
+
+const { projectDetails } = Astro.props;
+
+const items = [
+  { name: "Region", value: titleize(projectDetails?.information?.region) },
+  { name: "Project Lead(s)", value: projectDetails?.information?.projectLeads },
+  { name: "House", value: projectDetails?.information?.house },
+  { name: "Status", value: titleize(projectDetails?.information?.status) },
+  { name: "Warp", value: projectDetails?.information?.warp },
+  {
+    name: "Date Started",
+    value: dayjs(projectDetails?.information?.dateStarted).format(
+      "MMMM D, YYYY"
+    ),
+  },
+  {
+    name: "Date Completed",
+    value: dayjs(projectDetails?.information?.dateStarted).format(
+      "MMMM D, YYYY"
+    ),
+  },
+];
+---
+
+<div>
+  <p class='mt-10 mb-4 text-sm font-semibold tracking-tight'>Project Details</p>
+  <ul>
+    {
+      items.map((item) => (
+        <li class='text-sm my-2 scroll-my-6 scroll-py-6'>
+          <span class='font-medium'>{item.name}</span>
+          {`: ${item.value}`}
+        </li>
+      ))
+    }
+  </ul>
+</div>

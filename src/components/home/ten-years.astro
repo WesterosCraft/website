@@ -1,0 +1,34 @@
+---
+import ContainerBorder from "@components/container-border.astro";
+import { TypographyH1, TypographyP } from "@components/typography";
+import { motion } from "framer-motion";
+---
+
+<ContainerBorder variant='dark' className='pt-14 pb-8 px-4'>
+  <div class='text-white text-center lg:max-w-xl mx-auto'>
+    <motion.div
+      client:visible
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: 0.3 }}
+    >
+      <TypographyH1 className='text-primaryGold'>
+        10 years of WesterosCraft
+      </TypographyH1>
+    </motion.div>
+    <motion.div
+      client:visible
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: 0.5 }}
+    >
+      <TypographyP className='text-lg mt-8'>
+        From simple cobblestone shacks in 2011 to ornate cities in 2021, we have
+        come a long way from our humble beginnings. Our goal is to create one of
+        the largest and most detailed Minecraft worlds ever built.
+      </TypographyP>
+    </motion.div>
+  </div>
+</ContainerBorder>

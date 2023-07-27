@@ -1,0 +1,40 @@
+---
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { cn } from "@lib/utils";
+
+interface ImageMetadata {
+  src: string;
+  width: number;
+  height: number;
+  format?: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  className?: React.ComponentProps<"div">["className"];
+  icon?: ImageMetadata;
+}
+
+const { title, description, className, icon } = Astro.props;
+---
+
+<Card
+  className={cn(
+    "not-prose bg-primaryLightShade border-primaryLightBorder rounded-none",
+    className
+  )}
+>
+  <CardHeader>
+    <div class='flex flex-row gap-2 items-center'>
+      {icon && <img {...icon} />}
+      <CardTitle className='text-xl'>{title}</CardTitle>
+    </div>
+    <CardDescription className='text-md'>{description}</CardDescription>
+  </CardHeader>
+</Card>

@@ -1,0 +1,17 @@
+---
+import Serialize from "./serialize.astro";
+import type { CustomRenderers } from "./serialize.astro";
+
+interface Props {
+  content: any;
+  customRenderers?: CustomRenderers;
+}
+
+const { content, customRenderers } = Astro.props;
+
+if (!content) {
+  return null;
+}
+---
+
+<Serialize content={content} customRenderers={customRenderers} />

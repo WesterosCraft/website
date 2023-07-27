@@ -1,0 +1,56 @@
+---
+import RootLayout from "@layouts/root.astro";
+import ContainerBorder from "@components/container-border.astro";
+import { TypographyH1, TypographyH4 } from "@components/typography";
+import PageHeader from "@components/page-header.astro";
+import { Button } from "@components/ui/button";
+import type { Page } from "@lib/payload-types";
+import PageSlice from "@components/page-slice.astro";
+
+const data = await fetch(
+  "http://localhost:3000/api/pages/648c733143733d43e72beb6b"
+);
+const page: Page = await data.json();
+
+interface Props extends Page {}
+---
+
+<RootLayout title='About WesterosCraft'>
+  <div class='flex flex-col w-full'>
+    <PageHeader
+      title={page?.hero?.basic?.heading || "The story behind WesterosCraft"}
+      copy={page?.hero?.basic?.description ||
+        `Our goal is to recreate the universe imagined by author George R.R. Martin in his fantasy series, A Song of Ice and Fire. Here's a bit about how the project took off.`}
+      bannerUrl={page?.hero?.basic?.media}
+    />
+    <div class='w-full bg-primaryDark'>
+      <ContainerBorder variant='dark' className='pt-14 pb-8 px-4 border-b'>
+        <div class='flex justify-center items-center'>
+          <TypographyH1 className='text-white'>Our story</TypographyH1>
+        </div>
+      </ContainerBorder>
+    </div>
+
+    <PageSlice content={page?.layout} />
+
+    <ContainerBorder>
+      <section>
+        <div class='max-w-2xl mx-auto px-6 lg:px-8 py-16 sm:py-20 text-center'>
+          <TypographyH1>Ready to Explore?</TypographyH1>
+          <TypographyH4 className='mt-4'>
+            Westeros is home to over 500 cities, castles, and landmarks. Our
+            goal is to construct them all. With over 300 completed so far, our
+            community is well on our way to having a fully explorable map.
+          </TypographyH4>
+          <a href='/join'>
+            <Button
+              className='mt-8 bg-primaryRed hover:bg-red-800 text-white h-14 px-8 text-md'
+            >
+              Join the Server
+            </Button>
+          </a>
+        </div>
+      </section>
+    </ContainerBorder>
+  </div>
+</RootLayout>

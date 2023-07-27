@@ -1,0 +1,78 @@
+---
+import RootLayout from "@layouts/root.astro";
+import ContainerBorder from "@components/container-border.astro";
+import { TypographyH2, TypographyH4 } from "@components/typography";
+import { Button } from "@components/ui/button";
+import PageHeader from "@components/page-header.astro";
+import type { Page } from "@lib/payload-types";
+import PageSlice from "@components/page-slice.astro";
+
+const data = await fetch(
+  "http://localhost:3000/api/pages/648607d0fce0f425bccc54ca"
+);
+const page: Page = await data.json();
+
+interface Props extends Page {}
+---
+
+<RootLayout title='The Rookery'>
+  <div class='flex flex-col w-full'>
+    <PageHeader
+      title={page?.hero?.basic?.heading || "The Rookery"}
+      copy={page?.hero?.basic?.description ||
+        "The Rookery is a community created magazine that details all the latest happenings in the realm of WesterosCraft. Check in to keep up to date with the server! Sent once a quarter."}
+      bannerUrl={page?.hero?.basic?.media}
+    />
+
+    <div class='w-full bg-primaryDark'>
+      <ContainerBorder variant='dark' className='py-24 sm:py-32 px-4'>
+        <div class='flex justify-center items-center w-full max-w-5xl mx-auto'>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-0'>
+            <img
+              width={512}
+              height={650}
+              src='https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F0e3f719e0c4a625924d00cbb19e2ffd118a5c74c-758x956.png&w=640&q=75'
+              alt={"Latest Rookery Edition"}
+            />
+            <div
+              class='flex flex-col gap-10 justify-center items-center text-white'
+            >
+              <div class='text-center'>
+                <TypographyH2>Latest Edition</TypographyH2>
+                <TypographyH4 className='mt-4'>Spring 2023</TypographyH4>
+              </div>
+              <div>
+                <a
+                  href='https://indd.adobe.com/view/f943da18-ed77-4d55-845d-fee9bfa14247'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <Button
+                    size='lg'
+                    className='bg-white text-primaryDark font-semibold rounded-none text-md hover:bg-primaryRed hover:text-white'
+                  >
+                    Read It
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ContainerBorder>
+    </div>
+    <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
+      <div class='flex flex-col justify-center items-center'>
+        <TypographyH2>Past Editions</TypographyH2>
+      </div>
+    </ContainerBorder>
+    <div>
+      <ContainerBorder className='py-16 sm:py-20 px-4 items-center'>
+        <div
+          class='grid gap-y-12 gap-x-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full'
+        >
+          <PageSlice content={page?.layout} />
+        </div>
+      </ContainerBorder>
+    </div>
+  </div>
+</RootLayout>
