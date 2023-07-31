@@ -18,7 +18,7 @@ export default config({
           }),
           {
             label: "Rookeries",
-            itemLabel: (props) => props.value,
+            itemLabel: (props) => props.value || "",
           }
         ),
       },
@@ -161,7 +161,7 @@ export default config({
           defaultValue: false,
         }),
         dynmap: fields.object({
-          zoom: fields.text({ label: "Zoom Level" }),
+          zoom: fields.integer({ label: "Zoom Level" }),
           xCoord: fields.integer({ label: "X Coordinate" }),
           yCoord: fields.integer({ label: "Y Coordinate" }),
         }),
@@ -171,6 +171,7 @@ export default config({
           dividers: true,
           links: true,
           images: true,
+          tables: true,
         }),
       },
     }),
