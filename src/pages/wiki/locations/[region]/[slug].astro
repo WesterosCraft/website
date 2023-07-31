@@ -3,38 +3,37 @@ import type { Location } from "@lib/payload-types";
 import WikiLayout from "@layouts/wiki.astro";
 import WikiSlice from "@components/wiki-slice.astro";
 import { slugify } from "@lib/utils";
+import { getCollection, getEntry } from 'astro:content'
 
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import TableOfContents from "@components/table-of-contents.astro";
 
-interface Props extends Location {}
+// interface Props extends Location {}
 
 export async function getStaticPaths() {
-  let data = await fetch("http://localhost:3000/api/locations");
-  let locations: { docs: Location[] } = await data.json();
+  const locations = await getCollection('locations')
 
-  return locations.docs.map((location) => {
+  return locations.map((location) => {
     return {
       params: {
-        region: slugify(location.projectDetails.information.region),
-        slug: location.slug,
+        region: location.data.region,
+        slug: location.slug
       },
       props: {
-        ...location,
-      },
-    };
-  });
+        location: { ...location }
+      }
+    }
+  })
 }
 
-const { layout, locationName, projectDetails } = Astro.props;
+const { location } = Astro.props;
+const { Content } = await location?.render()
+
 ---
 
-<WikiLayout title={locationName}>
-  <TableOfContents slot='toc' content={layout} />
-  <ProjectDetailsCard slot='project-details' projectDetails={projectDetails} />
-
-  <h1>{locationName}</h1>
-  <div>
-    <WikiSlice content={layout} />
-  </div>
+<WikiLayout title={location?.data.title}>
+  <!-- <TableOfContents slot='toc' content={layout} /> -->
+  <ProjectDetailsCard slot='project-details' projectDetails={location.data} />
+  <h1>{location?.data.title}</h1>
+  <Content />
 </WikiLayout>

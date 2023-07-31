@@ -26,6 +26,7 @@ export default config({
   },
   collections: {
     locations: collection({
+      entryLayout: "content",
       label: "Locations",
       slugField: "title",
       path: "src/content/locations/*/",

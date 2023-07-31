@@ -1,3 +1,5 @@
+import locations from "./backup-locations.json";
+
 (async () => {
-  console.log("test");
+  console.log("test", locations);
 })();
