@@ -122,7 +122,7 @@ export default config({
           label: "House",
           description: "If location has a House, list it here",
         }),
-        application: fields.text({
+        application: fields.url({
           label: "Application",
           description: "Link to users project application, if available",
         }),
