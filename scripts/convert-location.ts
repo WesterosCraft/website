@@ -3,6 +3,9 @@ import path from "node:path";
 import fs from "node:fs";
 import { findUp, pathExists } from "find-up";
 import { fileURLToPath } from "url";
+// @ts-ignore
+import toMarkdown from "@sanity/block-content-to-markdown";
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -65,6 +68,14 @@ const buildCategoryMap = (buildType: string) => {
   }
 };
 
+const serializers = {
+  types: {
+    code: (props: any) =>
+      "```" + props.node.language + "\n" + props.node.code + "\n```",
+    video: (props: any) => `{% video id="${props.node.url}" /%}`,
+  },
+};
+
 async function doesDirectoryExist(path: string) {
   const r = await findUp(path, { type: "directory" });
   return !!r;
@@ -88,20 +99,20 @@ async function doesDirectoryExist(path: string) {
     }
 
     const fileContent = `---
-    title: ${location.title}
-    region: ${regionMap(location.region?._ref)}
-    projectStatus: ${location.projectStatus}
-    projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref)}
-    warp: ${location.warp}
-    house: ${location.house}
-    application: ${location.application}
-    projectLeads: ${location.projectLead}
-    dateStarted: "${location.dateStarted?.split?.("T")?.[0]}"
-    dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
-    difficultyLevel: "${location.difficulty}"
-    redoAvailable: ${location.redoAvailable}
-    serverProject: ${location.serverProject}
-    ---`;
+title: ${location.title}
+region: ${regionMap(location.region?._ref)}
+projectStatus: ${location.projectStatus}
+projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref)}
+warp: ${location.warp}
+house: ${location.house}
+application: ${location.application}
+projectLeads: ${location.projectLead}
+dateStarted: "${location.dateStarted?.split?.("T")?.[0]}"
+dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
+difficultyLevel: "${location.difficulty}"
+redoAvailable: ${location.redoAvailable}
+serverProject: ${location.serverProject}
+---${"\n" + toMarkdown(location.body, { serializers })}`;
 
     fs.writeFileSync(pathx + "/index.mdoc", fileContent);
 
