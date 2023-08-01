@@ -3,6 +3,7 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": ".",
+    "types": ["node"],
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
