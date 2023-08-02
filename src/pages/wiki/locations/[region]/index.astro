@@ -1,6 +1,7 @@
 ---
 import WikiLayout from "@layouts/wiki.astro";
 import { slugify } from "@lib/utils";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const regions = [
@@ -22,9 +23,23 @@ export async function getStaticPaths() {
       params: {
         region: slugify(region),
       },
+      props: {
+        region: slugify(region),
+      },
     };
   });
 }
+
+const { region: pageRegion } = Astro.props;
+
+const filteredLocations = await getCollection(
+  "locations",
+  ({ data: { region } }) => {
+    return region === pageRegion;
+  }
+);
 ---
 
-<WikiLayout title='Region apge'>region page</WikiLayout>
+<WikiLayout title='Region apge'>
+  {filteredLocations.map((i) => <h1>{i.data.title}</h1>)}
+</WikiLayout>

@@ -3,7 +3,7 @@ import type { Location } from "@lib/payload-types";
 import WikiLayout from "@layouts/wiki.astro";
 import WikiSlice from "@components/wiki-slice.astro";
 import { slugify } from "@lib/utils";
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection, getEntry } from "astro:content";
 
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import TableOfContents from "@components/table-of-contents.astro";
@@ -11,24 +11,23 @@ import TableOfContents from "@components/table-of-contents.astro";
 // interface Props extends Location {}
 
 export async function getStaticPaths() {
-  const locations = await getCollection('locations')
+  const locations = await getCollection("locations");
 
   return locations.map((location) => {
     return {
       params: {
         region: location.data.region,
-        slug: location.slug
+        slug: location.slug,
       },
       props: {
-        location: { ...location }
-      }
-    }
-  })
+        location: { ...location },
+      },
+    };
+  });
 }
 
 const { location } = Astro.props;
-const { Content } = await location?.render()
-
+const { Content } = await location?.render();
 ---
 
 <WikiLayout title={location?.data.title}>

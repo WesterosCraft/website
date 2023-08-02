@@ -1,7 +1,7 @@
 import locations from "./backup-locations.json" assert { type: "json" };
 import path from "node:path";
 import fs from "node:fs";
-import { findUp, pathExists } from "find-up";
+import { findUp } from "find-up";
 import { fileURLToPath } from "url";
 // @ts-ignore
 import toMarkdown from "@sanity/block-content-to-markdown";
@@ -70,9 +70,8 @@ const buildCategoryMap = (buildType: string) => {
 
 const serializers = {
   types: {
-    code: (props: any) =>
-      "```" + props.node.language + "\n" + props.node.code + "\n```",
     video: (props: any) => `{% video id="${props.node.url}" /%}`,
+    figure: (props: any) => `FIGURE HERE EVENTUALLY`,
   },
 };
 
@@ -84,7 +83,7 @@ async function doesDirectoryExist(path: string) {
 (async () => {
   //search for directory. if it exists, overwrite, otherwise create a new directory and file
 
-  locations.slice(0, 3).forEach(async (location) => {
+  locations.slice(0, 10).forEach(async (location) => {
     const pathx = path.join(
       __dirname + "/../src/content/locations",
       location.slug.current
@@ -110,14 +109,10 @@ projectLeads: ${location.projectLead}
 dateStarted: "${location.dateStarted?.split?.("T")?.[0]}"
 dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
 difficultyLevel: "${location.difficulty}"
-redoAvailable: ${location.redoAvailable}
-serverProject: ${location.serverProject}
----${"\n" + toMarkdown(location.body, { serializers })}`;
+redoAvailable: ${location.redoAvailable || false}
+serverProject: ${location.serverProject || false}
+---${"\n" + toMarkdown(location.body, { serializers })}\n`;
 
     fs.writeFileSync(pathx + "/index.mdoc", fileContent);
-
-    // console.log("RES: ", exists);
-    // const filePath = path.join(dirPath, fileName);
-    // fs.writeFileSync(filePath, fileContent);
   });
 })();

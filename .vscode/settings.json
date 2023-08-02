@@ -1,5 +1,9 @@
 {
   "files.associations": {
     "*.mdoc": "markdown"
+  },
+  "markdownlint.config": {
+    "default": true,
+    "MD034": false
   }
 }
