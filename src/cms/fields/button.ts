@@ -32,5 +32,5 @@ export const button = fields.object({
 // Multiple buttons
 export const buttons = fields.array(button, {
   label: "Buttons",
-  // itemLabel: (props) => props.value,
+  itemLabel: (props) => "Button: " + props?.fields?.buttonText?.value,
 });

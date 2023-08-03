@@ -2,7 +2,7 @@ import { config, fields, collection, singleton } from "@keystatic/core";
 
 export const rookery = singleton({
   label: "Rookery Page",
-  path: "src/content/pages/",
+  path: "src/content/pages/rookery",
   schema: {
     editions: fields.array(
       fields.relationship({
