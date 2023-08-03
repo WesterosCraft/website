@@ -16,7 +16,7 @@ interface ImageMetadata {
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   className?: React.ComponentProps<"div">["className"];
   icon?: ImageMetadata;
 }

@@ -1,3 +1,15 @@
+import Sunspear from "@assets/icons/sunspear96.png";
+import Nightswatch from "@assets/icons/nightswatch96.png";
+import Winterfell from "@assets/icons/winterfell96.png";
+import Eyrie from "@assets/icons/eyrie96.png";
+import Pyke from "@assets/icons/pyke96.png";
+import Highgarden from "@assets/icons/highgarden96.png";
+import CasterlyRock from "@assets/icons/casterlyrock96.png";
+import SummerHall from "@assets/icons/summerhall96.png";
+import TheTwins from "@assets/icons/thetwins96.png";
+import Dragonstone from "@assets/icons/dragonstone96.png";
+import RedKeep from "@assets/icons/redkeep96.png";
+
 export const IS_BROWSER = typeof window !== "undefined";
 
 export const container = {
@@ -28,3 +40,119 @@ export const child = {
     },
   },
 };
+
+export const regions = [
+  {
+    name: "Dorne",
+    description: "Southernmost area of Westeros",
+    icon: {
+      src: Sunspear.src,
+      width: 32,
+      height: 32,
+      alt: "Sunspear icon",
+    },
+  },
+  {
+    name: "The Wall",
+    description:
+      "A huge structure of stone, ice, and magic on the northern border of Westeros",
+    icon: {
+      src: Nightswatch.src,
+      width: 32,
+      height: 32,
+      alt: "Nights watch icon",
+    },
+  },
+  {
+    name: "North",
+    description: "The northern kingdom, nearly as big as the other 6 combined",
+    icon: {
+      src: Winterfell.src,
+      width: 32,
+      height: 32,
+      alt: "Winterfell icon",
+    },
+  },
+  {
+    name: "Vale",
+    description:
+      "An area in the east almost completely surrounded by mountains",
+    icon: {
+      src: Eyrie.src,
+      width: 32,
+      height: 32,
+      alt: "Eyrie icon",
+    },
+  },
+  {
+    name: "Iron Islands",
+    description: "Group of isolated and rugged islands west of Westeros",
+    icon: {
+      src: Pyke.src,
+      width: 32,
+      height: 32,
+      alt: "Pyke icon",
+    },
+  },
+  {
+    name: "Westerlands",
+    description: "A rich kingdom west of the Riverlands",
+    icon: {
+      src: CasterlyRock.src,
+      width: 32,
+      height: 32,
+      alt: "Casterly Rock icon",
+    },
+  },
+  {
+    name: "Crownlands",
+    description: "Lands surrounding the capital of Kings Landing",
+    icon: {
+      src: RedKeep.src,
+      width: 32,
+      height: 32,
+      alt: "Red Keep icon",
+    },
+  },
+  {
+    name: "Riverlands",
+    description: "Centrally located, surrounded by several kingdoms",
+    icon: {
+      src: TheTwins.src,
+      width: 32,
+      height: 32,
+      alt: "The Twins icon",
+    },
+  },
+  {
+    name: "Stormlands",
+    description: "Lies between Kings Landing and the Sea of Dorne",
+    icon: {
+      src: Dragonstone.src,
+      width: 32,
+      height: 32,
+      alt: "Dragonstone icon",
+    },
+  },
+  {
+    name: "Reach",
+    description: "Covers the lower western half of Westeros",
+    icon: {
+      src: Highgarden.src,
+      width: 32,
+      height: 32,
+      alt: "Highgarden icon",
+    },
+  },
+  {
+    name: "Beyond The Wall",
+    description:
+      "A mountainous, desolate and frozen terrain with lots of forests and populated with nomadic clans.",
+    icon: {
+      src: SummerHall.src,
+      width: 32,
+      height: 32,
+      alt: "SummerHall icon",
+    },
+  },
+];

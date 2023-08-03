@@ -1,7 +1,9 @@
 ---
+import WikiCard from "@components/wiki/wiki-card.astro";
 import WikiLayout from "@layouts/wiki.astro";
-import { slugify } from "@lib/utils";
+import { slugify, titleize } from "@lib/utils";
 import { getCollection } from "astro:content";
+import { regions } from "@constants/index";
 
 export async function getStaticPaths() {
   const regions = [
@@ -38,8 +40,34 @@ const filteredLocations = await getCollection(
     return region === pageRegion;
   }
 );
+
+const icon = regions.find((x) => pageRegion === slugify(x.name));
 ---
 
-<WikiLayout title='Region apge'>
-  {filteredLocations.map((i) => <h1>{i.data.title}</h1>)}
+<WikiLayout title={titleize(pageRegion)}>
+  <div class="flex flex-row gap-6 not-prose mb-8">
+    {
+      icon && (
+        <img
+          class="not-prose w-16 h-16"
+          src={icon.icon.src}
+          alt={icon.icon.alt}
+        />
+      )
+    }
+    <div>
+      <h1 class="text-4xl">{titleize(pageRegion)}</h1>
+      <p class="mt-2">{icon?.description}</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose">
+    {
+      filteredLocations.map((i) => (
+        <a href={`/wiki/locations/${slugify(pageRegion)}/${i.slug}`}>
+          <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
+        </a>
+      ))
+    }
+  </div>
 </WikiLayout>
