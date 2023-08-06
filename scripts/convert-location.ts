@@ -83,7 +83,7 @@ async function doesDirectoryExist(path: string) {
 (async () => {
   //search for directory. if it exists, overwrite, otherwise create a new directory and file
 
-  locations.slice(0, 10).forEach(async (location) => {
+  locations.slice(0, 50).forEach(async (location) => {
     const pathx = path.join(
       __dirname + "/../src/content/locations",
       location.slug.current

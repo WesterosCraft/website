@@ -1,11 +1,32 @@
 ---
+import { MatchSorterSearch } from "@components/match-sorter-search";
 import clsx from "clsx";
 const { navigation, className } = Astro.props;
 const pathname = Astro.url.pathname;
+
+import { getCollection, getEntry } from "astro:content";
+
+const locationsdirectories = await getCollection("locations");
+// const guidesdirectories: any = await getCollection("guides");
+
+const normalizedLocations = locationsdirectories?.map((x) => ({
+  title: x.data.title,
+  route: "/wiki/locations/" + x.data.region + "/" + x.slug,
+  type: "location",
+}));
+
+// const normalizedGuides = guidesdirectories?.map((x: any) => ({
+//   title: x.data.title,
+//   route: "/wiki/guides/" + x.slug,
+//   type: "guide",
+// }));
+
+const normalizedDirectories = normalizedLocations.concat([]);
 ---
 
 <nav class={clsx("text-base lg:text-sm", className)}>
   <ul class='space-y-9'>
+    <MatchSorterSearch directories={normalizedDirectories} client:only />
     {
       navigation.map((section: any) => (
         <li>
@@ -20,7 +41,7 @@ const pathname = Astro.url.pathname;
                   class={clsx(
                     "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
                     {
-                      "font-semibold text-sky-500 before:bg-sky-500":
+                      "font-semibold text-primaryRed before:bg-primaryRed":
                         link.href === pathname,
                       "text-slate-500 before:hidden before:bg-slate-300 hover:text-slate-600 hover:before:block dark:text-slate-400 dark:before:bg-slate-700 dark:hover:text-slate-300":
                         link.href !== pathname,

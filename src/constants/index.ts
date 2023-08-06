@@ -156,3 +156,50 @@ export const regions = [
     },
   },
 ];
+
+export const wikiNavigation = [
+  {
+    title: "Getting Started",
+    links: [
+      { title: "Installing the modpack", href: "/docs/installation" },
+      { title: "Server rules", href: "/docs/installation" },
+      { title: "Applying to build", href: "/docs/installation" },
+    ],
+  },
+  {
+    title: "Locations By Region",
+    links: [
+      { title: "Beyond The Wall", href: "/wiki/locations/beyond-the-wall" },
+      {
+        title: "Crownlands",
+        href: "/wiki/locations/crownlands",
+      },
+      { title: "Reach", href: "/wiki/locations/reach" },
+      {
+        title: "Stormlands",
+        href: "/wiki/locations/stormlands",
+      },
+      { title: "Riverlands", href: "/wiki/locations/riverlands" },
+      { title: "Dorne", href: "/wiki/locations/dorne" },
+      { title: "The Wall", href: "/wiki/locations/the-wall" },
+      { title: "North", href: "/wiki/locations/north" },
+      { title: "Vale", href: "/wiki/locations/vale" },
+      { title: "Iron Islands", href: "/wiki/locations/iron-islands" },
+      { title: "Westerlands", href: "/wiki/locations/westerlands" },
+    ],
+  },
+  {
+    title: "Guides By Category",
+    links: [
+      { title: "Writing plugins", href: "/docs/writing-plugins" },
+      { title: "Neuralink integration", href: "/docs/neuralink-integration" },
+      { title: "Temporal paradoxes", href: "/docs/temporal-paradoxes" },
+      { title: "Testing", href: "/docs/testing" },
+      { title: "Compile-time caching", href: "/docs/compile-time-caching" },
+      {
+        title: "Predictive data generation",
+        href: "/docs/predictive-data-generation",
+      },
+    ],
+  },
+];

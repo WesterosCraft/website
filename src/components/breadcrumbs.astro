@@ -1,0 +1,39 @@
+---
+import { titleize } from "@lib/utils";
+const combineAccumulatively = (segments: string[]) => {
+  const links = segments.reduce((acc, cur, curIndex) => {
+    const last = curIndex > 1 ? acc[curIndex - 1] : "";
+    const newPath = last + "/" + cur;
+    acc.push(newPath);
+    return acc;
+  }, [] as string[]);
+  return links;
+};
+
+const currentPath = Astro.url.pathname;
+const segments = currentPath.split("/");
+const crumbLinks = combineAccumulatively(segments);
+---
+
+<nav class='mb-6' aria-label='breadcrumb'>
+  <ol class='flex items-center text-primaryRed font-medium'>
+    {
+      crumbLinks.map((crumb, i) =>
+        segments[i] === "" ? null : (
+          <>
+            <li class='inline-flex items-center '>
+              <a href={crumb} class={currentPath === crumb ? "active" : ""}>
+                {titleize(segments[i])}
+              </a>
+            </li>
+            {i !== segments.length - 1 && (
+              <span role='presentation' class='mx-2'>
+                /
+              </span>
+            )}
+          </>
+        )
+      )
+    }
+  </ol>
+</nav>
