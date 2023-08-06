@@ -1,0 +1,34 @@
+---
+import WikiLayout from "@layouts/wiki.astro";
+import { getCollection } from "astro:content";
+
+import TableOfContents from "@components/table-of-contents.astro";
+import { slugify, camel2title } from "@lib/utils";
+
+// interface Props extends Location {}
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+
+  return docs.map((doc) => {
+    return {
+      params: {
+        category: slugify(camel2title(doc.data.docCategory)),
+        slug: doc.slug,
+      },
+      props: {
+        doc: { ...doc },
+      },
+    };
+  });
+}
+
+const { doc } = Astro.props;
+const { Content } = await doc?.render();
+---
+
+<WikiLayout title={doc?.data.title}>
+  <!-- <TableOfContents slot='toc' content={layout} /> -->
+  <h1>{doc?.data.title}</h1>
+  <Content />
+</WikiLayout>

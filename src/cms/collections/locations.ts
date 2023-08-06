@@ -1,5 +1,6 @@
 import { fields, collection } from "@keystatic/core";
 import { wysiwyg } from "../fields";
+import { regionOptions } from "@constants/index";
 
 export const locations = collection({
   entryLayout: "content",
@@ -12,52 +13,7 @@ export const locations = collection({
     region: fields.select({
       label: "Region",
       description: "The region of Westeros the location is in",
-      options: [
-        {
-          label: "Dorne",
-          value: "dorne",
-        },
-        {
-          label: "Riverlands",
-          value: "riverlands",
-        },
-        {
-          label: "The Wall",
-          value: "theWall",
-        },
-        {
-          label: "North",
-          value: "north",
-        },
-        {
-          label: "Vale",
-          value: "vale",
-        },
-        {
-          label: "Iron Islands",
-          value: "ironIslands",
-        },
-        {
-          label: "Westerlands",
-          value: "westerlands",
-        },
-        {
-          label: "Crownlands",
-          value: "crownlands",
-        },
-        {
-          label: "Stormlands",
-          value: "stormlands",
-        },
-        {
-          label: "Reach",
-          value: "reach",
-        },
-        {
-          label: "Beyond The Wall",
-          value: "beyondTheWall",
-        },
-      ],
+      options: regionOptions,
       defaultValue: "dorne",
     }),
     projectStatus: fields.select({

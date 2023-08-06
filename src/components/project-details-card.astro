@@ -1,6 +1,5 @@
 ---
-import type { Location } from "@lib/payload-types";
-import { titleize } from "@lib/utils";
+import { titleizeASlug } from "@lib/utils";
 import dayjs from "dayjs";
 
 interface ProjectDetails {
@@ -26,10 +25,10 @@ interface Props {
 const { projectDetails } = Astro.props;
 
 const items = [
-  { name: "Region", value: titleize(projectDetails?.region) },
+  { name: "Region", value: titleizeASlug(projectDetails?.region) },
   { name: "Project Lead(s)", value: projectDetails?.projectLeads },
   { name: "House", value: projectDetails?.house },
-  { name: "Status", value: titleize(projectDetails?.projectStatus) },
+  { name: "Status", value: titleizeASlug(projectDetails?.projectStatus) },
   { name: "Warp", value: projectDetails?.warp },
   {
     name: "Date Started",

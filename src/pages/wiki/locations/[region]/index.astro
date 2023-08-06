@@ -1,7 +1,7 @@
 ---
 import WikiCard from "@components/wiki/wiki-card.astro";
 import WikiLayout from "@layouts/wiki.astro";
-import { slugify, titleize } from "@lib/utils";
+import { slugify, titleizeASlug } from "@lib/utils";
 import { getCollection } from "astro:content";
 import { regions } from "@constants/index";
 
@@ -44,24 +44,24 @@ const filteredLocations = await getCollection(
 const icon = regions.find((x) => pageRegion === slugify(x.name));
 ---
 
-<WikiLayout title={titleize(pageRegion)}>
-  <div class="flex flex-row gap-6 not-prose mb-8">
+<WikiLayout title={titleizeASlug(pageRegion)}>
+  <div class='flex flex-row gap-6 not-prose mb-8'>
     {
       icon && (
         <img
-          class="not-prose w-16 h-16"
+          class='not-prose w-16 h-16'
           src={icon.icon.src}
           alt={icon.icon.alt}
         />
       )
     }
     <div>
-      <h1 class="text-4xl">{titleize(pageRegion)}</h1>
-      <p class="mt-2">{icon?.description}</p>
+      <h1 class='text-4xl'>{titleizeASlug(pageRegion)}</h1>
+      <p class='mt-2'>{icon?.description}</p>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose">
+  <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
     {
       filteredLocations.map((i) => (
         <a href={`/wiki/locations/${slugify(pageRegion)}/${i.slug}`}>

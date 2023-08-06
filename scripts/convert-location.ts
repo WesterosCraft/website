@@ -91,8 +91,6 @@ async function doesDirectoryExist(path: string) {
 
     const directoryExists = await doesDirectoryExist(pathx);
 
-    console.log("🫵 directoryExists:", directoryExists);
-
     if (!directoryExists) {
       fs.mkdirSync(pathx, { recursive: true });
     }

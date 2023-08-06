@@ -1,5 +1,5 @@
 ---
-import { titleize } from "@lib/utils";
+import { titleizeASlug } from "@lib/utils";
 const combineAccumulatively = (segments: string[]) => {
   const links = segments.reduce((acc, cur, curIndex) => {
     const last = curIndex > 1 ? acc[curIndex - 1] : "";
@@ -23,7 +23,7 @@ const crumbLinks = combineAccumulatively(segments);
           <>
             <li class='inline-flex items-center '>
               <a href={crumb} class={currentPath === crumb ? "active" : ""}>
-                {titleize(segments[i])}
+                {titleizeASlug(segments[i])}
               </a>
             </li>
             {i !== segments.length - 1 && (

@@ -3,10 +3,16 @@ import RootLayout from "@layouts/root.astro";
 import Prose from "@components/prose.astro";
 import Navigation from "@components/wiki/navigation.astro";
 import Breadcrumbs from "@components/breadcrumbs.astro";
-import { wikiNavigation } from "@constants/index";
+import { getCollection } from "astro:content";
+import { makeWikiNav } from "@lib/utils";
+
 const pathname = Astro.url.pathname;
 
 const { title } = Astro.props;
+
+const filteredDocs = await getCollection("docs");
+
+const test = makeWikiNav(filteredDocs);
 ---
 
 <RootLayout title={pathname === "/wiki" ? title : `${title} | Wiki`}>
@@ -26,10 +32,7 @@ const { title } = Astro.props;
           class='absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block'
         >
         </div>
-        <Navigation
-          navigation={wikiNavigation}
-          className='w-64 pr-8 xl:w-72 xl:pr-16'
-        />
+        <Navigation navigation={test} className='w-64 pr-8 xl:w-72 xl:pr-16' />
       </div>
     </div>
     <div

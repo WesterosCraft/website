@@ -1,9 +1,6 @@
 ---
-import type { Location } from "@lib/payload-types";
 import WikiLayout from "@layouts/wiki.astro";
-import WikiSlice from "@components/wiki-slice.astro";
-import { slugify } from "@lib/utils";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import TableOfContents from "@components/table-of-contents.astro";

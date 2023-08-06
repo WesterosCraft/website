@@ -154,8 +154,8 @@ export function Search({
       <kbd
         className={cn(
           "absolute my-1.5 select-none right-1.5",
-          "h-5 rounded bg-white px-1.5 font-mono text-[10px] font-medium text-gray-500",
-          "border dark:border-gray-100/20 dark:bg-dark/50",
+          "h-5 bg-primaryLightShade px-1.5 font-mono text-[10px] font-medium text-gray-500",
+          "border border-primaryLightBorder",
           "contrast-more:border-current contrast-more:text-current contrast-more:dark:border-current",
           "items-center gap-1 transition-opacity",
           value
@@ -182,13 +182,14 @@ export function Search({
   );
 
   return (
-    <div className={cn("nextra-search relative md:w-64", className)}>
+    <div className={cn("relative md:w-64", className)}>
       {renderList && (
         <div className='fixed inset-0 z-10' onClick={() => setShow(false)} />
       )}
 
       <div className='relative flex items-center text-gray-900 contrast-more:text-gray-800 dark:text-gray-300 contrast-more:dark:text-gray-300'>
         <Input
+          className='border border-primaryLightBorder bg-primaryLightShade focus-visible:ring-primaryRed'
           ref={input}
           value={value}
           onChange={(e) => {
@@ -204,7 +205,7 @@ export function Search({
             setFocused(false);
           }}
           type='search'
-          placeholder={renderString("placeholder")}
+          placeholder={renderString("Search wiki...")}
           onKeyDown={handleKeyDown}
         />
         {icon}
@@ -222,8 +223,8 @@ export function Search({
           className={cn(
             "wc-scrollbar",
             // Using bg-white as background-color when the browser didn't support backdrop-filter
-            "border border-gray-200 bg-white text-gray-100 dark:border-neutral-800 dark:bg-neutral-900",
-            "absolute top-full z-20 mt-2 overflow-auto overscroll-contain rounded-xl py-2.5 shadow-xl",
+            "border border-primaryLightBorder bg-primaryLightShade text-gray-100 dark:border-neutral-800 dark:bg-neutral-900",
+            "absolute top-full z-20 mt-2 overflow-auto overscroll-contain py-2.5 shadow-xl",
             "max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)]",
             "md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)]",
             "inset-x-0 ltr:md:left-auto rtl:md:right-auto",
@@ -244,7 +245,7 @@ export function Search({
             <span className='flex select-none justify-center gap-2 p-8 text-center text-sm text-gray-400'>
               <SpinnerIcon className='h-5 w-5 animate-spin' />
               {renderComponent(
-                <p className='text-gray-800 contrast-more:border-transparent dark:text-gray-300 mx-2.5 break-words rounded-md contrast-more:border'>
+                <p className='text-gray-800 contrast-more:border-transparent dark:text-gray-300 mx-2.5 break-words contrast-more:border'>
                   Loading...
                 </p>
               )}
@@ -255,7 +256,7 @@ export function Search({
                 {prefix}
                 <li
                   className={cn(
-                    "mx-2.5 break-words rounded-md",
+                    "mx-2.5 break-words",
                     "contrast-more:border",
                     i === active
                       ? "bg-primaryRed/10 text-primaryRed font-medium contrast-more:border-primary-500"
@@ -279,7 +280,7 @@ export function Search({
           ) : (
             renderComponent(
               <li>
-                <p className='text-gray-800 contrast-more:border-transparent dark:text-gray-300 mx-2.5 break-words rounded-md contrast-more:border'>
+                <p className='text-gray-800 contrast-more:border-transparent dark:text-gray-300 mx-2.5 break-words contrast-more:border'>
                   No results found
                 </p>
               </li>

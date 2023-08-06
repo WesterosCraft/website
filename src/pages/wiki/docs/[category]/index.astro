@@ -1,0 +1,50 @@
+---
+import WikiCard from "@components/wiki/wiki-card.astro";
+import { docCategories } from "@constants/index";
+import WikiLayout from "@layouts/wiki.astro";
+import { slugify, titleizeASlug, camel2title } from "@lib/utils";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const routes = docCategories.map((cat) => {
+    return {
+      params: {
+        category: slugify(camel2title(cat.label)),
+      },
+      props: {
+        cat: slugify(camel2title(cat.label)),
+      },
+    };
+  });
+
+  return routes;
+}
+
+const { cat: category } = Astro.props;
+
+const filteredDocs = await getCollection(
+  "docs",
+  ({ data: { docCategory } }) => {
+    return category === docCategory;
+  }
+);
+---
+
+<WikiLayout title={titleizeASlug(category)}>
+  <div class='flex flex-row gap-6 not-prose mb-8'>
+    <div>
+      <h1 class='text-4xl'>{titleizeASlug(category)}</h1>
+      <!-- <p class="mt-2">{icon?.description}</p> -->
+    </div>
+  </div>
+
+  <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
+    {
+      filteredDocs.map((i) => (
+        <a href={`/wiki/docs/${slugify(category)}/${i.slug}`}>
+          <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
+        </a>
+      ))
+    }
+  </div>
+</WikiLayout>
