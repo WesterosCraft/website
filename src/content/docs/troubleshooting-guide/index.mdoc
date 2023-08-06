@@ -1,0 +1,121 @@
+---
+title: Troubleshooting Guide
+docCategory: resources
+---
+### The following describes a number of common issues and the solutions to them. Following rules apply:  
+
+
+* Read this page carefully and in its entirety before heading to the forums to ask for help.
+* This Troubleshooting Guide was originally made for the previous version of the WesterosCraft Launcher.
+* A full breakdown of the new launcher can be found at [WesterosCraft Launcher Wiki](https://github.com/WesterosCraftCode/ElectronLauncher/wiki) .
+* If you have to ask for help on the forums, use the [Support Subforum](https://forum.westeroscraft.com/forum/support.40/).
+* Always include as much information in your post as possible. Always include the launcher log using a [pastebin](http://pastebin.com/).
+* See here if you're using the [Technic Launcher](http://westeroscraft.com/forum/m/12700545/viewthread/10334646-westeroscraft-custom-client-as-technic-launcher-mod-pack/page/1) or the standard [Minecraft Launcher](http://westeroscraft.com/forum/m/12700545/viewthread/19367215-manually-building-westeroscraft-custom-client-1710).
+
+##### ******"Why can I not connect to mc.westeroscraft.com?"******
+
+You cannot join the server using the normal Minecraft launcher. To enter you need to use our custom-built launcher, which allows us to implement a number of modifications to the game.
+
+Simply download the [Launcher](https://westeroscraft.com/launcher/) and follow the installation steps as described there. The launcher will automatically choose the appropriate minecraft version, texture pack etc., set everything up for you and directly connect you to the server.
+
+##### **"I'm using the latest WesterosCraft Launcher, but I still can't connect."**
+
+There are several fixes you can attempt in order to connect to the WesterosCraft Server through the custom launcher:
+
+* Ensure that you are using the most updated version of the WesterosCraft Launcher. Found at the [WesterosCraft Launcher Download](http://www.westeroscraft.com/launcher)
+* Ensure that you have the WesterosCraft Production Server selected in the bottom right-hand corner of the launcher.
+* Ensure that you are have Java 8 installed on your computer. This can be accomplished by searching: "About Java" in Start.
+* Allow both Minecraft and WesterosCraft through your firewall in Security settings.
+* Attempt to generate a new client token by logging out of the Launcher (Settings>Account>Cursor over Selected Account>Log Out) and then logging back in.
+* Attempt to generate a new client token by manually deleting the config.json file located in: C:\Users\[name]\AppData\Roaming\.westeroscraft and then restarting the WesterosCraft Launcher.
+
+##### **"What do I do if the game is out of date?"**
+
+Your version is not up to date with the server and you need to update the launcher. Simply hit the _Update_ button, wait for the update to finish and try launching again. Rarely, it doesn't update all files correctly and you need to go through the update process a couple times before it works.
+
+##### **"How do I launch the game?"**
+
+On the lefthand side of the launcher select the W_esterosCraft Production Server_ When prompted, enter your MineCraft credentials, so the same e-mail address and password you use to log into regular Minecraft.
+
+##### **"What do I do if the connection times out?"**
+
+If you cannot reach the server, make sure you are connected to the internet and that Java is not blocked by your antivirus or firewall.
+
+As a server we depend on both the Minecraft infrastructure and our server hosts. Contact Mojang to see if the [session and login servers](https://help.mojang.com/) are down. If the server is down due to maintainance on our or our server host's side we will inform you via the forums. In either way, be patient, we will be back as quickly as possible.
+
+##### **"How do I get whitelisted on the server?"**
+
+You do not require to be whitelisted to join WesterosCraft, everyone is welcome to visit at any time, as long as you have a valid Minecraft account.
+
+Very rarely we have to whitelist for maintenance issues. If that is the case, refer to our [Website](http://www.westeroscraft.com/) and [Forums](https://forum.westeroscraft.com/forum/) for status updates. And again, please be patient.
+
+##### **"What if I can not start the launcher?"**
+
+The launcher requires you to download the latest and correct version of the Java Runtime Environment in order to work correctly. If you can't even start the launcher, or if the launcher fails to start the game, you're most likely not using the correct version.
+
+##### **"I can connect but I lag really badly, what can I do?"**
+
+Not using the correct version of Java may lead to performance issues. Make sure you're using the most recent, 64bit version of Java.
+
+If you're using a Laptop you might accidentally use your built-in graphics card instead of the better, additional one. Make sure Java programs are set to use the better GPU by default. Refer to your graphics card's manual.
+
+##### **"Why do I keep crashing from the server?"**
+
+Not using the correct version of Java may lead to crashes. Make sure you're using the most recent, 64bit version of Java.
+
+In rare cases, server issues may lead to crashes. If that is the case it's likely that we are already aware and working on resolving the issue as quickly as possible.
+
+##### **"How do I know I'm not using the correct version of Java?"**
+
+Your launcher gives you a detailed overview of what it's doing under the _Log_ tab. If something goes wrong this is the place to look first.
+
+The easiest way to find out which Java version the launcher is using is to copy the log into a text file and to search for the "launch args".
+
+If you are using a 32bit version of Java, you will find the following line:
+
+> _"C:\Program Files(x86)\Java\jre1.8.0_xxx\bin\javaw.exe"_ ("_xxx_" = version numbers, e.g. 101)
+
+In this case the game may not launch, or you may experience performance issues or crashes.
+
+  
+64bit Windows systems are by default set to install 32bit software under _C:\Program Files**(x86)**\..._ while they install 64bit software at _C:\Program Files\..._ If you're using a Java version installed at the former location, it means that it is a 32bit program, which will most likely lead to issues with our launcher.
+
+##### **"Where do I get the correct version of Java from?"**
+
+The most recent Java download can be found on the [oracle website](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) .
+
+The version you want to pick is _Windows x64 Offline:_
+
+If you're using a Mac, download the OSx version.  
+
+
+##### **"The game crashes and I found something about a heap size in the log, what do I do?"**
+
+The error message reads:
+
+_'Error occurred during initialization of VM. Initial heap size set to a larger values than the maximum heap size'_
+
+This may occur when previous Java installations set environment variables which are no longer needed. Please check out [this post](https://forum.westeroscraft.com/threads/electron-launcher-tech-support-read-before-you-post.1511/) for more information.
+
+##### **"I made sure Java is up to date, but it's still not working. Is there anything else I can do?"**
+
+The launcher was probably not able to download and set up everything correctly. This may, for instance happen if you have a weak internet connection.
+
+As a general approach a _soft reset_ of the launcher can solve some common problems.
+
+1. Hitting the _Windows_-_button_ (between ALT and CTRL) and _R_ simultaneously prompts the execute tab
+2. Enter _%appdata%_ and hit _enter_.
+3. Find the _WesterosCraft_ folder
+4. Delete the _WesterosCraft_ folder. **Make sure you made backups of screenshots and similar before doing this!**
+
+##### **"What do I do if I was banned from the server?"**
+
+You've potentially broken one or more of our [Rules](https://westeroscraft.com/wiki/guides/server-rules). You are potentially allowed to appeal via our [forums](https://forum.westeroscraft.com/forum/ban-mute-demotion-appeals.33/).
+
+##### **"Do I need to purchase Minecraft in order to play WesterosCraft?"**
+
+Yes.
+
+##### **"What do I do if it's still not working?"**
+
+Post your problem on our [Support Forum](https://forum.westeroscraft.com/forum/support.40/), but read [the tech support guidelines](https://forum.westeroscraft.com/threads/electron-launcher-tech-support-read-before-you-post.1511/) first.

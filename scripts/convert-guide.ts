@@ -14,7 +14,8 @@ const serializers = {
   types: {
     video: (props: any) => `{% video id="${props.node.url}" /%}`,
     figure: (props: any) => `-------- FIGURE HERE EVENTUALLY --------`,
-    callout: (props: any) => `-------- CALLOUT HERE EVENTUALLY --------`,
+    callout: (props: any) => `{% callout text="${props.node.text}" /%}`,
+    file: (props: any) => `-------- FILE HERE EVENTUALLY --------`,
   },
 };
 
@@ -39,7 +40,7 @@ const categoryMap = (region: string) => {
 (async () => {
   //search for directory. if it exists, overwrite, otherwise create a new directory and file
 
-  guides.slice(0, 5).forEach(async (guide) => {
+  guides.forEach(async (guide) => {
     const pathx = path.join(
       __dirname + "/../src/content/docs",
       guide.slug.current

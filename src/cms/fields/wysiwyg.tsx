@@ -14,6 +14,15 @@ const VideoPreview = (props: any) => {
   );
 };
 
+const CalloutPreview = (props: any) => {
+  return (
+    <div>
+      <h4>{`Type: ${props?.fields?.type?.value}`}</h4>
+      <h4>{`${props?.fields?.text?.value.slice(0, 180)}...`}</h4>
+    </div>
+  );
+};
+
 export const wysiwyg = fields.document({
   label: "Content",
   formatting: true,
@@ -30,6 +39,35 @@ export const wysiwyg = fields.document({
           label: "Video link",
           description:
             "Link to embed of Youtube video - example format: https://www.youtube.com/embed/youtubeIDhere ",
+        }),
+      },
+    }),
+    callout: component({
+      preview: (args) => <CalloutPreview {...args} />,
+      label: "Callout",
+      schema: {
+        text: fields.text({ label: "Text", multiline: true }),
+        type: fields.select({
+          label: "Type",
+          options: [
+            {
+              label: "Default",
+              value: "default",
+            },
+            {
+              label: "Error",
+              value: "error",
+            },
+            {
+              label: "Info",
+              value: "info",
+            },
+            {
+              label: "Warning",
+              value: "warning",
+            },
+          ],
+          defaultValue: "default",
         }),
       },
     }),

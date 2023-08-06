@@ -6,6 +6,13 @@ import { fileURLToPath } from "url";
 // @ts-ignore
 import toMarkdown from "@sanity/block-content-to-markdown";
 
+export function camel2title(camelCase: string) {
+  return camelCase
+    .replace(/([A-Z])/g, (match) => ` ${match}`)
+    .replace(/^./, (match) => match.toUpperCase())
+    .trim();
+}
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -83,7 +90,7 @@ async function doesDirectoryExist(path: string) {
 (async () => {
   //search for directory. if it exists, overwrite, otherwise create a new directory and file
 
-  locations.slice(0, 50).forEach(async (location) => {
+  locations.forEach(async (location) => {
     const pathx = path.join(
       __dirname + "/../src/content/locations",
       location.slug.current
@@ -98,12 +105,12 @@ async function doesDirectoryExist(path: string) {
     const fileContent = `---
 title: ${location.title}
 region: ${regionMap(location.region?._ref)}
-projectStatus: ${location.projectStatus}
+projectStatus: ${camel2title(location.projectStatus)}
 projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref)}
-warp: ${location.warp}
-house: ${location.house}
-application: ${location.application}
-projectLeads: ${location.projectLead}
+warp: ${location.warp || ""}
+house: ${location.house || ""}
+application: ${location.application || ""}
+projectLeads: ${location.projectLead || ""}
 dateStarted: "${location.dateStarted?.split?.("T")?.[0]}"
 dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
 difficultyLevel: "${location.difficulty}"

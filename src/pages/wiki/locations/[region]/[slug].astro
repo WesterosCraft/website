@@ -1,9 +1,8 @@
 ---
 import WikiLayout from "@layouts/wiki.astro";
 import { getCollection } from "astro:content";
-
+import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
-import TableOfContents from "@components/table-of-contents.astro";
 
 // interface Props extends Location {}
 
@@ -13,7 +12,7 @@ export async function getStaticPaths() {
   return locations.map((location) => {
     return {
       params: {
-        region: location.data.region,
+        region: slugify(camel2title(location.data.region)),
         slug: location.slug,
       },
       props: {

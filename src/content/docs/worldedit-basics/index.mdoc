@@ -1,0 +1,165 @@
+---
+title: WorldEdit Basics
+docCategory: tutorials
+---
+In this guide we'll go through the most useful basic WorldEdit concepts, tools and commands. For a complete list of WorldEdit commands and tools, click [here](https://worldedit.enginehub.org/en/latest/commands/).  
+
+
+#### Block id:meta
+
+Each block has a name and a number by which WE recognises them. For example, a dirt block is known as "dirt" and "3", a block of wool can be called either "wool" or "35", and so on.
+
+> Open your inventory and press f3 + h. Now, when you hover your mouse pointer over a block, you'll get a tooltip telling you the block name and id:meta of the block.
+
+Meta is basically a variant of a certain block. For example, white wool can be "wool:white" or "35:0" (note: "wool:0" or "35:white" will also work), and orange wool is "wool:orange" or "35:1". If you don't specify the meta type you want, WE will use the value of 0. So, "//set wool" fills the selection with white wool. Also, if meta is not specified, WE will apply the given command to all metatypes of a block. For example "//replace wool dirt" will change wool of any colour within the selection into dirt.
+
+All WE brushes, selection commands and masks will also accept multiple block types at once. For example, to fill your selection with an even mix of white and orange wool, type "//set wool:white,wool:orange" (or //set 35:0,35:1). You can use as many different block types you want.
+
+If you don't want an even mix, you can specify percentages for each block type. So, "//set 90%35:0,10%35:1" fills your selection with (approximately) 90% white and 10% orange wool. A good example of this is the basic grassland ground mix consisting of mostly grass, with some dirt (3) and gravel (13) scattered here and there: "//set 95%2,3%3,2%13"
+
+#### Tools and brushes:
+
+##### Wand
+
+With an empty hand, type **//wand** and you'll be given a wooden axe. This'll be your standard tool for making WE selections.
+
+##### Brushes
+
+Brushes can be bound to pretty much all tools, weapons and other non-placeable items (sticks, feathers, blaze rods etc). Note: you can also bind a WE tool (usually by accident) to empty hand, so make sure you're holding the item you want to use as a brush when typing the command. To get rid of the brush, just drop the item (or if you want to keep the item without a WE brush bound to it, type "//none")
+
+**Spherical brush: //br s [id:meta] [radius]**
+
+**Cylinder brush: //br cyl [id:meta] [radius] [height]**
+
+  
+Spherical brush will create a ball of blocks specified with [id:meta], of size defined with [radius]. As diameter is radius times two and the minimum diameter of a brush is 1, [radius] of 3 will give you a seven blocks wide ball. In addition to [radius], cylinder brush also accepts a height value (If you don't define a height, you'll get a one block thick disc). So, "//br cyl 35:0 3 4" will create a 7 blocks wide, 4 blocks tall cylinder of white wool, with the center of the bottom layer on the block where you click with the brush. Height value can also be negative; in that case the block you click with the brush will be the center of the top layer of the cylinder. Currently maximum radius/height for a WE brush is 10.
+
+#### Basic Commands
+
+##### //set [id:meta]
+
+Fills the selection with specified block(s).
+
+Examples:
+
+//set 4 - fills the selection with cobblestone. //set 40%3,40%13,20%2034:0 - fills the selection with 40% dirt, 40% gravel and 20% mud.
+
+#### //replace [id:meta1] [id:meta2]
+
+Replaces [id:meta1] with [id:meta2].
+
+Examples:
+
+//replace 41 3,13 - replaces gold blocks (41) within the selection with dirt and gravel. //replace 2,3,13 35:3 - replaces grass, dirt and gravel within the selection with light blue wool. //replace 103 - replaces all non-air blocks within the selection with melons (103).
+
+#### //copy
+
+Copies the selected blocks to clipboard (relative to your position).
+
+#### //paste (-a)
+
+Pastes the clipboard (relative to your position). With -a you'll only paste non-air blocks, which is useful in tight spaces and generally makes pasting large selections much faster.
+
+#### //move [amount] [direction] [-s]
+
+Moves the selected blocks [amount] of blocks towards [direction]. Accepted parameters for direction are n, e, s, w, u and d (compass directions, up and down, independent of your position and orientation) and f, b, l and r (front, back, left, right; dependent of your position and orientation). If you add -s in the end, the command will also move the selection.
+
+#### //stack [repeats] [direction]
+
+Stacks the selected blocks [repeats] of times towards [direction].
+
+#### //rotate [degrees]
+
+Rotates the clipboard. Accepted parameters for [degrees] are 90,180 and 270 (clockwise) and -90, -180 and -270 (counterclockwise). Note: currently, custom stair blocks won't rotate properly.
+
+#### //flip [direction]
+
+Mirrors the clipboard according to axis defined with [direction]
+
+#### //shift [amount] [direction]
+
+Moves the selection (_note: just the selection, not the blocks inside it_) [amount] of blocks towards [direction].
+
+#### //setbiome [biometype]
+
+Changes the biome of the selection to [biometype]. For a list of available biome types and regions where they should be used, click here .
+
+### Masks
+
+Masks are one of the most useful features of WE. Without masking, WE brushes will create blocks on all blocks/spaces within the defined brush size, air included. If you only want to change certain blocks, you have to use a mask. You'll also be able to fine-tune your selection commands with masks.
+
+  
+WorldEdit has two different mask types:
+
+**//mask [id:meta]**
+
+**//gmask [id:meta]**
+
+Regular //mask will only work with brushes, //gmask (a.k.a. global mask) also works with selections. With brushes you can use either one or both at the same time. Example: Let's assume you got a build with dozens of different blocks and you want to only paint white wool blocks into an even mix of cobblestone and small stone bricks. In this case, you'd have to first define the brush:
+
+//br s 4,2029:10 5
+
+(4 is cobblestone, 2029:10 is small stone brick, 5 is the radius) and then define the mask (with the brush in your hand):
+
+//mask 35:0
+
+Now your brush will only replace white wool with cobble and small stone bricks. This is your basic "whitelist" mask.
+
+Note: As stated above in block:id section, masks may have multiple block types. For example with "//mask 35:0,95:2,2027:1" you'll only change white wool, magenta stained glass and mossy oak logs. In addition standard "whitelisting", you can use the following filters on masks:
+
+**//mask ![id:meta]** - blacklist mask, paint on everything else but the blocks defined
+
+**//mask >[id:meta]** - only paint above defined blocks
+
+**//mask <[id:meta]** - only paint below defined blocks
+
+**//mask #region** - only paint within your current selection
+
+If you're using multiple WE brushes at the same time, you can set an individual //mask to each brush.
+
+### Global mask
+
+Unlike regular //mask, **//gmask** also works with selection commands (//set, //replace etc). Also, you can have both //mask and //gmask defined at the same time to give you more control.
+
+A good example of this is tall grassing. Let's assume you have an area of ungrassed terrain, and you want to paint a layer of tall grass and fern (31:1,31:2) above grass (2) and dirt (3) blocks.
+
+  
+**Method one: brushing**
+
+//br s 31:1,31:2 10 (a large spherical brush of tall grass and fern) //mask 0 (only paint on air) //gmask >2,3 (only paint above grass and dirt)
+
+**Method two: selection**
+
+(make a selection of the area you want to tall grass) //gmask >2,3 (only change blocks above grass and dirt) //replace 0 31:1,31:2 (replace air with tall grass and fern)
+
+In both methods, //gmask >2,3 makes sure you'll end up with a nice one block thick layer of tall grass and fern, only above grass and dirt blocks.
+
+**Note: If you're using multiple WE brushes at the same time, a //gmask will affect all of them.**
+
+To disable a mask/global mask, just type "//mask" or "//gmask"
+
+### Other useful tools
+
+**//info** - shows you the name and id:meta of the block you right click with the tool.
+
+**//repl [id:meta]** - replaces the block you right click with [id:meta]
+
+### Selection options
+
+In addition to the default rectangular selection, WorldEdit has several other selection shapes available.
+
+**//sel cuboid** - default, rectangular selection
+
+**//sel sphere** - spherical selection: left click for center, right click for radius.
+
+**//sel cyl** - cylindrical selection: left click for center, right click to extend.
+
+**//sel poly** - polygonal selection: left/right click to add a point, 20 selection points maximum.
+
+**//sel ellipsoid** - ellipsoid selection: left click for center, right click to extend.
+
+**//sel convex** - convex selection: left click for first vertex, right click for additional points.
+
+### Other
+
+**//replacenear [radius] [id:meta1] [id:meta2]** - replaces [id:meta1] with [id:meta2] within [radius] block around you (on all directions). Potentially very destructive, **DO NOT USE** unless you're 100% sure of what you're doing.

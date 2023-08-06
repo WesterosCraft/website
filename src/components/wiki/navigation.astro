@@ -26,7 +26,10 @@ const normalizedDirectories = normalizedLocations.concat([]);
 
 <nav class={clsx("text-base lg:text-sm", className)}>
   <ul class='space-y-9'>
-    <MatchSorterSearch directories={normalizedDirectories} client:only />
+    <MatchSorterSearch
+      directories={normalizedDirectories}
+      client:only='react'
+    />
     {
       navigation.map((section: any) => (
         <li>

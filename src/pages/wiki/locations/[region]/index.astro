@@ -1,32 +1,18 @@
 ---
 import WikiCard from "@components/wiki/wiki-card.astro";
 import WikiLayout from "@layouts/wiki.astro";
-import { slugify, titleizeASlug } from "@lib/utils";
+import { slugify, titleizeASlug, camel2title } from "@lib/utils";
 import { getCollection } from "astro:content";
-import { regions } from "@constants/index";
+import { regionOptions, regions } from "@constants/index";
 
 export async function getStaticPaths() {
-  const regions = [
-    "Dorne",
-    "The Wall",
-    "North",
-    "Vale",
-    "Iron Islands",
-    "Westerlands",
-    "Crownlands",
-    "Riverlands",
-    "Stormlands",
-    "Reach",
-    "Beyond The Wall",
-  ];
-
-  return regions.map((region) => {
+  return regionOptions.map((region) => {
     return {
       params: {
-        region: slugify(region),
+        region: slugify(camel2title(region.value)),
       },
       props: {
-        region: slugify(region),
+        region: slugify(camel2title(region.value)),
       },
     };
   });
@@ -37,7 +23,7 @@ const { region: pageRegion } = Astro.props;
 const filteredLocations = await getCollection(
   "locations",
   ({ data: { region } }) => {
-    return region === pageRegion;
+    return slugify(camel2title(region)) === pageRegion;
   }
 );
 

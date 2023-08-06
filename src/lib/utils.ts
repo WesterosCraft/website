@@ -82,17 +82,24 @@ export const makeRegionWikiNav = () => {
 };
 
 export const makeWikiNav = (docs: any[]) => {
-  const gettingStarted = {
-    title: "Getting Started",
-    links: [
-      { title: "Installing the modpack", href: "/docs/installation" },
-      { title: "Server rules", href: "/docs/installation" },
-      { title: "Applying to build", href: "/docs/installation" },
-    ],
-  };
+  // const gettingStarted = {
+  //   title: "Getting Started",
+  //   links: [
+  //     { title: "Installing the modpack", href: "/docs/installation" },
+  //     { title: "Server rules", href: "/docs/installation" },
+  //     { title: "Applying to build", href: "/docs/installation" },
+  //   ],
+  // };
 
   const normalizedDocs = makeDocsWikiNav(docs);
+  const gettingStarted = normalizedDocs.find(
+    (x) => x.title === "Getting Started"
+  );
   const normalizedLocations = makeRegionWikiNav();
 
-  return [gettingStarted, ...normalizedLocations, ...normalizedDocs];
+  return [
+    gettingStarted,
+    ...normalizedLocations,
+    ...normalizedDocs.filter((x) => x.title !== "Getting Started"),
+  ];
 };
