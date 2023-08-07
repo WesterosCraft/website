@@ -8,7 +8,11 @@ import { rookery, home } from "./src/cms/singletons";
 
 export default config({
   storage: {
-    kind: "local",
+    kind: "github",
+    repo: {
+      owner: "WesterosCraft",
+      name: "website",
+    },
   },
   singletons: {
     rookery,

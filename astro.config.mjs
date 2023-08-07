@@ -3,11 +3,14 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import markdoc from "@astrojs/markdoc";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
   integrations: [react(), tailwind(), markdoc()],
   experimental: {
-    assets: true,
+    assets: true
   },
+  adapter: vercel()
 });
