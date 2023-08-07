@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AspectRatio } from "@components/ui/aspect-ratio";
 import {
   TypographyH2,
-  TypographyH3,
+  // TypographyH3,
   TypographyP,
 } from "@components/typography";
 import { Button } from "@components/ui/button";

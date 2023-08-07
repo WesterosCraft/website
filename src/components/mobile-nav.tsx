@@ -13,6 +13,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
 import type { NavigationProps } from "./site-header";
 
 export function MobileNav({ navigation }: NavigationProps) {
+  console.log("🫵 ---------------------------------------🫵");
+  console.log("🫵 : MobileNav : navigation", navigation);
+  console.log("🫵 ---------------------------------------🫵");
+
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -98,14 +102,13 @@ function MobileLink({
   children,
   ...props
 }: MobileLinkProps) {
-  // const router = useRouter();
   return (
     <a
       href={href}
-      // onClick={() => {
-      //   window.location.push(href.toString());
-      //   onOpenChange?.(false);
-      // }}
+      onClick={() => {
+        window.location.href = href.toString();
+        onOpenChange?.(false);
+      }}
       className={cn(className)}
       {...props}
     >

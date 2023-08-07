@@ -1,12 +1,11 @@
 ---
 import ContainerBorder from "./container-border.astro";
-import type { Media } from "@lib/payload-types";
 
 interface Props {
   title: string;
   copy: string;
   borderBottom?: boolean;
-  bannerUrl?: string | Media;
+  bannerUrl?: string;
 }
 
 const { title, copy, borderBottom = false, bannerUrl } = Astro.props;
@@ -21,9 +20,7 @@ const { title, copy, borderBottom = false, bannerUrl } = Astro.props;
             <img
               class='w-[100px] md:w-[120px]'
               alt='Banner'
-              src={
-                typeof bannerUrl !== "string" ? bannerUrl?.url : bannerUrl || ""
-              }
+              src={bannerUrl || ""}
             />
           )
         }

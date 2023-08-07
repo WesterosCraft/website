@@ -13,9 +13,9 @@ export const Image: React.FC<Props> = (props) => {
     imgClassName,
     onClick,
     onLoad: onLoadFromProps,
-    sizes: sizesFromProps,
+    // sizes,
     resource,
-    priority,
+    // priority,
     fill,
     src: srcFromProps,
     alt: altFromProps,
@@ -27,7 +27,7 @@ export const Image: React.FC<Props> = (props) => {
 
   let width: number | undefined = widthFromProps;
   let height: number | undefined = heightFromProps;
-  let alt = altFromProps;
+  const alt = altFromProps;
   let src: string | undefined = srcFromProps;
 
   //   const hasDarkModeFallback =

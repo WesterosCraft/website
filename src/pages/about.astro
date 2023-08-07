@@ -4,19 +4,12 @@ import ContainerBorder from "@components/container-border.astro";
 import { TypographyH1, TypographyH4 } from "@components/typography";
 import PageHeader from "@components/page-header.astro";
 import { Button } from "@components/ui/button";
-import type { Page } from "@lib/payload-types";
 import PageSlice from "@components/page-slice.astro";
-
-const data = await fetch(
-  "http://localhost:3000/api/pages/648c733143733d43e72beb6b"
-);
-const page: Page = await data.json();
-
-interface Props extends Page {}
 ---
 
 <RootLayout title='About WesterosCraft'>
-  <div class='flex flex-col w-full'>
+  about
+  <!-- <div class='flex flex-col w-full'>
     <PageHeader
       title={page?.hero?.basic?.heading || "The story behind WesterosCraft"}
       copy={page?.hero?.basic?.description ||
@@ -52,5 +45,5 @@ interface Props extends Page {}
         </div>
       </section>
     </ContainerBorder>
-  </div>
+  </div> -->
 </RootLayout>

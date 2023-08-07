@@ -1,5 +1,4 @@
 ---
-import type { Page } from "@lib/payload-types";
 import { TypographyH4 } from "./typography";
 // import RichText from "./rich-text/rich-text.astro";
 import RichText from "./rich-text/rich-text.astro";
@@ -7,17 +6,13 @@ import Prose from "./prose.astro";
 import ContainerBorder from "./container-border.astro";
 import clsx from "clsx";
 
-interface Props {
-  content: Page["layout"];
-}
-
 const { content } = Astro.props;
 ---
 
 {
-  content?.map((item) => {
+  content?.map((item: any) => {
     if (item.blockType === "rookery-editions") {
-      return item.editions.map((edition) => (
+      return item.editions.map((edition: any) => (
         <div class='flex flex-col gap-3 items-center justify-center'>
           <img
             width={336}
@@ -44,7 +39,7 @@ const { content } = Astro.props;
     }
 
     if (item.blockType === "content") {
-      return item.columns.map((column) => (
+      return item.columns.map((column: any) => (
         <ContainerBorder
           borderBottom
           className={clsx(

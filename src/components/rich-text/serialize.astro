@@ -1,5 +1,5 @@
 ---
-import escapeHTML from "escape-html";
+// import escapeHTML from "escape-html";
 import Video from "./video.astro";
 
 const isText = (value: any): boolean =>
@@ -37,7 +37,8 @@ const { content, customRenderers } = Astro.props;
 ---
 
 <Fragment>
-  {
+  serialize
+  <!-- {
     content?.map((node, i) => {
       if (isText(node)) {
         let text = (
@@ -229,5 +230,5 @@ const { content, customRenderers } = Astro.props;
           );
       }
     })
-  }
+  } -->
 </Fragment>
