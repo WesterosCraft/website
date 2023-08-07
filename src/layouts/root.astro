@@ -1,7 +1,9 @@
 ---
 import Footer from "@components/footer/index.astro";
 import { SiteHeader } from "@components/site-header";
-import "../styles/globals.css";
+import { getEntry } from "astro:content";
+
+const navigation = await getEntry("pages", "mainNav");
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -17,7 +19,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
     <title>{title}</title>
   </head>
   <body class='relative flex min-h-screen flex-col antialiased bg-primaryLight'>
-    <SiteHeader client:load />
+    <SiteHeader navigation={navigation} client:load />
     <slot />
     <Footer />
   </body>

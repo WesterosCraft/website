@@ -1,0 +1,51 @@
+items:
+  - text: Community
+    isDropdown:
+      discriminant: true
+      value:
+        - text: About
+          link: /about
+          isExternal: false
+        - text: Rookery
+          link: /rookery
+          isExternal: false
+        - text: Forums
+          link: https://forum.westeroscraft.com/
+          isExternal: false
+        - text: Donate
+          link: https://ko-fi.com/westeroscraft
+          isExternal: true
+  - text: Resources
+    isDropdown:
+      discriminant: true
+      value:
+        - text: Modpack
+          link: /modpack
+          isExternal: false
+        - text: Progress
+          link: /progress
+          isExternal: false
+        - text: Rules & Guides
+          link: /rules-and-guides
+          isExternal: false
+        - text: FAQ
+          link: /faq
+          isExternal: false
+  - text: Map
+    isDropdown:
+      discriminant: false
+      value:
+        link: http://mc.westeroscraft.com/
+        isExternal: true
+  - text: Wiki
+    isDropdown:
+      discriminant: false
+      value:
+        link: /wiki
+        isExternal: false
+  - text: Discord
+    isDropdown:
+      discriminant: false
+      value:
+        link: https://discord.com/invite/pBS5TH4
+        isExternal: true

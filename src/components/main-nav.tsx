@@ -12,8 +12,9 @@ import {
 // import Image from "next/image";
 import { cn } from "@lib/utils";
 import { Button } from "./ui/button";
+import type { NavigationProps } from "./site-header";
 
-export const MainNav = () => {
+export const MainNav = ({ navigation }: NavigationProps) => {
   return (
     <div className='container hidden md:flex h-16 items-center'>
       <img
@@ -25,113 +26,33 @@ export const MainNav = () => {
       />
       <NavigationMenu className='h-16 flex items-center space-x-6 font-medium'>
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200'>
-              Community
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className='bg-primaryDark'>
-              <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
-                <li className='row-span-3'>
-                  <NavigationMenuLink asChild>
-                    <a
-                      className='flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md'
-                      href='/'
-                    >
-                      <div className='mx-auto'>
-                        <img
-                          src='/dragon-egg_62x62.png'
-                          alt='Dragon Egg'
-                          width={58}
-                          height={58}
-                        />
-                      </div>
-                      <div className='mb-2 mt-4 text-lg font-medium'>
-                        Forums
-                      </div>
-                      <p className='text-sm leading-tight text-muted-foreground'>
-                        Where we plan all of our builds.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <ListItem href='/about' title='About'>
-                  Read all about us and our process.
-                </ListItem>
-                <ListItem href='/rookery' title='Rookery'>
-                  All editions of our quarterly newsletter.
-                </ListItem>
-                <ListItem href='/docs/primitives/typography' title='Donate'>
-                  Help by contributing to server costs.
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200'>
-              Resources
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className='bg-primaryDark'>
-              <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
-                <li className='row-span-3'>
-                  <NavigationMenuLink asChild>
-                    <a
-                      className='flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md'
-                      href='/'
-                    >
-                      <div className='mx-auto'>
-                        <img
-                          src='/three-eyed-raven_58x58.png'
-                          alt='Three Eyed Raven'
-                          width={58}
-                          height={58}
-                        />
-                      </div>
-                      <div className='mb-2 mt-4 text-lg font-medium'>
-                        Modpack
-                      </div>
-                      <p className='text-sm leading-tight text-muted-foreground'>
-                        Get all the mods you need to starting exploring
-                        Westeros.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <ListItem href='/docs' title='Progress'>
-                  Check on the status of the project.
-                </ListItem>
-                <ListItem href='/docs/installation' title='Rules & Guides'>
-                  Learn how to contribute to the community.
-                </ListItem>
-                <ListItem href='/docs/primitives/typography' title='FAQ'>
-                  Answers to some common questions.
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200`}
-            >
-              <a href='/docs'>Map</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200`}
-            >
-              <a href='/wiki'>Wiki</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200`}
-            >
-              <a href='/docs'>Discord</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+          {navigation.data.items.map((n: any) =>
+            n.isDropdown.discriminant ? (
+              <NavigationMenuItem key={n.text}>
+                <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200'>
+                  {n.text}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className='bg-primaryDark'>
+                  <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
+                    {n.isDropdown?.value?.map((x: any) => (
+                      <ListItem key={x.text} href={x.link} title={x.text}>
+                        {x.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ) : (
+              <NavigationMenuItem key={n.text}>
+                <NavigationMenuLink
+                  asChild
+                  className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200`}
+                >
+                  <a href={n.isDropdown.value.link}>{n.text}</a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )
+          )}
         </NavigationMenuList>
       </NavigationMenu>
       <Button className='hover:bg-red-900  font-semibold rounded-none text-md bg-primaryRed text-white'>

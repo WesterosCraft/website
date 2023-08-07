@@ -3,11 +3,12 @@ import { MatchSorterSearch } from "@components/match-sorter-search";
 import clsx from "clsx";
 const { navigation, className } = Astro.props;
 const pathname = Astro.url.pathname;
+import { slugify, camel2title } from "@lib/utils";
 
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 const locationsdirectories = await getCollection("locations");
-// const guidesdirectories: any = await getCollection("guides");
+const docsdirectories = await getCollection("docs");
 
 const normalizedLocations = locationsdirectories?.map((x) => ({
   title: x.data.title,
@@ -15,13 +16,14 @@ const normalizedLocations = locationsdirectories?.map((x) => ({
   type: "location",
 }));
 
-// const normalizedGuides = guidesdirectories?.map((x: any) => ({
-//   title: x.data.title,
-//   route: "/wiki/guides/" + x.slug,
-//   type: "guide",
-// }));
+const normalizedDocs = docsdirectories?.map((x) => ({
+  title: x.data.title,
+  route:
+    "/wiki/docs/" + slugify(camel2title(x.data.docCategory)) + "/" + x.slug,
+  type: "doc",
+}));
 
-const normalizedDirectories = normalizedLocations.concat([]);
+const normalizedDirectories = normalizedLocations.concat(normalizedDocs);
 ---
 
 <nav class={clsx("text-base lg:text-sm", className)}>
