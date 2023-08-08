@@ -12,11 +12,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
 // import { Icons } from "@/components/icons"
 import type { NavigationProps } from "./site-header";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function MobileNav({ navigation }: NavigationProps) {
-  console.log("🫵 ---------------------------------------🫵");
-  console.log("🫵 : MobileNav : navigation", navigation);
-  console.log("🫵 ---------------------------------------🫵");
-
   const [open, setOpen] = React.useState(false);
 
   return (

@@ -1,8 +1,8 @@
 ---
-import { TypographyP } from "../typography";
+import { TypographyP } from "./typography";
 import LinkGrid from "./link-grid.astro";
 import SocialMediaLinks from "./social-media-links.astro";
-import { Separator } from "../ui/separator";
+// import { Separator } from "./ui/separator";
 ---
 
 <footer class='bg-primaryDark py-12 px-4 md:px-8 text-white'>
@@ -14,14 +14,15 @@ import { Separator } from "../ui/separator";
           alt='WesterosCraft Logo'
           width={176}
           height={24}
-        /><a href='mailto:westeroscraft@gmail.com'>westeroscraft@gmail.com</a>
+        />
+        <a href='mailto:westeroscraft@gmail.com'>westeroscraft@gmail.com</a>
       </div>
 
       <div class='flex flex-col md:flex-row gap-10 md:gap-20'>
         <LinkGrid />
       </div>
     </div>
-    <Separator />
+    <!-- <Separator /> -->
     <div class='flex flex-col-reverse md:flex-row justify-between items-center'>
       <TypographyP>
         WesterosCraft is a free, volunteer fan project not affiliated in any way

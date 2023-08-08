@@ -1,15 +1,14 @@
 ---
-import Footer from "@components/footer/index.astro";
 import { SiteHeader } from "@components/site-header";
+import Footer from "@components/footer.astro";
 import { getEntry } from "astro:content";
 
 const navigation = await getEntry("pages", "mainNav");
 
-const { title } = Astro.props.frontmatter || Astro.props;
+const { title } = Astro.props.frontmatter || Astro.props || "WesterosCraft";
 ---
 
-<!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content='Astro description' />
