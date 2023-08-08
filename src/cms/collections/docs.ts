@@ -18,7 +18,7 @@ export const docs = collection({
       label: "Category",
       description: "The category of doc",
       options: docCategories,
-      defaultValue: "tutorials",
+      defaultValue: "gettingStarted",
     }),
     content: wysiwyg,
   },

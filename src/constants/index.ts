@@ -162,6 +162,7 @@ export const docCategories = [
   { label: "Rules and Guidelines", value: "rulesAndGuidelines" },
   { label: "Resources", value: "resources" },
   { label: "Tutorials", value: "tutorials" },
+  { label: "Miscellaneous", value: "miscellaneous" },
 ];
 
 export const regionOptions = [
