@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import { slugify, camel2title, makeWikiNav } from "@lib/utils";
+import { MainNav } from "./main-nav";
+import { MobileNav } from "./mobile-nav";
+
+type Nav = {
+  id: "mainNav";
+  collection: "pages";
+  data: any;
+};
+
+export type Props = {
+  navigation: Nav;
+};
+
+const currentPath = Astro.url.pathname;
+const isWiki = currentPath.includes("/wiki");
+
+const locationsdirectories = await getCollection("locations");
+const docsdirectories = await getCollection("docs");
+
+const normalizedLocations = locationsdirectories?.map((x) => ({
+  title: x.data.title,
+  route: "/wiki/locations/" + x.data.region + "/" + x.slug,
+  type: "location",
+}));
+
+const normalizedDocs = docsdirectories?.map((x) => ({
+  title: x.data.title,
+  route:
+    "/wiki/docs/" + slugify(camel2title(x.data.docCategory)) + "/" + x.slug,
+  type: "doc",
+}));
+
+const normalizedDirectories = normalizedLocations.concat(normalizedDocs);
+
+const wikiNav = makeWikiNav(docsdirectories);
+
+const { navigation } = Astro.props;
+---
+
+<header
+  class="w-full border-b bg-primaryDark shadow-sm backdrop-blur z-50 px-4 sticky top-0"
+>
+  <MainNav navigation={navigation} client:load />
+  <MobileNav
+    navigation={navigation}
+    isWiki={isWiki}
+    wikiNav={wikiNav}
+    directories={normalizedDirectories}
+    client:only="react"
+  />
+</header>

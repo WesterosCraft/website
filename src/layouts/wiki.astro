@@ -11,32 +11,34 @@ const pathname = Astro.url.pathname;
 const { title } = Astro.props;
 
 const filteredDocs = await getCollection("docs");
-
-const test = makeWikiNav(filteredDocs);
+const wikiNav = makeWikiNav(filteredDocs);
 ---
 
 <RootLayout title={pathname === "/wiki" ? title : `${title} | Wiki`}>
   <div
-    class='relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 w-full'
+    class="relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 w-full"
   >
-    <div class='hidden lg:relative lg:block lg:flex-none'>
-      <div class='absolute inset-y-0 right-0 w-[50vw] dark:hidden'></div>
+    <div class="hidden lg:relative lg:block lg:flex-none">
+      <div class="absolute inset-y-0 right-0 w-[50vw] dark:hidden"></div>
       <div
-        class='sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5 wc-scrollbar'
+        class="sticky top-[4.5rem] -ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto py-16 pl-0.5 wc-scrollbar"
       >
         <div
-          class='absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block'
+          class="absolute top-16 bottom-0 right-0 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"
         >
         </div>
         <div
-          class='absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block'
+          class="absolute top-28 bottom-0 right-0 hidden w-px bg-slate-800 dark:block"
         >
         </div>
-        <Navigation navigation={test} className='w-64 pr-8 xl:w-72 xl:pr-16' />
+        <Navigation
+          navigation={wikiNav}
+          className="w-64 pr-8 xl:w-72 xl:pr-16"
+        />
       </div>
     </div>
     <div
-      class='min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'
+      class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16"
     >
       <article>
         {pathname !== "/wiki" && <Breadcrumbs />}
@@ -82,10 +84,10 @@ const test = makeWikiNav(filteredDocs);
       </dl> -->
     </div>
     <div
-      class='divide-y hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16'
+      class="divide-y hidden xl:sticky xl:top-[4.5rem] xl:-mr-6 xl:block xl:h-[calc(100vh-4.5rem)] xl:flex-none xl:overflow-y-auto xl:py-16"
     >
-      <slot name='toc' />
-      <slot name='project-details' />
+      <slot name="toc" />
+      <slot name="project-details" />
     </div>
   </div>
 </RootLayout>
