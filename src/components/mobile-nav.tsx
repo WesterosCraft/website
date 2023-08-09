@@ -12,7 +12,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
 // import { Icons } from "@/components/icons"
 import type { NavigationProps } from "./site-header";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function MobileNav({ navigation }: NavigationProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -35,7 +34,11 @@ export function MobileNav({ navigation }: NavigationProps) {
             <span className='sr-only'>Toggle Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent size='xl' position='left' className='pr-0'>
+        <SheetContent
+          size='xl'
+          position='left'
+          className='pr-0 bg-primaryLight'
+        >
           <MobileLink
             href='/'
             className='flex items-center'
@@ -46,6 +49,33 @@ export function MobileNav({ navigation }: NavigationProps) {
           </MobileLink>
           <ScrollArea className='my-4 h-[calc(100vh-8rem)] pb-10 pl-6'>
             <div className='flex flex-col space-y-3'>
+              {navigation.data.items.map((n: any) =>
+                n.isDropdown.discriminant ? (
+                  <div key={n.text}>
+                    <div className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200'>
+                      {n.text}
+                    </div>
+                    <div>
+                      <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
+                        {n.isDropdown?.value?.map((x: any) => (
+                          <a key={x.text} href={x.link} title={x.text}>
+                            {x.description}
+                          </a>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <div key={n.text}>
+                    <div
+                      // asChild
+                      className={` text-white hover:bg-transparent hover:text-yellow-200`}
+                    >
+                      <a href={n.isDropdown.value.link}>{n.text}</a>
+                    </div>
+                  </div>
+                )
+              )}
               {/* {docsConfig.mainNav?.map(
               (item) =>
                 item.href && (

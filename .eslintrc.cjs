@@ -45,5 +45,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-explicit-any": "warn",
     "react/prop-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
 };

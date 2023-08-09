@@ -17,13 +17,15 @@ import type { NavigationProps } from "./site-header";
 export const MainNav = ({ navigation }: NavigationProps) => {
   return (
     <div className='container hidden md:flex h-16 items-center'>
-      <img
-        src='/westeroscraft.svg'
-        alt='WesterosCraft Logo'
-        width={176}
-        height={24}
-        // priority
-      />
+      <a href='/'>
+        <img
+          src='/westeroscraft.svg'
+          alt='WesterosCraft Logo'
+          width={176}
+          height={24}
+          // priority
+        />
+      </a>
       <NavigationMenu className='h-16 flex items-center space-x-6 font-medium'>
         <NavigationMenuList>
           {navigation.data.items.map((n: any) =>

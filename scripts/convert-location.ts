@@ -78,7 +78,7 @@ const buildCategoryMap = (buildType: string) => {
 const serializers = {
   types: {
     video: (props: any) => `{% video id="${props.node.url}" /%}`,
-    figure: (props: any) => `FIGURE HERE EVENTUALLY`,
+    figure: () => `FIGURE HERE EVENTUALLY`,
   },
 };
 
@@ -116,7 +116,14 @@ dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
 difficultyLevel: "${location.difficulty}"
 redoAvailable: ${location.redoAvailable || false}
 serverProject: ${location.serverProject || false}
----${"\n" + toMarkdown(location.body, { serializers })}\n`;
+---
+${`\n`}
+${`${
+  location.body
+    ? toMarkdown(location.body, { serializers })
+    : `{% callout text="No content yet!" /%}`
+}`}
+${`\n`}`;
 
     fs.writeFileSync(pathx + "/index.mdoc", fileContent);
   });
