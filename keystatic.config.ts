@@ -8,7 +8,7 @@ import { rookery, home } from "./src/cms/singletons";
 
 export default config({
   // storage: {
-  //   kind: 'local'
+  //   kind: "local",
   // },
   storage: {
     kind: "github",
