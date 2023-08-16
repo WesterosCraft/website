@@ -12,41 +12,43 @@ export function MobileNav({ navigation, directories, isWiki, wikiNav }: any) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex md:hidden h-16 items-center justify-between">
-      <img
-        src="/westeroscraft.svg"
-        alt="WesterosCraft Logo"
-        width={176}
-        height={24}
-        // priority
-      />
+    <div className='flex md:hidden h-16 items-center justify-between'>
+      <a href='/'>
+        <img
+          src='/westeroscraft.svg'
+          alt='WesterosCraft Logo'
+          width={176}
+          height={24}
+          // priority
+        />
+      </a>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button
-            variant="ghost"
-            className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+            variant='ghost'
+            className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden'
           >
-            <Menu className="h-6 w-6 fill-white text-white" />
-            <span className="sr-only">Toggle Menu</span>
+            <Menu className='h-6 w-6 fill-white text-white' />
+            <span className='sr-only'>Toggle Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent size="xl" position="left" className="pr-0 bg-primaryDark">
-          <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
+        <SheetContent size='xl' position='left' className='pr-0 bg-primaryDark'>
+          <ScrollArea className='my-4 h-[calc(100vh-8rem)] pb-10'>
             {isWiki && (
               <>
                 <MatchSorterSearch
                   directories={directories}
-                  className="mt-6 pr-6"
+                  className='mt-6 pr-6'
                 />
-                <ul className="mb-12">
+                <ul className='mb-12'>
                   {wikiNav.map((section: any) => (
                     <li key={section.title}>
-                      <h2 className="font-display font-medium text-white mt-6 mb-4">
+                      <h2 className='font-display font-medium text-white mt-6 mb-4'>
                         {section.title}
                       </h2>
-                      <ul className="mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200">
+                      <ul className='mt-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800 lg:mt-4 lg:space-y-4 lg:border-slate-200'>
                         {section.links.map((link: any) => (
-                          <li className="relative" key={link.href}>
+                          <li className='relative' key={link.href}>
                             <a
                               href={link.href}
                               className={clsx(
@@ -64,20 +66,20 @@ export function MobileNav({ navigation, directories, isWiki, wikiNav }: any) {
                 </ul>
               </>
             )}
-            <div className="flex flex-col space-y-3">
+            <div className='flex flex-col space-y-3'>
               {navigation.data.items.map((n: any) =>
                 n.isDropdown.discriminant ? (
                   <div key={n.text}>
-                    <div className="bg-transparent text-white font-medium">
+                    <div className='bg-transparent text-white font-medium'>
                       {n.text}
                     </div>
                     <div>
-                      <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                      <ul className='grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
                         {n.isDropdown?.value?.map((x: any) => (
                           <li key={x.text}>
                             <MobileLink
                               href={x.link}
-                              className="flex items-center text-white hover:bg-transparent hover:text-yellow-200"
+                              className='flex items-center text-white hover:bg-transparent hover:text-yellow-200'
                               onOpenChange={setOpen}
                             >
                               {x.text}

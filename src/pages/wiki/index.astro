@@ -13,10 +13,14 @@ const featured = [
     name: "Apply to build",
     description: "Get started on an application to help contribute",
   },
+  {
+    name: "Join our Discord",
+    description: "Our community lives on Discord. Come hang with us!",
+  },
 ];
 ---
 
-<WikiLayout title="WesterosCraft Wiki">
+<WikiLayout title='WesterosCraft Wiki'>
   <div>
     <h1>WesterosCraft Wiki</h1>
     <p>
@@ -36,7 +40,7 @@ const featured = [
       Westeros.
     </p>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+  <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12'>
     {
       featured.map((feature) => (
         <WikiCard title={feature.name} description={feature.description} />
@@ -46,14 +50,14 @@ const featured = [
 
   <h2>Locations by Region</h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose">
+  <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
     {
       regions
         .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
         .map((region) => (
           <a href={`/wiki/locations/${slugify(region.name)}`}>
             <WikiCard
-              className="h-full"
+              className='h-full'
               title={region.name}
               description={region.description || ""}
               icon={region?.icon}
