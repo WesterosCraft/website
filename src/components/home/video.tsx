@@ -10,7 +10,7 @@ const Video = () =>
     const [isPlaying, setPlaying] = useState(false);
     return (
       <div className="flex h-full w-full overflow-hidden mx-auto max-w-3xl">
-        <div className="w-full relative">
+        <div className="w-full relative z-10">
           <AspectRatio ratio={16 / 9}>
             {/* <ReactPlayer
             width="100%"
@@ -25,7 +25,7 @@ const Video = () =>
             onClick={() => setPlaying(!isPlaying)}
             className={`${
               isPlaying ? "hidden" : "flex"
-            } justify-center items-center rounded-full bg-white opacity-80 hover:opacity-100 inset-center mx-auto z-20 w-20 h-20 cursor-pointer transition-all 150ms linear 0s`}
+            } absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] justify-center items-center rounded-full bg-white opacity-80 hover:opacity-100 inset-center mx-auto z-20 w-20 h-20 cursor-pointer transition-all 150ms linear 0s`}
           >
             <Play className="transition-all 150ms linear 0s" />
           </div>
