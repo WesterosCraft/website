@@ -1,1 +1,35 @@
-<div><h1>progress page</h1></div>
+---
+import RootLayout from "@layouts/root.astro";
+import { ProgressTable } from "@components/progress-table";
+import PageHeader from "@components/page-header.astro";
+import ContainerBorder from "@components/container-border.astro";
+import { getCollection } from "astro:content";
+
+const locations = await getCollection("locations");
+
+const tabledata = locations?.map(
+  ({ data: { region, projectStatus, projectType, title } }) => ({
+    region,
+    projectStatus,
+    projectType,
+    title,
+  })
+);
+---
+
+<RootLayout title="Project Progress">
+  <PageHeader
+    title="Project Progress"
+    copy="Check in and see how far along the project is as we categorize, list and track all available projects across WesterosCraft"
+    bannerUrl="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75"
+  />
+  <div class="w-full bg-primaryDark">
+    <ContainerBorder variant="dark" className="py-24 sm:py-32 px-4">
+      test
+    </ContainerBorder>
+  </div>
+
+  <ContainerBorder className="py-24 sm:py-32 px-4">
+    <ProgressTable data={tabledata} />
+  </ContainerBorder>
+</RootLayout>
