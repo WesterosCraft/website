@@ -1,51 +1,42 @@
 ---
-const { content } = Astro.props;
+import TocLink from "./toc-link.astro";
 
-interface Heading {
-  type: "h1" | "h2" | "h3" | "h4";
-  text: string;
-}
-
-function extractHeadings(obj: any, depth = 0): Heading[] {
-  const headings: Heading[] = [];
-
-  if (Array.isArray(obj)) {
-    for (const item of obj) {
-      headings.push(...extractHeadings(item, depth));
-    }
-  } else if (typeof obj === "object" && obj !== null) {
-    if (
-      obj.type === "h1" ||
-      obj.type === "h2" ||
-      obj.type === "h3" ||
-      obj.type === "h4"
-    ) {
-      headings.push({
-        type: obj.type,
-        text: obj?.children?.[0]?.text,
-      });
-    }
-
-    for (const key in obj) {
-      headings.push(...extractHeadings(obj[key], depth + 1));
-    }
-  }
-
-  return headings;
-}
-
-const headings = extractHeadings(content);
+const { toc, style } = Astro.props;
 ---
 
-<div class='mb-10'>
-  <p class='mb-4 text-sm font-semibold tracking-tight'>On This Page</p>
-  <ul>
-    {
-      headings.map((h) => (
-        <li class='text-sm my-2 scroll-my-6 scroll-py-6'>
-          <a>{h.text}</a>
-        </li>
-      ))
-    }
-  </ul>
+<!-- https://www.anca.io/posts/adding-necessary-features-in-the-astro-markdoc-blog/ -->
+<div class={style}>
+  {
+    toc && toc.length >= 1 ? (
+      <p class="mb-4 text-md font-semibold tracking-tight">On This Page</p>
+    ) : null
+  }
+  <nav>
+    <ul class="px-0 py-0 mx-0 my-0 list-none">
+      {
+        toc?.map((item: { slug: any; depth: number; text: unknown }) => {
+          const href = `#${item.slug}`;
+          const active =
+            typeof window !== "undefined" && window.location.hash === href;
+          return (
+            <li
+              class={[
+                "font-medium text-sm my-2 scroll-my-6 scroll-py-6",
+                "flex items-start",
+                active ? "underline hover:underline flex items-center" : "",
+                item.depth === 3 ? "ml-4" : "",
+                item.depth === 4 ? "ml-6" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <TocLink class:list={["break-word"]} href={`#${item.slug}`}>
+                <span class="font-medium text-gray-800">{item?.text}</span>
+              </TocLink>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
 </div>

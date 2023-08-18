@@ -20,9 +20,10 @@ interface ProjectDetails {
 }
 interface Props {
   projectDetails: ProjectDetails;
+  style?: string;
 }
 
-const { projectDetails } = Astro.props;
+const { projectDetails, style } = Astro.props;
 
 const items = [
   { name: "Region", value: titleizeASlug(projectDetails?.region) },
@@ -41,13 +42,13 @@ const items = [
 ];
 ---
 
-<div>
-  <p class='mb-4 text-md font-semibold tracking-tight'>Project Details</p>
+<div class={style}>
+  <p class="mb-4 text-md font-semibold tracking-tight">Project Details</p>
   <ul>
     {
       items.map((item) => (
-        <li class='text-sm my-2 scroll-my-6 scroll-py-6'>
-          <span class='font-medium'>{item.name}</span>
+        <li class="text-sm my-2 scroll-my-6 scroll-py-6">
+          <span class="font-medium">{item.name}</span>
           {`: ${item.value}`}
         </li>
       ))

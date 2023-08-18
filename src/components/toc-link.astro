@@ -1,0 +1,29 @@
+---
+const props = { ...Astro.props };
+
+const external = props.href.startsWith("http");
+const hash = props.href.startsWith("#");
+const email = props.href.startsWith("mailto:");
+const phone = props.href.startsWith("tel:");
+---
+
+<a
+  href={props.href}
+  title={props.title}
+  class:list={[
+    "link",
+    props.class,
+    {
+      external: external,
+      hash: hash,
+      mail: email,
+      tel: phone,
+    },
+    props.class,
+    props["class:list"],
+  ]}
+  target={external ? "_blank" : null}
+  rel={external ? "noopener nofollow" : null}
+>
+  <slot />
+</a>

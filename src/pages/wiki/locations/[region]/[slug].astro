@@ -3,6 +3,7 @@ import WikiLayout from "@layouts/wiki.astro";
 import { getCollection } from "astro:content";
 import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
+import TableOfContents from "@components/table-of-contents.astro";
 
 // interface Props extends Location {}
 
@@ -23,12 +24,20 @@ export async function getStaticPaths() {
 }
 
 const { location } = Astro.props;
-const { Content } = await location?.render();
+const { Content, headings } = await location?.render();
 ---
 
 <WikiLayout title={location?.data.title}>
-  <!-- <TableOfContents slot='toc' content={layout} /> -->
-  <ProjectDetailsCard slot='project-details' projectDetails={location.data} />
+  {
+    headings && headings?.length ? (
+      <TableOfContents slot="toc" toc={headings} style="pb-4" />
+    ) : null
+  }
+  <ProjectDetailsCard
+    slot="project-details"
+    projectDetails={location.data}
+    style={headings && headings?.length && "pt-4"}
+  />
   <h1>{location?.data.title}</h1>
   <Content />
 </WikiLayout>
