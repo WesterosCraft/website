@@ -104,9 +104,9 @@ async function doesDirectoryExist(path: string) {
 
     const fileContent = `---
 title: ${location.title}
-region: ${regionMap(location.region?._ref)}
-projectStatus: ${camel2title(location.projectStatus)}
-projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref)}
+region: ${regionMap(location.region?._ref) || ""}
+projectStatus: ${camel2title(location.projectStatus) || ""}
+projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref) || ""}
 warp: ${location.warp || ""}
 house: ${location.house || ""}
 application: ${location.application || ""}

@@ -60,9 +60,7 @@ const pageData = await getEntry("pages", "rookery");
     </ContainerBorder>
     <div>
       <ContainerBorder className="py-16 sm:py-20 px-4 items-center">
-        <div
-          class="grid gap-y-12 gap-x-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full"
-        >
+        <div class="grid gap-y-12 gap-x-6 grid-cols-2 lg:grid-cols-3 w-full">
           {
             pageData?.data?.editions?.reverse()?.map((edition: any) => (
               <div class="flex flex-col gap-3 items-center justify-center">

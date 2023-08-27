@@ -1,49 +1,163 @@
 ---
 import RootLayout from "@layouts/root.astro";
 import ContainerBorder from "@components/container-border.astro";
-import { TypographyH1, TypographyH4 } from "@components/typography";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyP,
+} from "@components/typography";
 import PageHeader from "@components/page-header.astro";
 import { Button } from "@components/ui/button";
-import PageSlice from "@components/page-slice.astro";
 ---
 
-<RootLayout title='About WesterosCraft'>
-  about
-  <!-- <div class='flex flex-col w-full'>
-    <PageHeader
-      title={page?.hero?.basic?.heading || "The story behind WesterosCraft"}
-      copy={page?.hero?.basic?.description ||
-        `Our goal is to recreate the universe imagined by author George R.R. Martin in his fantasy series, A Song of Ice and Fire. Here's a bit about how the project took off.`}
-      bannerUrl={page?.hero?.basic?.media}
-    />
-    <div class='w-full bg-primaryDark'>
-      <ContainerBorder variant='dark' className='pt-14 pb-8 px-4 border-b'>
-        <div class='flex justify-center items-center'>
-          <TypographyH1 className='text-white'>Our story</TypographyH1>
-        </div>
-      </ContainerBorder>
-    </div>
-
-    <PageSlice content={page?.layout} />
-
-    <ContainerBorder>
-      <section>
-        <div class='max-w-2xl mx-auto px-6 lg:px-8 py-16 sm:py-20 text-center'>
-          <TypographyH1>Ready to Explore?</TypographyH1>
-          <TypographyH4 className='mt-4'>
-            Westeros is home to over 500 cities, castles, and landmarks. Our
-            goal is to construct them all. With over 300 completed so far, our
-            community is well on our way to having a fully explorable map.
-          </TypographyH4>
-          <a href='/join'>
-            <Button
-              className='mt-8 bg-primaryRed hover:bg-red-800 text-white h-14 px-8 text-md'
-            >
-              Join the Server
-            </Button>
-          </a>
-        </div>
-      </section>
+<RootLayout title="About WesterosCraft">
+  <PageHeader
+    title="The story behind WesterosCraft"
+    copy="Our goal is to recreate the universe imagined by author George R. R. Martin in his fantasy series, A Song of Ice and Fire. Here's a bit about how the project took off."
+    bannerUrl="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75"
+  />
+  <div class="w-full bg-primaryDark">
+    <ContainerBorder
+      borderBottom
+      variant="dark"
+      className="px-4 text-white text-center"
+    >
+      <TypographyH1 className="pt-14 pb-8 px-4">Our story</TypographyH1>
     </ContainerBorder>
-  </div> -->
+    <ContainerBorder
+      variant="dark"
+      className="py-20 sm:py-24 px-4 text-white text-center"
+    >
+      <div class="max-w-3xl text-center mx-auto">
+        <TypographyH2>The Founding</TypographyH2>
+        <TypographyP>
+          Minecraft's core design is that the whole world is made of blocks, and
+          players can place or break any block they want, which in turn means
+          they can create any structure they can imagine.
+        </TypographyP>
+        <TypographyP>
+          ESTEROSCRAFT WAS FOUNDED by PizzaInACup aka geeberry, in November
+          2011. Pizza, as he’s affectionately known by, had long been a fan of
+          the ASOIAF series and was hooked on the Game of Thrones by the end of
+          the first episode. Pizza was also a bit of a coder, and while the
+          first season of the HBO series was airing, and Westeros fever was
+          sweeping the planet, he was dabbling in the beta of a then
+          little-known game called Minecraft.
+        </TypographyP>
+        <TypographyP>
+          Building castles was all the rage in the early days of Minecraft and
+          Game of Thrones had no shortage of inspiration. What started as a
+          simple idea to see if one could build the Red Keep in the game,
+          quickly snowballed. If you have the Red Keep, wouldn’t it make sense
+          to have the Dragon Pit, and the Sept of Baelor, and a few houses on
+          the streets connecting them as well.
+        </TypographyP>
+        <TypographyP>
+          The WesterosCraft project snowballed from there, quickly growing in
+          numbers and scope of ambition. A public forum was created by May 2012,
+          and by the end of the year the ranks of “builders” as they became
+          known had grown to over 30 people from around the world. Within a year
+          this had more than doubled, with dozens of projects under way, just
+          through scale alone, WesterosCraft was building a name for itself as
+          Minecraft’s most ambitious server.
+        </TypographyP>
+      </div>
+    </ContainerBorder>
+  </div>
+
+  <ContainerBorder borderBottom className="py-20 sm:py-24 px-4 text-center">
+    <div class="max-w-3xl text-center mx-auto">
+      <TypographyH2>King’s Landing</TypographyH2>
+      <TypographyP>
+        King’s Landing was the very first project undertaken by the newly
+        created WesterosCraft team. Of course, WesterosCraft being
+        WesterosCraft, the server soon decided to redo the whole project,
+        building a new version in 2012 under the leadership of Dutchguard,
+        Marken4, Contra, NickShaiB, Whitefireneo, FlemishGuard, IwandeLarch,
+        Feasting, and Sn0wst0rm.
+      </TypographyP>
+      <TypographyP>
+        The build was scheduled to last for two months, but took closer to half
+        a year to complete. All of the houses were built and furnished by hand
+        and the rough estimate is around 4,000 structures. The version currently
+        on our map was started in 2014 and completed in 2017. The city counts
+        with an incredible number of 5201 unique houses, with 877 of those being
+        located in the sprawl area.
+      </TypographyP>
+      <TypographyP>
+        Again, in keeping with tradition, we’re currently working on a remaster
+        of the current version in our test world.
+      </TypographyP>
+    </div>
+  </ContainerBorder>
+
+  <ContainerBorder className="py-20 sm:py-24 px-4 text-center">
+    <div class="max-w-3xl text-center mx-auto">
+      <TypographyH2>Resource Pack</TypographyH2>
+      <TypographyP>
+        Within a few months of the server getting off the ground, it became
+        clear that the Vanilla Minecraft textures were just not going to provide
+        the level of detail, accuracy and variety that Westeros needed.
+      </TypographyP>
+      <TypographyP>
+        The decision was made to change the default server resource pack to
+        DokuCraft, an open source free to use texture pack to add a degree of
+        polish and realism to the default blocks, however this was just a
+        band-aid solution.
+      </TypographyP>
+      <TypographyP>
+        By the end of 2012, WhiteFireNeo, with the help of Thamus_Knoward, SMP
+        and Emoticone spearheaded the creation of the WesterosCraft Resource
+        Pack, which when combined with the WesterosBlocks mod, finally gave us
+        the means to stretch beyond the limitations of Vanilla Minecraft, and
+        create all the custom blocks and textures we’d need to create a Westeros
+        we could be satisfied with. By the 10 year Anniversary we now have close
+        to around 1500 custom blocks and textures.
+      </TypographyP>
+    </div>
+  </ContainerBorder>
+
+  <div class="w-full bg-primaryDark">
+    <ContainerBorder
+      borderBottom
+      variant="dark"
+      className="py-20 sm:py-24 px-4 text-white"
+    >
+      <div class="max-w-3xl text-center mx-auto">
+        <TypographyH2>A WHOLE NEW WORLD</TypographyH2>
+        <TypographyP>
+          The rapid growth of the server quickly made it clear that the scope
+          and level of detail in the original in-game Westeros map was going to
+          be too small for our grand ambitions. By May 2013, development of
+          Westeros as we know it today was underway in Worldpainter, led by
+          TheSn0wSt0rm and Carcinogenius.
+        </TypographyP>
+        <TypographyP>
+          A side by side comparison of the two maps quickly shows the new level
+          of detail the new map afforded. The new map was rolled out in stages,
+          with new regions of the map added in as they were completed in
+          WorldPainter, and completed/ WIP projects copied over with WorldEdit.
+        </TypographyP>
+      </div>
+    </ContainerBorder>
+  </div>
+
+  <ContainerBorder className="py-20 sm:py-24 px-4 text-center">
+    <TypographyH1>Ready to Explore?</TypographyH1>
+    <TypographyP className="max-w-2xl mx-auto">
+      Westeros is home to over 500 cities, castles, and landmarks. Our goal is
+      to construct them all. With over 300 completed so far, our community is
+      well on our way to having a fully explorable map.
+    </TypographyP>
+    <div class="mt-8">
+      <a href="/join">
+        <Button
+          size="lg"
+          className="rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95"
+        >
+          Join the Server
+        </Button>
+      </a>
+    </div>
+  </ContainerBorder>
 </RootLayout>
