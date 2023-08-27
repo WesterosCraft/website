@@ -22,7 +22,31 @@ export function ProgressTable({ data }: Props) {
         accessorKey: "title",
         cell: (ctx) => {
           return (
-            <span className='font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+            <span className="font-medium text-gray-900 whitespace-nowrap">
+              {ctx.getValue() as React.ReactNode}
+            </span>
+          );
+        },
+      },
+      {
+        id: "region",
+        header: "Region",
+        accessorKey: "region",
+        cell: (ctx) => {
+          return (
+            <span className="capitalize">
+              {ctx.getValue() as React.ReactNode}
+            </span>
+          );
+        },
+      },
+      {
+        id: "type",
+        header: "Type",
+        accessorKey: "projectType",
+        cell: (ctx) => {
+          return (
+            <span className="capitalize">
               {ctx.getValue() as React.ReactNode}
             </span>
           );
@@ -32,18 +56,6 @@ export function ProgressTable({ data }: Props) {
         id: "status",
         header: "Status",
         accessorKey: "projectStatus",
-        cell: (ctx) => ctx.getValue(),
-      },
-      {
-        id: "region",
-        header: "Region",
-        accessorKey: "region",
-        cell: (ctx) => ctx.getValue(),
-      },
-      {
-        id: "type",
-        header: "Type",
-        accessorKey: "projectType",
         cell: (ctx) => ctx.getValue(),
       },
     ],

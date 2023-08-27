@@ -7,22 +7,22 @@ settings:
 dependencies:
   '@astrojs/markdoc':
     specifier: ^0.4.4
-    version: 0.4.4(@types/react@18.2.5)(astro@2.10.1)(react@18.2.0)
+    version: 0.4.4(@types/react@18.2.5)(astro@2.10.14)(react@18.2.0)
   '@astrojs/react':
-    specifier: ^2.2.1
-    version: 2.2.1(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.3.2
+    version: 2.3.2(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
   '@astrojs/tailwind':
     specifier: ^4.0.0
-    version: 4.0.0(astro@2.10.1)(tailwindcss@3.3.3)(ts-node@10.9.1)
+    version: 4.0.0(astro@2.10.14)(tailwindcss@3.3.3)(ts-node@10.9.1)
   '@astrojs/vercel':
-    specifier: ^3.8.0
-    version: 3.8.0(astro@2.10.1)(react@18.2.0)
+    specifier: ^3.8.2
+    version: 3.8.2(astro@2.10.14)(react@18.2.0)
   '@headlessui/react':
-    specifier: ^1.7.15
-    version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.7.17
+    version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/astro':
     specifier: ^0.0.8
-    version: 0.0.8(@keystatic/core@0.0.114)(astro@2.10.1)(react-dom@18.2.0)(react@18.2.0)
+    version: 0.0.8(@keystatic/core@0.0.114)(astro@2.10.14)(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/core':
     specifier: ^0.0.114
     version: 0.0.114(react-dom@18.2.0)(react@18.2.0)
@@ -57,8 +57,8 @@ dependencies:
     specifier: ^18.2.3
     version: 18.2.3
   astro:
-    specifier: ^2.10.1
-    version: 2.10.1(@types/node@20.4.6)
+    specifier: ^2.10.14
+    version: 2.10.14(@types/node@20.4.6)
   class-variance-authority:
     specifier: ^0.6.0
     version: 0.6.0(typescript@5.1.6)
@@ -194,7 +194,7 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdoc@0.4.4(@types/react@18.2.5)(astro@2.10.1)(react@18.2.0):
+  /@astrojs/markdoc@0.4.4(@types/react@18.2.5)(astro@2.10.14)(react@18.2.0):
     resolution: {integrity: sha512-83TduLnHbhVh4xrJeX8rSPxCAVx8QcGUsRjwW6GZVPdkIVqWXTQBYIZpLT4KErQczSLSDVxmmiWcFbk8U5+dOQ==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -203,7 +203,7 @@ packages:
       '@astrojs/internal-helpers': 0.1.1
       '@astrojs/prism': 2.1.2
       '@markdoc/markdoc': 0.3.0(@types/react@18.2.5)(react@18.2.0)
-      astro: 2.10.1(@types/node@20.4.6)
+      astro: 2.10.14(@types/node@20.4.6)
       esbuild: 0.17.19
       github-slugger: 2.0.0
       gray-matter: 4.0.3
@@ -216,13 +216,13 @@ packages:
       - react
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.10.1):
+  /@astrojs/markdown-remark@2.2.1(astro@2.10.14):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.1(@types/node@20.4.6)
+      astro: 2.10.14(@types/node@20.4.6)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -246,8 +246,8 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react@2.2.1(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-nq5Zr8iWdwjSp5fh1NReaCplwsnL4w5PXAY5XWu1jE/frxEfF/ycGHrrhwWW0uJHX9G+kUtmQLR0GBhlR4FmAw==}
+  /@astrojs/react@2.3.2(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-hGOnvLA7xA0rry0tr0g0LiO7bsYK9yyrs0k+OVakVkXsWgBVgqXI2a2KBVc/W+vOBB9mFXMG4EnrqdMPcttT5Q==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
       '@types/react': ^17.0.50 || ^18.0.21
@@ -261,17 +261,18 @@ packages:
       '@types/react-dom': 18.2.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+      ultrahtml: 1.3.0
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@astrojs/tailwind@4.0.0(astro@2.10.1)(tailwindcss@3.3.3)(ts-node@10.9.1):
+  /@astrojs/tailwind@4.0.0(astro@2.10.14)(tailwindcss@3.3.3)(ts-node@10.9.1):
     resolution: {integrity: sha512-HmCAXFFes7MUBt5ihdfH1goa8QyGkHejIpz6Z4XBKK9VNYY9G2E3brCn8+pNn5zAOzcwl3FYcuH2AiOa/NGoMQ==}
     peerDependencies:
       astro: ^2.6.5
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 2.10.1(@types/node@20.4.6)
+      astro: 2.10.14(@types/node@20.4.6)
       autoprefixer: 10.4.14(postcss@8.4.27)
       postcss: 8.4.27
       postcss-load-config: 4.0.1(postcss@8.4.27)(ts-node@10.9.1)
@@ -296,16 +297,16 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@3.8.0(astro@2.10.1)(react@18.2.0):
-    resolution: {integrity: sha512-o9oeY8VgsvrxUTQoxv2XusoFk2IJvJhC3X0FUHkilXEyIgZOTHlTLbydO6iJHjKVHxF+aQI7/qwZmxGSV9L3dg==}
+  /@astrojs/vercel@3.8.2(astro@2.10.14)(react@18.2.0):
+    resolution: {integrity: sha512-VtVR+HXoQqdSrt+LdBi3qrwQClcIItb/9AfVYoTuAaC3iu0lDT3WPpRr4kbS/Wxcvfq8AWQw5VFODK34PKs53g==}
     peerDependencies:
-      astro: ^2.10.0
+      astro: ^2.10.10
     dependencies:
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/webapi': 2.2.0
       '@vercel/analytics': 0.1.11(react@18.2.0)
       '@vercel/nft': 0.22.6
-      astro: 2.10.1(@types/node@20.4.6)
+      astro: 2.10.14(@types/node@20.4.6)
       esbuild: 0.17.19
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -1214,8 +1215,8 @@ packages:
       '@hapi/hoek': 11.0.2
     dev: false
 
-  /@headlessui/react@1.7.15(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-OTO0XtoRQ6JPB1cKNFYBZv2Q0JMqMGNhYP1CjPvcJvjz8YGokz8oAj89HIYZGN0gZzn/4kk9iUpmMF4Q21Gsqw==}
+  /@headlessui/react@1.7.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-4am+tzvkqDSSgiwrsEpGWqgGo9dz8qU5M3znCkC4PgkpY4HcCZzEDEvozltGGGHIKl9jbXbZPSH5TWn4sWJdow==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
@@ -1411,7 +1412,7 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@keystatic/astro@0.0.8(@keystatic/core@0.0.114)(astro@2.10.1)(react-dom@18.2.0)(react@18.2.0):
+  /@keystatic/astro@0.0.8(@keystatic/core@0.0.114)(astro@2.10.14)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jn1JUWJsczsq1VkK3lOsjjVJ7e/cWWAkuYN1kJAbtAlJPtmlwESYfxPWYCbDrWADeNA2CEvU6H9AzN5GQrO2oQ==}
     peerDependencies:
       '@keystatic/core': '*'
@@ -1422,7 +1423,7 @@ packages:
       '@babel/runtime': 7.22.6
       '@keystatic/core': 0.0.114(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.5
-      astro: 2.10.1(@types/node@20.4.6)
+      astro: 2.10.14(@types/node@20.4.6)
       cookie: 0.5.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -4016,8 +4017,8 @@ packages:
       - supports-color
     dev: true
 
-  /astro@2.10.1(@types/node@20.4.6):
-    resolution: {integrity: sha512-t3y9laRaOZTAu6omVpI5x/wE80t2yTCWO/UTCPJYAYy2Aoi+snupwk8ZFBLgVd0lwO7KhjRKA0pUScfkn3bnXw==}
+  /astro@2.10.14(@types/node@20.4.6):
+    resolution: {integrity: sha512-02k2DjnI8yGtLCvdCSggvfCTkTWPm9UDgc/XHKdd1K34TSTl3X0A8TTYbASEXvgynk1zInCyOEe3IUDt3Lke+A==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -4029,7 +4030,7 @@ packages:
       '@astrojs/compiler': 1.8.1
       '@astrojs/internal-helpers': 0.1.2
       '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.1)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.10.14)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.9
@@ -4048,7 +4049,6 @@ packages:
       common-ancestor-path: 1.0.1
       cookie: 0.5.0
       debug: 4.3.4
-      deepmerge-ts: 4.3.0
       devalue: 4.3.2
       diff: 5.1.0
       es-module-lexer: 1.3.0
@@ -4059,6 +4059,7 @@ packages:
       github-slugger: 2.0.0
       gray-matter: 4.0.3
       html-escaper: 3.0.3
+      http-cache-semantics: 4.1.1
       js-yaml: 4.1.0
       kleur: 4.1.5
       magic-string: 0.30.2
@@ -4334,7 +4335,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
@@ -4514,11 +4515,6 @@ packages:
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
-
-  /deepmerge-ts@4.3.0:
-    resolution: {integrity: sha512-if3ZYdkD2dClhnXR5reKtG98cwyaRT1NeugQoAPTTfsOpV9kqyeiBF9Qa5RHjemb3KzD5ulqygv6ED3t5j9eJw==}
-    engines: {node: '>=12.4.0'}
-    dev: false
 
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
@@ -5197,8 +5193,8 @@ packages:
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  /fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
@@ -5510,6 +5506,10 @@ packages:
       domhandler: 5.0.3
       domutils: 3.1.0
       entities: 4.5.0
+    dev: false
+
+  /http-cache-semantics@4.1.1:
+    resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
     dev: false
 
   /https-proxy-agent@5.0.1:
@@ -7474,7 +7474,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: false
 
   /rope-sequence@1.3.4:
@@ -8081,6 +8081,10 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  /ultrahtml@1.3.0:
+    resolution: {integrity: sha512-xmXvE8tC8t4PVqy0/g1fe7H9USY/Brr425q4dD/0QbQMQit7siCtb06+SCqE4GfU24nwsZz8Th1g7L7mm1lL5g==}
+    dev: false
+
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
     dependencies:
@@ -8325,7 +8329,7 @@ packages:
       postcss: 8.4.27
       rollup: 3.26.3
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: false
 
   /vitefu@0.2.4(vite@4.4.7):

@@ -4,6 +4,12 @@ import { ProgressTable } from "@components/progress-table";
 import PageHeader from "@components/page-header.astro";
 import ContainerBorder from "@components/container-border.astro";
 import { getCollection } from "astro:content";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyP,
+} from "@components/typography";
+import { Button } from "@components/ui/button";
 
 const locations = await getCollection("locations");
 
@@ -15,21 +21,101 @@ const tabledata = locations?.map(
     title,
   })
 );
+
+const calcCompletionPercentage = (
+  completedLevel: number,
+  inProgressLevel: number,
+  notStartedLevel: number
+) => {
+  return Math.ceil(
+    ((completedLevel + inProgressLevel / 2) /
+      (completedLevel + inProgressLevel + notStartedLevel)) *
+      100
+  );
+};
+
+const numComplete = locations.filter(
+  (x) => x?.data?.projectStatus === "Completed"
+)?.length;
+
+const numInProgress =
+  locations.filter((x) => x?.data?.projectStatus === "In Progress")?.length +
+  locations.filter((x) => x?.data?.projectStatus === "Redo In Progress")
+    ?.length;
+
+const numNotStarted =
+  locations.filter((x) => x?.data?.projectStatus === "Not Started")?.length +
+  locations.filter((x) => x?.data?.projectStatus === "Abandoned")?.length;
+
+const percentageComplete = calcCompletionPercentage(
+  numComplete,
+  numInProgress,
+  numNotStarted
+);
 ---
 
-<RootLayout title='Project Progress'>
+<RootLayout title="Project Progress">
   <PageHeader
-    title='Project Progress'
-    copy='Check in and see how far along the project is as we categorize, list and track all available projects across WesterosCraft'
-    bannerUrl='https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75'
+    title="Project Progress"
+    copy="Check in and see how far along the project is as we categorize, list and track all available projects across WesterosCraft"
+    bannerUrl="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75"
   />
-  <div class='w-full bg-primaryDark'>
-    <ContainerBorder variant='dark' className='py-24 sm:py-32 px-4'>
-      test
+  <div class="w-full bg-primaryDark">
+    <ContainerBorder
+      variant="dark"
+      className="py-24 sm:py-32 px-4 text-white text-center"
+    >
+      <TypographyH2>
+        Westeros is an estimated
+        <span class="text-7xl text-primaryGold">
+          {percentageComplete}
+          %
+        </span>
+
+        complete
+      </TypographyH2>
+      <div
+        class="flex flex-col sm:flex-row mx-auto mt-14 divide-y-2 sm:divide-y-0 sm:divide-x-2"
+      >
+        <div class="py-4 sm:px-6">
+          <TypographyH1>{locations?.length}</TypographyH1>
+          <p>Total Projects</p>
+        </div>
+        <div class="py-4 sm:px-6">
+          <TypographyH1>{numComplete}</TypographyH1>
+          <p>Completed</p>
+        </div>
+        <div class="py-4 sm:px-6">
+          <TypographyH1>{numInProgress}</TypographyH1>
+          <p>In Progress</p>
+        </div>
+        <div class="py-4 sm:px-6">
+          <TypographyH1>{numNotStarted}</TypographyH1>
+          <p>Not Started</p>
+        </div>
+      </div>
     </ContainerBorder>
   </div>
 
-  <ContainerBorder className='py-24 sm:py-32 px-4'>
+  <ContainerBorder borderBottom className="py-24 sm:py-32 px-4">
     <ProgressTable client:load data={tabledata} />
+  </ContainerBorder>
+  <ContainerBorder className="text-center py-24 sm:py-32 px-4">
+    <TypographyH1>Check out the progress in game!</TypographyH1>
+    <TypographyP className="max-w-2xl mx-auto">
+      Westeros is home to over 500 cities, castles, and landmarks. Our goal is
+      to construct them all. With over 300 completed so far, our community is
+      well on our way to having a fully explorable map.
+    </TypographyP>
+    <div class="mt-8">
+      <a href="/join">
+        <Button
+          size="lg"
+          className="rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95"
+        >
+          Join the Server
+        </Button>
+      </a>
+    </div>
   </ContainerBorder>
 </RootLayout>
