@@ -1,24 +1,28 @@
 import React from "react";
-import { fields, component } from "@keystatic/core";
+import { fields, component, NotEditable } from "@keystatic/core";
 
 const VideoPreview = (props: any) => {
   return (
-    <div>
-      <h4>{`URL: ${props?.fields?.id?.value}`}</h4>
-      <img
-        src={`https://i1.ytimg.com/vi/${props?.fields?.id?.value
-          ?.split?.("/")
-          ?.pop()}/default.jpg`}
-      />
-    </div>
+    <NotEditable>
+      <div>
+        <h4>{`URL: ${props?.fields?.id?.value}`}</h4>
+        <img
+          src={`https://i1.ytimg.com/vi/${props?.fields?.id?.value
+            ?.split?.("/")
+            ?.pop()}/default.jpg`}
+        />
+      </div>
+    </NotEditable>
   );
 };
 
 const CalloutPreview = (props: any) => {
   return (
     <div>
-      <h4>{`Type: ${props?.fields?.type?.value}`}</h4>
-      <h4>{`${props?.fields?.text?.value.slice(0, 180)}...`}</h4>
+      <NotEditable>
+        <h4>{`Type: ${props?.fields?.type?.value}`}</h4>
+      </NotEditable>
+      <div>{props.fields.content.element}</div>
     </div>
   );
 };
@@ -46,7 +50,16 @@ export const wysiwyg = fields.document({
       preview: (args) => <CalloutPreview {...args} />,
       label: "Callout",
       schema: {
-        text: fields.text({ label: "Text", multiline: true }),
+        content: fields.child({
+          kind: "block",
+          placeholder: "Content...",
+          formatting: {
+            inlineMarks: "inherit",
+            softBreaks: "inherit",
+            listTypes: "inherit",
+          },
+          links: "inherit",
+        }),
         type: fields.select({
           label: "Type",
           options: [

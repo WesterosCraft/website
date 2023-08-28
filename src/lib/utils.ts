@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { regionOptions } from "@constants/index";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -14,7 +15,7 @@ export function camelize(str: string) {
 
 export function titleizeASlug(slug: string) {
   if (!slug) return slug;
-  var words = slug?.split("-");
+  const words = slug?.split("-");
   return words
     .map(function (word) {
       return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();

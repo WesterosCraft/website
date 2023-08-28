@@ -14,7 +14,9 @@ const serializers = {
   types: {
     video: (props: any) => `{% video id="${props.node.url}" /%}`,
     figure: (props: any) => `-------- FIGURE HERE EVENTUALLY --------`,
-    callout: (props: any) => `{% callout text="${props.node.text}" /%}`,
+    callout: (props: any) => {
+      return `{% callout %}${props.node.text}{% /callout %}`;
+    },
     file: (props: any) => `-------- FILE HERE EVENTUALLY --------`,
   },
 };

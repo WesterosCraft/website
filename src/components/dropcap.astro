@@ -1,0 +1,15 @@
+---
+import clsx from "clsx";
+---
+
+<span
+  class={clsx(
+    "relative flex justify-center items-center top-1 float-left px-[.4em]",
+    "py-[.45em] min-w-[5.5rem] min-h-[6rem] mr-[.2em] mb-[.075em]",
+    "font-normal leading-3 text-5xl border-2 border-solid border-primaryRed",
+    "before:content-[''] before:border-primaryRed before:border-dashed before:absolute before:border-r-2 before:w-1 before:h-[calc(100%-0.1em)] before:top-0 before:right-[0.1em]",
+    "after:content-[''] after:border-primaryRed after:border-dashed after:absolute after:w-[calc(100%-0.1em)] after:border-b-2 after:left-0 after:bottom-[0.1em]"
+  )}
+>
+  <slot />
+</span>

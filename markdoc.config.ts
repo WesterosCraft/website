@@ -22,7 +22,7 @@ export default defineMarkdocConfig({
         // you are rendering.
         // See Markdoc's documentation on defining attributes
         // https://markdoc.dev/docs/attributes#defining-attributes
-        text: { type: String },
+        content: { type: String },
         type: { type: String, default: "default" },
       },
     },

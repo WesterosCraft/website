@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import TableOfContents from "@components/table-of-contents.astro";
+import MobileProjectDetailsCard from "@components/mobile-project-details-card.astro";
 
 // interface Props extends Location {}
 
@@ -39,5 +40,6 @@ const { Content, headings } = await location?.render();
     style={headings && headings?.length && "pt-4"}
   />
   <h1>{location?.data.title}</h1>
+  <MobileProjectDetailsCard projectDetails={location.data} />
   <Content />
 </WikiLayout>

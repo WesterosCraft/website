@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "create": "ts-node --esm scripts/convert-location.ts"
+    "convert-locations": "ts-node --esm scripts/convert-location.ts",
+    "convert-guides": "ts-node --esm scripts/convert-guide.ts"
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.4.4",

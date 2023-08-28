@@ -13,7 +13,7 @@ import { Button } from "./ui/button";
 
 export const MainNav = ({ navigation }: any) => {
   return (
-    <div className="container hidden md:flex h-16 items-center">
+    <div className="container hidden md:flex h-16 items-center justify-between">
       <a href="/">
         <img
           src="/westeroscraft.svg"
@@ -25,7 +25,7 @@ export const MainNav = ({ navigation }: any) => {
       </a>
       <NavigationMenu className="h-16 flex items-center space-x-6 font-medium">
         <NavigationMenuList>
-          {navigation.data.items.map((n: any) =>
+          {navigation.data?.items?.map((n: any) =>
             n.isDropdown.discriminant ? (
               <NavigationMenuItem key={n.text}>
                 <NavigationMenuTrigger className="bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:text-yellow-300">

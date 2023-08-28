@@ -113,10 +113,10 @@ export const locations = collection({
       description: "Check whether this project was a server wide effort",
       defaultValue: false,
     }),
-    dynmap: fields.object({
-      zoom: fields.integer({ label: "Zoom Level" }),
-      xCoord: fields.integer({ label: "X Coordinate" }),
-      yCoord: fields.integer({ label: "Y Coordinate" }),
+    dynmapLink: fields.url({
+      label: "Dynmap URL",
+      description:
+        "The link to a zoomed in location on Dynmap. To get the link, zoom to the location you want and click the link icon in bottom left of dynmap.",
     }),
     content: wysiwyg,
   },

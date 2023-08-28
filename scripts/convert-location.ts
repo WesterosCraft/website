@@ -107,10 +107,10 @@ title: ${location.title}
 region: ${regionMap(location.region?._ref) || ""}
 projectStatus: ${camel2title(location.projectStatus) || ""}
 projectType: ${buildCategoryMap(location.buildCategory?.[0]._ref) || ""}
-warp: ${location.warp || ""}
-house: ${location.house || ""}
-application: ${location.application || ""}
-projectLeads: ${location.projectLead || ""}
+warp: ${location.warp !== null && location.warp ? location.warp : ""}
+house: ${location.house !== null && location.house ? location.house : ""}
+application: ${(location.application !== null && location.application) || ""}
+projectLeads: ${(location.projectLead !== null && location.projectLead) || ""}
 dateStarted: "${location.dateStarted?.split?.("T")?.[0]}"
 dateCompleted: "${location.dateCompleted?.split?.("T")?.[0]}"
 difficultyLevel: "${location.difficulty}"

@@ -5,15 +5,19 @@ items:
       value:
         - text: About
           link: /about
+          description: Read about us and our process
           isExternal: false
         - text: Rookery
           link: /rookery
+          description: Our quarterly newsletter
           isExternal: false
         - text: Forums
           link: https://forum.westeroscraft.com/
+          description: Where we plan all of our builds
           isExternal: false
         - text: Donate
           link: https://ko-fi.com/westeroscraft
+          description: Help keep the server running
           isExternal: true
   - text: Resources
     isDropdown:
@@ -21,15 +25,19 @@ items:
       value:
         - text: Modpack
           link: /modpack
+          description: Everything you need to join the server
           isExternal: false
         - text: Progress
           link: /progress
+          description: Check up on the project status
           isExternal: false
         - text: Rules & Guides
           link: /rules-and-guides
+          description: All the guides to get you started
           isExternal: false
         - text: FAQ
           link: /faq
+          description: If you got a question, its probably answered
           isExternal: false
   - text: Map
     isDropdown:

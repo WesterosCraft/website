@@ -1,0 +1,36 @@
+---
+import { titleizeASlug } from "@lib/utils";
+
+const { projectDetails, style } = Astro.props;
+import dayjs from "dayjs";
+
+const items = [
+  { name: "Region", value: titleizeASlug(projectDetails?.region) },
+  { name: "Project Lead(s)", value: projectDetails?.projectLeads },
+  { name: "House", value: projectDetails?.house },
+  { name: "Status", value: titleizeASlug(projectDetails?.projectStatus) },
+  { name: "Warp", value: projectDetails?.warp },
+  {
+    name: "Date Started",
+    value: dayjs(projectDetails?.dateStarted).format("MMMM D, YYYY"),
+  },
+  {
+    name: "Date Completed",
+    value: dayjs(projectDetails?.dateStarted).format("MMMM D, YYYY"),
+  },
+];
+---
+
+<div class="block xl:hidden">
+  <h3 class="mb-4 text-md font-semibold tracking-tight">Project Details</h3>
+  <ul class="list-none pl-0 ml-0">
+    {
+      items.map((item) => (
+        <li class="text-sm my-2 scroll-my-6 scroll-py-6 pl-0 ml-0">
+          <span class="font-medium">{item.name}</span>
+          {`: ${item.value}`}
+        </li>
+      ))
+    }
+  </ul>
+</div>
