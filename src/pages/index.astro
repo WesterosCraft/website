@@ -13,41 +13,44 @@ import Testimonials from "@components/home/testimonials";
 import FeaturedLocations from "@components/home/featured-locations";
 import AlternatingFeature from "@components/home/alternating-feature";
 import FeaturedServers from "@components/home/featured-servers";
+import { getEntry } from "astro:content";
+
+const pageData = await getEntry("pages", "home");
 ---
 
 <RootLayout>
-  <main class="flex min-h-screen flex-col items-center">
-    <Hero />
-    <Banner />
-    <div class="w-full bg-primaryDark">
+  <main class='flex min-h-screen flex-col items-center'>
+    <Hero data={pageData?.data?.hero} />
+    <Banner data={pageData?.data?.banner} />
+    <div class='w-full bg-primaryDark'>
       <StartYourJourney />
-      <ContainerBorder variant="dark" className="pt-20 sm:pt-24 px-4">
+      <ContainerBorder variant='dark' className='pt-20 sm:pt-24 px-4'>
         <WesteroscraftDescription client:visible />
       </ContainerBorder>
-      <ContainerBorder variant="dark" className="px-4 pb-24 sm:pb-32">
-        <BannerGrid client:visible />
+      <ContainerBorder variant='dark' className='px-4 pb-24 sm:pb-32'>
+        <BannerGrid data={pageData?.data?.bannerGrid} client:visible />
       </ContainerBorder>
       <ContainerBorder
-        variant="dark"
-        className="flex px-4 flex-col-reverse lg:flex-row gap-8 pb-24"
+        variant='dark'
+        className='flex px-4 flex-col-reverse lg:flex-row gap-8 pb-24'
       >
         <FeaturedServers client:visible />
       </ContainerBorder>
       <TenYears />
 
-      <ContainerBorder variant="dark" className="pb-24 px-4">
+      <ContainerBorder variant='dark' className='pb-24 px-4'>
         <Video />
       </ContainerBorder>
     </div>
-    <div class="w-full">
+    <div class='w-full'>
       <ExploreTheRealm />
       <ContainerBorder
-        className="flex-col py-24 sm:py-32 px-4 md:px-10 lg:flex-row items-center justify-center gap-y-16 gap-x-8"
+        className='flex-col py-24 sm:py-32 px-4 md:px-10 lg:flex-row items-center justify-center gap-y-16 gap-x-8'
       >
         <FeaturedLocations client:visible />
       </ContainerBorder>
       <ContainerBorder
-        className="pb-24 sm:pb-32 px-4 md:px-10 gap-16 lg:gap-24"
+        className='pb-24 sm:pb-32 px-4 md:px-10 gap-16 lg:gap-24'
       >
         <AlternatingFeature client:visible />
       </ContainerBorder>

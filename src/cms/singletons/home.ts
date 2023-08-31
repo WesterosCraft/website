@@ -10,11 +10,21 @@ export const home = singleton({
     hero: fields.object({
       heroImage: fields.image({
         label: "Hero Image",
+        directory: "src/assets/pages/home",
+        validation: {
+          isRequired: true,
+        },
       }),
       heading: fields.text({ label: "Heading" }),
+      highlighted: fields.text({
+        label: "Highlighted",
+        description:
+          "The portion of the heading that is highlighted a different color",
+      }),
       subheading: fields.text({ label: "Subheading" }),
       buttons,
     }),
+
     animatedHeader1: animatedHeader,
     bannerGrid,
   },

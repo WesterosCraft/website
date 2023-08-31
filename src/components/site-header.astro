@@ -41,7 +41,7 @@ const { navigation } = Astro.props;
 ---
 
 <header
-  class="w-full border-b bg-primaryDark shadow-sm backdrop-blur z-50 px-4 sticky top-0"
+  class='w-full bg-primaryDark shadow-sm backdrop-blur z-50 px-4 sticky top-0'
 >
   <MainNav navigation={navigation} client:load />
   <MobileNav
@@ -49,6 +49,6 @@ const { navigation } = Astro.props;
     isWiki={isWiki}
     wikiNav={wikiNav}
     directories={normalizedDirectories}
-    client:only="react"
+    client:only='react'
   />
 </header>
