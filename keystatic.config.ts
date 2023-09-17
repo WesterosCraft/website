@@ -7,16 +7,16 @@ import { locations, docs } from "./src/cms/collections";
 import { rookery, home } from "./src/cms/singletons";
 
 export default config({
-  storage: {
-    kind: "local",
-  },
   // storage: {
-  //   kind: "github",
-  //   repo: {
-  //     owner: "WesterosCraft",
-  //     name: "website",
-  //   },
+  //   kind: "local",
   // },
+  storage: {
+    kind: "github",
+    repo: {
+      owner: "WesterosCraft",
+      name: "website",
+    },
+  },
   singletons: {
     rookery,
     home,
