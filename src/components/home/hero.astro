@@ -10,6 +10,26 @@ const {
 ---
 
 <div
+  class='flex w-full h-[580px] color-white flex-wrap relative overflow-hidden'
+>
+  <div class='w-[40%] h-[580px] p-20'>
+    <TypographyH1>
+      {heading + " "}<span class='text-primaryRed'>{highlighted}</span>
+    </TypographyH1>
+  </div>
+  <div class='w-[60%] h-[580px]'>
+    <Image
+      alt='kl'
+      src={"../../src/assets/pages/home/" + heroImage}
+      width={1920}
+      height={750}
+      sizes='60vw'
+      class='object-cover w-full h-full'
+    />
+  </div>
+</div>
+
+<!-- <div
   class='h-[550px] sm:h-[600px] md:h-[750px] relative w-full flex flex-col justify-center items-end lg:items-center pb-14 lg:pb-0 bg-primaryDark'
 >
   <div
@@ -78,4 +98,4 @@ const {
       class='object-cover w-full h-[50%] md:h-[75%] lg:h-full'
     />
   </div>
-</div>
+</div> -->

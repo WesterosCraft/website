@@ -7,11 +7,13 @@ import { locations, docs } from "./src/cms/collections";
 import { rookery, home } from "./src/cms/singletons";
 
 export default config({
-  // storage: {
-  //   kind: "local",
-  // },
   storage: {
-    kind: "github",
+    kind: "cloud",
+    // @ts-ignore
+    cloud: {
+      project: "westeroscraft/website",
+    },
+    // kind: import.meta.env.DEV ? "local" : "github",
     repo: {
       owner: "WesterosCraft",
       name: "website",
