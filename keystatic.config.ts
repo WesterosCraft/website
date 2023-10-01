@@ -9,15 +9,14 @@ import { rookery, home } from "./src/cms/singletons";
 export default config({
   storage: {
     kind: "cloud",
-    // @ts-ignore
-    cloud: {
-      project: "westeroscraft/website",
-    },
     // kind: import.meta.env.DEV ? "local" : "github",
     repo: {
       owner: "WesterosCraft",
       name: "website",
     },
+  },
+  cloud: {
+    project: "westeroscraft/website",
   },
   singletons: {
     rookery,

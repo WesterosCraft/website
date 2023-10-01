@@ -10,6 +10,61 @@ const {
 ---
 
 <div
+  class='mx-auto w-full max-w-[1440px] px-4 md:px-[34px] relative mb-[75px] mt-11 flex min-h-[100vh] flex-col-reverse lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 lg:flex-row'
+>
+  <div
+    class='right-0 bg-primary-50 relative bottom-[26%] mx-auto mt-7 w-full max-w-[450px] border-2 border-black p-1 md:mt-14 md:max-w-[550px] lg:absolute lg:mt-0 lg:w-[38vw] lg:max-w-[725px] xl:w-[45vw] !-z-30 hidden lg:block'
+  >
+    <div
+      class='rounded-4xl border-primary-700 font-system flex flex-col border-2 lg:flex-row'
+    >
+      <Image
+        alt='kl'
+        src={"../../src/assets/pages/home/" + heroImage}
+        width={1920}
+        height={750}
+        sizes='60vw'
+        class='object-cover w-full h-full'
+      />
+    </div>
+  </div>
+  <div class='pb-6'></div>
+
+  <div class='mb-8 inline-block w-full self-end lg:mb-0'>
+    <a
+      class='mb-5 flex w-max gap-x-2 rounded-full bg-black/5 p-1 pr-2 text-sm hover:bg-black/10'
+      href='/blog/v-3-3'
+      ><span
+        class='rounded-full bg-black px-2 py-0.5 text-xs uppercase text-white'
+        >NEW</span
+      > We hit version 1.18.2!</a
+    ><div class='flex flex-col-reverse lg:block'>
+      <p
+        class='mb-6 mt-5 text-[22px] md:max-w-[320px] lg:max-w-[430px] xl:max-w-[560px]'
+      >
+        Explore a meticulously crafted virtual realm inspired by George R.R.
+        Martin's epic fantasy world. From King's Landing to Winterfell, our
+        immersive Minecraft server offers a stunning, player-driven recreation
+        of the Seven Kingdoms.
+      </p><h1
+        class='text-black font-bold leading-[100%] md:!leading-xl text-[40px] tracking-[-0.002em] md:text-[75px] lg:text-[79px] xl:text-[114px] text-shadow-gray !text-[clamp(52px,_7.45vw,_106px)] xl:text-[clamp(52px,_7.8vw,_106px)]'
+      >
+        <span
+          class='font-esmeralda'
+          style='display: inline-block; vertical-align: top; text-decoration: inherit; text-wrap: balance;'
+          >Explore <br />the world of<br />
+          <span class='text-border-black text-shadow-black text-primaryRed'
+            >Westeros inside Minecraft<span>.</span></span
+          ></span
+        ><script>
+          self.__wrap_n != 1 && self.__wrap_b(":r6:", 1);
+        </script>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<!-- <div
   class='flex w-full h-[580px] color-white flex-wrap relative overflow-hidden'
 >
   <div class='w-[40%] h-[580px] p-20'>
@@ -27,7 +82,7 @@ const {
       class='object-cover w-full h-full'
     />
   </div>
-</div>
+</div> -->
 
 <!-- <div
   class='h-[550px] sm:h-[600px] md:h-[750px] relative w-full flex flex-col justify-center items-end lg:items-center pb-14 lg:pb-0 bg-primaryDark'

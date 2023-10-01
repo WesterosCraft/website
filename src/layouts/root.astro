@@ -2,6 +2,7 @@
 import SiteHeader from "@components/site-header.astro";
 import Footer from "@components/footer.astro";
 import { getEntry } from "astro:content";
+import "@fontsource/karla";
 
 const navigation = await getEntry("pages", "mainNav");
 
@@ -50,16 +51,19 @@ const { title } = Astro.props.frontmatter || Astro.props || "WesterosCraft";
     }
   }
 </style>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content="Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms"
+    />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="relative flex min-h-screen flex-col antialiased bg-primaryLight">
+  <body class='relative flex min-h-screen flex-col antialiased bg-primaryLight'>
     <SiteHeader navigation={navigation} />
     <slot />
     <Footer />

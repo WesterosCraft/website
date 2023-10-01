@@ -16,6 +16,7 @@
     "@astrojs/react": "^3.0.2",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/vercel": "^5.0.1",
+    "@fontsource/karla": "^5.0.13",
     "@headlessui/react": "^1.7.17",
     "@keystatic/astro": "^1.0.2",
     "@keystatic/core": "^0.1.5",

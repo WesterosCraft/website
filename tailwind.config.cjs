@@ -1,3 +1,4 @@
+/*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -18,7 +19,12 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Karla"],
+        esmeralda: ["EsmeraldaPro"],
+      },
       colors: {
+        bgColor: "#f4f4f4",
         primaryLight: "#f9f5ea",
         primaryLightShade: "#FFFCF1",
         primaryLightBorder: "#d9ceb2",
