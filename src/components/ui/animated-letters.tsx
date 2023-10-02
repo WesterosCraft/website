@@ -40,6 +40,7 @@ export const AnimatedLetters = ({ text }: { text: string }) => {
       viewport={{ once: true }}
       variants={container}
       initial='hidden'
+      className='font-esmeralda font-medium'
     >
       {letters.map((letter, index) => (
         <motion.span variants={child} key={index}>

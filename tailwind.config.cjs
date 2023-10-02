@@ -19,6 +19,10 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        header: "1fr 176px 1fr",
+      },
       fontFamily: {
         sans: ["Karla"],
         esmeralda: ["EsmeraldaPro"],

@@ -2,14 +2,72 @@
 import { motion } from "framer-motion";
 import { Image } from "astro:assets";
 import { Button } from "@components/ui/button";
-import { TypographyH1, TypographyH4 } from "@components/typography";
+import HeroMarquee from "./hero-marquee";
+import {
+  TypographyH1,
+  TypographyH4,
+  TypographyH2,
+  TypographyP,
+} from "@components/typography";
 
 const {
   data: { heroImage, heading, highlighted, subheading, buttons },
 } = Astro.props;
+import imghero from "./assets/test.png";
 ---
 
-<div
+<style is:global>
+  .rfm-child {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+</style>
+
+<div class='flex flex-col justify-center items-center w-full pt-[80px]'>
+  <div
+    class='flex flex-col items-center justify-center max-w-4xl px-8 text-center'
+  >
+    <TypographyH2>Explore the world of</TypographyH2>
+    <h1
+      style={{
+        textShadow: "0 4px 0 #d1d0d0",
+      }}
+      class='font-esmeralda scroll-m-20 mt-2 mb-10 text-4xl font-extrabold tracking-tight lg:text-8xl text-primaryRed'
+    >
+      Westeros Inside Minecraft
+    </h1>
+    <p class='text-xl'>
+      Explore a meticulously crafted virtual realm inspired by George R.R.
+      Martin's epic fantasy world. From King's Landing to Winterfell, our
+      immersive Minecraft server offers a stunning, player-driven recreation of
+      the Seven Kingdoms.
+    </p>
+    <Button
+      size='lg'
+      className='hover:bg-red-900  font-semibold rounded-none text-md bg-primaryDark text-white mt-8'
+    >
+      Explore Westeros
+    </Button>
+  </div>
+  <div class='w-full'>
+    <HeroMarquee client:load>
+      {
+        [...Array(24)].map((x) => (
+          <Image
+            class='mx-4'
+            alt='kl'
+            src={imghero}
+            loading='lazy'
+            width='460'
+            height='259'
+          />
+        ))
+      }
+    </HeroMarquee>
+  </div>
+</div>
+
+<!-- <div
   class='mx-auto w-full max-w-[1440px] px-4 md:px-[34px] relative mb-[75px] mt-11 flex min-h-[100vh] flex-col-reverse lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 lg:flex-row'
 >
   <div
@@ -61,26 +119,6 @@ const {
         </script>
       </h1>
     </div>
-  </div>
-</div>
-
-<!-- <div
-  class='flex w-full h-[580px] color-white flex-wrap relative overflow-hidden'
->
-  <div class='w-[40%] h-[580px] p-20'>
-    <TypographyH1>
-      {heading + " "}<span class='text-primaryRed'>{highlighted}</span>
-    </TypographyH1>
-  </div>
-  <div class='w-[60%] h-[580px]'>
-    <Image
-      alt='kl'
-      src={"../../src/assets/pages/home/" + heroImage}
-      width={1920}
-      height={750}
-      sizes='60vw'
-      class='object-cover w-full h-full'
-    />
   </div>
 </div> -->
 
