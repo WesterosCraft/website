@@ -13,8 +13,17 @@ import { Button } from "./ui/button";
 
 export const MainNav = ({ navigation }: any) => {
   return (
-    <div className='hidden md:grid grid-cols-header h-16 items-center justify-between'>
-      <NavigationMenu className='h-16 flex items-center space-x-6 font-medium'>
+    <div className='hidden lg:grid gap-4 h-16 items-center justify-between md:grid-cols-[176px_1fr_auto] xl:grid-cols-[1fr_176px_1fr]'>
+      <a className='inline-block xl:hidden' href='/'>
+        <img
+          src='/westeroscraft.svg'
+          alt='WesterosCraft Logo'
+          width={176}
+          height={24}
+          // priority
+        />
+      </a>
+      <NavigationMenu className='h-16 flex items-center space-x-6 md:space-x-2 lg:space-x-6 font-medium'>
         <NavigationMenuList>
           {navigation.data?.items?.map((n: any) =>
             n.isDropdown.discriminant ? (
@@ -45,7 +54,7 @@ export const MainNav = ({ navigation }: any) => {
           )}
         </NavigationMenuList>
       </NavigationMenu>
-      <a href='/'>
+      <a className='hidden xl:inline-block' href='/'>
         <img
           src='/westeroscraft.svg'
           alt='WesterosCraft Logo'
@@ -54,6 +63,7 @@ export const MainNav = ({ navigation }: any) => {
           // priority
         />
       </a>
+
       <div className='ml-auto'>
         <Button className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryRed text-white'>
           <a href='/join'>Join Server</a>

@@ -12,7 +12,7 @@ export function MobileNav({ navigation, directories, isWiki, wikiNav }: any) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className='flex md:hidden h-16 items-center justify-between'>
+    <div className='flex lg:hidden h-16 items-center justify-between'>
       <a href='/'>
         <img
           src='/westeroscraft.svg'
@@ -26,7 +26,7 @@ export function MobileNav({ navigation, directories, isWiki, wikiNav }: any) {
         <SheetTrigger asChild>
           <Button
             variant='ghost'
-            className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden'
+            className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden'
           >
             <Menu className='h-6 w-6 fill-white text-white' />
             <span className='sr-only'>Toggle Menu</span>

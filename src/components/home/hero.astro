@@ -1,19 +1,34 @@
 ---
-import { motion } from "framer-motion";
 import { Image } from "astro:assets";
 import { Button } from "@components/ui/button";
 import HeroMarquee from "./hero-marquee";
-import {
-  TypographyH1,
-  TypographyH4,
-  TypographyH2,
-  TypographyP,
-} from "@components/typography";
+import { TypographyH2 } from "@components/typography";
+import highgarden from "./assets/highgarden.jpg";
+import ghostHill from "./assets/ghost_hill.jpg";
+import redKeep from "./assets/red_keep.jpg";
+import roxton from "./assets/roxton.jpg";
+import uffering from "./assets/uffering.jpg";
+import kingsLanding from "./assets/kings_landing.jpg";
+import winterfell from "./assets/winterfell.jpg";
+import pyke from "./assets/pyke.jpg";
+
+const marqueeImages = [
+  {
+    file: highgarden,
+    name: "Highgarden",
+  },
+  { file: ghostHill, name: "Ghost Hill" },
+  { file: pyke, name: "Pyke" },
+  { file: redKeep, name: "Red Keep" },
+  { file: roxton, name: "Roxton" },
+  { file: winterfell, name: "Winterfell" },
+  { file: uffering, name: "Uffering" },
+  { file: kingsLanding, name: "Kings Landing" },
+];
 
 const {
   data: { heroImage, heading, highlighted, subheading, buttons },
 } = Astro.props;
-import imghero from "./assets/test.png";
 ---
 
 <style is:global>
@@ -25,18 +40,18 @@ import imghero from "./assets/test.png";
 
 <div class='flex flex-col justify-center items-center w-full pt-[80px]'>
   <div
-    class='flex flex-col items-center justify-center max-w-4xl px-8 text-center'
+    class='flex flex-col items-center justify-center max-w-4xl px-4 md:px-8 text-center'
   >
-    <TypographyH2>Explore the world of</TypographyH2>
+    <TypographyH2 className='uppercase'>Explore the world of</TypographyH2>
     <h1
       style={{
         textShadow: "0 4px 0 #d1d0d0",
       }}
-      class='font-esmeralda scroll-m-20 mt-2 mb-10 text-4xl font-extrabold tracking-tight lg:text-8xl text-primaryRed'
+      class='font-esmeralda scroll-m-20 mt-2 mb-10 text-6xl font-extrabold tracking-tight lg:text-8xl text-primaryRed'
     >
       Westeros Inside Minecraft
     </h1>
-    <p class='text-xl'>
+    <p class='text-lg lg:text-xl'>
       Explore a meticulously crafted virtual realm inspired by George R.R.
       Martin's epic fantasy world. From King's Landing to Winterfell, our
       immersive Minecraft server offers a stunning, player-driven recreation of
@@ -44,7 +59,7 @@ import imghero from "./assets/test.png";
     </p>
     <Button
       size='lg'
-      className='hover:bg-red-900  font-semibold rounded-none text-md bg-primaryDark text-white mt-8'
+      className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryDark text-white mt-8'
     >
       Explore Westeros
     </Button>
@@ -52,15 +67,21 @@ import imghero from "./assets/test.png";
   <div class='w-full'>
     <HeroMarquee client:load>
       {
-        [...Array(24)].map((x) => (
-          <Image
-            class='mx-4'
-            alt='kl'
-            src={imghero}
-            loading='lazy'
-            width='460'
-            height='259'
-          />
+        marqueeImages.map((x) => (
+          <div class='relative'>
+            <Image
+              quality='max'
+              class='mx-4'
+              alt={x.name}
+              src={x.file}
+              loading='lazy'
+              width='500'
+              height='283'
+            />
+            <p class='absolute bottom-4 left-8 text-white text-bold'>
+              {x.name}
+            </p>
+          </div>
         ))
       }
     </HeroMarquee>

@@ -21,7 +21,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Complex site-specific column configuration
-        header: "1fr 176px 1fr",
+        header: "176px 1fr auto md:1fr 176px 1fr",
       },
       fontFamily: {
         sans: ["Karla"],
