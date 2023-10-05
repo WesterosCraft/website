@@ -1,0 +1,33 @@
+---
+import heroImage from "../../assets/pages/home/hero/heroImage.webp";
+import pykeImage from "../../assets/pages/home/hero/pyke.webp";
+import { Image } from "astro:assets";
+
+const SLIDES = [
+  { img: heroImage, name: "Kings Landing1" },
+  { img: pykeImage, name: "Pyke" },
+  { img: heroImage, name: "Kings Landing3" },
+  { img: heroImage, name: "Kings Landing4" },
+  { img: pykeImage, name: "Pyke" },
+  { img: heroImage, name: "Kings Landing5" },
+];
+---
+
+<div slot='car'>
+  {
+    SLIDES.map((slide) => (
+      <div class='keen-slider__slide relative'>
+        <Image
+          class='object-cover h-[660px]'
+          sizes='60vw'
+          src={slide.img}
+          width={912}
+          height={660}
+          alt={slide.name}
+          quality='max'
+        />
+        <p class='absolute text-2xl bottom-4 left-4 text-white'>{slide.name}</p>
+      </div>
+    ))
+  }
+</div>

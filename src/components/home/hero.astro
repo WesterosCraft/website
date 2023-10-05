@@ -1,44 +1,32 @@
 ---
-import { Image } from "astro:assets";
 import { Button } from "@components/ui/button";
-import HeroMarquee from "../hero-marquee";
-import {
-  TypographyH2,
-  TypographyH4,
-  TypographyP,
-} from "@components/typography";
-import heroImage from "../../assets/pages/home/hero/heroImage.webp";
-import pykeImage from "../../assets/pages/home/hero/pyke.webp";
-
+import { TypographyH2 } from "@components/typography";
 import Carousel from "./carousel";
 
 const {
   data: { heading, highlighted, subheading, buttons },
 } = Astro.props;
-
-const SLIDES = [
-  { img: heroImage, name: "Kings Landing1" },
-  { img: pykeImage, name: "Pyke" },
-  { img: heroImage, name: "Kings Landing3" },
-  { img: heroImage, name: "Kings Landing4" },
-  { img: pykeImage, name: "Pyke" },
-  { img: heroImage, name: "Kings Landing5" },
-];
 ---
 
-<head>
-  <link
-    rel='stylesheet'
-    type='text/css'
-    charset='UTF-8'
-    href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
-  />
-  <link
-    rel='stylesheet'
-    type='text/css'
-    href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-  />
-</head>
+<style is:global>
+  .lazy__slide {
+    height: 660px;
+    background: #9b2c2c;
+    background-image: url("/loader.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    min-height: auto;
+  }
+
+  .lazy__slide img {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+</style>
 <div
   class='px-8 py-12 grid grid-cols-2 gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
 >
@@ -74,22 +62,6 @@ const SLIDES = [
     </div>
   </div>
   <div class='bg-yellow-600 relative'>
-    <Carousel client:load>
-      {
-        SLIDES.map((slide: any, i) => (
-          <div class='keen-slider__slide relative'>
-            <Image
-              class='object-cover h-[660px]'
-              sizes='60vw'
-              src={slide.img}
-              width={912}
-              height={660}
-              alt={slide.name}
-            />
-            <p class='absolute bottom-4 left-4 text-white'>{slide.name}</p>
-          </div>
-        ))
-      }
-    </Carousel>
+    <Carousel client:load />
   </div>
 </div>
