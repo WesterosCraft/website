@@ -12,10 +12,10 @@
     "convert-guides": "ts-node --esm scripts/convert-guide.ts"
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.5.0",
-    "@astrojs/react": "^3.0.2",
-    "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^5.0.1",
+    "@astrojs/markdoc": "^0.5.2",
+    "@astrojs/react": "^3.0.3",
+    "@astrojs/tailwind": "^5.0.1",
+    "@astrojs/vercel": "^5.0.2",
     "@fontsource/karla": "^5.0.13",
     "@headlessui/react": "^1.7.17",
     "@keystatic/astro": "^1.0.2",
@@ -30,7 +30,7 @@
     "@tanstack/react-table": "^8.9.3",
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.3",
-    "astro": "^3.2.2",
+    "astro": "^3.2.3",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.8",

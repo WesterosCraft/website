@@ -31,15 +31,15 @@ const { Content, headings } = await location?.render();
 <WikiLayout title={location?.data.title}>
   {
     headings && headings?.length ? (
-      <TableOfContents slot="toc" toc={headings} style="pb-4" />
+      <TableOfContents slot='toc' toc={headings} style='pb-4' />
     ) : null
   }
   <ProjectDetailsCard
-    slot="project-details"
+    slot='project-details'
     projectDetails={location.data}
     style={headings && headings?.length && "pt-4"}
   />
   <h1>{location?.data.title}</h1>
   <MobileProjectDetailsCard projectDetails={location.data} />
-  <Content />
+  {Content && <Content />}
 </WikiLayout>
