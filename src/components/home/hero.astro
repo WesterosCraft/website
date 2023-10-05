@@ -1,215 +1,95 @@
 ---
 import { Image } from "astro:assets";
 import { Button } from "@components/ui/button";
-import HeroMarquee from "./hero-marquee";
-import { TypographyH2 } from "@components/typography";
-import highgarden from "./assets/highgarden.jpg";
-import ghostHill from "./assets/ghost_hill.jpg";
-import redKeep from "./assets/red_keep.jpg";
-import roxton from "./assets/roxton.jpg";
-import uffering from "./assets/uffering.jpg";
-import kingsLanding from "./assets/kings_landing.jpg";
-import winterfell from "./assets/winterfell.jpg";
-import pyke from "./assets/pyke.jpg";
+import HeroMarquee from "../hero-marquee";
+import {
+  TypographyH2,
+  TypographyH4,
+  TypographyP,
+} from "@components/typography";
+import heroImage from "../../assets/pages/home/hero/heroImage.webp";
+import pykeImage from "../../assets/pages/home/hero/pyke.webp";
 
-const marqueeImages = [
-  {
-    file: highgarden,
-    name: "Highgarden",
-  },
-  { file: ghostHill, name: "Ghost Hill" },
-  { file: pyke, name: "Pyke" },
-  { file: redKeep, name: "Red Keep" },
-  { file: roxton, name: "Roxton" },
-  { file: winterfell, name: "Winterfell" },
-  { file: uffering, name: "Uffering" },
-  { file: kingsLanding, name: "Kings Landing" },
-];
+import Carousel from "./carousel";
 
 const {
-  data: { heroImage, heading, highlighted, subheading, buttons },
+  data: { heading, highlighted, subheading, buttons },
 } = Astro.props;
+
+const SLIDES = [
+  { img: heroImage, name: "Kings Landing1" },
+  { img: pykeImage, name: "Pyke" },
+  { img: heroImage, name: "Kings Landing3" },
+  { img: heroImage, name: "Kings Landing4" },
+  { img: pykeImage, name: "Pyke" },
+  { img: heroImage, name: "Kings Landing5" },
+];
 ---
 
-<style is:global>
-  .rfm-child {
-    display: flex !important;
-    flex-direction: row !important;
-  }
-</style>
-
-<div class='flex flex-col justify-center items-center w-full pt-[80px]'>
-  <div
-    class='flex flex-col items-center justify-center max-w-4xl px-4 md:px-8 text-center'
-  >
-    <TypographyH2 className='uppercase'>Explore the world of</TypographyH2>
-    <h1
-      style={{
-        textShadow: "0 4px 0 #d1d0d0",
-      }}
-      class='font-esmeralda scroll-m-20 mt-2 mb-10 text-6xl font-extrabold tracking-tight lg:text-8xl text-primaryRed'
-    >
-      Westeros Inside Minecraft
-    </h1>
-    <p class='text-lg lg:text-xl'>
-      Explore a meticulously crafted virtual realm inspired by George R.R.
-      Martin's epic fantasy world. From King's Landing to Winterfell, our
-      immersive Minecraft server offers a stunning, player-driven recreation of
-      the Seven Kingdoms.
-    </p>
-    <Button
-      size='lg'
-      className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryDark text-white mt-8'
-    >
-      Explore Westeros
-    </Button>
-  </div>
-  <div class='w-full'>
-    <HeroMarquee client:load>
-      {
-        marqueeImages.map((x) => (
-          <div class='relative'>
-            <Image
-              quality='max'
-              class='mx-4'
-              alt={x.name}
-              src={x.file}
-              loading='lazy'
-              width='500'
-              height='283'
-            />
-            <p class='absolute bottom-4 left-8 text-white text-bold'>
-              {x.name}
-            </p>
-          </div>
-        ))
-      }
-    </HeroMarquee>
-  </div>
-</div>
-
-<!-- <div
-  class='mx-auto w-full max-w-[1440px] px-4 md:px-[34px] relative mb-[75px] mt-11 flex min-h-[100vh] flex-col-reverse lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 lg:flex-row'
+<head>
+  <link
+    rel='stylesheet'
+    type='text/css'
+    charset='UTF-8'
+    href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
+  />
+  <link
+    rel='stylesheet'
+    type='text/css'
+    href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
+  />
+</head>
+<div
+  class='px-8 py-12 grid grid-cols-2 gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
 >
-  <div
-    class='right-0 bg-primary-50 relative bottom-[26%] mx-auto mt-7 w-full max-w-[450px] border-2 border-black p-1 md:mt-14 md:max-w-[550px] lg:absolute lg:mt-0 lg:w-[38vw] lg:max-w-[725px] xl:w-[45vw] !-z-30 hidden lg:block'
-  >
+  <div class='bg-primaryDark'>
     <div
-      class='rounded-4xl border-primary-700 font-system flex flex-col border-2 lg:flex-row'
+      class='flex flex-col items-center justify-center h-full max-w-4xl px-4 md:px-8 text-center'
     >
-      <Image
-        alt='kl'
-        src={"../../src/assets/pages/home/" + heroImage}
-        width={1920}
-        height={750}
-        sizes='60vw'
-        class='object-cover w-full h-full'
-      />
-    </div>
-  </div>
-  <div class='pb-6'></div>
-
-  <div class='mb-8 inline-block w-full self-end lg:mb-0'>
-    <a
-      class='mb-5 flex w-max gap-x-2 rounded-full bg-black/5 p-1 pr-2 text-sm hover:bg-black/10'
-      href='/blog/v-3-3'
-      ><span
-        class='rounded-full bg-black px-2 py-0.5 text-xs uppercase text-white'
-        >NEW</span
-      > We hit version 1.18.2!</a
-    ><div class='flex flex-col-reverse lg:block'>
+      <TypographyH2 className='uppercase text-primaryRedShade'>
+        Explore the world of
+      </TypographyH2>
+      <h1
+        style={{
+          textShadow: "0 4px 0 #9B2C2C",
+        }}
+        class='font-esmeralda scroll-m-20 mt-2 mb-10 text-6xl font-extrabold tracking-tight lg:text-8xl text-primaryLight'
+      >
+        Westeros Inside Minecraft
+      </h1>
       <p
-        class='mb-6 mt-5 text-[22px] md:max-w-[320px] lg:max-w-[430px] xl:max-w-[560px]'
+        class='text-white text-lg lg:text-xl md:max-w-[320px] lg:max-w-[430px] xl:max-w-[560px]'
       >
         Explore a meticulously crafted virtual realm inspired by George R.R.
         Martin's epic fantasy world. From King's Landing to Winterfell, our
         immersive Minecraft server offers a stunning, player-driven recreation
         of the Seven Kingdoms.
-      </p><h1
-        class='text-black font-bold leading-[100%] md:!leading-xl text-[40px] tracking-[-0.002em] md:text-[75px] lg:text-[79px] xl:text-[114px] text-shadow-gray !text-[clamp(52px,_7.45vw,_106px)] xl:text-[clamp(52px,_7.8vw,_106px)]'
+      </p>
+      <Button
+        size='lg'
+        className='hover:bg-primaryGoldShade font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
       >
-        <span
-          class='font-esmeralda'
-          style='display: inline-block; vertical-align: top; text-decoration: inherit; text-wrap: balance;'
-          >Explore <br />the world of<br />
-          <span class='text-border-black text-shadow-black text-primaryRed'
-            >Westeros inside Minecraft<span>.</span></span
-          ></span
-        ><script>
-          self.__wrap_n != 1 && self.__wrap_b(":r6:", 1);
-        </script>
-      </h1>
+        Explore Westeros
+      </Button>
     </div>
   </div>
-</div> -->
-
-<!-- <div
-  class='h-[550px] sm:h-[600px] md:h-[750px] relative w-full flex flex-col justify-center items-end lg:items-center pb-14 lg:pb-0 bg-primaryDark'
->
-  <div
-    class='flex flex-col z-10 items-start justify-center absolute left-auto top-auto right-0 bottom-[60px] sm:bottom-auto w-[95%] sm:w-[92%] lg:w-[43%] h-auto lg:h-[400px] bg-primaryLight/80 p-5 sm:p-8 !pl-10 border-primaryDark border-2'
-  >
-    <motion.div
-      client:load
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.3 }}
-      className='max-w-lg !leading-7'
-    >
-      <TypographyH1>
-        {heading + " "}
-        <span class='text-primaryRed'>{highlighted}</span>
-      </TypographyH1>
-      <hr class='border-primaryDark hidden sm:block mt-6 w-full' />
-    </motion.div>
-    <motion.div
-      client:load
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.5 }}
-    >
-      <TypographyH4 className='mt-4 w-full'>
-        {subheading}
-      </TypographyH4>
-
-      <div class='flex flex-col sm:flex-row mt-4 sm:mt-8 gap-4'>
-        {
-          buttons.map((butt: any) =>
-            butt.buttonType === "primary" ? (
-              <a href={butt.isExternal.value}>
-                <Button
-                  size='lg'
-                  className='rounded-none bg-black text-white hover:bg-black/80 text-lg'
-                >
-                  {butt.buttonText}
-                </Button>
-              </a>
-            ) : (
-              <a href={butt.isExternal.value}>
-                <Button
-                  size='lg'
-                  variant='outline'
-                  className='rounded-none bg-primaryLight text-lg hover:bg-primaryRed hover:text-white'
-                >
-                  {butt.buttonText}
-                </Button>
-              </a>
-            )
-          )
-        }
-      </div>
-    </motion.div>
+  <div class='bg-yellow-600 relative'>
+    <Carousel client:load>
+      {
+        SLIDES.map((slide: any, i) => (
+          <div class='keen-slider__slide relative'>
+            <Image
+              class='object-cover h-[660px]'
+              sizes='60vw'
+              src={slide.img}
+              width={912}
+              height={660}
+              alt={slide.name}
+            />
+            <p class='absolute bottom-4 left-4 text-white'>{slide.name}</p>
+          </div>
+        ))
+      }
+    </Carousel>
   </div>
-  <div class='h-full w-full'>
-    <Image
-      alt='kl'
-      src={"../../src/assets/pages/home/" + heroImage}
-      width={1920}
-      height={750}
-      sizes='80vw'
-      class='object-cover w-full h-[50%] md:h-[75%] lg:h-full'
-    />
-  </div>
-</div> -->
+</div>
