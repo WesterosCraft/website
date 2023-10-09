@@ -43,3 +43,24 @@ bannerGrid:
       description: >-
         We're a truly global community, united by a common goal of creating one
         of the most detailed Minecraft worlds ever built.
+featuredServers:
+  baratheonImage: featuredServers/baratheonImage.webp
+  targImage: featuredServers/targImage.webp
+  heading: Join The Community
+  items:
+    - icon: featuredServers/items/0/icon.png
+      subheading: Play
+      description: >-
+        Get started exploring Westeros and see the building process happen for
+        yourself!
+      links: []
+    - icon: featuredServers/items/1/icon.png
+      subheading: Hang Out
+      description: >-
+        Come join our Discord, where our community gathers to plan builds and
+        hang out.
+      links:
+        - linkText: Join Discord
+          isExternal:
+            discriminant: true
+            value: https://discord.com/invite/pBS5TH4

@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo";
-import defaultOgImage from "../../public/wc_og_image.jpg";
+import defaultOgImage from "../assets/og.jpg";
 
 const { title, description, ogTitle, ogType, ogImage, ogUrl } = Astro.props;
 ---
@@ -15,8 +15,8 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } = Astro.props;
         ogTitle ||
         "WesterosCraft - Explore the world of Westeros made in Minecraft",
       type: ogType || "website",
-      image: ogImage || defaultOgImage,
-      url: ogUrl || "https://www.westeroscraft.com",
+      image: ogImage || defaultOgImage.src,
+      url: ogUrl || Astro.url || "https://www.westeroscraft.com",
     },
   }}
   twitter={{

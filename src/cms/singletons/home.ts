@@ -1,3 +1,4 @@
+import { featuredServers } from "./../fields/featured-servers";
 import { bannerGrid } from "../fields/banner-grid";
 import { animatedHeader } from "../fields/animated-header";
 import { fields, singleton } from "@keystatic/core";
@@ -38,5 +39,6 @@ export const home = singleton({
     }),
     animatedHeader1: animatedHeader,
     bannerGrid,
+    featuredServers,
   },
 });

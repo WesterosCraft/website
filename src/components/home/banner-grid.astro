@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+const { data } = Astro.props;
+---
+
+<div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10'>
+  {
+    data?.items?.map((feature) => (
+      <div class='p-6 text-center'>
+        <Image
+          src={import(`../../assets/pages/home/${feature.image}`)}
+          class='mx-auto'
+          width={75}
+          height={150}
+          alt={feature.subheading}
+          format='webp'
+          loading='lazy'
+        />
+        <div class='text-white max-w-sm mt-0 sm:mt-4 md:mt-6 mx-auto'>
+          <p class='text-primaryGold font-medium text-lg'>
+            {feature.subheading}
+          </p>
+          <p class='mt-2'>{feature.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

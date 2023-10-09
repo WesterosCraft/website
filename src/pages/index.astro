@@ -3,18 +3,18 @@ import Banner from "@components/home/banner.astro";
 import Hero from "@components/home/hero.astro";
 import StartYourJourney from "@components/home/start-your-journey.astro";
 import ExploreTheRealm from "@components/home/explore-the-realm.astro";
-import WesteroscraftDescription from "@components/home/westeroscraft-description";
+import WesteroscraftDescription from "@components/home/westeroscraft-description.astro";
 import RootLayout from "@layouts/root.astro";
-import BannerGrid from "@components/home/banner-grid";
 import TenYears from "@components/home/ten-years.astro";
 import Video from "@components/home/video";
 import ContainerBorder from "@components/container-border.astro";
 import Testimonials from "@components/home/testimonials";
 import FeaturedLocations from "@components/home/featured-locations";
 import AlternatingFeature from "@components/home/alternating-feature";
-import FeaturedServers from "@components/home/featured-servers";
-import { getEntry } from "astro:content";
+import FeaturedServers from "@components/home/featured-servers.astro";
+import BannerGrid from "@components/home/banner-grid.astro";
 
+import { getEntry } from "astro:content";
 const pageData = await getEntry("pages", "home");
 ---
 
@@ -25,16 +25,16 @@ const pageData = await getEntry("pages", "home");
     <div class='w-full bg-primaryDark'>
       <StartYourJourney />
       <ContainerBorder variant='dark' className='pt-20 sm:pt-24 px-4'>
-        <WesteroscraftDescription client:visible />
+        <WesteroscraftDescription />
       </ContainerBorder>
       <ContainerBorder variant='dark' className='px-4 pb-24 sm:pb-32'>
-        <BannerGrid data={pageData?.data?.bannerGrid} client:visible />
+        <BannerGrid data={pageData?.data?.bannerGrid} />
       </ContainerBorder>
       <ContainerBorder
         variant='dark'
         className='flex px-4 flex-col-reverse lg:flex-row gap-8 pb-24'
       >
-        <FeaturedServers client:visible />
+        <FeaturedServers data={pageData?.data?.featuredServers} />
       </ContainerBorder>
       <TenYears />
 
