@@ -19,6 +19,7 @@ export const home = singleton({
 
         {
           label: "Slider Images",
+          itemLabel: (props) => "Slide: " + props?.fields?.alt?.value,
           validation: {
             length: {
               min: 2,
