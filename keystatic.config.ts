@@ -8,13 +8,13 @@ import { rookery, home } from "./src/cms/singletons";
 
 export default config({
   storage: {
-    kind: "cloud",
+    kind: import.meta.env.DEV ? "local" : "cloud",
     // kind: import.meta.env.DEV ? "local" : "github",
-    repo: {
-      owner: "WesterosCraft",
-      name: "website",
-    },
   },
+  // repo: {
+  //   owner: "WesterosCraft",
+  //   name: "website",
+  // },
   cloud: {
     project: "westeroscraft/website",
   },

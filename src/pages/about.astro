@@ -11,25 +11,28 @@ import { Button } from "@components/ui/button";
 import Dropcap from "@components/dropcap.astro";
 ---
 
-<RootLayout title="About WesterosCraft">
+<RootLayout
+  title='About WesterosCraft'
+  description="Our goal is to recreate the universe imagined by author George R. R. Martin in his fantasy series, A Song of Ice and Fire. Here's a bit about how the project took off."
+>
   <PageHeader
-    title="The story behind WesterosCraft"
+    title='The story behind WesterosCraft'
     copy="Our goal is to recreate the universe imagined by author George R. R. Martin in his fantasy series, A Song of Ice and Fire. Here's a bit about how the project took off."
-    bannerUrl="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75"
+    bannerUrl='https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75'
   />
-  <div class="w-full bg-primaryDark">
+  <div class='w-full bg-primaryDark'>
     <ContainerBorder
       borderBottom
-      variant="dark"
-      className="px-4 text-white text-center"
+      variant='dark'
+      className='px-4 text-white text-center'
     >
-      <TypographyH1 className="pt-14 pb-8 px-4">Our story</TypographyH1>
+      <TypographyH1 className='pt-14 pb-8 px-4'>Our story</TypographyH1>
     </ContainerBorder>
     <ContainerBorder
-      variant="dark"
-      className="py-20 sm:py-24 px-4 text-white text-center"
+      variant='dark'
+      className='py-20 sm:py-24 px-4 text-white text-center'
     >
-      <div class="max-w-3xl text-center mx-auto">
+      <div class='max-w-3xl text-center mx-auto'>
         <TypographyH2>The Founding</TypographyH2>
         <TypographyP>
           Minecraft's core design is that the whole world is made of blocks, and
@@ -38,12 +41,13 @@ import Dropcap from "@components/dropcap.astro";
         </TypographyP>
         <TypographyP>
           <Dropcap>W</Dropcap>
-          ESTEROSCRAFT WAS FOUNDED by PizzaInACup aka geeberry, in November 2011.
-          Pizza, as he’s affectionately known by, had long been a fan of the ASOIAF
-          series and was hooked on the Game of Thrones by the end of the first episode.
-          Pizza was also a bit of a coder, and while the first season of the HBO
-          series was airing, and Westeros fever was sweeping the planet, he was dabbling
-          in the beta of a then little-known game called Minecraft.
+           ESTEROSCRAFT WAS FOUNDED by PizzaInACup aka geeberry, in November
+          2011. Pizza, as he’s affectionately known by, had long been a fan of
+          the ASOIAF series and was hooked on the Game of Thrones by the end of
+          the first episode. Pizza was also a bit of a coder, and while the
+          first season of the HBO series was airing, and Westeros fever was
+          sweeping the planet, he was dabbling in the beta of a then
+          little-known game called Minecraft.
         </TypographyP>
         <TypographyP>
           Building castles was all the rage in the early days of Minecraft and
@@ -66,8 +70,8 @@ import Dropcap from "@components/dropcap.astro";
     </ContainerBorder>
   </div>
 
-  <ContainerBorder borderBottom className="py-20 sm:py-24 px-4 text-center">
-    <div class="max-w-3xl text-center mx-auto">
+  <ContainerBorder borderBottom className='py-20 sm:py-24 px-4 text-center'>
+    <div class='max-w-3xl text-center mx-auto'>
       <TypographyH2>King’s Landing</TypographyH2>
       <TypographyP>
         King’s Landing was the very first project undertaken by the newly
@@ -92,8 +96,8 @@ import Dropcap from "@components/dropcap.astro";
     </div>
   </ContainerBorder>
 
-  <ContainerBorder className="py-20 sm:py-24 px-4 text-center">
-    <div class="max-w-3xl text-center mx-auto">
+  <ContainerBorder className='py-20 sm:py-24 px-4 text-center'>
+    <div class='max-w-3xl text-center mx-auto'>
       <TypographyH2>Resource Pack</TypographyH2>
       <TypographyP>
         Within a few months of the server getting off the ground, it became
@@ -118,13 +122,13 @@ import Dropcap from "@components/dropcap.astro";
     </div>
   </ContainerBorder>
 
-  <div class="w-full bg-primaryDark">
+  <div class='w-full bg-primaryDark'>
     <ContainerBorder
       borderBottom
-      variant="dark"
-      className="py-20 sm:py-24 px-4 text-white"
+      variant='dark'
+      className='py-20 sm:py-24 px-4 text-white'
     >
-      <div class="max-w-3xl text-center mx-auto">
+      <div class='max-w-3xl text-center mx-auto'>
         <TypographyH2>A WHOLE NEW WORLD</TypographyH2>
         <TypographyP>
           The rapid growth of the server quickly made it clear that the scope
@@ -143,18 +147,18 @@ import Dropcap from "@components/dropcap.astro";
     </ContainerBorder>
   </div>
 
-  <ContainerBorder className="py-20 sm:py-24 px-4 text-center">
+  <ContainerBorder className='py-20 sm:py-24 px-4 text-center'>
     <TypographyH1>Ready to Explore?</TypographyH1>
-    <TypographyP className="max-w-2xl mx-auto">
+    <TypographyP className='max-w-2xl mx-auto'>
       Westeros is home to over 500 cities, castles, and landmarks. Our goal is
       to construct them all. With over 300 completed so far, our community is
       well on our way to having a fully explorable map.
     </TypographyP>
-    <div class="mt-8">
-      <a href="/join">
+    <div class='mt-8'>
+      <a href='/join'>
         <Button
-          size="lg"
-          className="rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95"
+          size='lg'
+          className='rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95'
         >
           Join the Server
         </Button>

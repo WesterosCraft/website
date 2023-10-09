@@ -1,0 +1,25 @@
+---
+import { SEO } from "astro-seo";
+import defaultOgImage from "../assets/wc_og_image.jpg";
+
+const { title, description, ogTitle, ogType, ogImage, ogUrl } = Astro.props;
+---
+
+<SEO
+  title={title || "WesterosCraft"}
+  description={description ||
+    "Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms"}
+  openGraph={{
+    basic: {
+      title:
+        ogTitle ||
+        "WesterosCraft - Explore the world of Westeros made in Minecraft",
+      type: ogType || "website",
+      image: ogImage || defaultOgImage,
+      url: ogUrl || "https://www.westeroscraft.com",
+    },
+  }}
+  twitter={{
+    creator: "@WesterosCraft",
+  }}
+/>

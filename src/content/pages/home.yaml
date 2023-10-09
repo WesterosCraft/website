@@ -1,19 +1,23 @@
 hero:
-  heroImage: hero/heroImage.webp
-  heading: Explore the world of
-  highlighted: Westeros inside Minecraft
-  subheading: An open world, creative Minecraft server
+  sliderImages:
+    - image: hero/sliderImages/0/image.webp
+      alt: King's Landing
+    - image: hero/sliderImages/1/image.webp
+      alt: Pyke
+    - image: hero/sliderImages/2/image.webp
+      alt: Winterfell
+  heading: EXPLORE THE WORLD OF
+  highlighted: Westeros Inside Minecraft
+  subheading: >-
+    Explore a meticulously crafted virtual realm inspired by George R.R.
+    Martin's epic fantasy world. From King's Landing to Winterfell, our
+    immersive Minecraft server offers a stunning, player-driven recreation of
+    the Seven Kingdoms.
   buttons:
-    - buttonText: Join the Server
+    - buttonText: Explore Westeros
       buttonType: primary
       isExternal:
-        discriminant: true
-        value: /join
-    - buttonText: View the Wiki
-      buttonType: secondary
-      isExternal:
-        discriminant: true
-        value: /wiki
+        discriminant: false
 animatedHeader1: Start Your Journey
 bannerGrid:
   bannerHeading: >-
@@ -22,20 +26,4 @@ bannerGrid:
     bringing it to life. Wander the streets of King’s Landing or the fields of
     Highgarden. Take a flight through the deadly Moon Door, or even retrace the
     steps of your favorite character.
-  items:
-    - image: bannerGrid/items/0/image.webp
-      subheading: Powered By Minecraft
-      description: >-
-        WesterosCraft is free to explore, and always will be! All you need is
-        the Java edition of Minecraft.
-    - image: bannerGrid/items/1/image.webp
-      subheading: Always Evolving
-      description: >-
-        As Minecraft updates and evolves, so too does our server! From simple
-        cobblestone shacks in 2011, to ornate cities in 2022, we have come a
-        long way from our humble beginnings.
-    - image: bannerGrid/items/2/image.webp
-      subheading: Crafting Connections
-      description: >-
-        We're a truly global community, united by a common goal of creating one
-        of the most detailed Minecraft worlds ever built.
+  items: []

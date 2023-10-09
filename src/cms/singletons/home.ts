@@ -1,20 +1,31 @@
-import { bannerGrid } from "./../fields/banner-grid";
-import { animatedHeader } from "./../fields/animated-header";
+import { bannerGrid } from "../fields/banner-grid";
+import { animatedHeader } from "../fields/animated-header";
 import { fields, singleton } from "@keystatic/core";
-import { buttons } from "./../fields";
+import { buttons } from "../fields";
 
 export const home = singleton({
   label: "Home Page",
   path: "src/content/pages/home",
   schema: {
     hero: fields.object({
-      heroImage: fields.image({
-        label: "Hero Image",
-        directory: "src/assets/pages/home",
-        validation: {
-          isRequired: true,
-        },
-      }),
+      sliderImages: fields.array(
+        fields.object({
+          image: fields.image({
+            label: "Slide image",
+            directory: "src/content/pages/home",
+          }),
+          alt: fields.text({ label: "Alt" }),
+        }),
+
+        {
+          label: "Slider Images",
+          validation: {
+            length: {
+              min: 2,
+            },
+          },
+        }
+      ),
       heading: fields.text({ label: "Heading" }),
       highlighted: fields.text({
         label: "Highlighted",
@@ -24,7 +35,6 @@ export const home = singleton({
       subheading: fields.text({ label: "Subheading" }),
       buttons,
     }),
-
     animatedHeader1: animatedHeader,
     bannerGrid,
   },

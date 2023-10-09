@@ -3,14 +3,11 @@ import { Button } from "@components/ui/button";
 import { TypographyH2 } from "@components/typography";
 import Carousel from "./carousel";
 
-const {
-  data: { heading, highlighted, subheading, buttons },
-} = Astro.props;
+const { data } = Astro.props;
 ---
 
-<style is:global>
+<style is:global define:vars={{ slideHeight: "660px" }}>
   .lazy__slide {
-    height: 660px;
     background: #9b2c2c;
     background-image: url("/loader.svg");
     background-position: center;
@@ -18,24 +15,16 @@ const {
     background-size: 100px;
     min-height: auto;
   }
-
-  .lazy__slide img {
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-  }
 </style>
 <div
-  class='px-8 py-12 grid grid-cols-2 gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
+  class='px-8 py-12 grid grid-cols-10 gap-6 xl:gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
 >
-  <div class='bg-primaryDark'>
+  <div class='bg-primaryDark col-span-5 xl:col-span-4'>
     <div
       class='flex flex-col items-center justify-center h-full max-w-4xl px-4 md:px-8 text-center'
     >
       <TypographyH2 className='uppercase text-primaryRedShade'>
-        Explore the world of
+        {data?.heading || "Explore the world of"}
       </TypographyH2>
       <h1
         style={{
@@ -43,25 +32,29 @@ const {
         }}
         class='font-esmeralda scroll-m-20 mt-2 mb-10 text-6xl font-extrabold tracking-tight lg:text-8xl text-primaryLight'
       >
-        Westeros Inside Minecraft
+        {data?.highlighted || "Westeros Inside Minecraft"}
       </h1>
       <p
         class='text-white text-lg lg:text-xl md:max-w-[320px] lg:max-w-[430px] xl:max-w-[560px]'
       >
-        Explore a meticulously crafted virtual realm inspired by George R.R.
-        Martin's epic fantasy world. From King's Landing to Winterfell, our
-        immersive Minecraft server offers a stunning, player-driven recreation
-        of the Seven Kingdoms.
+        {
+          data?.subheading ||
+            `Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms.`
+        }
       </p>
-      <Button
-        size='lg'
-        className='hover:bg-primaryGoldShade font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
-      >
-        Explore Westeros
-      </Button>
+      {
+        data?.buttons?.map((button) => (
+          <Button
+            size='lg'
+            className='hover:bg-primaryGoldShade font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
+          >
+            {button.buttonText}
+          </Button>
+        ))
+      }
     </div>
   </div>
-  <div class='bg-yellow-600 relative'>
-    <Carousel client:load />
+  <div class='bg-yellow-600 relative col-start-6 col-end-11 xl:col-start-5'>
+    <Carousel slides={data?.sliderImages} client:load />
   </div>
 </div>

@@ -1,28 +1,35 @@
 import React from "react";
+import clsx from "clsx";
+import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react"; // import from 'keen-slider/react.es' for to get an ES module
-import heroImage from "../../assets/pages/home/hero/heroImage.webp";
-import pykeImage from "../../assets/pages/home/hero/pyke.webp";
 
-const SLIDES = [
-  { img: heroImage, name: "Kings Landing1" },
-  { img: pykeImage, name: "Pyke" },
-  { img: heroImage, name: "Kings Landing3" },
-  { img: heroImage, name: "Kings Landing4" },
-  { img: pykeImage, name: "Pyke" },
-  { img: heroImage, name: "Kings Landing5" },
-];
+interface Slide {
+  image: string;
+  alt: string;
+}
 
-export default function Carousel() {
+export default function Carousel({ slides }: { slides: Slide[] }) {
+  const SLIDES = slides.map((slide) => ({
+    image: "../../src/content/pages/home/" + slide?.image || "",
+    alt: slide?.alt || "",
+  }));
+
   const [opacities, setOpacities] = React.useState<number[]>([]);
   const [loaded, setLoaded] = React.useState<boolean[]>([]);
+  const [created, setCreated] = React.useState<boolean>(false);
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>(
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
       slides: SLIDES.length,
       initial: 0,
+      created() {
+        setCreated(true);
+      },
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
       animationEnded(s) {
         setCurrentSlide(s.track.details.rel);
       },
@@ -45,23 +52,53 @@ export default function Carousel() {
   }, [currentSlide]);
 
   return (
-    <div ref={sliderRef} className='keen-slider'>
+    <div ref={sliderRef} className='keen-slider relative'>
       {SLIDES.map((slide, idx) => (
         <div key={idx} className='keen-slider__slide lazy__slide relative'>
           <img
-            className='object-cover h-[660px]'
+            className={clsx(
+              "object-cover h-[var(--slideHeight)] bg-transparent",
+              loaded[idx] ? "bg-transparent" : "hidden"
+            )}
             sizes='60vw'
-            src={loaded[idx] ? slide.img.src : ""}
-            width={912}
-            height={660}
-            alt={slide.name}
+            src={loaded[idx] ? slide.image : ""}
+            width={1100}
+            height='var(--slideHeight)'
+            alt={slide.alt || ""}
             style={{ opacity: opacities[idx] }}
           />
-          <p className='absolute text-2xl bottom-4 left-4 text-white'>
-            {slide.name}
+          <p className='font-esmeralda absolute text-3xl bottom-4 left-4 text-white'>
+            {slide.alt || ""}
           </p>
         </div>
       ))}
+      {created && instanceRef.current && (
+        <div className='arrow-button absolute bottom-4 right-4 w-7 h-7 fill-white cursor-pointer'>
+          <Arrow
+            onClick={(e: any) =>
+              e.stopPropagation() || instanceRef.current?.next()
+            }
+            disabled={
+              currentSlide ===
+              instanceRef.current.track.details.slides.length - 1
+            }
+          />
+        </div>
+      )}
     </div>
+  );
+}
+
+function Arrow(props: { disabled: boolean; onClick: (e: any) => void }) {
+  const disabeld = props.disabled ? " arrow--disabled" : "";
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`arrow arrow--right ${disabeld}`}
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+    >
+      <path d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' />
+    </svg>
   );
 }

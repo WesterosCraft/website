@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { child, container } from "@constants/index";
 
-const BannerGrid = ({ data: { items } }: any) => {
+const BannerGrid = ({ data }: any) => {
   return (
     <motion.div
       variants={container}
@@ -11,7 +11,7 @@ const BannerGrid = ({ data: { items } }: any) => {
       viewport={{ once: true, margin: "-100px" }}
       className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10'
     >
-      {items.map((feature: any, index: number) => (
+      {data?.items?.map((feature: any, index: number) => (
         <motion.div
           variants={child}
           viewport={{ once: true, margin: "-100px" }}
