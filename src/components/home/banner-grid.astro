@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 const { data } = Astro.props;
+const images = import.meta.glob("../../assets/pages/home/bannerGrid/items/*/*");
 ---
 
 <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10'>
@@ -8,7 +9,7 @@ const { data } = Astro.props;
     data?.items?.map((feature) => (
       <div class='p-6 text-center'>
         <Image
-          src={import(`../../assets/pages/home/${feature.image}`)}
+          src={images[`../../assets/pages/home/${feature.image}`]()}
           class='mx-auto'
           width={75}
           height={150}

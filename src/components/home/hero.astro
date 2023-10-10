@@ -4,6 +4,20 @@ import { TypographyH2 } from "@components/typography";
 import Carousel from "./carousel";
 
 const { data } = Astro.props;
+
+const sliderImages = import.meta.glob(
+  "../../assets/pages/home/hero/sliderImages/*/*"
+);
+
+const slides = await Promise.all(
+  data?.sliderImages?.map(async (slide) => {
+    const img = await sliderImages[`../../assets/pages/home/${slide?.image}`]();
+    return {
+      image: img.default?.src,
+      alt: slide?.alt || "",
+    };
+  })
+);
 ---
 
 <style is:global define:vars={{ slideHeight: "660px" }}>
@@ -17,20 +31,20 @@ const { data } = Astro.props;
   }
 </style>
 <div
-  class='px-8 py-12 grid grid-cols-10 gap-6 xl:gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
+  class='px-5 lg:px-8 py-12 grid grid-cols-10 gap-6 lg:gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
 >
-  <div class='bg-primaryDark col-span-5 xl:col-span-4'>
+  <div class='bg-primaryDark col-span-10 lg:col-span-5 xl:col-span-4'>
     <div
-      class='flex flex-col items-center justify-center h-full max-w-4xl px-4 md:px-8 text-center'
+      class='flex flex-col items-center justify-center h-full max-w-4xl px-6 py-8 md:p-8 text-center'
     >
       <TypographyH2 className='uppercase text-primaryRedShade'>
         {data?.heading || "Explore the world of"}
       </TypographyH2>
       <h1
+        class='font-esmeralda scroll-m-20 mt-2 mb-10 text-5xl md:text-6xl font-extrabold tracking-tight xl:text-7xl 2xl:text-8xl text-primaryLight'
         style={{
           textShadow: "0 4px 0 #9B2C2C",
         }}
-        class='font-esmeralda scroll-m-20 mt-2 mb-10 text-6xl font-extrabold tracking-tight lg:text-8xl text-primaryLight'
       >
         {data?.highlighted || "Westeros Inside Minecraft"}
       </h1>
@@ -54,7 +68,9 @@ const { data } = Astro.props;
       }
     </div>
   </div>
-  <div class='bg-yellow-600 relative col-start-6 col-end-11 xl:col-start-5'>
-    <Carousel slides={data?.sliderImages} client:load />
+  <div
+    class='bg-yellow-600 relative col-span-10 lg:col-start-6 lg:col-end-11 xl:col-start-5'
+  >
+    <Carousel slides={slides} client:load />
   </div>
 </div>

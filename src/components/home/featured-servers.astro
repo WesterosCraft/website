@@ -3,8 +3,11 @@ import { TypographyH2, TypographyP } from "@components/typography";
 import { Image } from "astro:assets";
 const { data } = Astro.props;
 
-const barathImage = import(`../../assets/pages/home/${data?.baratheonImage}`);
-const targImage = import(`../../assets/pages/home/${data?.targImage}`);
+import targImage from "../../assets/pages/home/featuredServers/targImage.webp";
+import barathImage from "../../assets/pages/home/featuredServers/baratheonImage.webp";
+const images = import.meta.glob(
+  "../../assets/pages/home/featuredServers/items/*/*"
+);
 ---
 
 <div class='ml-0 2xl:-ml-32 min-w-auto xl:min-w-[750px]'>
@@ -34,7 +37,7 @@ const targImage = import(`../../assets/pages/home/${data?.targImage}`);
             <Image
               width={50}
               height={50}
-              src={import(`../../assets/pages/home/${server?.icon}`)}
+              src={images[`../../assets/pages/home/${server.icon}`]()}
               alt='Coin'
             />
             <div class='flex items-center sm:items-start gap-6'>

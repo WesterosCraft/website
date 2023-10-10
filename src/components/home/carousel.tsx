@@ -9,11 +9,6 @@ interface Slide {
 }
 
 export default function Carousel({ slides }: { slides: Slide[] }) {
-  const SLIDES = slides.map((slide) => ({
-    image: "../../src/content/pages/home/" + slide?.image || "",
-    alt: slide?.alt || "",
-  }));
-
   const [opacities, setOpacities] = React.useState<number[]>([]);
   const [loaded, setLoaded] = React.useState<boolean[]>([]);
   const [created, setCreated] = React.useState<boolean>(false);
@@ -22,7 +17,7 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
-      slides: SLIDES.length,
+      slides: slides.length,
       initial: 0,
       created() {
         setCreated(true);
@@ -53,7 +48,7 @@ export default function Carousel({ slides }: { slides: Slide[] }) {
 
   return (
     <div ref={sliderRef} className='keen-slider relative'>
-      {SLIDES.map((slide, idx) => (
+      {slides.map((slide, idx) => (
         <div key={idx} className='keen-slider__slide lazy__slide relative'>
           <img
             className={clsx(

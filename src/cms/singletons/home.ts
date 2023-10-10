@@ -13,7 +13,7 @@ export const home = singleton({
         fields.object({
           image: fields.image({
             label: "Slide image",
-            directory: "src/content/pages/home",
+            directory: "src/assets/pages/home",
           }),
           alt: fields.text({ label: "Alt" }),
         }),
