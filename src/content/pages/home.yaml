@@ -64,3 +64,11 @@ featuredServers:
           isExternal:
             discriminant: true
             value: https://discord.com/invite/pBS5TH4
+video:
+  heading: 10 years of WesterosCraft
+  description: >-
+    From simple cobblestone shacks in 2011 to ornate cities in 2021, we have
+    come a long way from our humble beginnings. Our goal is to create one of the
+    largest and most detailed Minecraft worlds ever built.
+  videoUrl: https://www.youtube.com/watch?v=fO_eKusKH60
+  thumbnail: video/thumbnail.jpg

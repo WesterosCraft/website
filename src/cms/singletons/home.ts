@@ -40,5 +40,17 @@ export const home = singleton({
     animatedHeader1: animatedHeader,
     bannerGrid,
     featuredServers,
+    video: fields.object(
+      {
+        heading: fields.text({ label: "Heading" }),
+        description: fields.text({ label: "Description", multiline: true }),
+        videoUrl: fields.url({ label: "Video Url" }),
+        thumbnail: fields.image({
+          label: "Thumbnail image",
+          directory: "src/assets/pages/home",
+        }),
+      },
+      { label: "Video" }
+    ),
   },
 });

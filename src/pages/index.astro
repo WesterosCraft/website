@@ -9,7 +9,7 @@ import TenYears from "@components/home/ten-years.astro";
 import Video from "@components/home/video";
 import ContainerBorder from "@components/container-border.astro";
 import Testimonials from "@components/home/testimonials";
-import FeaturedLocations from "@components/home/featured-locations";
+import FeaturedLocations from "@components/home/featured-locations.astro";
 import AlternatingFeature from "@components/home/alternating-feature";
 import FeaturedServers from "@components/home/featured-servers.astro";
 import BannerGrid from "@components/home/banner-grid.astro";
@@ -39,7 +39,7 @@ const pageData = await getEntry("pages", "home");
       <TenYears />
 
       <ContainerBorder variant='dark' className='pb-24 px-4'>
-        <Video />
+        <Video client:only data={pageData?.data?.video} />
       </ContainerBorder>
     </div>
     <div class='w-full'>
@@ -47,7 +47,7 @@ const pageData = await getEntry("pages", "home");
       <ContainerBorder
         className='flex-col py-24 sm:py-32 px-4 md:px-10 lg:flex-row items-center justify-center gap-y-16 gap-x-8'
       >
-        <FeaturedLocations client:visible />
+        <FeaturedLocations />
       </ContainerBorder>
       <ContainerBorder
         className='pb-24 sm:pb-32 px-4 md:px-10 gap-16 lg:gap-24'
