@@ -1,8 +1,21 @@
+---
+import { getEntry } from "astro:content";
+const pageData = await getEntry("settings", "banner");
+
+const link = pageData?.data?.link;
+---
+
 <div class='bg-primaryRed px-4 py-6 w-full text-center relative'>
   <div
     class='select-none absolute top-0 left-0 w-full h-full opacity-60 bg-square-pattern'
   >
   </div>
 
-  <p class='text-white'>Banner text</p>
+  <a
+    href={link?.isExternal?.value}
+    target={link?.isExternal?.discriminant ? "_blank" : undefined}
+    class='text-lg text-white relative underline decoration-white underline-offset-4'
+  >
+    {link?.linkText}
+  </a>
 </div>

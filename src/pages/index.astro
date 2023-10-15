@@ -8,14 +8,16 @@ import RootLayout from "@layouts/root.astro";
 import TenYears from "@components/home/ten-years.astro";
 import Video from "@components/home/video";
 import ContainerBorder from "@components/container-border.astro";
-import Testimonials from "@components/home/testimonials";
+import Testimonials from "@components/home/testimonials.astro";
 import FeaturedLocations from "@components/home/featured-locations.astro";
-import AlternatingFeature from "@components/home/alternating-feature";
+import AlternatingFeature from "@components/home/alternating-feature.astro";
 import FeaturedServers from "@components/home/featured-servers.astro";
 import BannerGrid from "@components/home/banner-grid.astro";
 
 import { getEntry } from "astro:content";
 const pageData = await getEntry("pages", "home");
+
+import thumbnail from "../assets/pages/home/video/thumbnail.jpg";
 ---
 
 <RootLayout>
@@ -36,10 +38,13 @@ const pageData = await getEntry("pages", "home");
       >
         <FeaturedServers data={pageData?.data?.featuredServers} />
       </ContainerBorder>
-      <TenYears />
-
+      <TenYears data={pageData?.data?.video} />
       <ContainerBorder variant='dark' className='pb-24 px-4'>
-        <Video client:only data={pageData?.data?.video} />
+        <Video
+          client:only
+          importedUrl={thumbnail}
+          data={pageData?.data?.video}
+        />
       </ContainerBorder>
     </div>
     <div class='w-full'>
@@ -47,14 +52,14 @@ const pageData = await getEntry("pages", "home");
       <ContainerBorder
         className='flex-col py-24 sm:py-32 px-4 md:px-10 lg:flex-row items-center justify-center gap-y-16 gap-x-8'
       >
-        <FeaturedLocations />
+        <FeaturedLocations data={pageData?.data?.featuredLocations} />
       </ContainerBorder>
       <ContainerBorder
         className='pb-24 sm:pb-32 px-4 md:px-10 gap-16 lg:gap-24'
       >
-        <AlternatingFeature client:visible />
+        <AlternatingFeature data={pageData?.data?.alternatingFeatures} />
       </ContainerBorder>
     </div>
-    <Testimonials client:visible />
+    <Testimonials data={pageData?.data?.testimonials} />
   </main>
 </RootLayout>

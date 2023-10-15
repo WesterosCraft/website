@@ -3,6 +3,8 @@ import { fields } from "@keystatic/core";
 // Single link
 export const link = fields.object({
   linkText: fields.text({ label: "Link Text" }),
+  linkAltText: fields.text({ label: "Link Alt Text" }),
+  linkDescription: fields.text({ label: "Link Description" }),
   isExternal: fields.conditional(
     // First, we define a checkbox to drive the yes/no condition
     fields.checkbox({

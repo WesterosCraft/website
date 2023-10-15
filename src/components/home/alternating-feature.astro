@@ -1,0 +1,62 @@
+---
+import { AspectRatio } from "@components/ui/aspect-ratio";
+import {
+  TypographyH2,
+  // TypographyH3,
+  TypographyP,
+} from "@components/typography";
+import { Button } from "@components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { Image } from "astro:assets";
+
+const { data } = Astro.props;
+
+const images = import.meta.glob(
+  "../../assets/pages/home/alternatingFeatures/features/*/*"
+);
+
+const getDirection = (i: number) =>
+  i % 2 === 0
+    ? "flex-col-reverse lg:flex-row"
+    : "flex-col-reverse lg:flex-row-reverse";
+---
+
+{
+  data?.features.map((feat, index) => (
+    <div class={`flex ${getDirection(index)} gap-0 lg:gap-12`}>
+      <div class='w-full overflow-hidden'>
+        <div class='max-h-[280px] lg:max-h-[400px] pointer-events-none'>
+          <AspectRatio ratio={16 / 9}>
+            <Image
+              src={images[`../../assets/pages/home/${feat?.image}`]()}
+              alt={feat.subheading}
+              width={770}
+              height={400}
+              alt={feat?.heading || ""}
+            />
+          </AspectRatio>
+        </div>
+      </div>
+      <div class='lg:w-[32rem] md:mx-8 lg:mx-0 md:px-8 lg:px-0 py-6 md:py-8 lg:py-12'>
+        <div class='flex flex-col gap-8 lg:gap-10'>
+          <div class='flex flex-col gap-2 lg:gap-4'>
+            <div>
+              <TypographyH2>{feat.heading}</TypographyH2>
+            </div>
+            <div>
+              <TypographyP>{feat.description}</TypographyP>
+            </div>
+          </div>
+          <div>
+            <Button
+              variant='link'
+              className='p-0 text-lg text-primaryRed hover:text-red-800 hover:fill-red-800'
+            >
+              {feat.link?.linkText} <ArrowRight />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))
+}

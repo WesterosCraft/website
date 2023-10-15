@@ -1,3 +1,4 @@
+import { link, links } from "./../fields/links";
 import { featuredServers } from "./../fields/featured-servers";
 import { bannerGrid } from "../fields/banner-grid";
 import { animatedHeader } from "../fields/animated-header";
@@ -50,7 +51,61 @@ export const home = singleton({
           directory: "src/assets/pages/home",
         }),
       },
-      { label: "Video" }
+      { label: "Video Block" }
+    ),
+    featuredLocations: fields.object(
+      {
+        heading: fields.text({ label: "Heading" }),
+        highlight: fields.text({
+          label: "Highlight",
+          description: "Choose a portion of the heading string to highlight",
+        }),
+        description: fields.text({ label: "Description", multiline: true }),
+        links,
+        imageGrid: fields.array(
+          fields.image({
+            label: "Image",
+            directory: "src/assets/pages/home",
+          }),
+          {
+            label: "Image Grid",
+          }
+        ),
+      },
+      { label: "Featured Locations Block" }
+    ),
+    alternatingFeatures: fields.object(
+      {
+        features: fields.array(
+          fields.object({
+            heading: fields.text({ label: "Heading" }),
+            description: fields.text({ label: "Description", multiline: true }),
+            link,
+            image: fields.image({
+              label: "Image",
+              directory: "src/assets/pages/home",
+            }),
+          })
+        ),
+      },
+      {
+        label: "Alternating Features Block",
+        itemLabel: (props) => "Feature: " + props?.fields?.heading?.value,
+      }
+    ),
+    testimonials: fields.array(
+      fields.object(
+        {
+          quote: fields.text({ label: "Quote", multiline: true }),
+          author: fields.text({ label: "Author" }),
+          source: fields.text({ label: "Source" }),
+        },
+        { label: "Testimonial" }
+      ),
+      {
+        label: "Testimonials Block",
+        itemLabel: (props) => "Quote: " + props?.fields?.author?.value,
+      }
     ),
   },
 });

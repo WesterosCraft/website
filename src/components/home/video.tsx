@@ -5,6 +5,7 @@ import { AspectRatio } from "@components/ui/aspect-ratio";
 import { Play } from "lucide-react";
 
 interface VideoProps {
+  importedUrl?: any;
   data: {
     thumbnail?: string;
     videoUrl?: string;
@@ -13,7 +14,7 @@ interface VideoProps {
 
 const Video = (props: VideoProps) => {
   const [isPlaying, setPlaying] = useState(false);
-  const { data } = props;
+  const { data, importedUrl } = props;
 
   return (
     <div className='flex h-full w-full overflow-hidden mx-auto max-w-3xl'>
@@ -47,7 +48,7 @@ const Video = (props: VideoProps) => {
         >
           <AspectRatio ratio={16 / 9} className='max-h-[480px]'>
             <img
-              src={`../../src/assets/pages/home/${data?.thumbnail}` || ""}
+              src={importedUrl.src}
               width={768}
               height={432}
               alt='Youtube Video'

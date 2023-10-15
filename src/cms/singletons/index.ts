@@ -4,3 +4,4 @@ export * from "./main-nav";
 export * from "./footer";
 export * from "./about";
 export * from "./join";
+export * from "./banner";

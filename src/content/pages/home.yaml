@@ -1,10 +1,10 @@
 hero:
   sliderImages:
-    - image: hero/sliderImages/0/image.webp
+    - image: hero/sliderImages/0/image.jpg
       alt: King's Landing
-    - image: hero/sliderImages/1/image.webp
+    - image: hero/sliderImages/1/image.jpg
       alt: Pyke
-    - image: hero/sliderImages/2/image.webp
+    - image: hero/sliderImages/2/image.jpg
       alt: Winterfell
   heading: EXPLORE THE WORLD OF
   highlighted: Westeros Inside Minecraft
@@ -72,3 +72,73 @@ video:
     largest and most detailed Minecraft worlds ever built.
   videoUrl: https://www.youtube.com/watch?v=fO_eKusKH60
   thumbnail: video/thumbnail.jpg
+featuredLocations:
+  heading: Over 400 locations to discover
+  highlight: 400 locations
+  description: >-
+    Our community is well on our way to having a fully explorable map. You can
+    keep up with our progress in game anytime, or start exploring our expansive
+    Wiki.
+  links:
+    - linkText: Read More
+      linkAltText: Locations
+      linkDescription: View a single comprehensive list of every build we have to offer.
+      isExternal:
+        discriminant: false
+    - linkText: Read More
+      linkAltText: Guides
+      linkDescription: View in depth guides on how to explore and play on our server.
+      isExternal:
+        discriminant: false
+    - linkAltText: Blocks
+      linkDescription: Check out a repository of all our custom designed blocks.
+      isExternal:
+        discriminant: false
+  imageGrid:
+    - featuredLocations/imageGrid/0.jpg
+    - featuredLocations/imageGrid/1.jpg
+    - featuredLocations/imageGrid/2.jpg
+    - featuredLocations/imageGrid/3.jpg
+alternatingFeatures:
+  features:
+    - heading: Tour Westeros from your browser
+      description: >-
+        View our custom live map of our server, with high resolution details a
+        zoom away.
+      link:
+        linkText: View the Map
+        isExternal:
+          discriminant: true
+          value: https://mc.westeroscraft.com/
+      image: alternatingFeatures/features/0/image.webp
+    - heading: Keep up with the community
+      description: >-
+        The Rookery is a community created magazine that details all the latest
+        happenings in the realm of WesterosCraft. Keep up to date with the
+        server!
+      link:
+        linkText: Read the Rookery
+        isExternal:
+          discriminant: false
+      image: alternatingFeatures/features/1/image.webp
+testimonials:
+  - quote: >-
+      There’s a map of it in each book, but the scale is just mind-boggling.
+      It’s 650 miles just from Castle Black to Winterfell, let alone all the way
+      to King’s Landing (2110 miles). And they don’t even have cars!
+    author: Alex Wiltshire
+    source: Mojang Publishing Editor
+  - quote: >-
+      It's hard to watch videos from Westeroscraft—the stunningly ambitious
+      project to re-create the entire world of Game of Thrones in Minecraft—and
+      not be impressed.
+    author: Jason Schreier
+    source: Bloomberg Journalist
+  - quote: >-
+      WesterosCraft is, undeniably, a tremendous accomplishment, but not simply
+      as a vast, intricate model or simulacrum of someone else’s world. Rather,
+      it is an immense act of creativity in its own right, a story built upon a
+      story that the WesterosCraft community is telling together, block by
+      block.
+    author: Laura Hudson
+    source: Wired Senior Editor
