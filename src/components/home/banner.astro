@@ -1,11 +1,14 @@
 ---
 import { getEntry } from "astro:content";
 const pageData = await getEntry("settings", "banner");
+import { ArrowRight } from "lucide-react";
 
 const link = pageData?.data?.link;
 ---
 
-<div class='bg-primaryRed px-4 py-6 w-full text-center relative'>
+<div
+  class='bg-primaryRed px-4 py-6 w-full text-center relative flex flex-row gap-2 items-center justify-center'
+>
   <div
     class='select-none absolute top-0 left-0 w-full h-full opacity-60 bg-square-pattern'
   >
@@ -14,8 +17,9 @@ const link = pageData?.data?.link;
   <a
     href={link?.isExternal?.value}
     target={link?.isExternal?.discriminant ? "_blank" : undefined}
-    class='text-lg text-white relative underline decoration-white underline-offset-4'
+    class='text-lg text-white relative'
   >
     {link?.linkText}
   </a>
+  <ArrowRight color='white' size='24' />
 </div>

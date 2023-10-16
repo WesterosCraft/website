@@ -1,11 +1,13 @@
 ---
+import type { ImageMetadata } from "astro";
 import ContainerBorder from "./container-border.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   title: string;
   copy: string;
   borderBottom?: boolean;
-  bannerUrl?: string;
+  bannerUrl?: ImageMetadata;
 }
 
 const { title, copy, borderBottom = false, bannerUrl } = Astro.props;
@@ -19,8 +21,10 @@ const { title, copy, borderBottom = false, bannerUrl } = Astro.props;
       >
         {
           bannerUrl && (
-            <img
+            <Image
               class='w-[100px] md:w-[120px]'
+              width={120}
+              height={240}
               alt='Banner'
               src={bannerUrl || ""}
             />

@@ -85,12 +85,14 @@ export const home = singleton({
               label: "Image",
               directory: "src/assets/pages/home",
             }),
-          })
+          }),
+          {
+            itemLabel: (props) => "Feature: " + props?.fields?.heading?.value,
+          }
         ),
       },
       {
         label: "Alternating Features Block",
-        itemLabel: (props) => "Feature: " + props?.fields?.heading?.value,
       }
     ),
     testimonials: fields.array(
