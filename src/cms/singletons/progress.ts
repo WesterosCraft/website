@@ -1,5 +1,5 @@
-import { link } from "./../fields/links";
 import { fields, singleton } from "@keystatic/core";
+import { link } from "./../fields/links";
 
 export const progress = singleton({
   label: "Progress Page",
