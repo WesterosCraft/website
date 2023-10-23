@@ -1,3 +1,9 @@
+heading: The Rookery
+subheading: >-
+  The Rookery is a community created magazine that details all the latest
+  happenings in the realm of WesterosCraft. Check in to keep up to date with the
+  server! Sent once a quarter.
+banner: banner.png
 editions:
   - title:
       name: Summer 2019
@@ -106,3 +112,7 @@ editions:
     link:
       url: https://indd.adobe.com/view/dc69bb24-d702-4116-a556-d97cb1e04ff8
       isExternal: true
+cta:
+  link:
+    isExternal:
+      discriminant: false

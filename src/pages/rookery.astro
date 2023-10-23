@@ -5,44 +5,45 @@ import { TypographyH2, TypographyH4 } from "@components/typography";
 import { Button } from "@components/ui/button";
 import PageHeader from "@components/page-header.astro";
 import { getEntry } from "astro:content";
+import bannerImage from "../assets/pages/rookery/banner.png";
 
 const pageData = await getEntry("pages", "rookery");
 ---
 
-<RootLayout title="The Rookery">
-  <div class="flex flex-col w-full">
+<RootLayout title='The Rookery'>
+  <div class='flex flex-col w-full'>
     <PageHeader
-      title="The Rookery"
-      copy="The Rookery is a community created magazine that details all the latest happenings in the realm of WesterosCraft. Check in to keep up to date with the server! Sent once a quarter."
-      bannerUrl="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F60b1d773247ee7c940ffff21ada1c8912b36b1bf-180x360.png&w=256&q=75"
+      title='The Rookery'
+      copy='The Rookery is a community created magazine that details all the latest happenings in the realm of WesterosCraft. Check in to keep up to date with the server! Sent once a quarter.'
+      bannerUrl={bannerImage}
     />
 
-    <div class="w-full bg-primaryDark">
-      <ContainerBorder variant="dark" className="py-24 sm:py-32 px-4">
-        <div class="flex justify-center items-center w-full max-w-5xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-0">
+    <div class='w-full bg-primaryDark'>
+      <ContainerBorder variant='dark' className='py-24 sm:py-32 px-4'>
+        <div class='flex justify-center items-center w-full max-w-5xl mx-auto'>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-0'>
             <img
               width={512}
               height={650}
-              src="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F0e3f719e0c4a625924d00cbb19e2ffd118a5c74c-758x956.png&w=640&q=75"
+              src='https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2F0e3f719e0c4a625924d00cbb19e2ffd118a5c74c-758x956.png&w=640&q=75'
               alt={"Latest Rookery Edition"}
             />
             <div
-              class="flex flex-col gap-10 justify-center items-center text-white"
+              class='flex flex-col gap-10 justify-center items-center text-white'
             >
-              <div class="text-center">
+              <div class='text-center'>
                 <TypographyH2>Latest Edition</TypographyH2>
-                <TypographyH4 className="mt-4">Spring 2023</TypographyH4>
+                <TypographyH4 className='mt-4'>Spring 2023</TypographyH4>
               </div>
               <div>
                 <a
-                  href="https://indd.adobe.com/view/f943da18-ed77-4d55-845d-fee9bfa14247"
-                  target="_blank"
-                  rel="noreferrer"
+                  href='https://indd.adobe.com/view/f943da18-ed77-4d55-845d-fee9bfa14247'
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   <Button
-                    size="lg"
-                    className="bg-white text-primaryDark font-semibold rounded-none text-md hover:bg-primaryRed hover:text-white"
+                    size='lg'
+                    className='bg-white text-primaryDark font-semibold rounded-none text-md hover:bg-primaryRed hover:text-white'
                   >
                     Read It
                   </Button>
@@ -53,29 +54,29 @@ const pageData = await getEntry("pages", "rookery");
         </div>
       </ContainerBorder>
     </div>
-    <ContainerBorder className="pt-14 pb-8 px-4 border border-b">
-      <div class="flex flex-col justify-center items-center">
+    <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
+      <div class='flex flex-col justify-center items-center'>
         <TypographyH2>Past Editions</TypographyH2>
       </div>
     </ContainerBorder>
     <div>
-      <ContainerBorder className="py-16 sm:py-20 px-4 items-center">
-        <div class="grid gap-y-12 gap-x-6 grid-cols-2 lg:grid-cols-3 w-full">
+      <ContainerBorder className='py-16 sm:py-20 px-4 items-center'>
+        <div class='grid gap-y-12 gap-x-6 grid-cols-2 lg:grid-cols-3 w-full'>
           {
             pageData?.data?.editions?.reverse()?.map((edition: any) => (
-              <div class="flex flex-col gap-3 items-center justify-center">
+              <div class='flex flex-col gap-3 items-center justify-center'>
                 <img
                   width={336}
                   height={435}
-                  src="https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2Fc449aec7ab3e0091e047d1898df4e64d5e07dd8b-2550x3300.png&w=750&q=75"
+                  src='https://westeroscraft.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F1as7cn02%2Fproduction%2Fc449aec7ab3e0091e047d1898df4e64d5e07dd8b-2550x3300.png&w=750&q=75'
                   alt={edition?.title?.name || "Rookery edition"}
                 />
-                <div class="flex max-w-[336px] flex-row w-full justify-between">
+                <div class='flex max-w-[336px] flex-row w-full justify-between'>
                   <TypographyH4>{edition?.title?.name}</TypographyH4>
                   <a
-                    class="font-medium underline decoration-primaryRed underline-offset-4"
+                    class='font-medium underline decoration-primaryRed underline-offset-4'
                     href={edition?.link?.url || ""}
-                    target="_blank"
+                    target='_blank'
                   >
                     Read Edition
                   </a>
