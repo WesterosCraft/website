@@ -124,7 +124,9 @@ ${`\n`}
 ${`${
   location.body
     ? toMarkdown(location.body, { serializers })
-    : `{% callout %} No content yet! {% /callout %}`
+    : `{% callout %}
+No content yet!
+{% /callout %}`
 }`}
 ${`\n`}`;
 
