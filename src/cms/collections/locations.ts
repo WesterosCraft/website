@@ -76,13 +76,9 @@ export const locations = collection({
       publicPath: "/assets/banners/",
     }),
     locationImages: fields.array(
-      fields.image({
-        label: "Banner",
-        description: "A banner associated with the location",
-        directory: "src/assets/banners",
-        publicPath: "/assets/banners/",
+      fields.cloudImage({
+        label: "Image",
       }),
-      // Labelling options
       {
         label: "Images",
         description: "Screenshots of the build",

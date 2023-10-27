@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "convert-locations": "ts-node --esm scripts/convert-location.ts",
-    "convert-guides": "ts-node --esm scripts/convert-guide.ts"
+    "convert-guides": "ts-node --esm scripts/convert-guide.ts",
+    "add-images": "ts-node --esm scripts/add-images.ts"
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.5.2",
