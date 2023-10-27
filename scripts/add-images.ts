@@ -12,6 +12,7 @@ async function processFiles() {
       const subdirs = await fs.readdir(search_dir);
 
       for (const subdir of subdirs) {
+        // location images
         if (subdir === new_key) {
           console.log(`${subdir} | ${new_key}`);
           const full_path = `${search_dir}/${subdir}/index.mdoc`;
@@ -24,31 +25,54 @@ async function processFiles() {
             // Extract the block and modify it
             const block = fileContent.substring(startBlockPos, endBlockPos);
 
-            // Check if locationImages property already exists in the block
-            if (block.includes("locationImages")) {
-              // Append new src instead of overwriting the property
-              const modifiedBlock = block.replace(
-                /(\s+- src: >-\s+(.+)\r?\n)+/g,
-                `$&  - src: >-\n      https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/${results[key]}\n` // Add the new src
-              );
-              const modifiedContent = fileContent.replace(block, modifiedBlock);
-
-              await fs.writeFile(full_path, modifiedContent, "utf-8");
-              console.log(`Appended a src to ${full_path}`);
-            } else {
-              // Modify the block by adding a new line before the closing "---"
+            // Check if the key contains the string "banner"
+            if (key.includes("banner")) {
+              // Modify the block by adding a new banner prop instead of locationImages
               const lastDashIndex = block.lastIndexOf("---");
               const modifiedBlock =
                 block.substring(0, lastDashIndex) +
-                `locationImages:\n` +
-                `  - src: >-\n` +
-                `      https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/${results[key]}` +
+                `bannerImage:\n` +
+                `  src: >-\n` +
+                `    https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/${results[key]}` +
                 "\n" +
                 block.substring(lastDashIndex);
 
               const modifiedContent = fileContent.replace(block, modifiedBlock);
               await fs.writeFile(full_path, modifiedContent, "utf-8");
-              console.log(`Added a line to ${full_path}`);
+              console.log(`Added a banner prop to ${full_path}`);
+            } else {
+              // Check if locationImages property already exists in the block
+              if (block.includes("locationImages")) {
+                // Append new src instead of overwriting the property
+                const modifiedBlock = block.replace(
+                  /(\s+- src: >-\s+(.+)\r?\n)+/g,
+                  `$&  - src: >-\n      https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/${results[key]}\n` // Add the new src
+                );
+                const modifiedContent = fileContent.replace(
+                  block,
+                  modifiedBlock
+                );
+
+                await fs.writeFile(full_path, modifiedContent, "utf-8");
+                console.log(`Appended a src to ${full_path}`);
+              } else {
+                // Modify the block by adding a new line before the closing "---"
+                const lastDashIndex = block.lastIndexOf("---");
+                const modifiedBlock =
+                  block.substring(0, lastDashIndex) +
+                  `locationImages:\n` +
+                  `  - src: >-\n` +
+                  `      https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/${results[key]}` +
+                  "\n" +
+                  block.substring(lastDashIndex);
+
+                const modifiedContent = fileContent.replace(
+                  block,
+                  modifiedBlock
+                );
+                await fs.writeFile(full_path, modifiedContent, "utf-8");
+                console.log(`Added a line to ${full_path}`);
+              }
             }
           } catch (err) {
             console.log(`Error modifying file ${full_path}: ${err}`);
@@ -65,3 +89,9 @@ async function processFiles() {
 processFiles().catch((err) => {
   console.error(err);
 });
+
+// bannerImage:
+//   src: >-
+//     https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/sjd596vsh58g/antlers-banner
+//   height: 349
+//   width: 180

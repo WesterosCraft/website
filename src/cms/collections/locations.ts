@@ -69,11 +69,9 @@ export const locations = collection({
     dateCompleted: fields.date({
       label: "Date Completed",
     }),
-    bannerImage: fields.image({
+    bannerImage: fields.cloudImage({
       label: "Banner",
       description: "A banner associated with the location",
-      directory: "src/assets/banners",
-      publicPath: "/assets/banners/",
     }),
     locationImages: fields.array(
       fields.cloudImage({
