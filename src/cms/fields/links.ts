@@ -15,9 +15,8 @@ export const link = fields.object({
     {
       true: fields.url({ label: "External Link" }),
       // Empty fields are useful to show... no fields!
-      false: fields.relationship({
+      false: fields.url({
         label: "Internal Link",
-        collection: "locations",
       }),
     }
   ),

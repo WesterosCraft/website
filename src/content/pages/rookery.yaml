@@ -5,113 +5,155 @@ subheading: >-
   server! Sent once a quarter.
 banner: banner.png
 editions:
-  - title:
+  - isLatest: false
+    title:
       name: Summer 2019
       slug: summer-2019
     link:
       url: >-
         https://indd.adobe.com/view/49a2ff86-2ea8-4d41-8380-0e5f75ab614f?fbclid=IwAR0tgCtvMXlEURaCq3xxky3VOL7ZlpOfOb9_i0HjQplGayrg9dlYTFh37jU
       isExternal: true
-  - title:
+    thumbnail: editions/0/thumbnail.webp
+  - isLatest: false
+    title:
       name: Autumn 2019
       slug: autumn-2019
     link:
       url: >-
         https://indd.adobe.com/view/ce951323-9abb-4d0d-bf98-2ff3910cef07?fbclid=IwAR3mj1l5OCPBPy5RLDrDlPL2Kv5hXZZ_cCHz_m49urr2UXWDDHTes332kw8
       isExternal: true
-  - title:
+    thumbnail: editions/1/thumbnail.webp
+  - isLatest: false
+    title:
       name: Winter 2019
       slug: winter-2019
     link:
       url: >-
         https://indd.adobe.com/view/08157a98-26da-41e7-844a-a386ed1f3087?fbclid=IwAR3Wbv_Xk02iWzsqht3gp-PjQa6SmflAWEY99rczG-4RXsYGXtKg0t578pI
       isExternal: true
-  - title:
+    thumbnail: editions/2/thumbnail.webp
+  - isLatest: false
+    title:
       name: Spring 2020
       slug: spring-2020
     link:
       url: >-
         https://indd.adobe.com/embed/5391517f-bf44-4f1c-a901-5f1cf437bfdd?startpage=1&allowFullscreen=true
       isExternal: true
-  - title:
+    thumbnail: editions/3/thumbnail.webp
+  - isLatest: false
+    title:
       name: Summer 2020
       slug: summer-2020
     link:
       url: https://indd.adobe.com/view/d9c52680-83aa-471e-b630-5ff31db2b858
       isExternal: true
-  - title:
+    thumbnail: editions/4/thumbnail.webp
+  - isLatest: false
+    title:
       name: Autumn 2020
       slug: autumn-2020
     link:
       url: >-
         https://indd.adobe.com/embed/573ca155-4be5-4d6d-bdf0-106744328ca6?startpage=1&allowFullscreen=true
       isExternal: true
-  - title:
+    thumbnail: editions/5/thumbnail.webp
+  - isLatest: false
+    title:
       name: Winter 2020
       slug: winter-2020
     link:
       url: https://indd.adobe.com/view/299604a1-296f-485b-b541-d1bf588c5ccc
       isExternal: true
-  - title:
+    thumbnail: editions/6/thumbnail.webp
+  - isLatest: false
+    title:
       name: Spring 2021
       slug: spring-2021
     link:
       url: https://indd.adobe.com/view/35428d90-4a23-4ae3-8554-d69918b4a81b
       isExternal: true
-  - title:
+    thumbnail: editions/7/thumbnail.webp
+  - isLatest: false
+    title:
       name: Summer 2021
       slug: summer-2021
     link:
       url: https://indd.adobe.com/view/7ca1803d-766c-42c2-99da-9c8932c837b7
       isExternal: true
-  - title:
+    thumbnail: editions/8/thumbnail.webp
+  - isLatest: false
+    title:
       name: Autumn 2021
       slug: autumn-2021
     link:
       url: https://indd.adobe.com/view/0a8bbb64-7ac0-47dd-9412-d4e215572ffa
       isExternal: true
-  - title:
+    thumbnail: editions/9/thumbnail.webp
+  - isLatest: false
+    title:
       name: Winter 2021
       slug: winter-2021
     link:
       url: https://indd.adobe.com/view/79891690-54d2-45c3-a86a-bf2904f72810
       isExternal: true
-  - title:
+    thumbnail: editions/10/thumbnail.webp
+  - isLatest: false
+    title:
       name: Spring 2022
       slug: spring-2022
     link:
       url: https://indd.adobe.com/view/b11878b0-2c48-4c2c-91d0-e8a4267b8942
       isExternal: true
-  - title:
+    thumbnail: editions/11/thumbnail.webp
+  - isLatest: false
+    title:
       name: Summer 2022
       slug: summer-2022
     link:
       url: https://indd.adobe.com/view/2302ed4d-914e-4563-be7b-7ea9bfe0f55d
       isExternal: true
-  - title:
+    thumbnail: editions/12/thumbnail.webp
+  - isLatest: false
+    title:
       name: Autumn 2022
       slug: autumn-2022
     link:
       url: https://indd.adobe.com/view/fec7fe5c-a506-49de-9714-f45e54ee2ea0
       isExternal: true
-  - title:
+    thumbnail: editions/13/thumbnail.webp
+  - isLatest: false
+    title:
       name: Winter 2022
       slug: winter-2022
     link:
       url: https://indd.adobe.com/view/45a8487f-b439-4688-a807-b889a4631e00
       isExternal: true
-  - title:
+    thumbnail: editions/14/thumbnail.webp
+  - isLatest: false
+    title:
       name: Spring 2023
       slug: spring-2023
     link:
       url: https://indd.adobe.com/view/f943da18-ed77-4d55-845d-fee9bfa14247
       isExternal: true
-  - title:
+    thumbnail: editions/15/thumbnail.webp
+  - isLatest: false
+    title:
       name: Summer 2023
       slug: summer-2023
     link:
       url: https://indd.adobe.com/view/dc69bb24-d702-4116-a556-d97cb1e04ff8
       isExternal: true
+    thumbnail: editions/16/thumbnail.webp
+  - isLatest: true
+    title:
+      name: Autumn 2023
+      slug: autumn-2023
+    link:
+      url: https://indd.adobe.com/view/3ff9e5f7-fdc5-46b8-9247-7ffa333598b4
+      isExternal: true
+    thumbnail: editions/17/thumbnail.png
 cta:
   link:
     isExternal:

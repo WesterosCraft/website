@@ -17,7 +17,8 @@ hero:
     - buttonText: Explore Westeros
       buttonType: primary
       isExternal:
-        discriminant: false
+        discriminant: true
+        value: /join
 animatedHeader1: Start Your Journey
 bannerGrid:
   bannerHeading: >-
@@ -53,7 +54,16 @@ featuredServers:
       description: >-
         Get started exploring Westeros and see the building process happen for
         yourself!
-      links: []
+      links:
+        - linkText: Get the Modpack
+          isExternal:
+            discriminant: false
+            value: /join
+        - linkText: Apply to Build
+          isExternal:
+            discriminant: true
+            value: >-
+              https://forum.westeroscraft.com/form/builder-application-form.3/select
     - icon: featuredServers/items/1/icon.png
       subheading: Hang Out
       description: >-
@@ -85,11 +95,13 @@ featuredLocations:
       linkDescription: View a single comprehensive list of every build we have to offer.
       isExternal:
         discriminant: false
+        value: /wiki/locations
     - linkText: Read More
       linkAltText: Guides
       linkDescription: View in depth guides on how to explore and play on our server.
       isExternal:
         discriminant: false
+        value: /wiki/guides
     - linkAltText: Blocks
       linkDescription: Check out a repository of all our custom designed blocks.
       isExternal:
@@ -120,6 +132,7 @@ alternatingFeatures:
         linkText: Read the Rookery
         isExternal:
           discriminant: false
+          value: /rookery
       image: alternatingFeatures/features/1/image.webp
 testimonials:
   - quote: >-

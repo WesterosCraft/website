@@ -13,6 +13,11 @@ export const rookery = singleton({
     }),
     editions: fields.array(
       fields.object({
+        isLatest: fields.checkbox({
+          label: "Is Latest Edition?",
+          description:
+            "Mark true if its the most recent Rookery edition. Be sure to unmark others as 'false'.",
+        }),
         title: fields.slug({
           name: {
             label: "Title",

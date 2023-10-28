@@ -48,12 +48,19 @@ const getDirection = (i: number) =>
             </div>
           </div>
           <div>
-            <Button
-              variant='link'
-              className='p-0 text-lg text-primaryRed hover:text-red-800 hover:fill-red-800'
+            <a
+              href={feat?.link?.isExternal?.value}
+              target={
+                feat?.link?.isExternal?.discriminant ? "_blank" : undefined
+              }
             >
-              {feat.link?.linkText} <ArrowRight />
-            </Button>
+              <Button
+                variant='link'
+                className='p-0 text-lg text-primaryRed hover:text-red-800 hover:fill-red-800'
+              >
+                {feat.link?.linkText} <ArrowRight />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
