@@ -5,6 +5,8 @@ import { getEntry } from "astro:content";
 import "@fontsource/karla";
 import PageSeo from "@components/page-seo.astro";
 
+import "../styles/globals.css";
+
 const navigation = await getEntry("pages", "mainNav");
 
 const { title, description, ogTitle, ogType, ogImage, ogUrl } =

@@ -1,0 +1,31 @@
+---
+import RootLayout from "@layouts/root.astro";
+
+const { title, description, ogTitle, ogType, ogImage, ogUrl } =
+  Astro.props.frontmatter || Astro.props;
+---
+
+<RootLayout
+  title={title}
+  description={description}
+  ogTitle={ogTitle}
+  ogType={ogType}
+  ogImage={ogImage}
+  ogUrl={ogUrl}
+>
+  <div
+    class='max-w-8xl mx-auto sm:px-2 lg:px-8 xl:px-12 w-full flex flex-col flex-grow'
+  >
+    <div class='desktop-layout hidden md:grid grid-cols-8'>
+      <div class='sticky top-0 self-start col-span-3 pr-8 lg:pr-12 py-6 pl-6'>
+        <slot name='project-details' />
+      </div>
+      <div
+        class='col-span-5 border-l overflow-auto pt-8 pb-12 pl-8 lg:pl-12 pr-6'
+      >
+        <slot name='location-content' />
+      </div>
+    </div>
+    <div class='mobile-layout md:hidden'></div>
+  </div>
+</RootLayout>

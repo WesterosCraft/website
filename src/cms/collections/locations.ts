@@ -10,6 +10,10 @@ export const locations = collection({
   format: { contentField: "content" },
   schema: {
     title: fields.slug({ name: { label: "Title" } }),
+    description: fields.text({
+      label: "Description",
+      description: "A short description of the location",
+    }),
     region: fields.select({
       label: "Region",
       description: "The region of Westeros the location is in",

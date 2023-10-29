@@ -11,14 +11,20 @@ import {
 import { Button } from "@components/ui/button";
 import PageHeader from "@components/page-header.astro";
 import GuideCard from "@components/guide-card.astro";
+import { getEntry } from "astro:content";
+
+const pageData = await getEntry("pages", "join");
+import bannerImage from "../assets/pages/join/banner.png";
 ---
 
 <RootLayout title='Join WesterosCraft'>
   <div class='flex flex-col w-full'>
     <PageHeader
       borderBottom
-      title='Join the Watch'
-      copy='We have several different ways to start exploring the server and have compiled guides on all the suggested ways below! Be sure to read the guides in full.'
+      title={pageData?.data?.heading || "Join the Watch"}
+      copy={pageData?.data?.subheading ||
+        "We have several different ways to start exploring the server and have compiled guides on all the suggested ways below! Be sure to read the guides in full."}
+      bannerUrl={bannerImage}
     />
     <div class='w-full'>
       <ContainerBorder variant='light' className='py-24 sm:py-32'>
@@ -29,23 +35,31 @@ import GuideCard from "@components/guide-card.astro";
             <TypographyH2 className='text-primaryRed'>
               Getting Started
             </TypographyH2>
-            <TypographyH4 className='mt-6'>
-              WesterosCraft uses several mods and plugins to aid our realistic
-              and book accurate version of Westeros. In order to get you in the
-              server and exploring what we've built so far as easy as possible,
-              we've compiled several ways you can get the mods and plugins you
-              need to be able to connect below. Be sure to read the guides
-              thoroughly, and if you need any help, feel free to check out the
-              tech support forum or the #techsupport Discord channel!
-            </TypographyH4>
+            <p class='mt-6 font-medium text-xl'>
+              <b>WesterosCraft</b> uses several mods to aid our realistic and
+              book accurate version of Westeros. <br /><br /> In order to get
+              you in the server and exploring what we've built so far as easy as
+              possible, we've compiled several ways you can get the mods you
+              need to be able to connect below.<br /><br />
+              <b>Be sure to read the guides thoroughly</b>, and if you need any
+              help, feel free to check out the tech support forum or the
+              <a
+                class='underline decoration-primaryRed'
+                href='https://discord.com/invite/pBS5TH4'
+                target='_blank'>#techsupport Discord channel</a
+              >!
+            </p>
             <div class='mt-6'>
-              <TypographyH3>Requirements</TypographyH3>
-              <ul>
+              <TypographyH3>Requirements To Play</TypographyH3>
+              <ul class='my-4 ml-6 list-disc [&>li]:mt-2'>
                 <li>A valid Java Minecraft account</li>
-                <li>Supports mod authors</li>
-                <li>Connected to central modpack repository</li>
-                <li>Built in mods manager</li>
-                <li>Auto java setup</li>
+                <li>At least 4gigs of RAM dedicated, preferably 6GB</li>
+                <li>
+                  Have read our <a class='underline decoration-primaryRed'
+                    >server rules</a
+                  >
+                </li>
+                <li>Access to our Discord</li>
               </ul>
             </div>
           </div>
@@ -62,7 +76,12 @@ import GuideCard from "@components/guide-card.astro";
         </div>
       </ContainerBorder>
       <ContainerBorder>
-        <div class='flex flex-row py-24 sm:py-32 justify-evenly items-center'>
+        <p class='max-w-2xl mx-auto text-center mt-6 font-medium text-xl mb-20'>
+          There are many ways to play modded Minecraft, and several launchers.
+          We've attempted to write brief guides on downloading the WesterosCraft
+          Modpack with them.
+        </p>
+        <div class='flex flex-row pb-24 sm:pb-32 justify-evenly items-center'>
           <GuideCard
             title='CurseForge Launcher'
             description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'

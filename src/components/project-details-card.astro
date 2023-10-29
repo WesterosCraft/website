@@ -1,6 +1,10 @@
 ---
 import { camel2title, titleizeASlug } from "@lib/utils";
 import dayjs from "dayjs";
+import { Button } from "@components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { TypographyH1 } from "@components/typography";
+import { Image } from "astro:assets";
 
 interface ProjectDetails {
   title: string;
@@ -15,22 +19,29 @@ interface ProjectDetails {
   dateCompleted: string;
   difficultyLevel: string;
   redoAvailable: boolean;
+  description: string;
   serverProject: boolean;
   dynmap?: string;
+  bannerImage?: {
+    src: string;
+    height: number;
+    width: number;
+  };
+  locationImages?: Array<{ src: string }>;
 }
 interface Props {
   projectDetails: ProjectDetails;
-  style?: string;
 }
 
-const { projectDetails, style } = Astro.props;
+const { projectDetails } = Astro.props;
 
 const items = [
   { name: "Region", value: camel2title(projectDetails?.region) },
-  { name: "Project Lead(s)", value: projectDetails?.projectLeads || "" },
   { name: "House", value: projectDetails?.house || "" },
+  { name: "Type", value: camel2title(projectDetails?.projectType) || "" },
   { name: "Status", value: titleizeASlug(projectDetails?.projectStatus) },
   { name: "Warp", value: projectDetails?.warp || "" },
+  { name: "Project Lead(s)", value: projectDetails?.projectLeads || "" },
   {
     name: "Date Started",
     value: dayjs(projectDetails?.dateStarted).format("MMMM D, YYYY") || "",
@@ -42,16 +53,67 @@ const items = [
 ];
 ---
 
-<div class={style}>
-  <p class="mb-4 text-md font-semibold tracking-tight">Project Details</p>
-  <ul>
-    {
-      items.map((item) => (
-        <li class="text-sm my-2 scroll-my-6 scroll-py-6">
-          <span class="font-medium">{item.name}</span>
-          {`: ${item.value}`}
-        </li>
-      ))
-    }
-  </ul>
+<div>
+  <div>
+    <a href='javascript: history.go(-1)'>
+      <Button
+        variant='link'
+        className='pl-0 hover:text-primaryRed no-underline hover:no-underline font-semibold'
+      >
+        <ArrowLeft size='18' className='mr-2' />
+         Back to Locations
+      </Button>
+    </a>
+  </div>
+  <div class='pt-8'>
+    <div class='flex flex-row justify-between gap-4'>
+      <div>
+        <TypographyH1 className='mb-4 tracking-wide'>
+          {projectDetails?.title}
+        </TypographyH1>
+        {
+          projectDetails?.description && (
+            <p class='text-lg'>{projectDetails?.description}</p>
+          )
+        }
+      </div>
+      {
+        projectDetails?.bannerImage?.src && (
+          <Image
+            src={projectDetails?.bannerImage?.src}
+            height={150}
+            width={75}
+            alt={`${projectDetails?.title} Banner`}
+          />
+        )
+      }
+    </div>
+    <div class='flex flex-row justify-between mt-8 mb-4'>
+      {
+        projectDetails?.dynmap && (
+          <a href={projectDetails?.dynmap} target='_blank'>
+            <Button>View On Map</Button>
+          </a>
+        )
+      }
+      {
+        projectDetails?.application && (
+          <a href={projectDetails?.application} target='_blank'>
+            <Button variant='outline'>View Application</Button>
+          </a>
+        )
+      }
+    </div>
+
+    <div class='divide-y'>
+      {
+        items?.map((item) => (
+          <div class='flex justify-between py-[10px] text-sm'>
+            <span class='font-semibold'>{item?.name}</span>
+            <div>{item?.value}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </div>

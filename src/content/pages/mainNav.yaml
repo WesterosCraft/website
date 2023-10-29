@@ -24,7 +24,7 @@ items:
       discriminant: true
       value:
         - text: Modpack
-          link: /modpack
+          link: /join
           description: Everything you need to join the server
           isExternal: false
         - text: Progress
@@ -39,18 +39,18 @@ items:
           link: /faq
           description: If you got a question, its probably answered
           isExternal: false
-  - text: Map
-    isDropdown:
-      discriminant: false
-      value:
-        link: http://mc.westeroscraft.com/
-        isExternal: true
   - text: Wiki
     isDropdown:
       discriminant: false
       value:
         link: /wiki
         isExternal: false
+  - text: Map
+    isDropdown:
+      discriminant: false
+      value:
+        link: http://mc.westeroscraft.com/
+        isExternal: true
   - text: Discord
     isDropdown:
       discriminant: false

@@ -6,13 +6,13 @@ const { title, description, isRecommended } = Astro.props;
 ---
 
 <div
-  class='flex flex-col relative p-12 border-2 border-black prose w-full max-w-md overflow-hidden'
+  class='flex flex-col relative p-10 border-2 border-black prose w-full max-w-md overflow-hidden'
 >
   <TypographyH3>{title}</TypographyH3>
   <p>
     {description}
   </p>
-  <ul>
+  <ul class='list-disc [&>li]:mt-2 not-prose'>
     <li>Quick and responsive</li>
     <li>Supports mod authors</li>
     <li>Connected to central modpack repository</li>
@@ -26,5 +26,10 @@ const { title, description, isRecommended } = Astro.props;
       </div>
     )
   }
-  <Button size='lg' className='rounded-none text-lg'>View Guide</Button>
+  <Button
+    size='lg'
+    className='text-white font-semibold rounded-none text-lg bg-primaryRed hover:bg-red-900'
+  >
+    View Guide
+  </Button>
 </div>

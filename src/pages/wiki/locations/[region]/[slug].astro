@@ -1,12 +1,9 @@
 ---
-import WikiLayout from "@layouts/wiki.astro";
 import { getCollection } from "astro:content";
+import LocationLayout from "@layouts/location.astro";
 import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
-import TableOfContents from "@components/table-of-contents.astro";
-import MobileProjectDetailsCard from "@components/mobile-project-details-card.astro";
-
-// interface Props extends Location {}
+import Prose from "@components/prose.astro";
 
 export async function getStaticPaths() {
   const locations = await getCollection("locations");
@@ -25,21 +22,39 @@ export async function getStaticPaths() {
 }
 
 const { location } = Astro.props;
-const { Content, headings } = await location?.render();
+const { Content } = await location?.render();
 ---
 
-<WikiLayout title={location?.data.title}>
+<LocationLayout title={location?.data.title}>
   {
-    headings && headings?.length ? (
-      <TableOfContents slot='toc' toc={headings} style='pb-4' />
-    ) : null
+    location?.data && (
+      <ProjectDetailsCard
+        slot='project-details'
+        projectDetails={location?.data}
+      />
+    )
   }
-  <ProjectDetailsCard
-    slot='project-details'
-    projectDetails={location.data}
-    style={headings && headings?.length && "pt-4"}
-  />
-  <h1>{location?.data.title}</h1>
-  <MobileProjectDetailsCard projectDetails={location.data} />
-  {Content && <Content />}
-</WikiLayout>
+  <Fragment slot='location-content'>
+    {
+      location?.data?.locationImages &&
+        location?.data?.locationImages.length && (
+          <div class='relative flex w-full h-[400px] overflow-hidden shadow-md mb-12'>
+            <img
+              class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover'
+              src={location?.data?.locationImages[0]?.src as string}
+              alt={location?.data.title || "Images"}
+            />
+          </div>
+        )
+    }
+    {
+      Content && (
+        <div class='pb-12 break-words'>
+          <Prose>
+            <Content />
+          </Prose>
+        </div>
+      )
+    }
+  </Fragment>
+</LocationLayout>

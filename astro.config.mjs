@@ -12,4 +12,10 @@ export default defineConfig({
   site: "https://website-amber-six.vercel.app",
   integrations: [react(), tailwind(), markdoc(), keystatic()],
   adapter: vercel(),
+  redirects: {
+    "/modpack": {
+      status: 302,
+      destination: "/join",
+    },
+  },
 });

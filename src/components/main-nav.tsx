@@ -13,8 +13,8 @@ import { Button } from "./ui/button";
 
 export const MainNav = ({ navigation }: any) => {
   return (
-    <div className='hidden lg:grid gap-4 h-16 items-center justify-between md:grid-cols-[176px_1fr_auto] xl:grid-cols-[1fr_176px_1fr]'>
-      <a className='inline-block xl:hidden' href='/'>
+    <div className='hidden lg:grid gap-4 h-16 items-center justify-between md:grid-cols-[176px_auto_auto]'>
+      <a className='inline-block' href='/'>
         <img
           src='/westeroscraft.svg'
           alt='WesterosCraft Logo'
@@ -54,7 +54,7 @@ export const MainNav = ({ navigation }: any) => {
           )}
         </NavigationMenuList>
       </NavigationMenu>
-      <a className='hidden xl:inline-block' href='/'>
+      {/* <a className='hidden xl:inline-block' href='/'>
         <img
           src='/westeroscraft.svg'
           alt='WesterosCraft Logo'
@@ -62,7 +62,7 @@ export const MainNav = ({ navigation }: any) => {
           height={24}
           // priority
         />
-      </a>
+      </a> */}
 
       <div className='ml-auto'>
         <Button className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryRed text-white'>
