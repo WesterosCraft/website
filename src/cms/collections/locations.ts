@@ -1,6 +1,6 @@
 import { fields, collection } from "@keystatic/core";
 import { wysiwyg } from "../fields";
-import { regionOptions } from "@constants/index";
+import { REGIONS, PROJECT_STATUS, PROJECT_TYPES } from "@constants/index";
 
 export const locations = collection({
   entryLayout: "content",
@@ -17,38 +17,19 @@ export const locations = collection({
     region: fields.select({
       label: "Region",
       description: "The region of Westeros the location is in",
-      options: regionOptions,
+      options: REGIONS,
       defaultValue: "dorne",
     }),
     projectStatus: fields.select({
       label: "Project Status",
       description: "The status of the location",
-      options: [
-        { label: "Completed", value: "completed" },
-        { label: "In Progress", value: "inProgress" },
-        { label: "Not started", value: "notStarted" },
-        { label: "Abandoned", value: "abandoned" },
-        { label: "Redo in progress", value: "redoInProgress" },
-      ],
+      options: PROJECT_STATUS,
       defaultValue: "notStarted",
     }),
     projectType: fields.select({
       label: "Project Type",
       description: "The type of location",
-      options: [
-        { label: "Castle", value: "castle" },
-        { label: "Town", value: "town" },
-        { label: "Village", value: "village" },
-        { label: "City", value: "city" },
-        { label: "Holdfast", value: "holdfast" },
-        { label: "Keep", value: "keep" },
-        { label: "Landmark", value: "landmark" },
-        { label: "Ruin", value: "ruin" },
-        { label: "Tower", value: "tower" },
-        { label: "Clan", value: "clan" },
-        { label: "Crannog", value: "crannog" },
-        { label: "Miscellaneous", value: "miscellaneous" },
-      ],
+      options: PROJECT_TYPES,
       defaultValue: "miscellaneous",
     }),
     warp: fields.text({

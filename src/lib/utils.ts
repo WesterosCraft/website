@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { regionOptions } from "@constants/index";
+import { REGIONS } from "@constants/index";
 import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -75,7 +75,7 @@ export const makeRegionWikiNav = () => {
   return [
     {
       title: "Locations By Region",
-      links: regionOptions.map((x) => ({
+      links: REGIONS.map((x) => ({
         title: x.label,
         href: `/wiki/locations/${slugify(x.label)}`,
       })),

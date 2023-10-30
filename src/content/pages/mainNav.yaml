@@ -45,6 +45,12 @@ items:
       value:
         link: /wiki
         isExternal: false
+  - text: Locations
+    isDropdown:
+      discriminant: false
+      value:
+        link: /locations
+        isExternal: false
   - text: Map
     isDropdown:
       discriminant: false

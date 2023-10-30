@@ -1,0 +1,77 @@
+---
+import { TypographyH1, TypographyP } from "@components/typography";
+import { Input } from "@components/ui/input";
+import { REGIONS, PROJECT_STATUS, PROJECT_TYPES } from "@constants/index";
+import RootLayout from "@layouts/root.astro";
+import { LocationFilter } from "../../components/location-filter";
+
+const filterItems = [
+  {
+    name: "Region",
+    items: REGIONS,
+  },
+  {
+    name: "Status",
+    items: PROJECT_STATUS,
+  },
+  {
+    name: "Type",
+    items: PROJECT_TYPES,
+  },
+];
+
+const { title, description, ogTitle, ogType, ogImage, ogUrl } =
+  Astro.props.frontmatter || Astro.props;
+---
+
+<RootLayout
+  title={title}
+  description={description}
+  ogTitle={ogTitle}
+  ogType={ogType}
+  ogImage={ogImage}
+  ogUrl={ogUrl}
+>
+  <div
+    class='max-w-8xl mx-auto sm:px-2 lg:px-8 xl:px-12 w-full flex flex-col flex-grow'
+  >
+    <div class='mt-20 mx-auto'>
+      <h1
+        class='text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl'
+      >
+        Locations
+      </h1>
+    </div>
+    <div class='flex w-full'>
+      <div class='sidebar block w-[222px] mr-8'>
+        <div>
+          <div class='mb-4'>
+            <TypographyP className='font-semibold'>
+              Filter Locations
+            </TypographyP>
+            <Input
+              className='border border-primaryLightBorder bg-primaryLightShade focus-visible:ring-primaryRed'
+              type='search'
+              placeholder={"Search..."}
+            />
+          </div>
+          <div class='divide-y-2'>
+            <div></div>
+            {
+              filterItems.map((item) => (
+                <div class='py-3'>
+                  <LocationFilter
+                    client:load
+                    title={item.name}
+                    items={item?.items}
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div class='cards-wrapper flex-1'></div>
+    </div>
+  </div>
+</RootLayout>

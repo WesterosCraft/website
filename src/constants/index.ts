@@ -165,7 +165,7 @@ export const docCategories = [
   { label: "Miscellaneous", value: "miscellaneous" },
 ];
 
-export const regionOptions = [
+export const REGIONS = [
   {
     label: "Beyond The Wall",
     value: "beyondTheWall",
@@ -210,4 +210,27 @@ export const regionOptions = [
     label: "Vale",
     value: "vale",
   },
+];
+
+export const PROJECT_STATUS = [
+  { label: "Completed", value: "completed" },
+  { label: "In Progress", value: "inProgress" },
+  { label: "Not started", value: "notStarted" },
+  { label: "Abandoned", value: "abandoned" },
+  { label: "Redo in progress", value: "redoInProgress" },
+];
+
+export const PROJECT_TYPES = [
+  { label: "Castle", value: "castle" },
+  { label: "Town", value: "town" },
+  { label: "Village", value: "village" },
+  { label: "City", value: "city" },
+  { label: "Holdfast", value: "holdfast" },
+  { label: "Keep", value: "keep" },
+  { label: "Landmark", value: "landmark" },
+  { label: "Ruin", value: "ruin" },
+  { label: "Tower", value: "tower" },
+  { label: "Clan", value: "clan" },
+  { label: "Crannog", value: "crannog" },
+  { label: "Miscellaneous", value: "miscellaneous" },
 ];
