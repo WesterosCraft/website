@@ -1,27 +1,50 @@
 ---
-import { TypographyH1, TypographyP } from "@components/typography";
-import { Input } from "@components/ui/input";
-import { REGIONS, PROJECT_STATUS, PROJECT_TYPES } from "@constants/index";
 import RootLayout from "@layouts/root.astro";
-import { LocationFilter } from "../../components/location-filter";
+import { getCollection } from "astro:content";
+import { Button } from "@components/ui/button";
+import { LocationContent } from "@components/location-content";
 
-const filterItems = [
-  {
-    name: "Region",
-    items: REGIONS,
-  },
-  {
-    name: "Status",
-    items: PROJECT_STATUS,
-  },
-  {
-    name: "Type",
-    items: PROJECT_TYPES,
-  },
-];
+const locations = await getCollection("locations");
 
 const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   Astro.props.frontmatter || Astro.props;
+
+const query = Astro.url.searchParams;
+
+const filteredLocations = locations.filter((location) => {
+  const queryRegion = query
+    .getAll("region")
+    .map((region) => region.toLowerCase());
+
+  const queryStatus = query
+    .getAll("status")
+    .map((status) => status.toLowerCase());
+
+  const queryType = query.getAll("type").map((type) => type.toLowerCase());
+
+  // Filter based on the "region" parameter
+  if (queryRegion.length > 0) {
+    if (!queryRegion.includes(location.data?.region?.toLowerCase())) {
+      return false;
+    }
+  }
+
+  // Filter based on the "status" parameter
+  if (queryStatus.length > 0) {
+    if (!queryStatus.includes(location.data?.projectStatus?.toLowerCase())) {
+      return false;
+    }
+  }
+
+  // Filter based on the "type" parameter
+  if (queryType.length > 0) {
+    if (!queryType.includes(location.data?.projectType?.toLowerCase())) {
+      return false;
+    }
+  }
+
+  return true; // Include the location if it matches all filters
+});
 ---
 
 <RootLayout
@@ -33,45 +56,27 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   ogUrl={ogUrl}
 >
   <div
-    class='max-w-8xl mx-auto sm:px-2 lg:px-8 xl:px-12 w-full flex flex-col flex-grow'
+    class='max-w-8xl mx-auto sm:px-2 lg:px-8 xl:px-12 w-full flex flex-col flex-grow mb-28'
   >
-    <div class='mt-20 mx-auto'>
+    <div class='mt-20 mb-20 mx-auto text-center'>
       <h1
         class='text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl'
       >
         Locations
       </h1>
+      <p class='mt-6 max-w-2xl text-xl text-gray-800'>
+        Discover the iconic locations of Westeros from the <i
+          >A Song of Ice and Fire</i
+        > series, built from scratch in Minecraft. With over 450 planned or
+        in-progress builds on our server, we've kept track of them all here!
+      </p>
+      <div class='mt-8'>
+        <Button>See Progress</Button>
+        <Button variant='outline'>View Map</Button>
+      </div>
     </div>
     <div class='flex w-full'>
-      <div class='sidebar block w-[222px] mr-8'>
-        <div>
-          <div class='mb-4'>
-            <TypographyP className='font-semibold'>
-              Filter Locations
-            </TypographyP>
-            <Input
-              className='border border-primaryLightBorder bg-primaryLightShade focus-visible:ring-primaryRed'
-              type='search'
-              placeholder={"Search..."}
-            />
-          </div>
-          <div class='divide-y-2'>
-            <div></div>
-            {
-              filterItems.map((item) => (
-                <div class='py-3'>
-                  <LocationFilter
-                    client:load
-                    title={item.name}
-                    items={item?.items}
-                  />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-      <div class='cards-wrapper flex-1'></div>
+      <LocationContent client:load filteredLocations={filteredLocations} />
     </div>
   </div>
 </RootLayout>

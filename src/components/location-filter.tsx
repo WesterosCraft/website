@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Collapsible,
@@ -10,14 +10,42 @@ import {
 import { Button } from "./ui/button";
 import { ChevronRight } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
+import { Badge } from "./ui/badge";
 
 interface LocationFilterProps {
   title: string;
   items: Array<{ label: string; value: string }>;
+  slug: string;
+  setClickCount: (arg: number) => void;
 }
 
-export function LocationFilter({ title, items }: LocationFilterProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+export function LocationFilter({
+  title,
+  items,
+  slug,
+  setClickCount,
+}: LocationFilterProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [numberOfTags, setNumberOfTags] = useState(0);
+
+  const counter = (params: URLSearchParams) => {
+    let count = 0;
+
+    for (const key of params.keys()) {
+      if (key === slug) {
+        count++;
+      }
+    }
+
+    setNumberOfTags(count);
+  };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const regionParams = queryParams.getAll(slug);
+    const regionCount = regionParams.length;
+    setNumberOfTags(regionCount);
+  }, []);
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className='space-y-2'>
@@ -29,7 +57,14 @@ export function LocationFilter({ title, items }: LocationFilterProps) {
             className='w-full flex items-center justify-start p-0 hover:bg-transparent'
           >
             <ChevronRight />
-            <span className='text-md '>{title}</span>
+            <div className='flex flex-row justify-between w-full'>
+              <span className='text-md'>{title}</span>
+              {numberOfTags <= 0 ? null : (
+                <span className='bg-red'>
+                  <Badge variant='destructive'>{numberOfTags}</Badge>
+                </span>
+              )}
+            </div>
           </Button>
         </CollapsibleTrigger>
       </div>
@@ -39,6 +74,9 @@ export function LocationFilter({ title, items }: LocationFilterProps) {
             key={item?.value}
             label={item?.label}
             value={item?.value}
+            slug={slug}
+            clickHandler={counter}
+            setClickCount={setClickCount}
           />
         ))}
       </CollapsibleContent>
@@ -49,16 +87,47 @@ export function LocationFilter({ title, items }: LocationFilterProps) {
 export function CheckboxWithText({
   label,
   value,
+  slug,
+  clickHandler,
+  setClickCount,
 }: {
   label: string;
   value: string;
+  slug: string;
+  clickHandler: (params: URLSearchParams) => void;
+  setClickCount: (arg: number) => void;
 }) {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const handleClick = (paramName: string, paramValue: string) => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const paramValues = urlParams.getAll(paramName);
+
+    if (paramValues.includes(paramValue)) {
+      urlParams.delete(paramName, paramValue);
+    } else {
+      urlParams.append(paramName, paramValue);
+    }
+
+    clickHandler(urlParams);
+    // @ts-ignore
+    setClickCount((prevClickCount) => prevClickCount + 1);
+    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, "", newUrl);
+  };
+
   return (
     <label
       htmlFor={value}
       className='bg-primaryLightBorder/10 hover:bg-primaryLightBorder/30 items-top flex space-x-2 rounded-md border p-2 font-mono text-sm mb-2 transition-all cursor-pointer'
     >
-      <Checkbox id={value} />
+      <Checkbox
+        id={value}
+        value={value}
+        checked={urlParams?.getAll(slug).includes(value)}
+        onClick={() => handleClick(slug, value)}
+      />
       <div className='grid gap-1.5 leading-none pointer-events-none'>
         <label
           htmlFor={value}
