@@ -2,11 +2,7 @@
 import RootLayout from "@layouts/root.astro";
 import { getCollection } from "astro:content";
 import { Button } from "@components/ui/button";
-import {
-  LocationContent,
-  LocationContentFallback,
-} from "@components/location-content";
-import { Suspense } from "react";
+import { LocationContent } from "@components/location/location-content";
 
 const locations = await getCollection("locations");
 

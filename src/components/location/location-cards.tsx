@@ -1,14 +1,7 @@
 "use client";
 
-import React, { Fragment, useEffect, useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@components/ui/card";
+import React, { useEffect, useState } from "react";
+
 import {
   Table,
   TableBody,
@@ -19,7 +12,7 @@ import {
 } from "@components/ui/table";
 import { camel2title } from "@lib/utils";
 import slugify from "slugify";
-import squares from "../assets/bright-squares.png";
+import { LocationCard } from "./location-card.tsx";
 
 function getSlug(str: string) {
   return slugify(str.replace(/[A-Z]/g, "-$&"), { lower: true });
@@ -72,44 +65,19 @@ export function LocationCards({
   }, [clickCount]);
 
   return view === "card" ? (
-    <div className='grid gap-4 grid-cols-3'>
+    <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
       {locations?.map((location) => (
-        <Fragment key={location?.data?.title}>
-          <Card className='hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder'>
-            <a
-              href={`/locations/${getSlug(location?.data?.region)}/${
-                location?.slug
-              }`}
-            >
-              <CardHeader className='pl-0 pr-0 pt-0 '>
-                <div className='relative flex h-[180px]'>
-                  <img
-                    decoding='async'
-                    loading='lazy'
-                    src={
-                      location?.data?.locationImages?.[0]?.src || squares.src
-                    }
-                    sizes='25vw'
-                    className='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
-                  />
-                </div>
-              </CardHeader>
-              <CardContent className='pt-0 px-6 pb-3'>
-                <CardTitle>{location.data.title}</CardTitle>
-                <CardDescription>
-                  {camel2title(location.data.region)}
-                </CardDescription>
-              </CardContent>
-
-              <CardFooter>
-                <div className='flex flex-row justify-between w-full'>
-                  <p>{camel2title(location.data?.projectStatus)}</p>
-                  <p>{camel2title(location?.data?.projectType)}</p>
-                </div>
-              </CardFooter>
-            </a>
-          </Card>
-        </Fragment>
+        <LocationCard
+          key={location?.data?.title}
+          link={`/locations/${getSlug(location?.data?.region)}/${
+            location?.slug
+          }`}
+          imageUrl={location?.data?.locationImages?.[0]?.src}
+          title={location.data.title}
+          region={camel2title(location.data.region)}
+          projectStatus={camel2title(location.data?.projectStatus)}
+          projectType={camel2title(location?.data?.projectType)}
+        />
       ))}
     </div>
   ) : (

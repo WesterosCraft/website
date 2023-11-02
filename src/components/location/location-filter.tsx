@@ -7,10 +7,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@components/ui/collapsible";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ChevronRight, ChevronDown } from "lucide-react";
-import { Checkbox } from "./ui/checkbox";
-import { Badge } from "./ui/badge";
+import { Checkbox } from "../ui/checkbox";
+import { Badge } from "../ui/badge";
 
 interface LocationFilterProps {
   title: string;
