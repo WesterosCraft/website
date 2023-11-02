@@ -12,6 +12,7 @@ export type Item = {
   title: string;
   type: string;
   children?: Item[];
+  placeholder?: string;
   // display?: Display
   // withIndexPage?: boolean
   // theme?: PageTheme
@@ -21,9 +22,11 @@ export type Item = {
 export function MatchSorterSearch({
   className,
   directories,
+  placeholder,
 }: {
   className?: string;
   directories: any[];
+  placeholder?: string;
   //    NormalItem[]
 }): ReactElement {
   const [search, setSearch] = useState("");
@@ -54,6 +57,7 @@ export function MatchSorterSearch({
       className={className}
       overlayClassName='w-full'
       results={results}
+      placeholder={placeholder}
     />
   );
 }

@@ -8,7 +8,7 @@ import {
   CollapsibleTrigger,
 } from "@components/ui/collapsible";
 import { Button } from "./ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
 import { Badge } from "./ui/badge";
 
@@ -56,8 +56,8 @@ export function LocationFilter({
             size='sm'
             className='w-full flex items-center justify-start p-0 hover:bg-transparent'
           >
-            <ChevronRight />
-            <div className='flex flex-row justify-between w-full'>
+            {isOpen ? <ChevronDown /> : <ChevronRight />}
+            <div className='flex flex-row justify-between w-full ml-2'>
               <span className='text-md'>{title}</span>
               {numberOfTags <= 0 ? null : (
                 <span className='bg-red'>

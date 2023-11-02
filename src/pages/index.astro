@@ -41,7 +41,7 @@ import thumbnail from "../assets/pages/home/video/thumbnail.jpg";
       <TenYears data={pageData?.data?.video} />
       <ContainerBorder variant='dark' className='pb-24 px-4'>
         <Video
-          client:only
+          client:only='react'
           importedUrl={thumbnail}
           data={pageData?.data?.video}
         />

@@ -16,6 +16,7 @@ type SearchProps = {
   loading?: boolean;
   error?: boolean;
   results: any[];
+  placeholder?: string;
 };
 
 const INPUTS = ["input", "select", "button", "textarea"];
@@ -29,6 +30,7 @@ export function Search({
   loading,
   error,
   results,
+  placeholder,
 }: SearchProps): ReactElement {
   const [show, setShow] = useState(false);
   //   const config = useConfig();
@@ -66,11 +68,12 @@ export function Search({
         input.current.blur();
       }
     };
-
-    window.addEventListener("keydown", down);
-    return () => {
-      window.removeEventListener("keydown", down);
-    };
+    if (window) {
+      window?.addEventListener("keydown", down);
+      return () => {
+        window?.removeEventListener("keydown", down);
+      };
+    }
   }, []);
 
   const finishSearch = useCallback(() => {
@@ -122,7 +125,7 @@ export function Search({
         }
         case "Enter": {
           const result = results[active];
-          if (result) {
+          if (result && window) {
             window.location.href = result.route;
             finishSearch();
           }
@@ -170,7 +173,7 @@ export function Search({
         {value && focused
           ? "ESC"
           : true &&
-            (window.navigator.userAgent.includes("Macintosh") ? (
+            (window?.navigator.userAgent.includes("Macintosh") ? (
               <>
                 <span className='text-xs'>⌘</span>K
               </>
@@ -182,7 +185,7 @@ export function Search({
   );
 
   return (
-    <div className={cn("relative md:w-64", className)}>
+    <div className={cn("relative", className)}>
       {renderList && (
         <div className='fixed inset-0 z-10' onClick={() => setShow(false)} />
       )}
@@ -205,10 +208,10 @@ export function Search({
             setFocused(false);
           }}
           type='search'
-          placeholder={renderString("Search wiki...")}
+          placeholder={renderString(placeholder || "Search wiki...")}
           onKeyDown={handleKeyDown}
         />
-        {icon}
+        {window && icon}
       </div>
 
       <Transition

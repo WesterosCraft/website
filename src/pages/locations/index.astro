@@ -2,7 +2,11 @@
 import RootLayout from "@layouts/root.astro";
 import { getCollection } from "astro:content";
 import { Button } from "@components/ui/button";
-import { LocationContent } from "@components/location-content";
+import {
+  LocationContent,
+  LocationContentFallback,
+} from "@components/location-content";
+import { Suspense } from "react";
 
 const locations = await getCollection("locations");
 
@@ -71,12 +75,20 @@ const filteredLocations = locations.filter((location) => {
         in-progress builds on our server, we've kept track of them all here!
       </p>
       <div class='mt-8'>
-        <Button>See Progress</Button>
-        <Button variant='outline'>View Map</Button>
+        <a href='/progress'>
+          <Button className='mr-6'>See Progress</Button>
+        </a>
+        <a href='http://mc.westeroscraft.com/' target='_blank'>
+          <Button variant='outline'>View Map</Button>
+        </a>
       </div>
     </div>
     <div class='flex w-full'>
-      <LocationContent client:load filteredLocations={filteredLocations} />
+      <LocationContent
+        client:only='react'
+        allLocations={locations}
+        filteredLocations={filteredLocations}
+      />
     </div>
   </div>
 </RootLayout>
