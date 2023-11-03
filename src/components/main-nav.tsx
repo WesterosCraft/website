@@ -28,7 +28,7 @@ export const MainNav = ({ navigation }: any) => {
           {navigation.data?.items?.map((n: any) =>
             n.isDropdown.discriminant ? (
               <NavigationMenuItem key={n.text}>
-                <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:text-yellow-300'>
+                <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:bg-transparent focus:text-yellow-300'>
                   {n.text}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className='bg-primaryDark'>
@@ -45,7 +45,7 @@ export const MainNav = ({ navigation }: any) => {
               <NavigationMenuItem key={n.text}>
                 <NavigationMenuLink
                   asChild
-                  className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:text-yellow-300`}
+                  className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:bg-transparent focus:text-yellow-300`}
                 >
                   <a href={n.isDropdown.value.link}>{n.text}</a>
                 </NavigationMenuLink>
@@ -54,16 +54,6 @@ export const MainNav = ({ navigation }: any) => {
           )}
         </NavigationMenuList>
       </NavigationMenu>
-      {/* <a className='hidden xl:inline-block' href='/'>
-        <img
-          src='/westeroscraft.svg'
-          alt='WesterosCraft Logo'
-          width={176}
-          height={24}
-          // priority
-        />
-      </a> */}
-
       <div className='ml-auto'>
         <Button className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryRed text-white'>
           <a href='/join'>Join Server</a>

@@ -3,6 +3,7 @@ import { REGIONS } from "@constants/index";
 import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import slgfy from "slugify";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -105,3 +106,7 @@ export const makeWikiNav = (docs: any[]) => {
     ...normalizedDocs.filter((x) => x.title !== "Getting Started"),
   ];
 };
+
+export function getSlug(str: string) {
+  return slgfy(str.replace(/[A-Z]/g, "-$&"), { lower: true });
+}

@@ -5,9 +5,9 @@ import { TypographyP } from "@components/typography";
 import { LocationFilter } from "./location-filter";
 import { REGIONS, PROJECT_STATUS, PROJECT_TYPES } from "@constants/index";
 import { MatchSorterSearch } from "../match-sorter-search";
-import slugify from "slugify";
+import { getSlug } from "@lib/utils";
 
-const filterItems = [
+export const FILTER_ITEMS = [
   {
     name: "Region",
     slug: "region",
@@ -25,13 +25,9 @@ const filterItems = [
   },
 ];
 
-function getSlug(str: string) {
-  return slugify(str.replace(/[A-Z]/g, "-$&"), { lower: true });
-}
-
 export function LocationSidebar({ allLocations, setClickCount }: any) {
   return (
-    <div className='sidebar hidden md:block w-[222px] mr-12'>
+    <div className='sidebar hidden lg:block w-[222px] mr-12'>
       <div>
         <div>
           <div className='flex flex-row justify-between space-x-4'>
@@ -52,7 +48,7 @@ export function LocationSidebar({ allLocations, setClickCount }: any) {
         <div className='my-4'></div>
         <div className='divide-y-2'>
           <div></div>
-          {filterItems.map((item) => (
+          {FILTER_ITEMS.map((item) => (
             <div className='py-3' key={item?.slug}>
               <LocationFilter
                 title={item.name}

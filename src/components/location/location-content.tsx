@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { LocationCards } from "./location-cards";
 import { LocationFilterOptions } from "./location-filter-options";
 import { LocationSidebar } from "./location-sidebar";
+import { LocationMobileMenu } from "./location-mobile-menu";
 
 interface LocationContentProps {
   filteredLocations: any[];
@@ -25,7 +26,11 @@ export function LocationContent({
         setClickCount={setClickCount}
       />
       <div className='flex-1'>
-        <div className='flex flex-row justify-between mb-4 items-end'>
+        <LocationMobileMenu
+          allLocations={allLocations}
+          setClickCount={setClickCount}
+        />
+        <div className='flex flex-row justify-between mb-4 items-end px-4 lg:px-0'>
           <LocationFilterOptions view={view} setView={setView} />
         </div>
         <div className='cards-wrapper flex-1'>

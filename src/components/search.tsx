@@ -211,7 +211,7 @@ export function Search({
           placeholder={renderString(placeholder || "Search wiki...")}
           onKeyDown={handleKeyDown}
         />
-        {window && icon}
+        {/* {window && icon} */}
       </div>
 
       <Transition

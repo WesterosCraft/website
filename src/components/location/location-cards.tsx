@@ -67,17 +67,21 @@ export function LocationCards({
   return view === "card" ? (
     <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
       {locations?.map((location) => (
-        <LocationCard
+        <div
           key={location?.data?.title}
-          link={`/locations/${getSlug(location?.data?.region)}/${
-            location?.slug
-          }`}
-          imageUrl={location?.data?.locationImages?.[0]?.src}
-          title={location.data.title}
-          region={camel2title(location.data.region)}
-          projectStatus={camel2title(location.data?.projectStatus)}
-          projectType={camel2title(location?.data?.projectType)}
-        />
+          className='flex items-center justify-center'
+        >
+          <LocationCard
+            link={`/locations/${getSlug(location?.data?.region)}/${
+              location?.slug
+            }`}
+            imageUrl={location?.data?.locationImages?.[0]?.src}
+            title={location.data.title}
+            region={camel2title(location.data.region)}
+            projectStatus={camel2title(location.data?.projectStatus)}
+            projectType={camel2title(location?.data?.projectType)}
+          />
+        </div>
       ))}
     </div>
   ) : (
