@@ -1,10 +1,10 @@
 ---
 import { TypographyP } from "@components/typography";
-import { LocationFilter } from "./location-filter";
+import { LocationFilter } from "../location-filter";
 import { REGIONS, PROJECT_STATUS, PROJECT_TYPES } from "@constants/index";
-import { MatchSorterSearch } from "../match-sorter-search";
+import { MatchSorterSearch } from "../../match-sorter-search";
 import { getSlug } from "@lib/utils";
-import { LocationFilterOptions } from "./location-filter-options";
+import { LocationFilterOptions } from "../location-filter-options";
 
 export const FILTER_ITEMS = [
   {
@@ -35,14 +35,14 @@ const { allLocations, setClickCount, view, setView } =
   Astro.props as LocationSidebarProps;
 ---
 
-<div class='sidebar hidden lg:block w-[222px] mr-12'>
+<div class="sidebar hidden lg:block w-[222px] mr-12">
   <!-- <LocationFilterOptions client:only='react' /> -->
   <div>
-    <div class='flex flex-row justify-between space-x-4'>
-      <TypographyP className='font-semibold text-sm'>Find Location</TypographyP>
+    <div class="flex flex-row justify-between space-x-4">
+      <TypographyP className="font-semibold text-sm">Find Location</TypographyP>
     </div>
     <MatchSorterSearch
-      client:only='react'
+      client:only="react"
       placeholder={"Search..."}
       directories={allLocations?.map((location) => ({
         title: location?.data?.title,
@@ -52,14 +52,14 @@ const { allLocations, setClickCount, view, setView } =
       }))}
     />
   </div>
-  <div class='my-4'></div>
-  <div class='divide-y-2 divide-primaryLightBorder'>
+  <div class="my-4"></div>
+  <div class="divide-y-2 divide-primaryLightBorder">
     <div></div>
     {
       FILTER_ITEMS.map((item) => (
-        <div class='py-3'>
+        <div class="py-3">
           <LocationFilter
-            client:only='react'
+            client:load
             title={item.name}
             items={item?.items}
             slug={item?.slug}

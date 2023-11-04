@@ -19,31 +19,11 @@ items:
           link: https://ko-fi.com/westeroscraft
           description: Help keep the server running
           isExternal: true
-  - text: Resources
-    isDropdown:
-      discriminant: true
-      value:
-        - text: Modpack
-          link: /join
-          description: Everything you need to join the server
-          isExternal: false
-        - text: Progress
-          link: /progress
-          description: Check up on the project status
-          isExternal: false
-        - text: Rules & Guides
-          link: /rules-and-guides
-          description: All the guides to get you started
-          isExternal: false
-        - text: FAQ
-          link: /faq
-          description: If you got a question, its probably answered
-          isExternal: false
-  - text: Wiki
+  - text: Docs
     isDropdown:
       discriminant: false
       value:
-        link: /wiki
+        link: /docs
         isExternal: false
   - text: Locations
     isDropdown:

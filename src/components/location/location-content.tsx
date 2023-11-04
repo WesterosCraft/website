@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { LocationCards } from "./location-cards";
-import LocationSidebar from "./location-sidebar.astro";
 import { LocationMobileMenu } from "./location-mobile-menu";
+import { LocationSidebar } from "./location-sidebar";
 
 interface LocationContentProps {
   filteredLocations: any[];
@@ -20,7 +20,7 @@ export function LocationContent({
 
   return (
     <>
-      <div className='flex flex-col space-y-4'>
+      <div className="flex flex-col space-y-4">
         <LocationSidebar
           allLocations={allLocations}
           setClickCount={setClickCount}
@@ -28,13 +28,13 @@ export function LocationContent({
           setView={setView}
         />
       </div>
-      <div className='flex-1'>
+      <div className="flex-1">
         <LocationMobileMenu
           allLocations={allLocations}
           setClickCount={setClickCount}
         />
 
-        <div className='cards-wrapper flex-1'>
+        <div className="cards-wrapper flex-1">
           <LocationCards
             view={view}
             filteredLocations={filteredLocations}

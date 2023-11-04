@@ -65,11 +65,11 @@ export function LocationCards({
   }, [clickCount]);
 
   return view === "card" ? (
-    <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {locations?.map((location) => (
         <div
           key={location?.data?.title}
-          className='flex items-center justify-center'
+          className="flex items-center justify-center"
         >
           <LocationCard
             link={`/locations/${getSlug(location?.data?.region)}/${
@@ -88,7 +88,7 @@ export function LocationCards({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className='w-[260px]'>Name</TableHead>
+          <TableHead className="w-[260px]">Name</TableHead>
           <TableHead>Region</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Type</TableHead>
