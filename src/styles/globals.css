@@ -77,6 +77,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* font-variation-settings: "wght" 100; */
   }
 
   .inset-center {
@@ -92,6 +93,15 @@
   src: url("/fonts/EsmeraldaPro-Regular.woff") format("woff"),
     url("/fonts/EsmeraldaPro-Regular.woff2") format("woff2"),
     url("/fonts/EsmeraldaPro-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeistVF";
+  src: url("/fonts/Geist-Regular.woff2") format("woff2"),
+    url("/fonts/Geist-Regular.otf") format("otf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

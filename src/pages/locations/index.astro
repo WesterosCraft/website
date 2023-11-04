@@ -3,6 +3,7 @@ import RootLayout from "@layouts/root.astro";
 import { getCollection } from "astro:content";
 import { Button } from "@components/ui/button";
 import { LocationContent } from "@components/location/location-content";
+import LocationWrapper from "@components/location/location-wrapper.astro";
 
 const locations = await getCollection("locations");
 
@@ -72,19 +73,28 @@ const filteredLocations = locations.filter((location) => {
       </p>
       <div class='mt-8'>
         <a href='/progress'>
-          <Button className='mr-6'>See Progress</Button>
+          <Button className='mr-6 font-semibold tracking-wider' size='lg'>
+            See Progress
+          </Button>
         </a>
         <a href='http://mc.westeroscraft.com/' target='_blank'>
-          <Button variant='outline'>View Map</Button>
+          <Button
+            variant='outline-red'
+            size='lg'
+            className='font-semibold tracking-wider'
+          >
+            View Map
+          </Button>
         </a>
       </div>
     </div>
     <div class='flex w-full'>
-      <LocationContent
+      <LocationWrapper />
+      <!-- <LocationContent
         client:only='react'
         allLocations={locations}
         filteredLocations={filteredLocations}
-      />
+      /> -->
     </div>
   </div>
 </RootLayout>

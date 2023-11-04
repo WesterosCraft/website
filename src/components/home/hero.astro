@@ -37,11 +37,11 @@ const slides = await Promise.all(
     <div
       class='flex flex-col items-center justify-center h-full max-w-4xl px-6 py-8 md:p-8 text-center'
     >
-      <TypographyH2 className='uppercase text-primaryRedShade'>
+      <TypographyH2 className='uppercase text-primaryRed'>
         {data?.heading || "Explore the world of"}
       </TypographyH2>
       <h1
-        class='font-esmeralda scroll-m-20 mt-2 mb-10 text-5xl md:text-6xl font-extrabold tracking-tight xl:text-7xl 2xl:text-8xl text-primaryLight'
+        class='font-esmeralda tracking-wide scroll-m-20 mt-2 mb-10 text-5xl md:text-6xl font-extrabold tracking-tight xl:text-7xl 2xl:text-8xl text-primaryLight'
         style={{
           textShadow: "0 4px 0 #9B2C2C",
         }}
@@ -61,7 +61,7 @@ const slides = await Promise.all(
           <a href={button?.isExternal?.value}>
             <Button
               size='lg'
-              className='hover:bg-primaryGoldShade font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
+              className='hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
             >
               {button.buttonText}
             </Button>

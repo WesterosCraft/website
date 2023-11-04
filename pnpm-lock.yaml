@@ -17,9 +17,6 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^5.0.2
     version: 5.0.2(astro@3.2.3)
-  '@fontsource/karla':
-    specifier: ^5.0.13
-    version: 5.0.13
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
@@ -1143,10 +1140,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       tabbable: 6.2.0
-    dev: false
-
-  /@fontsource/karla@5.0.13:
-    resolution: {integrity: sha512-AZ6C9nw0gSHmeg9NfC6tUtqC8H6AKjEpAgzy4PmQrrTB5x9QFOP8ZXMfUmeM7njwmEV5I6zq/CnAzJHYBnGvjA==}
     dev: false
 
   /@formatjs/ecma402-abstract@1.17.0:

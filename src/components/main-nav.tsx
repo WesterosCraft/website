@@ -55,7 +55,10 @@ export const MainNav = ({ navigation }: any) => {
         </NavigationMenuList>
       </NavigationMenu>
       <div className='ml-auto'>
-        <Button className='hover:bg-red-900 font-semibold rounded-none text-md bg-primaryRed text-white'>
+        <Button
+          variant='destructive'
+          className='font-semibold text-md text-white'
+        >
           <a href='/join'>Join Server</a>
         </Button>
       </div>

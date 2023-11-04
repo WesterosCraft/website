@@ -21,7 +21,7 @@ export function LocationCard({
   projectType,
 }) {
   return (
-    <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder'>
+    <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder'>
       <a href={link}>
         <CardHeader className='pl-0 pr-0 pt-0 '>
           <div className='relative flex h-[180px]'>

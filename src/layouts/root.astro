@@ -2,8 +2,8 @@
 import SiteHeader from "@components/site-header.astro";
 import Footer from "@components/footer.astro";
 import { getEntry } from "astro:content";
-import "@fontsource/karla";
 import PageSeo from "@components/page-seo.astro";
+import { ViewTransitions } from "astro:transitions";
 
 import "../styles/globals.css";
 
@@ -65,6 +65,7 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } =
       ogImage={ogImage}
       ogUrl={ogUrl}
     />
+    <ViewTransitions />
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.ico' />

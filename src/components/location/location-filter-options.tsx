@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@components/ui/select";
 import { camel2title } from "@lib/utils";
+import { XSquare } from "lucide-react";
 
 export function LocationFilterOptions({
   view,
@@ -36,14 +37,7 @@ export function LocationFilterOptions({
     window.location.href = "/locations";
   };
   return (
-    <>
-      <div>
-        {queryParamsCount > 0 && (
-          <Button onClick={clearButton} variant='outline' size='sm'>
-            Clear Filters
-          </Button>
-        )}
-      </div>
+    <div className='flex flex-row justify-between items-end mb-4'>
       <div>
         <TypographyP className='font-semibold text-sm'>Change View</TypographyP>
         <Select
@@ -61,6 +55,19 @@ export function LocationFilterOptions({
           </SelectContent>
         </Select>
       </div>
-    </>
+      <div>
+        {queryParamsCount > 0 && (
+          <Button
+            onClick={clearButton}
+            className='h-[28px] text-xs'
+            variant='outline'
+            size='xs'
+          >
+            <XSquare strokeWidth={1} size={16} />
+            <span className='ml-1'>Clear</span>
+          </Button>
+        )}
+      </div>
+    </div>
   );
 }

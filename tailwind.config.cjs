@@ -1,6 +1,11 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // corePlugins: {
+  //   fontWeight: false,
+  // },
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -24,19 +29,62 @@ module.exports = {
         header: "176px 1fr auto md:1fr auto 1fr",
       },
       fontFamily: {
-        sans: ["Karla"],
+        sans: ["GeistVF", defaultTheme.fontFamily.sans],
         esmeralda: ["EsmeraldaPro"],
       },
       colors: {
         bgColor: "#f4f4f4",
-        primaryLight: "#f9f5ea",
         primaryLightShade: "#FFFCF1",
         primaryLightBorder: "#d9ceb2",
-        primaryRed: "#9B2C2C",
-        primaryRedShade: "#AA3A37",
-        primaryDark: "#22261F",
-        primaryGold: "#daaf3c",
-        primaryGoldShade: "#FBCD5A",
+        camel: "#f5e4bc",
+        primaryGold: {
+          50: "hsl(49, 67%, 95%)",
+          100: "hsl(51, 67%, 88%)",
+          200: "hsl(48, 69%, 77%)",
+          300: "hsl(46, 70%, 64%)",
+          400: "hsl(44, 68%, 55%)",
+          500: "hsl(41, 66%, 47%)",
+          600: "hsl(36, 68%, 40%)",
+          700: "hsl(31, 65%, 33%)",
+          800: "hsl(28, 58%, 29%)",
+          900: "hsl(24, 51%, 26%)",
+          950: "hsl(21, 58%, 14%)",
+          DEFAULT: "hsl(44, 68%, 55%)",
+        },
+
+        primaryDark: {
+          light: "hsl(53, 8%, 22%)",
+          DEFAULT: "hsl(50, 8%, 15%)",
+          dark: "hsl(60, 10%, 10%)",
+        },
+        primaryRed: {
+          50: "hsl(0, 73%, 97%)",
+          100: "hsl(0, 73%, 94%)",
+          200: "hsl(0, 75%, 89%)",
+          300: "hsl(0, 70%, 82%)",
+          400: "hsl(0, 69%, 71%)",
+          500: "hsl(0, 64%, 60%)",
+          600: "hsl(0, 55%, 51%)",
+          700: "hsl(0, 56%, 39%)",
+          800: "hsl(0, 53%, 35%)",
+          900: "hsl(0, 47%, 31%)",
+          950: "hsl(0, 58%, 15%)",
+          DEFAULT: "hsl(0, 56%, 39%)",
+        },
+        primaryLight: {
+          50: "hsl(44, 56%, 95%)",
+          100: "hsl(45, 57%, 92%)",
+          200: "hsl(43, 53%, 83%)",
+          300: "hsl(41, 55%, 72%)",
+          400: "hsl(38, 54%, 61%)",
+          500: "hsl(35, 53%, 53%)",
+          600: "hsl(31, 50%, 48%)",
+          700: "hsl(28, 50%, 40%)",
+          800: "hsl(26, 44%, 34%)",
+          900: "hsl(26, 41%, 28%)",
+          950: "hsl(25, 46%, 15%)",
+          DEFAULT: "hsl(44, 56%, 95%)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -113,5 +161,6 @@ module.exports = {
     require("tailwindcss/nesting"),
     require("tailwindcss-animate"),
     require("@tailwindcss/typography"),
+    // require("./fontVariationSettingsPlugin"),
   ],
 };

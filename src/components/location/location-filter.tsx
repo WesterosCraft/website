@@ -89,8 +89,8 @@ export function CheckboxWithText({
   value,
   slug,
   clickHandler,
-  setClickCount,
-}: {
+}: // setClickCount,
+{
   label: string;
   value: string;
   slug: string;
@@ -111,8 +111,8 @@ export function CheckboxWithText({
     }
 
     clickHandler(urlParams);
-    // @ts-ignore
-    setClickCount((prevClickCount) => prevClickCount + 1);
+    // // @ts-ignore
+    // setClickCount((prevClickCount) => prevClickCount + 1);
     const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
     window.history.replaceState(null, "", newUrl);
   };
@@ -127,6 +127,7 @@ export function CheckboxWithText({
         value={value}
         checked={urlParams?.getAll(slug).includes(value)}
         onClick={() => handleClick(slug, value)}
+        className='location-filter-checkbox'
       />
       <div className='grid gap-1.5 leading-none pointer-events-none'>
         <label

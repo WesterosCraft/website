@@ -1,5 +1,4 @@
 /* eslint-disable no-useless-escape */
-import { REGIONS } from "@constants/index";
 import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -60,7 +59,7 @@ export const makeDocsWikiNav = (docs: any[]) => {
     });
   });
 
-  const result = [];
+  const result = [] as any;
 
   for (const category in categories) {
     result.push({
@@ -70,18 +69,6 @@ export const makeDocsWikiNav = (docs: any[]) => {
   }
 
   return result;
-};
-
-export const makeRegionWikiNav = () => {
-  return [
-    {
-      title: "Locations By Region",
-      links: REGIONS.map((x) => ({
-        title: x.label,
-        href: `/wiki/locations/${slugify(x.label)}`,
-      })),
-    },
-  ];
 };
 
 export const makeWikiNav = (docs: any[]) => {
@@ -98,15 +85,53 @@ export const makeWikiNav = (docs: any[]) => {
   const gettingStarted = normalizedDocs.find(
     (x) => x.title === "Getting Started"
   );
-  const normalizedLocations = makeRegionWikiNav();
 
   return [
     gettingStarted,
-    ...normalizedLocations,
     ...normalizedDocs.filter((x) => x.title !== "Getting Started"),
   ];
 };
 
 export function getSlug(str: string) {
   return slgfy(str.replace(/[A-Z]/g, "-$&"), { lower: true });
+}
+
+export function filterLocationsBySearchParam(
+  locations: any[],
+  query: URLSearchParams
+) {
+  return locations.filter((location) => {
+    const queryRegion = query
+      .getAll("region")
+      .map((region) => region.toLowerCase());
+
+    const queryStatus = query
+      .getAll("status")
+      .map((status) => status.toLowerCase());
+
+    const queryType = query.getAll("type").map((type) => type.toLowerCase());
+
+    // Filter based on the "region" parameter
+    if (queryRegion.length > 0) {
+      if (!queryRegion.includes(location.data?.region?.toLowerCase())) {
+        return false;
+      }
+    }
+
+    // Filter based on the "status" parameter
+    if (queryStatus.length > 0) {
+      if (!queryStatus.includes(location.data?.projectStatus?.toLowerCase())) {
+        return false;
+      }
+    }
+
+    // Filter based on the "type" parameter
+    if (queryType.length > 0) {
+      if (!queryType.includes(location.data?.projectType?.toLowerCase())) {
+        return false;
+      }
+    }
+
+    return true; // Include the location if it matches all filters
+  });
 }
