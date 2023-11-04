@@ -1,8 +1,6 @@
 ---
-import WikiCard from "@components/wiki/wiki-card.astro";
 import WikiLayout from "@layouts/wiki.astro";
 import { Button } from "@components/ui/button";
-import { LocationCard } from "@components/location/location-card";
 import {
   Card,
   CardContent,
@@ -11,26 +9,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@components/ui/card";
-
-const featured = [
-  {
-    name: "Install the modpack",
-    description: "Get to exploring Westeros easy and fast",
-  },
-  {
-    name: "Apply to build",
-    description: "Get started on an application to help contribute",
-  },
-  {
-    name: "Join our Discord",
-    description: "Our community lives on Discord. Come hang with us!",
-  },
-];
+import { getCollection } from "astro:content";
+import { camel2title, getSlug } from "@lib/utils";
+const featuredLocations = await getCollection(
+  "locations",
+  (x) =>
+    x.slug === "kings-landing" || x.slug === "winterfell" || x.slug === "pyke"
+);
 ---
 
-<WikiLayout title="WesterosCraft Docs">
+<WikiLayout title='WesterosCraft Docs'>
   <div>
-    <h1 class="text-semibold">WesterosCraft Docs</h1>
+    <h1 class='text-semibold'>WesterosCraft Docs</h1>
     <p>
       WesterosCraft is a fan-made project dedicated to recreating the fictional
       world of Westeros from George R.R. Martin's "A Song of Ice and Fire" book
@@ -49,75 +39,47 @@ const featured = [
     </p>
   </div>
   <div>
-    <div class="flex flex-row justify-between items-end">
-      <div class="flex flex-col">
-        <p class="mb-0">All of our builds</p>
-        <h2 class="mt-2 mb-0">Explore locations across Westeros</h2>
+    <div class='flex flex-row justify-between items-end'>
+      <div class='flex flex-col'>
+        <p class='mb-0'>All of our builds</p>
+        <h2 class='mt-2 mb-0'>Explore locations across Westeros</h2>
       </div>
       <div>
-        <Button variant="outline-red">View All Locations</Button>
+        <Button variant='outline-red'>View All Locations</Button>
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-4 not-prose mt-6">
-      <Card
-        className="max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder"
-      >
-        <CardHeader className="pl-0 pr-0 pt-0">
-          <div class="relative flex h-[180px]"></div>
-        </CardHeader>
-        <CardContent className="pt-0 px-6 pb-3">
-          <CardTitle>Kings Landing</CardTitle>
-          <CardDescription>Beyond the Wall</CardDescription>
-        </CardContent>
-        <CardFooter>
-          <div class="flex flex-row justify-between w-full">
-            <p>Completed</p>
-            <p>City</p>
-          </div>
-        </CardFooter>
-      </Card>
-      <Card
-        className="max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder"
-      >
-        <CardHeader className="pl-0 pr-0 pt-0">
-          <div class="relative flex h-[180px]"></div>
-        </CardHeader>
-        <CardContent className="pt-0 px-6 pb-3">
-          <CardTitle>Kings Landing</CardTitle>
-          <CardDescription>Beyond the Wall</CardDescription>
-        </CardContent>
-        <CardFooter>
-          <div class="flex flex-row justify-between w-full">
-            <p>Completed</p>
-            <p>City</p>
-          </div>
-        </CardFooter>
-      </Card>
-      <Card
-        className="max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder"
-      >
-        <CardHeader className="pl-0 pr-0 pt-0">
-          <div class="relative flex h-[180px]"></div>
-        </CardHeader>
-        <CardContent className="pt-0 px-6 pb-3">
-          <CardTitle>Kings Landing</CardTitle>
-          <CardDescription>Beyond the Wall</CardDescription>
-        </CardContent>
-        <CardFooter>
-          <div class="flex flex-row justify-between w-full">
-            <p>Completed</p>
-            <p>City</p>
-          </div>
-        </CardFooter>
-      </Card>
+    <div class='grid grid-cols-3 gap-4 not-prose mt-6'>
+      {
+        featuredLocations?.map((loc) => (
+          <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder'>
+            <a href={`/locations/${getSlug(loc?.data?.region)}/${loc?.slug}`}>
+              <CardHeader className='pl-0 pr-0 pt-0'>
+                <div class='relative flex h-[180px]'>
+                  <img
+                    decoding='async'
+                    loading='lazy'
+                    src={loc?.data?.locationImages?.[0]?.src || ""}
+                    sizes='25vw'
+                    class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
+                  />
+                </div>
+              </CardHeader>
+              <CardContent className='pt-0 px-6 pb-3'>
+                <CardTitle>{loc?.data?.title || ""}</CardTitle>
+                <CardDescription className='mt-1'>
+                  {camel2title(loc?.data?.region) || ""}
+                </CardDescription>
+              </CardContent>
+              <CardFooter>
+                <div class='flex flex-row justify-between w-full'>
+                  <p>{camel2title(loc.data?.projectStatus)}</p>
+                  <p>{camel2title(loc?.data?.projectType)}</p>
+                </div>
+              </CardFooter>
+            </a>
+          </Card>
+        ))
+      }
     </div>
   </div>
-  <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
-    {
-      featured.map((feature) => (
-        <WikiCard title={feature.name} description={feature.description} />
-      ))
-    }
-  </div> -->
-  <!-- <h2>Guides</h2> -->
 </WikiLayout>

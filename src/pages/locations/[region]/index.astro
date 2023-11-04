@@ -50,7 +50,7 @@ const icon = regions.find((x) => pageRegion === slugify(x.name));
   <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
     {
       filteredLocations.map((i) => (
-        <a href={`/wiki/locations/${slugify(pageRegion)}/${i.slug}`}>
+        <a href={`/locations/${slugify(pageRegion)}/${i.slug}`}>
           <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
         </a>
       ))

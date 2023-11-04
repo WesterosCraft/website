@@ -55,7 +55,7 @@ export const makeDocsWikiNav = (docs: any[]) => {
 
     categories[category].push({
       title: doc.data.title,
-      href: `/wiki/docs/${slugify(category)}/${doc.slug}`,
+      href: `/docs/${slugify(category)}/${doc.slug}`,
     });
   });
 

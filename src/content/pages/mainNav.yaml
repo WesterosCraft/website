@@ -19,17 +19,17 @@ items:
           link: https://ko-fi.com/westeroscraft
           description: Help keep the server running
           isExternal: true
-  - text: Docs
-    isDropdown:
-      discriminant: false
-      value:
-        link: /docs
-        isExternal: false
   - text: Locations
     isDropdown:
       discriminant: false
       value:
         link: /locations
+        isExternal: false
+  - text: Docs
+    isDropdown:
+      discriminant: false
+      value:
+        link: /docs
         isExternal: false
   - text: Map
     isDropdown:

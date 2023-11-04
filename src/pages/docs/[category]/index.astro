@@ -41,7 +41,7 @@ const filteredDocs = await getCollection(
   <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
     {
       filteredDocs.map((i) => (
-        <a href={`/wiki/docs/${slugify(category)}/${i.slug}`}>
+        <a href={`/docs/${slugify(category)}/${i.slug}`}>
           <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
         </a>
       ))

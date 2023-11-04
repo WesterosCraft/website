@@ -10,20 +10,13 @@ import { getCollection } from "astro:content";
 const locationsdirectories = await getCollection("locations");
 const docsdirectories = await getCollection("docs");
 
-const normalizedLocations = locationsdirectories?.map((x) => ({
-  title: x.data.title,
-  route: "/wiki/locations/" + x.data.region + "/" + x.slug,
-  type: "location",
-}));
-
 const normalizedDocs = docsdirectories?.map((x) => ({
   title: x.data.title,
-  route:
-    "/wiki/docs/" + slugify(camel2title(x.data.docCategory)) + "/" + x.slug,
+  route: "/docs/" + slugify(camel2title(x.data.docCategory)) + "/" + x.slug,
   type: "doc",
 }));
 
-const normalizedDirectories = normalizedLocations.concat(normalizedDocs);
+const normalizedDirectories = normalizedDocs;
 ---
 
 <nav class={clsx("text-base lg:text-sm", className)}>
