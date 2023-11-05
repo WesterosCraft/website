@@ -1,4 +1,3 @@
-import { progress } from "./src/cms/singletons/progress";
 import { footer } from "./src/cms/singletons/footer";
 import { mainnav } from "./src/cms/singletons/main-nav";
 import { join } from "./src/cms/singletons/join";
@@ -28,7 +27,6 @@ export default config({
     mainnav,
     footer,
     banner,
-    progress,
   },
   collections: {
     locations,

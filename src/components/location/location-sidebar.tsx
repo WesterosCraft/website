@@ -39,6 +39,39 @@ export function LocationSidebar({
   view,
   setView,
 }: LocationSidebarProps) {
+  const calcCompletionPercentage = (
+    completedLevel: number,
+    inProgressLevel: number,
+    notStartedLevel: number
+  ) => {
+    return Math.ceil(
+      ((completedLevel + inProgressLevel / 2) /
+        (completedLevel + inProgressLevel + notStartedLevel)) *
+        100
+    );
+  };
+
+  const numComplete = allLocations?.filter(
+    (x) => x?.data?.projectStatus === "completed"
+  )?.length;
+
+  const numInProgress =
+    allLocations?.filter((x) => x?.data?.projectStatus === "inProgress")
+      ?.length +
+    allLocations?.filter((x) => x?.data?.projectStatus === "redoInProgress")
+      ?.length;
+
+  const numNotStarted =
+    allLocations?.filter((x) => x?.data?.projectStatus === "notStarted")
+      ?.length +
+    allLocations?.filter((x) => x?.data?.projectStatus === "abandoned")?.length;
+
+  const percentageComplete = calcCompletionPercentage(
+    numComplete,
+    numInProgress,
+    numNotStarted
+  );
+
   return (
     <div className='sidebar hidden lg:block w-[222px] mr-12'>
       <LocationFilterOptions view={view} setView={setView} />
@@ -59,7 +92,7 @@ export function LocationSidebar({
         />
       </div>
       <div className='my-4'></div>
-      <div className='divide-y-2 divide-primaryLightBorder'>
+      <div className='divide-y-2 divide-primaryLightBorder/60'>
         <div></div>
         {FILTER_ITEMS.map((item) => (
           <div className='py-3' key={item?.slug}>
@@ -71,6 +104,41 @@ export function LocationSidebar({
             />
           </div>
         ))}
+      </div>
+      <div className='border-t-2 border-primaryLightBorder/60 py-6 text-muted-foreground'>
+        <p className='text-sm'>
+          Westeros is an estimated{" "}
+          <span className='text-primaryRed font-semibold'>
+            {percentageComplete}%
+          </span>{" "}
+          complete
+        </p>
+        <div className='text-sm space-y-2 mt-4'>
+          <p>
+            Total Locations:{" "}
+            <span className='font-semibold text-primaryDark'>
+              {allLocations?.length}
+            </span>
+          </p>
+          <p>
+            Total Complete:{" "}
+            <span className='font-semibold text-primaryDark'>
+              {numComplete}
+            </span>
+          </p>
+          <p>
+            Total In Progress:{" "}
+            <span className='font-semibold text-primaryDark'>
+              {numInProgress}
+            </span>
+          </p>
+          <p>
+            Total Not Started:{" "}
+            <span className='font-semibold text-primaryDark'>
+              {numNotStarted}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

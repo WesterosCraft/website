@@ -65,11 +65,11 @@ export function LocationCards({
   }, [clickCount]);
 
   return view === "card" ? (
-    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
       {locations?.map((location) => (
         <div
           key={location?.data?.title}
-          className="flex items-center justify-center"
+          className='flex items-center justify-center'
         >
           <LocationCard
             link={`/locations/${getSlug(location?.data?.region)}/${
@@ -88,7 +88,7 @@ export function LocationCards({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[260px]">Name</TableHead>
+          <TableHead className='w-[260px]'>Name</TableHead>
           <TableHead>Region</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Type</TableHead>
@@ -97,13 +97,46 @@ export function LocationCards({
       <TableBody>
         {locations?.map((location) => (
           <TableRow key={location?.data?.title}>
-            <TableCell>{location?.data?.title}</TableCell>
-            <TableCell>{camel2title(location?.data?.region)}</TableCell>
-            <TableCell>{camel2title(location?.data?.projectStatus)}</TableCell>
-            <TableCell>{camel2title(location?.data?.projectType)}</TableCell>
+            <TableCellWithLink
+              region={location?.data?.region}
+              slug={location.slug}
+            >
+              {location?.data?.title}
+            </TableCellWithLink>
+            <TableCellWithLink
+              region={location?.data?.region}
+              slug={location.slug}
+            >
+              {camel2title(location?.data?.region)}
+            </TableCellWithLink>
+            <TableCellWithLink
+              region={location?.data?.region}
+              slug={location.slug}
+            >
+              {camel2title(location?.data?.projectStatus)}
+            </TableCellWithLink>
+            <TableCellWithLink
+              region={location?.data?.region}
+              slug={location.slug}
+            >
+              {camel2title(location?.data?.projectType)}
+            </TableCellWithLink>
           </TableRow>
         ))}
       </TableBody>
     </Table>
+  );
+}
+
+function TableCellWithLink({ children, region, slug }: any) {
+  return (
+    <TableCell className='p-0'>
+      <a
+        className='block space-x-4 p-4'
+        href={`/locations/${getSlug(region)}/${slug}`}
+      >
+        {children}
+      </a>
+    </TableCell>
   );
 }

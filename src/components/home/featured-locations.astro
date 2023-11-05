@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import { ArrowRight } from "lucide-react";
 
 const { data } = Astro.props;
+
 const images = import.meta.glob(
   "../../assets/pages/home/featuredLocations/imageGrid/*"
 );
@@ -27,7 +28,7 @@ const images = import.meta.glob(
     <div class='mt-12'>
       {
         data?.links?.map((link) => (
-          <div class='pt-4 border-t-[1px] border-gray-200'>
+          <div class='pt-4 border-t-[1px] border-primaryLightBorder/60'>
             <TypographyP className='font-semibold'>
               {link.linkAltText}
             </TypographyP>
@@ -35,14 +36,16 @@ const images = import.meta.glob(
               {link.linkDescription}
             </TypographyP>
             <div class='flex mt-3 mb-2 justify-end sm:justify-start'>
-              <Button
-                variant='link'
-                className='p-0 text-primaryRed hover:text-red-800 hover:fill-red-800'
-                disabled={!link.linkText}
-              >
-                {link.linkText || "Read More"}
-                <ArrowRight size='18' />
-              </Button>
+              <a href={link?.isExternal?.value}>
+                <Button
+                  variant='link'
+                  className='p-0 text-primaryRed hover:text-red-800 hover:fill-red-800'
+                  disabled={!link.linkText}
+                >
+                  {link.linkText || "Read More"}
+                  <ArrowRight size='18' />
+                </Button>
+              </a>
             </div>
           </div>
         ))

@@ -95,13 +95,13 @@ featuredLocations:
       linkDescription: View a single comprehensive list of every build we have to offer.
       isExternal:
         discriminant: false
-        value: /wiki/locations
+        value: /locations
     - linkText: Read More
       linkAltText: Guides
-      linkDescription: View in depth guides on how to explore and play on our server.
+      linkDescription: View in depth guides and more on how to explore and play on our server.
       isExternal:
         discriminant: false
-        value: /wiki/guides
+        value: /docs
     - linkAltText: Blocks
       linkDescription: Check out a repository of all our custom designed blocks.
       isExternal:

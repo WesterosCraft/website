@@ -4,6 +4,7 @@ import LocationLayout from "@layouts/location.astro";
 import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import Prose from "@components/prose.astro";
+import BackToLocationsLink from "@components/back-to-locations-link.astro";
 
 export async function getStaticPaths() {
   const locations = await getCollection("locations");
@@ -26,6 +27,7 @@ const { Content } = await location?.render();
 ---
 
 <LocationLayout title={location?.data.title}>
+  <BackToLocationsLink slot='back-to-locations' />
   {
     location?.data && (
       <ProjectDetailsCard
@@ -34,7 +36,7 @@ const { Content } = await location?.render();
       />
     )
   }
-  <Fragment slot='location-content'>
+  <Fragment slot='location-image'>
     {
       location?.data?.locationImages &&
         location?.data?.locationImages.length && (
@@ -47,6 +49,8 @@ const { Content } = await location?.render();
           </div>
         )
     }
+  </Fragment>
+  <Fragment slot='location-content'>
     {
       Content && (
         <div class='pb-12 break-words'>

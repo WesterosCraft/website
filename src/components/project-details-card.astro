@@ -5,6 +5,7 @@ import { Button } from "@components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { TypographyH1 } from "@components/typography";
 import { Image } from "astro:assets";
+import BackToLocationsLink from "./back-to-locations-link.astro";
 
 interface ProjectDetails {
   title: string;
@@ -54,18 +55,7 @@ const items = [
 ---
 
 <div>
-  <div>
-    <a href='javascript: history.go(-1)'>
-      <Button
-        variant='link'
-        className='pl-0 hover:text-primaryRed no-underline hover:no-underline font-semibold'
-      >
-        <ArrowLeft size='18' className='mr-2' />
-         Back to Locations
-      </Button>
-    </a>
-  </div>
-  <div class='pt-8'>
+  <div class='md:pt-8'>
     <div class='flex flex-row justify-between gap-4'>
       <div>
         <TypographyH1 className='mb-4 tracking-wide'>
@@ -88,24 +78,25 @@ const items = [
         )
       }
     </div>
-    <div class='flex flex-row justify-between mt-8 mb-4'>
-      {
-        projectDetails?.dynmap && (
-          <a href={projectDetails?.dynmap} target='_blank'>
-            <Button>View On Map</Button>
-          </a>
-        )
-      }
-      {
-        projectDetails?.application && (
-          <a href={projectDetails?.application} target='_blank'>
-            <Button variant='outline'>View Application</Button>
-          </a>
-        )
-      }
-    </div>
+    {
+      projectDetails?.dynmap ||
+        (projectDetails?.application && (
+          <div class='flex flex-row justify-between mt-8'>
+            {projectDetails?.dynmap && (
+              <a href={projectDetails?.dynmap} target='_blank'>
+                <Button>View On Map</Button>
+              </a>
+            )}
+            {projectDetails?.application && (
+              <a href={projectDetails?.application} target='_blank'>
+                <Button variant='outline'>View Application</Button>
+              </a>
+            )}
+          </div>
+        ))
+    }
 
-    <div class='divide-y'>
+    <div class='divide-y divide-primaryLightBorder/70 mt-8'>
       {
         items?.map((item) => (
           <div class='flex justify-between py-[10px] text-sm'>

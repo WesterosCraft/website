@@ -17,7 +17,7 @@ export function LocationMobileMenu({ allLocations, setClickCount }: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='mobile-menu block lg:hidden px-4'>
+    <div className='mobile-menu block lg:hidden px-4 mb-8'>
       <MatchSorterSearch
         placeholder={"Search..."}
         directories={allLocations?.map((location) => ({
@@ -30,7 +30,7 @@ export function LocationMobileMenu({ allLocations, setClickCount }: any) {
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className='w-full border-b mt-4'
+        className='w-full border-b border-primaryLightBorder mt-4'
       >
         <CollapsibleTrigger asChild>
           <Button

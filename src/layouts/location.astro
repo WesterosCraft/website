@@ -14,18 +14,29 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   ogUrl={ogUrl}
 >
   <div
-    class='max-w-8xl mx-auto sm:px-2 lg:px-8 xl:px-12 w-full flex flex-col flex-grow'
+    class='max-w-8xl mx-auto px-4 lg:px-8 xl:px-12 w-full flex flex-col flex-grow'
   >
     <div class='desktop-layout hidden md:grid grid-cols-8'>
       <div class='sticky top-0 self-start col-span-3 pr-8 lg:pr-12 py-6 pl-6'>
+        <slot name='back-to-locations' />
         <slot name='location-details' />
       </div>
       <div
-        class='col-span-5 border-l overflow-auto pt-8 pb-12 pl-8 lg:pl-12 pr-6'
+        class='col-span-5 border-l border-primaryLightBorder/70 overflow-auto pt-8 pb-12 pl-8 lg:pl-12 pr-6'
       >
+        <slot name='location-image' />
         <slot name='location-content' />
       </div>
     </div>
-    <div class='mobile-layout md:hidden'></div>
+    <div class='mobile-layout md:hidden'>
+      <div class='mt-4 mb-3'>
+        <slot name='back-to-locations' />
+      </div>
+      <slot name='location-image' />
+      <slot name='location-details' />
+      <div class='mt-8'>
+        <slot name='location-content' />
+      </div>
+    </div>
   </div>
 </RootLayout>

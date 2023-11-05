@@ -30,7 +30,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["GeistVF", defaultTheme.fontFamily.sans],
-        esmeralda: ["EsmeraldaPro"],
+        esmeralda: ["EsmeraldaPro", defaultTheme.fontFamily.serif],
       },
       colors: {
         bgColor: "#f4f4f4",
