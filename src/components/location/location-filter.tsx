@@ -17,12 +17,14 @@ interface LocationFilterProps {
   items: Array<{ label: string; value: string }>;
   slug: string;
   setClickCount: (arg: number) => void;
+  clickCount: number;
 }
 
 export function LocationFilter({
   title,
   items,
   slug,
+  clickCount,
   setClickCount,
 }: LocationFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,30 +47,30 @@ export function LocationFilter({
     const regionParams = queryParams.getAll(slug);
     const regionCount = regionParams.length;
     setNumberOfTags(regionCount);
-  }, []);
+  }, [clickCount]);
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-2">
-      <div className="flex items-center justify-between">
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className='space-y-2'>
+      <div className='flex items-center justify-between'>
         <CollapsibleTrigger asChild>
           <Button
-            variant="ghost"
-            size="sm"
-            className="w-full flex items-center justify-start p-0 hover:bg-transparent"
+            variant='ghost'
+            size='sm'
+            className='w-full flex items-center justify-start p-0 hover:bg-transparent'
           >
             {isOpen ? <ChevronDown /> : <ChevronRight />}
-            <div className="flex flex-row justify-between w-full ml-2">
-              <span className="text-md">{title}</span>
+            <div className='flex flex-row justify-between w-full ml-2'>
+              <span className='text-md'>{title}</span>
               {numberOfTags <= 0 ? null : (
-                <span className="bg-red">
-                  <Badge variant="destructive">{numberOfTags}</Badge>
+                <span className='bg-red'>
+                  <Badge variant='destructive'>{numberOfTags}</Badge>
                 </span>
               )}
             </div>
           </Button>
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent className="space-y-2">
+      <CollapsibleContent className='space-y-2'>
         {items?.map((item) => (
           <CheckboxWithText
             key={item?.value}
@@ -120,7 +122,7 @@ export function CheckboxWithText({
   return (
     <label
       htmlFor={value}
-      className="location-filter-checkbox bg-primaryLightBorder/10 hover:bg-primaryLightBorder/30 items-top flex space-x-2 rounded-md border p-2 font-mono text-sm mb-2 transition-all cursor-pointer"
+      className='location-filter-checkbox bg-primaryLightBorder/10 hover:bg-primaryLightBorder/30 items-top flex space-x-2 rounded-md border p-2 font-mono text-sm mb-2 transition-all cursor-pointer'
     >
       <Checkbox
         id={value}
@@ -129,10 +131,10 @@ export function CheckboxWithText({
         onClick={() => handleClick(slug, value)}
         // className="location-filter-checkbox"
       />
-      <div className="grid gap-1.5 leading-none pointer-events-none">
+      <div className='grid gap-1.5 leading-none pointer-events-none'>
         <label
           htmlFor={value}
-          className="text-md font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          className='text-md font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
         >
           {label}
         </label>

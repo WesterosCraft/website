@@ -44,7 +44,7 @@ export function LocationMobileMenu({ allLocations, setClickCount }: any) {
             {isOpen ? <ChevronDown /> : <ChevronRight />}
           </Button>
         </CollapsibleTrigger>
-        <CollapsibleContent className='divide-y-2'>
+        <CollapsibleContent className='divide-y-2 divide-primaryLightBorder/70'>
           {FILTER_ITEMS?.map((item) => (
             <div className='py-3' key={item?.slug}>
               <LocationFilter

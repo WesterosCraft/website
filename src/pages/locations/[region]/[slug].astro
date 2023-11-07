@@ -26,7 +26,7 @@ const { location } = Astro.props;
 const { Content } = await location?.render();
 ---
 
-<LocationLayout title={location?.data.title}>
+<LocationLayout title={`${location?.data.title} - WesterosCraft`}>
   <BackToLocationsLink slot='back-to-locations' />
   {
     location?.data && (

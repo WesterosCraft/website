@@ -1,9 +1,6 @@
 ---
-import WikiCard from "@components/wiki/wiki-card.astro";
-import WikiLayout from "@layouts/wiki.astro";
-import { slugify, titleizeASlug, camel2title } from "@lib/utils";
-import { getCollection } from "astro:content";
-import { REGIONS, regions } from "@constants/index";
+import { slugify, camel2title } from "@lib/utils";
+import { REGIONS } from "@constants/index";
 
 export async function getStaticPaths() {
   return REGIONS.map((region) => {
@@ -18,42 +15,9 @@ export async function getStaticPaths() {
   });
 }
 
-const { region: pageRegion } = Astro.props;
+const { region } = Astro.props;
 
-const filteredLocations = await getCollection(
-  "locations",
-  ({ data: { region } }) => {
-    return slugify(camel2title(region)) === pageRegion;
-  }
-);
-
-const icon = regions.find((x) => pageRegion === slugify(x.name));
+return Astro.redirect(`/locations?region=${region}`);
 ---
 
-<WikiLayout title={titleizeASlug(pageRegion)}>
-  <div class='flex flex-row gap-6 not-prose mb-8'>
-    {
-      icon && (
-        <img
-          class='not-prose w-16 h-16'
-          src={icon.icon.src}
-          alt={icon.icon.alt}
-        />
-      )
-    }
-    <div>
-      <h1 class='text-4xl'>{titleizeASlug(pageRegion)}</h1>
-      <p class='mt-2'>{icon?.description}</p>
-    </div>
-  </div>
-
-  <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
-    {
-      filteredLocations.map((i) => (
-        <a href={`/locations/${slugify(pageRegion)}/${i.slug}`}>
-          <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
-        </a>
-      ))
-    }
-  </div>
-</WikiLayout>
+<h2>Redirecting you...</h2>

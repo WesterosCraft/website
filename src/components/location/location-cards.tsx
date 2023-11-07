@@ -87,7 +87,7 @@ export function LocationCards({
   ) : (
     <Table>
       <TableHeader>
-        <TableRow>
+        <TableRow className='hover:bg-primaryLightBorder/20'>
           <TableHead className='w-[260px]'>Name</TableHead>
           <TableHead>Region</TableHead>
           <TableHead>Status</TableHead>
@@ -96,7 +96,10 @@ export function LocationCards({
       </TableHeader>
       <TableBody>
         {locations?.map((location) => (
-          <TableRow key={location?.data?.title}>
+          <TableRow
+            key={location?.data?.title}
+            className='hover:bg-primaryLightBorder/20'
+          >
             <TableCellWithLink
               region={location?.data?.region}
               slug={location.slug}

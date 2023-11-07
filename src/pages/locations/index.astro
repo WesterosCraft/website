@@ -6,18 +6,16 @@ import { LocationContent } from "@components/location/location-content";
 import { filterLocationsBySearchParam } from "@lib/utils";
 import { TypographyH1, TypographyP } from "@components/typography";
 
-const locations = await getCollection("locations");
-
 const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   Astro.props.frontmatter || Astro.props;
 
 const query = Astro.url.searchParams;
-
+const locations = await getCollection("locations");
 const filteredLocations = filterLocationsBySearchParam(locations, query);
 ---
 
 <RootLayout
-  title={title}
+  title={"Explore Westeros Locations - WesterosCraft" || title}
   description={description}
   ogTitle={ogTitle}
   ogType={ogType}

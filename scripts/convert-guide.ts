@@ -15,7 +15,7 @@ const serializers = {
     video: (props: any) => `{% video id="${props.node.url}" /%}`,
     figure: (props: any) => `-------- FIGURE HERE EVENTUALLY --------`,
     callout: (props: any) => {
-      return `{% callout %}${props.node.text}{% /callout %}`;
+      return `{% callout %}\n${props.node.text}\n{% /callout %}`;
     },
     file: (props: any) => `-------- FILE HERE EVENTUALLY --------`,
   },

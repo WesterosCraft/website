@@ -10,9 +10,12 @@ import {
   CardTitle,
 } from "@components/ui/card";
 import { getCollection } from "astro:content";
-import Dropcap from "@components/dropcap.astro";
 import { camel2title, getSlug } from "@lib/utils";
-import { TypographyH1 } from "../../components/typography.tsx";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyP,
+} from "../../components/typography.tsx";
 import hammerSmash from "../../assets/icons/hammer-smash.svg";
 import messageQuestion from "../../assets/icons/message-question.svg";
 import book from "../../assets/icons/book.svg";
@@ -27,18 +30,18 @@ const featuredDocs = await getCollection(
   "docs",
   (x) =>
     x.slug === "basic-building-guide-for-applicants" ||
-    x.slug === "server-rules" ||
+    x.slug === "community-rules" ||
     x.slug === "frequently-asked-questions"
 );
 
 const iconMap = {
   "basic-building-guide-for-applicants": hammerSmash,
   "frequently-asked-questions": messageQuestion,
-  "server-rules": book,
+  "community-rules": book,
 };
 ---
 
-<WikiLayout title='WesterosCraft Docs'>
+<WikiLayout title='WesterosCraft Documentation - WesterosCraft'>
   <div class='max-w-3xl mx-auto not-prose text-center'>
     <TypographyH1 className='text-bold text-center not-prose mb-6'>
       WesterosCraft Documentation
@@ -120,14 +123,14 @@ const iconMap = {
                     />
                   </div>
                 </CardHeader>
-                <CardContent className='pt-0 px-4 sm:px-6 pb-3'>
+                <CardContent className='pt-0 px-4 md:px-6 pb-3'>
                   <CardTitle>{loc?.data?.title || ""}</CardTitle>
                   <CardDescription className='mt-1'>
                     {camel2title(loc?.data?.region) || ""}
                   </CardDescription>
                 </CardContent>
-                <CardFooter className=' px-4 sm:px-6'>
-                  <div class='flex flex-row justify-between w-full'>
+                <CardFooter className=' px-4 md:px-6'>
+                  <div class='flex flex-row justify-between w-full text-sm'>
                     <p>{camel2title(loc.data?.projectStatus)}</p>
                     <p>{camel2title(loc?.data?.projectType)}</p>
                   </div>
@@ -136,6 +139,28 @@ const iconMap = {
             </Card>
           ))
         }
+      </div>
+    </div>
+    <div class='text-center pt-12 sm:pt-16 px-4'>
+      <TypographyH2>
+        {"Check out the progress in game!"}
+      </TypographyH2>
+      <TypographyP className='max-w-2xl mx-auto text-lg'>
+        {
+          `Westeros is home to over 500 cities, castles, and landmarks. Our goal is
+        to construct them all. With over 300 completed so far, our community is
+        well on our way to having a fully explorable map.`
+        }
+      </TypographyP>
+      <div class='mt-8'>
+        <a href='/join'>
+          <Button
+            size='lg'
+            className='rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95'
+          >
+            {`Join the Server`}
+          </Button>
+        </a>
       </div>
     </div>
   </div>

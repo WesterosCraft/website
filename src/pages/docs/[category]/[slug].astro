@@ -1,8 +1,6 @@
 ---
 import WikiLayout from "@layouts/wiki.astro";
 import { getCollection } from "astro:content";
-
-import TableOfContents from "@components/table-of-contents.astro";
 import { slugify, camel2title } from "@lib/utils";
 
 // interface Props extends Location {}
@@ -27,8 +25,7 @@ const { doc } = Astro.props;
 const { Content } = await doc?.render();
 ---
 
-<WikiLayout title={doc?.data.title}>
-  <!-- <TableOfContents slot='toc' content={layout} /> -->
+<WikiLayout title={`${doc?.data.title} - WesterosCraft`}>
   <h1>{doc?.data.title}</h1>
   <Content />
 </WikiLayout>

@@ -31,6 +31,7 @@ interface LocationSidebarProps {
   setClickCount: (el: number) => void;
   view: "card" | "table";
   setView: (e: "card" | "table") => void;
+  clickCount: number;
 }
 
 export function LocationSidebar({
@@ -38,6 +39,7 @@ export function LocationSidebar({
   setClickCount,
   view,
   setView,
+  clickCount,
 }: LocationSidebarProps) {
   const calcCompletionPercentage = (
     completedLevel: number,
@@ -74,7 +76,11 @@ export function LocationSidebar({
 
   return (
     <div className='sidebar hidden lg:block w-[222px] mr-12'>
-      <LocationFilterOptions view={view} setView={setView} />
+      <LocationFilterOptions
+        view={view}
+        setView={setView}
+        setClickCount={setClickCount}
+      />
       <div>
         <div className='flex flex-row justify-between space-x-4'>
           <TypographyP className='font-semibold text-sm'>
@@ -101,6 +107,7 @@ export function LocationSidebar({
               items={item?.items}
               slug={item?.slug}
               setClickCount={setClickCount}
+              clickCount={clickCount}
             />
           </div>
         ))}

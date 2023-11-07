@@ -17,9 +17,11 @@ import { XSquare } from "lucide-react";
 export function LocationFilterOptions({
   view,
   setView,
+  setClickCount,
 }: {
   view: "card" | "table";
   setView: (e: "card" | "table") => void;
+  setClickCount: any;
 }) {
   const [queryParamsCount, setQueryParamsCount] = useState(0);
 
@@ -34,7 +36,11 @@ export function LocationFilterOptions({
   }, [window.location.search]);
 
   const clearButton = () => {
-    window.location.href = "/locations";
+    if (window) {
+      const newUrl = `/locations`;
+      window.history.replaceState(null, "", newUrl);
+      setClickCount((prevClickCount) => prevClickCount + 1);
+    }
   };
   return (
     <div className='flex flex-row justify-between items-end mb-4'>
@@ -49,8 +55,18 @@ export function LocationFilterOptions({
           </SelectTrigger>
           <SelectContent className='bg-primaryLightShade'>
             <SelectGroup>
-              <SelectItem value='card'>Card</SelectItem>
-              <SelectItem value='table'>Table</SelectItem>
+              <SelectItem
+                className='hover:bg-primaryLightBorder/20'
+                value='card'
+              >
+                Card
+              </SelectItem>
+              <SelectItem
+                className='hover:bg-primaryLightBorder/20'
+                value='table'
+              >
+                Table
+              </SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

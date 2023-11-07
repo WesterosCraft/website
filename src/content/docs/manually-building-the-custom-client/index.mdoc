@@ -2,58 +2,43 @@
 title: Manually Building the Custom Client
 docCategory: gettingStarted
 ---
-This procedure is intended to allow folks that, for whatever reason, would prefer to use the standard **Minecraft Java Edition Launcher** to run the WesterosCraft Custom Client. 
 
-  
+This procedure is intended to allow folks that, for whatever reason, would prefer to use the standard **Minecraft Java Edition Launcher** to run the WesterosCraft Custom Client.
 
-
-{% callout %}As of version 1.11.2, we require Java 8 and we STRONGLY recommend running with at least 3GB of memory configured (which implies a requirement for a 64-bit Java). Confirm these by looking at the 'Java Executable' and 'JVM Options' settings on your profile in the launcher. If the vanilla launcher freezes while loading WesterosCraft or our Resource Pack, bump up the memory to 3GB or even higher.{% /callout %}
-
-  
-
+{% callout %}
+As of version 1.11.2, we require Java 8 and we STRONGLY recommend running with at least 3GB of memory configured (which implies a requirement for a 64-bit Java). Confirm these by looking at the 'Java Executable' and 'JVM Options' settings on your profile in the launcher. If the vanilla launcher freezes while loading WesterosCraft or our Resource Pack, bump up the memory to 3GB or even higher.
+{% /callout %}
 
 Before starting, please ensure the following:
 
-* Install Java 8 64bit for Windows 10 here: [https://java.com/en/download/win10.jsp](https://java.com/en/download/win10.jsp)
-* Make sure you've run **Vanilla v1.12.2** on your Minecraft Java Launcher at least once, so that the necessary files for v1.12.2 have been downloaded
+- Install Java 8 64bit for Windows 10 here: [https://java.com/en/download/win10.jsp](https://java.com/en/download/win10.jsp)
+- Make sure you've run **Vanilla v1.12.2** on your Minecraft Java Launcher at least once, so that the necessary files for v1.12.2 have been downloaded
 
-### Steps:
+### Steps
 
-1) Download the installer for **MinecraftForge v1.12.2** **version** ****14.23.5.2854**** from
-
-[https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar](https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar)
-
-2) Run the **MinecraftForge installer JAR file**. Select "Install Client" and click OK.
-
-3) Open up the **Minecraft Java Edition Launcher** (restart it if it was open during the Forge installation), navigate to the **Installations** tab, and create a new release (if needed) for our client, named "**WesterosCraft v1.12.2**", set the 'Version' to '**release 1.12.2-forge1.12.2-14.23.5.2859**'.
-
-4) On the same screen, locate the 'Game Directory' field and change the directory to a directory of your choosing (this will keep the mods from our client from interfering with other mods you might have installed). **Remember this directory** - for the sake of this example, we'll refer to this directory as <client-dir> in the future (as all other steps will be adding files in and under this directory). **You should create this directory, if needed**.
-
-5) If you have not dedicated more memory to your installation, this is the time to do it. Click on the 'MORE OPTIONS' button and change the argument '-Xmx2G' to '-Xmx4G' (or 6G, or 8G, however much memory you wish to dedicate). **Press Save**.
-
-6) Go back to the 'Play' tab on the launcher and select the new release you just created. Hit the Play button to launch the client: this should download other needed files, and create needed directories. If things start properly, you should see "Powered by Forge 14.23.5.2859" in the lower left corner of the main window. **Close the client**.
-
-7) Open the folder for the <client-dir> created in step 4. Download each of the following files, and place them in the '**mods**' subdirectory under the <client-dir>:
+1. Download the installer for **MinecraftForge v1.12.2**&nbsp;**version**&nbsp;**\*\*14.23.5.2854\*\*** from
+   [https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar](https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar)
+1. Run the **MinecraftForge installer JAR file**. Select "Install Client" and click OK.
+1. Open up the **Minecraft Java Edition Launcher** (restart it if it was open during the Forge installation), navigate to the **Installations** tab, and create a new release (if needed) for our client, named "**WesterosCraft v1.12.2**", set the 'Version' to '**release 1.12.2-forge1.12.2-14.23.5.2859**'.
+1. On the same screen, locate the 'Game Directory' field and change the directory to a directory of your choosing (this will keep the mods from our client from interfering with other mods you might have installed). **Remember this directory** - for the sake of this example, we'll refer to this directory as `<client-dir>` in the future (as all other steps will be adding files in and under this directory). **You should create this directory, if needed**.
+1. If you have not dedicated more memory to your installation, this is the time to do it. Click on the 'MORE OPTIONS' button and change the argument '-Xmx2G' to '-Xmx4G' (or 6G, or 8G, however much memory you wish to dedicate). **Press Save**.
+1. Go back to the 'Play' tab on the launcher and select the new release you just created. Hit the Play button to launch the client: this should download other needed files, and create needed directories. If things start properly, you should see "Powered by Forge 14.23.5.2859" in the lower left corner of the main window. **Close the client**.
+1. Open the folder for the `<client-dir>` created in step 4. Download each of the following files, and place them in the '**mods**' subdirectory under the `<client-dir>`:
 
 **REQUIRED MODS**:
 
-* OptiFine 1.12.2 HD U F5 - [https://optifine.net/adloadx?f=OptiFine_1.12.2_HD_U_F5.jar](https://optifine.net/adloadx?f=OptiFine_1.12.2_HD_U_F5.jar)
-* WesterosBlocks - [https://www.curseforge.com/minecraft/mc-mods/westerosblocks/files](https://www.curseforge.com/minecraft/mc-mods/westerosblocks/files)
-* Realistic Horse Genetics: v1.12.2-1.3.6a - [https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics/files/3040410](https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics/files/3040410)
-* Creative Core 1.10.65 - [https://www.curseforge.com/minecraft/mc-mods/creativecore/files/3467576](https://www.curseforge.com/minecraft/mc-mods/creativecore/files/3467576)
-* WCOnlinePicutreFrame 1.7.0-beta-1 - [https://www.curseforge.com/minecraft/mc-mods/wconlinepictureframe/files/3495943](https://www.curseforge.com/minecraft/mc-mods/wconlinepictureframe/files/3495943)
-* Statues - [https://www.curseforge.com/minecraft/mc-mods/statues/files/2972370](https://www.curseforge.com/minecraft/mc-mods/statues/files/2972370)
-
-
+- OptiFine 1.12.2 HD U F5 - [https://optifine.net/adloadx?f=OptiFine_1.12.2_HD_U_F5.jar](https://optifine.net/adloadx?f=OptiFine_1.12.2_HD_U_F5.jar)
+- WesterosBlocks - [https://www.curseforge.com/minecraft/mc-mods/westerosblocks/files](https://www.curseforge.com/minecraft/mc-mods/westerosblocks/files)
+- Realistic Horse Genetics: v1.12.2-1.3.6a - [https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics/files/3040410](https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics/files/3040410)
+- Creative Core 1.10.65 - [https://www.curseforge.com/minecraft/mc-mods/creativecore/files/3467576](https://www.curseforge.com/minecraft/mc-mods/creativecore/files/3467576)
+- WCOnlinePicutreFrame 1.7.0-beta-1 - [https://www.curseforge.com/minecraft/mc-mods/wconlinepictureframe/files/3495943](https://www.curseforge.com/minecraft/mc-mods/wconlinepictureframe/files/3495943)
+- Statues - [https://www.curseforge.com/minecraft/mc-mods/statues/files/2972370](https://www.curseforge.com/minecraft/mc-mods/statues/files/2972370)
 
 **OPTIONAL (BUT RECOMMENDED) MODS:**
 
-* JustEnoughItems mod (1.12.2-4.14.3.242) - [https://www.curseforge.com/minecraft/mc-mods/jei/files/2652749](https://www.curseforge.com/minecraft/mc-mods/jei/files/2652749)
+- JustEnoughItems mod (1.12.2-4.14.3.242) - [https://www.curseforge.com/minecraft/mc-mods/jei/files/2652749](https://www.curseforge.com/minecraft/mc-mods/jei/files/2652749)
 
-8) Download and install the **WesterosCraft Resource Pack** into the 'resourcepacks' directory under <client-dir>: [https://www.curseforge.com/minecraft/texture-packs/westeroscraft-resource-pack/files](https://www.curseforge.com/minecraft/texture-packs/westeroscraft-resource-pack/files)
-
-9) Start Minecraft client again from the **Minecraft Java Edition Launcher**. Click 'Options'. Click 'Resource Packs'. Move the 'WesterosCraftRP' resource pack to active.
-
-10) Click "Multiplayer". Click "Add Server". Enter "**WesterosCraft**" for name, and "**mc.westeroscraft.com**" for the address. Click 'Done".
-
-11) Launch the server selection, and start exploring Westeros!
+1. Download and install the **WesterosCraft Resource Pack** into the 'resourcepacks' directory under `<client-dir>`: [https://www.curseforge.com/minecraft/texture-packs/westeroscraft-resource-pack/files](https://www.curseforge.com/minecraft/texture-packs/westeroscraft-resource-pack/files)
+1. Start Minecraft client again from the **Minecraft Java Edition Launcher**. Click 'Options'. Click 'Resource Packs'. Move the 'WesterosCraftRP' resource pack to active.
+1. Click "Multiplayer". Click "Add Server". Enter "**WesterosCraft**" for name, and "**mc.westeroscraft.com**" for the address. Click 'Done".
+1. Launch the server selection, and start exploring Westeros!
