@@ -1,9 +1,9 @@
 ---
 title: WorldEdit Basics
-docCategory: tutorials
+docCategory: guides
 ---
-In this guide we'll go through the most useful basic WorldEdit concepts, tools and commands. For a complete list of WorldEdit commands and tools, click [here](https://worldedit.enginehub.org/en/latest/commands/).  
 
+In this guide we'll go through the most useful basic WorldEdit concepts, tools and commands. For a complete list of WorldEdit commands and tools, click [here](https://worldedit.enginehub.org/en/latest/commands/).
 
 #### Block id:meta
 
@@ -31,7 +31,6 @@ Brushes can be bound to pretty much all tools, weapons and other non-placeable i
 
 **Cylinder brush: //br cyl [id:meta] [radius] [height]**
 
-  
 Spherical brush will create a ball of blocks specified with [id:meta], of size defined with [radius]. As diameter is radius times two and the minimum diameter of a brush is 1, [radius] of 3 will give you a seven blocks wide ball. In addition to [radius], cylinder brush also accepts a height value (If you don't define a height, you'll get a one block thick disc). So, "//br cyl 35:0 3 4" will create a 7 blocks wide, 4 blocks tall cylinder of white wool, with the center of the bottom layer on the block where you click with the brush. Height value can also be negative; in that case the block you click with the brush will be the center of the top layer of the cylinder. Currently maximum radius/height for a WE brush is 10.
 
 #### Basic Commands
@@ -88,7 +87,6 @@ Changes the biome of the selection to [biometype]. For a list of available biome
 
 Masks are one of the most useful features of WE. Without masking, WE brushes will create blocks on all blocks/spaces within the defined brush size, air included. If you only want to change certain blocks, you have to use a mask. You'll also be able to fine-tune your selection commands with masks.
 
-  
 WorldEdit has two different mask types:
 
 **//mask [id:meta]**
@@ -123,7 +121,6 @@ Unlike regular //mask, **//gmask** also works with selection commands (//set, //
 
 A good example of this is tall grassing. Let's assume you have an area of ungrassed terrain, and you want to paint a layer of tall grass and fern (31:1,31:2) above grass (2) and dirt (3) blocks.
 
-  
 **Method one: brushing**
 
 //br s 31:1,31:2 10 (a large spherical brush of tall grass and fern) //mask 0 (only paint on air) //gmask >2,3 (only paint above grass and dirt)

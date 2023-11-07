@@ -40,7 +40,7 @@ const images = import.meta.glob(
                 <Button
                   variant='link'
                   className='p-0 text-primaryRed hover:text-red-800 hover:fill-red-800'
-                  disabled={!link.linkText}
+                  disabled={link?.linkText === "Coming Soon" || !link?.linkText}
                 >
                   {link.linkText || "Read More"}
                   <ArrowRight size='18' />

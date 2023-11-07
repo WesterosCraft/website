@@ -1,6 +1,6 @@
 import { fields, collection } from "@keystatic/core";
 import { wysiwyg } from "../fields";
-import { docCategories } from "@constants/index";
+import { DOC_CATEGORIES } from "@constants/index";
 
 export const docs = collection({
   entryLayout: "content",
@@ -17,7 +17,7 @@ export const docs = collection({
     docCategory: fields.select({
       label: "Category",
       description: "The category of doc",
-      options: docCategories,
+      options: DOC_CATEGORIES,
       defaultValue: "gettingStarted",
     }),
     content: wysiwyg,

@@ -4,10 +4,10 @@ import clsx from "clsx";
 const { navigation, className } = Astro.props;
 const pathname = Astro.url.pathname;
 import { slugify, camel2title } from "@lib/utils";
-
+import { NavSection } from "./nav-section";
 import { getCollection } from "astro:content";
+import { Button } from "@components/ui/button";
 
-const locationsdirectories = await getCollection("locations");
 const docsdirectories = await getCollection("docs");
 
 const normalizedDocs = docsdirectories?.map((x) => ({
@@ -20,37 +20,38 @@ const normalizedDirectories = normalizedDocs;
 ---
 
 <nav class={clsx("text-base lg:text-sm", className)}>
-  <ul class='space-y-9'>
-    <MatchSorterSearch
-      directories={normalizedDirectories}
-      client:only='react'
-    />
+  <MatchSorterSearch directories={normalizedDirectories} client:only='react' />
+  <ul class='not-prose space-y-1 mt-8'>
+    <li>
+      <Button
+        asChild
+        variant='ghost'
+        size='sm'
+        className='text-[13px] w-full py-[6px] px-2 font-display font-medium text-left'
+      >
+        <a
+          href='/docs'
+          class={clsx("py-2 px-2 block w-full", {
+            "font-semibold text-primaryRed bg-primaryRed/10":
+              pathname === "/docs",
+            "text-slate-600 first-letter:hover:text-slate-700 hover:bg-primaryLightBorder/30":
+              pathname !== "/docs",
+          })}
+        >
+          Introduction
+        </a>
+      </Button>
+    </li>
+
     {
       navigation.map((section: any) => (
         <li>
-          <h2 class='font-display font-medium text-slate-900 dark:text-white'>
-            {section.title}
-          </h2>
-          <ul class='mt-2 space-y-2 border-l-2 border-primaryLightBorder lg:mt-4 lg:space-y-4'>
-            {section.links.map((link: any) => (
-              <li class='relative'>
-                <a
-                  href={link.href}
-                  class={clsx(
-                    "block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
-                    {
-                      "font-semibold text-primaryRed before:bg-primaryRed":
-                        link.href === pathname,
-                      "text-slate-600 before:hidden before:bg-primaryLightBorder hover:text-slate-700 hover:before:block":
-                        link.href !== pathname,
-                    }
-                  )}
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <NavSection
+            client:only='react'
+            title={section?.title}
+            pathname={pathname}
+            links={section?.links}
+          />
         </li>
       ))
     }

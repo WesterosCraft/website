@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import slgfy from "slugify";
+import { DOC_CATEGORIES } from "@constants/index";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -72,24 +73,23 @@ export const makeDocsWikiNav = (docs: any[]) => {
 };
 
 export const makeWikiNav = (docs: any[]) => {
-  // const gettingStarted = {
-  //   title: "Getting Started",
-  //   links: [
-  //     { title: "Installing the modpack", href: "/docs/installation" },
-  //     { title: "Server rules", href: "/docs/installation" },
-  //     { title: "Applying to build", href: "/docs/installation" },
-  //   ],
-  // };
-
   const normalizedDocs = makeDocsWikiNav(docs);
-  const gettingStarted = normalizedDocs.find(
-    (x) => x.title === "Getting Started"
-  );
 
-  return [
-    gettingStarted,
-    ...normalizedDocs.filter((x) => x.title !== "Getting Started"),
+  const order = [
+    "Getting Started",
+    "Guides",
+    "Rules And Guidelines",
+    "Resources",
+    "Miscellaneous",
   ];
+
+  normalizedDocs.sort((a, b) => {
+    const orderA = order.indexOf(a.title);
+    const orderB = order.indexOf(b.title);
+    return orderA - orderB;
+  });
+
+  return normalizedDocs;
 };
 
 export function getSlug(str: string) {

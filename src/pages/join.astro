@@ -2,19 +2,23 @@
 import RootLayout from "@layouts/root.astro";
 import ContainerBorder from "@components/container-border.astro";
 import {
-  TypographyH1,
   TypographyH2,
   TypographyH3,
   TypographyH4,
-  TypographyP,
 } from "@components/typography";
-import { Button } from "@components/ui/button";
 import PageHeader from "@components/page-header.astro";
 import GuideCard from "@components/guide-card.astro";
 import { getEntry } from "astro:content";
 
 const pageData = await getEntry("pages", "join");
 import bannerImage from "../assets/pages/join/banner.png";
+
+// Restructure this page better - idea to break it all into easy steps. step 3 will link to all available guides
+// Step 1: Buy Minecraft, Java
+// Step 2: Download launchers
+// Step 3: Follow guide for
+// launcher to install our Modpack
+// Step 4: Enjoy playing - link to useful commands and the FAQ page, other links maybe
 ---
 
 <RootLayout title='Join WesterosCraft'>
@@ -107,95 +111,3 @@ import bannerImage from "../assets/pages/join/banner.png";
     </div>
   </div>
 </RootLayout>
-
-<!-- bg="primaryRed"
-              position="absolute"
-              right={-20}
-              top={6}
-              width="240px"
-              transform="rotate(45deg)"
-              py={2}
-              justifyContent="center"
-              alignItems="center"
-              {...flexProps} --
-<!-- export default function JoinPage({ pageData }: { pageData: JoinPageData }) {
-    return (
-      <>
-        <Seo title={pageData?.seo?.title || pageData?.title} />
-        <Flex flexDir="column" w="full">
-          <ContainerBorder
-            variant="light"
-            as={VStack}
-            w="full"
-            mx="auto"
-            py={{ base: '16', sm: '20' }}
-          >
-            <HStack spacing={{ base: 4, sm: 12 }}>
-              <Img mt="12" width="80px" alt="Longclaw" src={Longclaw.src} />
-              <Box maxW="2xl">
-                <Heading size={{ base: '2xl', sm: '3xl', lg: '4xl' }}>{pageData?.heading}</Heading>
-                <Text fontSize="2xl" maxW="3xl" mt="6">
-                  {pageData?.subheading}
-                </Text>
-              </Box>
-            </HStack>
-          </ContainerBorder>
-          <Box w="full" bg="primaryDark">
-            <ContainerBorder variant="dark" py={{ base: '24', sm: '32' }}>
-              <Center
-                px="4"
-                textAlign="center"
-                flexDirection="column"
-                color="white"
-                maxW="2xl"
-                mx="auto"
-              >
-                <Heading size={{ base: 'xl', sm: '3xl' }} color="primaryGold">
-                  {pageData?.startedHeading}
-                </Heading>
-                <Text mt="6" fontSize="xl">
-                  {pageData?.startedSubheading}
-                </Text>
-              </Center>
-            </ContainerBorder>
-            <PricingTiers data={pageData?.guides} />
-          </Box>
-          <TwoTiers data={pageData?.otherGuides} />
-        </Flex>
-      </>
-    );
-  }
-  
-  export const getStaticProps: GetStaticProps = async () => {
-    const pageData = await sanityClient.fetch(`*[_type == "join"]{
-      ...,
-      guides[] {
-        ...,
-        guideRef->{
-          slug,
-          guideCategory->{ title }
-        }
-      },
-      otherGuides[]->{
-        slug,
-        guideCategory->{ title },
-        description,
-        title,
-        icon {
-          asset->{
-            url
-          }
-        }
-      }
-    }[0]`);
-  
-    return {
-      props: {
-        pageData,
-      },
-    };
-  };
-  
-  JoinPage.getLayout = function getLayout(page: ReactElement) {
-    return <OneColumnLayout>{page}</OneColumnLayout>;
-  }; -->

@@ -208,7 +208,7 @@ export function Search({
             setFocused(false);
           }}
           type='search'
-          placeholder={renderString(placeholder || "Search wiki...")}
+          placeholder={renderString(placeholder || "Search docs...")}
           onKeyDown={handleKeyDown}
         />
         {/* {window && icon} */}

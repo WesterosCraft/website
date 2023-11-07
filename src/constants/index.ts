@@ -157,11 +157,11 @@ export const regions = [
   },
 ];
 
-export const docCategories = [
+export const DOC_CATEGORIES = [
   { label: "Getting Started", value: "gettingStarted" },
-  { label: "Rules and Guidelines", value: "rulesAndGuidelines" },
+  { label: "Guides", value: "guides" },
+  { label: "Rules & Guidelines", value: "rulesAndGuidelines" },
   { label: "Resources", value: "resources" },
-  { label: "Tutorials", value: "tutorials" },
   { label: "Miscellaneous", value: "miscellaneous" },
 ];
 

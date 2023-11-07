@@ -9,8 +9,15 @@ import "../styles/globals.css";
 
 const navigation = await getEntry("pages", "mainNav");
 
-const { title, description, ogTitle, ogType, ogImage, ogUrl } =
-  Astro.props.frontmatter || Astro.props;
+const {
+  title,
+  description,
+  ogTitle,
+  ogType,
+  ogImage,
+  ogUrl,
+  includeTransitions,
+} = Astro.props.frontmatter || Astro.props;
 ---
 
 <style is:global>
@@ -65,7 +72,7 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } =
       ogImage={ogImage}
       ogUrl={ogUrl}
     />
-    <ViewTransitions />
+    {includeTransitions && <ViewTransitions />}
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' href='/favicon.ico' />

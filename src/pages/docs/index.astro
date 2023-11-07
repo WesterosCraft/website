@@ -10,76 +10,133 @@ import {
   CardTitle,
 } from "@components/ui/card";
 import { getCollection } from "astro:content";
+import Dropcap from "@components/dropcap.astro";
 import { camel2title, getSlug } from "@lib/utils";
+import { TypographyH1 } from "../../components/typography.tsx";
+import hammerSmash from "../../assets/icons/hammer-smash.svg";
+import messageQuestion from "../../assets/icons/message-question.svg";
+import book from "../../assets/icons/book.svg";
+
 const featuredLocations = await getCollection(
   "locations",
   (x) =>
     x.slug === "kings-landing" || x.slug === "winterfell" || x.slug === "pyke"
 );
+
+const featuredDocs = await getCollection(
+  "docs",
+  (x) =>
+    x.slug === "basic-building-guide-for-applicants" ||
+    x.slug === "server-rules" ||
+    x.slug === "frequently-asked-questions"
+);
+
+const iconMap = {
+  "basic-building-guide-for-applicants": hammerSmash,
+  "frequently-asked-questions": messageQuestion,
+  "server-rules": book,
+};
 ---
 
 <WikiLayout title='WesterosCraft Docs'>
-  <div>
-    <h1 class='text-semibold'>WesterosCraft Docs</h1>
+  <div class='max-w-3xl mx-auto not-prose text-center'>
+    <TypographyH1 className='text-bold text-center not-prose mb-6'>
+      WesterosCraft Documentation
+    </TypographyH1>
     <p>
-      WesterosCraft is a fan-made project dedicated to recreating the fictional
-      world of Westeros from George R.R. Martin's "A Song of Ice and Fire" book
-      series, popularly known for its television adaptation "Game of Thrones."
-      WesterosCraft is essentially a massive Minecraft server that aims to
-      recreate the entire continent of Westeros in the game.
-    </p>
-    <p>
-      The project started in 2011 and has since grown into an ambitious
-      undertaking involving hundreds of dedicated builders and contributors.
-      They meticulously recreate various locations, cities, castles, and
-      landmarks from the books, striving for accuracy and attention to detail.
-      The WesterosCraft team uses custom texture packs, mods, and tools to
-      replicate the distinct architecture, geography, and atmosphere of
-      Westeros.
+      WesterosCraft is a fan-made project dedicated to recreating, in Minecraft,
+      the fictional world of Westeros from George R.R. Martin's <i
+        >A Song of Ice and Fire</i
+      > book series, popularly known for its television adaptation <i
+        >Game of Thrones</i
+      >.<br /><br />
+       These docs attempt to compile everything that may be useful for our
+      project - from application guidelines, to custom mods and blocks, to how
+      we plan our terrain and more.
     </p>
   </div>
-  <div>
-    <div class='flex flex-row justify-between items-end'>
-      <div class='flex flex-col'>
-        <p class='mb-0'>All of our builds</p>
-        <h2 class='mt-2 mb-0'>Explore locations across Westeros</h2>
+  <div class='space-y-12 divide-y divide-primaryLightBorder/70 pb-20'>
+    <div></div>
+    <div>
+      <div class='flex flex-row justify-between items-end'>
+        <div class='flex flex-col'>
+          <p class='mb-0'>Handy guides to get you started</p>
+          <h2 class='mt-2 mb-0'>Learn about WesterosCraft</h2>
+        </div>
+        <div class='not-prose'>
+          <a href='/docs/guides'>
+            <Button variant='outline-red'>View All Guides</Button>
+          </a>
+        </div>
       </div>
-      <div>
-        <Button variant='outline-red'>View All Locations</Button>
+      <div class='grid grid-cols-2 sm:grid-cols-3 gap-4 not-prose mt-6'>
+        {
+          featuredDocs?.map((doc) => (
+            <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'>
+              <a
+                class='h-full flex flex-col justify-center '
+                href={`/docs/${getSlug(doc?.data?.docCategory)}/${doc?.slug}`}
+              >
+                <CardHeader>
+                  <CardTitle>{doc?.data?.title || ""}</CardTitle>
+                  <CardDescription className='mt-1'>
+                    {camel2title(doc?.data?.docCategory)}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className='flex-1 flex flex-col justify-end items-end fill-red-800'>
+                  <img src={iconMap[doc?.slug]?.src} class='w-8 h-8' />
+                </CardFooter>
+              </a>
+            </Card>
+          ))
+        }
       </div>
     </div>
-    <div class='grid grid-cols-3 gap-4 not-prose mt-6'>
-      {
-        featuredLocations?.map((loc) => (
-          <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryDark hover:border-primaryLightBorder'>
-            <a href={`/locations/${getSlug(loc?.data?.region)}/${loc?.slug}`}>
-              <CardHeader className='pl-0 pr-0 pt-0'>
-                <div class='relative flex h-[180px]'>
-                  <img
-                    decoding='async'
-                    loading='lazy'
-                    src={loc?.data?.locationImages?.[0]?.src || ""}
-                    sizes='25vw'
-                    class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
-                  />
-                </div>
-              </CardHeader>
-              <CardContent className='pt-0 px-6 pb-3'>
-                <CardTitle>{loc?.data?.title || ""}</CardTitle>
-                <CardDescription className='mt-1'>
-                  {camel2title(loc?.data?.region) || ""}
-                </CardDescription>
-              </CardContent>
-              <CardFooter>
-                <div class='flex flex-row justify-between w-full'>
-                  <p>{camel2title(loc.data?.projectStatus)}</p>
-                  <p>{camel2title(loc?.data?.projectType)}</p>
-                </div>
-              </CardFooter>
-            </a>
-          </Card>
-        ))
-      }
+    <div>
+      <div class='flex flex-row justify-between items-end'>
+        <div class='flex flex-col'>
+          <p class='mb-0'>All of our builds</p>
+          <h2 class='mt-2 mb-0'>Explore locations across Westeros</h2>
+        </div>
+        <div class='not-prose'>
+          <a href='/locations'>
+            <Button variant='outline-red'>View All Locations</Button>
+          </a>
+        </div>
+      </div>
+      <div class='grid grid-cols-2 sm:grid-cols-3 gap-4 not-prose mt-6'>
+        {
+          featuredLocations?.map((loc) => (
+            <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'>
+              <a href={`/locations/${getSlug(loc?.data?.region)}/${loc?.slug}`}>
+                <CardHeader className='pl-0 pr-0 pt-0'>
+                  <div class='relative flex h-[180px]'>
+                    <img
+                      decoding='async'
+                      loading='lazy'
+                      src={loc?.data?.locationImages?.[0]?.src || ""}
+                      sizes='25vw'
+                      class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
+                    />
+                  </div>
+                </CardHeader>
+                <CardContent className='pt-0 px-4 sm:px-6 pb-3'>
+                  <CardTitle>{loc?.data?.title || ""}</CardTitle>
+                  <CardDescription className='mt-1'>
+                    {camel2title(loc?.data?.region) || ""}
+                  </CardDescription>
+                </CardContent>
+                <CardFooter className=' px-4 sm:px-6'>
+                  <div class='flex flex-row justify-between w-full'>
+                    <p>{camel2title(loc.data?.projectStatus)}</p>
+                    <p>{camel2title(loc?.data?.projectType)}</p>
+                  </div>
+                </CardFooter>
+              </a>
+            </Card>
+          ))
+        }
+      </div>
     </div>
   </div>
 </WikiLayout>

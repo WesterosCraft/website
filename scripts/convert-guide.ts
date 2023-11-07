@@ -35,7 +35,7 @@ const categoryMap = (region: string) => {
     case "e1ac352f-1567-410a-ac16-d516ef533faf":
       return "resources";
     case "52a3451d-02e6-4cea-bcc4-e97b78a99e74":
-      return "tutorials";
+      return "guides";
   }
 };
 

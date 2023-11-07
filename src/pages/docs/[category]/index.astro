@@ -1,12 +1,21 @@
 ---
 import WikiCard from "@components/wiki/wiki-card.astro";
-import { docCategories } from "@constants/index";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { DOC_CATEGORIES } from "@constants/index";
 import WikiLayout from "@layouts/wiki.astro";
-import { slugify, titleizeASlug, camel2title } from "@lib/utils";
+import { slugify, titleizeASlug, camel2title, getSlug } from "@lib/utils";
 import { getCollection } from "astro:content";
+import book from "../../../assets/icons/book.svg";
 
 export async function getStaticPaths() {
-  const routes = docCategories.map((cat) => {
+  const routes = DOC_CATEGORIES.map((cat) => {
     return {
       params: {
         category: slugify(camel2title(cat.label)),
@@ -40,10 +49,26 @@ const filteredDocs = await getCollection(
 
   <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 not-prose'>
     {
-      filteredDocs.map((i) => (
-        <a href={`/docs/${slugify(category)}/${i.slug}`}>
-          <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
-        </a>
+      filteredDocs.map((doc) => (
+        <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'>
+          <a
+            class='h-full flex flex-col justify-center '
+            href={`/docs/${getSlug(doc?.data?.docCategory)}/${doc?.slug}`}
+          >
+            <CardHeader>
+              <CardTitle>{doc?.data?.title || ""}</CardTitle>
+              <CardDescription className='mt-1'>
+                {camel2title(doc?.data?.docCategory)}
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className='flex-1 flex flex-col justify-end items-end'>
+              <img src={book?.src} class='w-8 h-8' />
+            </CardFooter>
+          </a>
+        </Card>
+        // <a href={`/docs/${slugify(category)}/${i.slug}`}>
+        //   <WikiCard title={i.data.title}>{i.data.title}</WikiCard>
+        // </a>
       ))
     }
   </div>

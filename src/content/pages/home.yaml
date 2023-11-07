@@ -97,12 +97,13 @@ featuredLocations:
         discriminant: false
         value: /locations
     - linkText: Read More
-      linkAltText: Guides
+      linkAltText: Docs
       linkDescription: View in depth guides and more on how to explore and play on our server.
       isExternal:
         discriminant: false
         value: /docs
-    - linkAltText: Blocks
+    - linkText: Coming Soon
+      linkAltText: Blocks
       linkDescription: Check out a repository of all our custom designed blocks.
       isExternal:
         discriminant: false
