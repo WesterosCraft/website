@@ -1,11 +1,13 @@
 ---
 title: Manually Building the Custom Client
+description: >-
+  Don't want to download a third party program, and use Mojangs launcher? This
+  guide is for you.
 docCategory: gettingStarted
 ---
-
 This procedure is intended to allow folks that, for whatever reason, would prefer to use the standard **Minecraft Java Edition Launcher** to run the WesterosCraft Custom Client.
 
-{% callout %}
+{% callout type="default" %}
 As of version 1.11.2, we require Java 8 and we STRONGLY recommend running with at least 3GB of memory configured (which implies a requirement for a 64-bit Java). Confirm these by looking at the 'Java Executable' and 'JVM Options' settings on your profile in the launcher. If the vanilla launcher freezes while loading WesterosCraft or our Resource Pack, bump up the memory to 3GB or even higher.
 {% /callout %}
 
@@ -16,8 +18,7 @@ Before starting, please ensure the following:
 
 ### Steps
 
-1. Download the installer for **MinecraftForge v1.12.2**&nbsp;**version**&nbsp;**\*\*14.23.5.2854\*\*** from
-   [https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar](https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar)
+1. Download the installer for **MinecraftForge v1.12.2**&nbsp;**version**&nbsp;**\*\*14.23.5.2854\*\*** from [https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar](https://maven.minecraftforge.net/net/minecraftforge/forge/1.12.2-14.23.5.2859/forge-1.12.2-14.23.5.2859-installer.jar)
 1. Run the **MinecraftForge installer JAR file**. Select "Install Client" and click OK.
 1. Open up the **Minecraft Java Edition Launcher** (restart it if it was open during the Forge installation), navigate to the **Installations** tab, and create a new release (if needed) for our client, named "**WesterosCraft v1.12.2**", set the 'Version' to '**release 1.12.2-forge1.12.2-14.23.5.2859**'.
 1. On the same screen, locate the 'Game Directory' field and change the directory to a directory of your choosing (this will keep the mods from our client from interfering with other mods you might have installed). **Remember this directory** - for the sake of this example, we'll refer to this directory as `<client-dir>` in the future (as all other steps will be adding files in and under this directory). **You should create this directory, if needed**.

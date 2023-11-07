@@ -2,16 +2,34 @@
 import RootLayout from "@layouts/root.astro";
 import ContainerBorder from "@components/container-border.astro";
 import {
+  TypographyH1,
   TypographyH2,
   TypographyH3,
-  TypographyH4,
 } from "@components/typography";
 import PageHeader from "@components/page-header.astro";
-import GuideCard from "@components/guide-card.astro";
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 
 const pageData = await getEntry("pages", "join");
 import bannerImage from "../assets/pages/join/banner.png";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@components/ui/card";
+import { ExternalLink } from "lucide-react";
+import { getSlug } from "@lib/utils";
+import { Button } from "@components/ui/button";
+import { Image } from "astro:assets";
+
+const featuredDocs = await getCollection(
+  "docs",
+  (x) =>
+    x.slug === "curseforge-launcher-setup" ||
+    x.slug === "multimc-launcher-setup" ||
+    x.slug === "gdlauncher-setup" ||
+    x.slug === "manually-building-the-custom-client"
+);
 
 // Restructure this page better - idea to break it all into easy steps. step 3 will link to all available guides
 // Step 1: Buy Minecraft, Java
@@ -30,14 +48,31 @@ import bannerImage from "../assets/pages/join/banner.png";
         "We have several different ways to start exploring the server and have compiled guides on all the suggested ways below! Be sure to read the guides in full."}
       bannerUrl={bannerImage}
     />
+    <ContainerBorder borderBottom className='px-4 text-center'>
+      <TypographyH1 className='pt-14 pb-8 px-4'>
+        Three Simple Steps
+      </TypographyH1>
+    </ContainerBorder>
     <div class='w-full'>
+      <!-- Getting Started Section -->
       <ContainerBorder variant='light' className='py-24 sm:py-32'>
         <div
-          class='px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-10 sm:flex-row justify-between items-center'
+          class='px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-10 lg:flex-row justify-between items-center'
         >
+          <div
+            class='relative flex w-full h-[300px] lg:h-[550px] overflow-hidden shadow-md mb-12'
+          >
+            <Image
+              height={550}
+              width={550}
+              class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover'
+              src='https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/s9nybhs9is9h/kings-landing-dusk'
+              alt='Kings Landing'
+            />
+          </div>
           <div class='flex max-w-xl px-4 text-left flex-col mx-auto'>
             <TypographyH2 className='text-primaryRed'>
-              Getting Started
+              1. Getting Started
             </TypographyH2>
             <p class='mt-6 font-medium text-xl'>
               <b>WesterosCraft</b> uses several mods to aid our realistic and
@@ -45,13 +80,6 @@ import bannerImage from "../assets/pages/join/banner.png";
               you in the server and exploring what we've built so far as easy as
               possible, we've compiled several ways you can get the mods you
               need to be able to connect below.<br /><br />
-              <b>Be sure to read the guides thoroughly</b>, and if you need any
-              help, feel free to check out the tech support forum or the
-              <a
-                class='underline decoration-primaryRed'
-                href='https://discord.com/invite/pBS5TH4'
-                target='_blank'>#techsupport Discord channel</a
-              >!
             </p>
             <div class='mt-6'>
               <TypographyH3>Requirements To Play</TypographyH3>
@@ -59,53 +87,127 @@ import bannerImage from "../assets/pages/join/banner.png";
                 <li>A valid Java Minecraft account</li>
                 <li>At least 4gigs of RAM dedicated, preferably 6GB</li>
                 <li>
-                  Have read our <a class='underline decoration-primaryRed'
-                    >server rules</a
+                  Have read our <a
+                    href='/docs/rules-and-guidelines/community-rules'
+                    class='underline decoration-primaryRed'>community rules</a
                   >
                 </li>
-                <li>Access to our Discord</li>
+                <li>
+                  Access to our <a
+                    class='underline decoration-primaryRed'
+                    href='https://discord.com/invite/pBS5TH4'
+                    target='_blank'>Discord</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
-          <GuideCard
-            isRecommended
-            title='CurseForge Launcher'
-            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
-          />
-        </div>
-      </ContainerBorder>
-      <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
-        <div class='flex flex-col justify-center items-center'>
-          <TypographyH2>Other Launchers</TypographyH2>
-        </div>
-      </ContainerBorder>
-      <ContainerBorder>
-        <p class='max-w-2xl mx-auto text-center mt-6 font-medium text-xl mb-20'>
-          There are many ways to play modded Minecraft, and several launchers.
-          We've attempted to write brief guides on downloading the WesterosCraft
-          Modpack with them.
-        </p>
-        <div class='flex flex-row pb-24 sm:pb-32 justify-evenly items-center'>
-          <GuideCard
-            title='CurseForge Launcher'
-            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
-          />
-          <GuideCard
-            title='CurseForge Launcher'
-            description='Dedicated app for handling mods and addons, not just for Minecraft but other games as well.'
-          />
         </div>
       </ContainerBorder>
 
-      <ContainerBorder className='pt-14 pb-8 px-4 border border-b'>
+      <!-- Launcher Section -->
+      <ContainerBorder className='pb-24 sm:pb-32'>
         <div
-          class='flex flex-col justify-center items-center max-w-2xl text-center mx-auto'
+          class='px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-10 lg:flex-row justify-between items-center'
         >
-          <TypographyH2>More Ways To Play</TypographyH2>
-          <TypographyH4 className='mt-6'>
-            Don't want to download a third party program or for running into
-            issues getting them to work? There are still more options for you!
-          </TypographyH4>
+          <div class='flex max-w-xl px-4 text-left flex-col mx-auto'>
+            <TypographyH2 className='text-primaryRed'>
+              2. Download the Modpack
+            </TypographyH2>
+            <p class='mt-6 font-medium text-xl'>
+              WesterosCraft is a <b>modded</b> Minecraft server, which means you
+              have to download some custom mods we've made in order to play.<br
+              /><br />The easiest way to get these mods is downloading a
+              3rd-party Minecraft launcher, which makes handling modpacks like
+              ours much less painful.
+              <br /><br />We've attempted to write brief guides on downloading
+              the WesterosCraft Modpack with them.
+            </p>
+            <p class='text-sm text-slate-600 mt-2'>
+              * We don't maintain or provide specific support for these
+              launchers - if you have a problem with the launcher itself, please
+              contact the makers.
+            </p>
+          </div>
+
+          <div class='flex flex-col space-y-4 w-full'>
+            {
+              featuredDocs.map((doc) => (
+                <Card className='w-full bg-primaryLightShade border border-primaryLightBorder rounded-none hover:shadow-md hover:border-primaryLightBorder'>
+                  <a
+                    href={`/docs/${getSlug(doc?.data?.docCategory)}/${
+                      doc?.slug
+                    }`}
+                  >
+                    <CardHeader>
+                      <div class='flex flex-row justify-between gap-5 items-center'>
+                        <div>
+                          <CardTitle>{doc.data.title || ""}</CardTitle>
+                          <CardDescription className='mt-2'>
+                            {doc?.data?.description || ""}
+                          </CardDescription>
+                        </div>
+                        <div>
+                          <ExternalLink />
+                        </div>
+                      </div>
+                    </CardHeader>
+                  </a>
+                </Card>
+              ))
+            }
+          </div>
+        </div>
+      </ContainerBorder>
+
+      <!-- Join Section -->
+      <ContainerBorder variant='light' className='pb-24 sm:pb-32'>
+        <div
+          class='px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col gap-10 lg:flex-row justify-between items-center'
+        >
+          <div
+            class='relative flex w-full h-[300px] lg:h-[550px] overflow-hidden shadow-md mb-12'
+          >
+            <Image
+              width={550}
+              height={550}
+              class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover'
+              src='https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/n81enp4bfsdz/weirwood'
+              alt='A weirwood grove'
+            />
+          </div>
+          <div class='flex max-w-xl px-4 text-left flex-col mx-auto'>
+            <TypographyH2 className='text-primaryRed'>
+              3. Launch and join the server!
+            </TypographyH2>
+            <p class='mt-6 font-medium text-xl'>
+              Thats it! Start whatever launcher you downloaded, and click the
+              Join Server button in our modpack. Have fun traveling the Kings
+              Road!<br /><br />
+              <b>Be sure to read the guides thoroughly</b>, and if you need any
+              help, feel free to join our <a
+                class='underline decoration-primaryRed'
+                href='https://discord.com/invite/pBS5TH4'
+                target='_blank'>Discord</a
+              > and visit the #techsupport channel.
+            </p>
+            <div class='mt-8'>
+              <a href='/docs/resources/frequently-asked-questions'>
+                <Button className='mr-6 font-semibold tracking-wider' size='lg'>
+                  View F.A.Q.
+                </Button>
+              </a>
+              <a href='http://mc.westeroscraft.com/' target='_blank'>
+                <Button
+                  variant='outline-red'
+                  size='lg'
+                  className='font-semibold tracking-wider'
+                >
+                  View Map
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
       </ContainerBorder>
     </div>
