@@ -28,7 +28,7 @@ export const FILTER_ITEMS = [
 
 interface LocationSidebarProps {
   allLocations: any[];
-  setClickCount: (el: number) => void;
+  setClickCount: React.Dispatch<React.SetStateAction<number>>;
   view: "card" | "table";
   setView: (e: "card" | "table") => void;
   clickCount: number;

@@ -7,6 +7,8 @@ import { useMemo, useState } from "react";
 // import type { SearchResult } from "../types";
 import { HighlightMatches } from "./highlight-matches";
 import { Search } from "./search";
+import { IS_BROWSER } from "@constants/index";
+import { Skeleton } from "./ui/skeleton";
 
 export type Item = {
   title: string;

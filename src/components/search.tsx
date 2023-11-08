@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Transition } from "@headlessui/react";
 import cn from "clsx";
-// import { InformationCircleIcon, SpinnerIcon } from "nextra/icons";
 import type { KeyboardEvent, ReactElement, ComponentProps } from "react";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { renderComponent, renderString } from "../lib/render";
 import { Input } from "./ui/input";
+import { IS_BROWSER } from "@constants/index";
 
 type SearchProps = {
   className?: string;
@@ -96,45 +96,47 @@ export function Search({
 
   const handleKeyDown = useCallback(
     function <T>(e: KeyboardEvent<T>) {
-      switch (e.key) {
-        case "ArrowDown": {
-          if (active + 1 < results.length) {
-            const el = ulRef.current?.querySelector<HTMLAnchorElement>(
-              `li:nth-of-type(${active + 2}) > a`
-            );
-            if (el) {
-              e.preventDefault();
-              handleActive({ currentTarget: el });
-              el.focus();
+      if (IS_BROWSER) {
+        switch (e.key) {
+          case "ArrowDown": {
+            if (active + 1 < results.length) {
+              const el = ulRef?.current?.querySelector<HTMLAnchorElement>(
+                `li:nth-of-type(${active + 2}) > a`
+              );
+              if (el) {
+                e.preventDefault();
+                handleActive({ currentTarget: el });
+                el.focus();
+              }
             }
+            break;
           }
-          break;
-        }
-        case "ArrowUp": {
-          if (active - 1 >= 0) {
-            const el = ulRef.current?.querySelector<HTMLAnchorElement>(
-              `li:nth-of-type(${active}) > a`
-            );
-            if (el) {
-              e.preventDefault();
-              handleActive({ currentTarget: el });
-              el.focus();
+          case "ArrowUp": {
+            if (active - 1 >= 0) {
+              const el = ulRef?.current?.querySelector<HTMLAnchorElement>(
+                `li:nth-of-type(${active}) > a`
+              );
+              if (el) {
+                e?.preventDefault();
+                handleActive({ currentTarget: el });
+                el?.focus();
+              }
             }
+            break;
           }
-          break;
-        }
-        case "Enter": {
-          const result = results[active];
-          if (result && window) {
-            window.location.href = result.route;
-            finishSearch();
+          case "Enter": {
+            const result = results[active];
+            if (result) {
+              window.location.href = result.route;
+              finishSearch();
+            }
+            break;
           }
-          break;
-        }
-        case "Escape": {
-          setShow(false);
-          input.current?.blur();
-          break;
+          case "Escape": {
+            setShow(false);
+            input.current?.blur();
+            break;
+          }
         }
       }
     },
@@ -143,46 +145,46 @@ export function Search({
 
   const renderList = show && Boolean(value);
 
-  const icon = (
-    <Transition
-      show={true && (!show || Boolean(value))}
-      as={Fragment}
-      enter='transition-opacity'
-      enterFrom='opacity-0'
-      enterTo='opacity-100'
-      leave='transition-opacity'
-      leaveFrom='opacity-100'
-      leaveTo='opacity-0'
-    >
-      <kbd
-        className={cn(
-          "absolute my-1.5 select-none right-1.5",
-          "h-5 bg-primaryLightShade px-1.5 font-mono text-[10px] font-medium text-gray-500",
-          "border border-primaryLightBorder",
-          "contrast-more:border-current contrast-more:text-current contrast-more:dark:border-current",
-          "items-center gap-1 transition-opacity",
-          value
-            ? "z-20 flex cursor-pointer hover:opacity-70"
-            : "pointer-events-none hidden sm:flex"
-        )}
-        title={value ? "Clear" : undefined}
-        onClick={() => {
-          onChange("");
-        }}
-      >
-        {value && focused
-          ? "ESC"
-          : true &&
-            (window?.navigator.userAgent.includes("Macintosh") ? (
-              <>
-                <span className='text-xs'>⌘</span>K
-              </>
-            ) : (
-              "CTRL K"
-            ))}
-      </kbd>
-    </Transition>
-  );
+  // const icon = window && (
+  //   <Transition
+  //     show={true && (!show || Boolean(value))}
+  //     as={Fragment}
+  //     enter='transition-opacity'
+  //     enterFrom='opacity-0'
+  //     enterTo='opacity-100'
+  //     leave='transition-opacity'
+  //     leaveFrom='opacity-100'
+  //     leaveTo='opacity-0'
+  //   >
+  //     <kbd
+  //       className={cn(
+  //         "absolute my-1.5 select-none right-1.5",
+  //         "h-5 bg-primaryLightShade px-1.5 font-mono text-[10px] font-medium text-gray-500",
+  //         "border border-primaryLightBorder",
+  //         "contrast-more:border-current contrast-more:text-current contrast-more:dark:border-current",
+  //         "items-center gap-1 transition-opacity",
+  //         value
+  //           ? "z-20 flex cursor-pointer hover:opacity-70"
+  //           : "pointer-events-none hidden sm:flex"
+  //       )}
+  //       title={value ? "Clear" : undefined}
+  //       onClick={() => {
+  //         onChange("");
+  //       }}
+  //     >
+  //       {value && focused
+  //         ? "ESC"
+  //         : true &&
+  //           (window?.navigator.userAgent.includes("Macintosh") ? (
+  //             <>
+  //               <span className='text-xs'>⌘</span>K
+  //             </>
+  //           ) : (
+  //             "CTRL K"
+  //           ))}
+  //     </kbd>
+  //   </Transition>
+  // );
 
   return (
     <div className={cn("relative", className)}>

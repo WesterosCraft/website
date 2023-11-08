@@ -13,6 +13,7 @@ import {
 } from "@components/ui/select";
 import { camel2title } from "@lib/utils";
 import { XSquare } from "lucide-react";
+import { IS_BROWSER } from "@constants/index";
 
 export function LocationFilterOptions({
   view,
@@ -21,25 +22,27 @@ export function LocationFilterOptions({
 }: {
   view: "card" | "table";
   setView: (e: "card" | "table") => void;
-  setClickCount: any;
+  setClickCount: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [queryParamsCount, setQueryParamsCount] = useState(0);
 
   useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    if (IS_BROWSER) {
+      const queryString = window?.location.search;
+      const urlParams = new URLSearchParams(queryString);
 
-    const queryParamsKeysArray = [...urlParams.keys()];
-    const queryParamsCount = queryParamsKeysArray.length;
+      const queryParamsKeysArray = [...urlParams.keys()];
+      const queryParamsCount = queryParamsKeysArray.length;
 
-    setQueryParamsCount(queryParamsCount);
-  }, [window.location.search]);
+      setQueryParamsCount(queryParamsCount);
+    }
+  }, [IS_BROWSER && window.location.search]);
 
   const clearButton = () => {
-    if (window) {
+    if (IS_BROWSER) {
       const newUrl = `/locations`;
-      window.history.replaceState(null, "", newUrl);
-      setClickCount((prevClickCount) => prevClickCount + 1);
+      window?.history.replaceState(null, "", newUrl);
+      setClickCount((prevClickCount: number) => prevClickCount + 1);
     }
   };
   return (

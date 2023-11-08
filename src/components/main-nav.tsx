@@ -55,12 +55,14 @@ export const MainNav = ({ navigation }: any) => {
         </NavigationMenuList>
       </NavigationMenu>
       <div className='ml-auto'>
-        <Button
-          variant='destructive'
-          className='font-semibold text-md text-white'
-        >
-          <a href='/join'>Join Server</a>
-        </Button>
+        <a href='/join'>
+          <Button
+            variant='destructive'
+            className='font-semibold text-md text-white'
+          >
+            Join Server
+          </Button>
+        </a>
       </div>
     </div>
   );

@@ -11,12 +11,13 @@ import { Button } from "../ui/button";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
 import { Badge } from "../ui/badge";
+import { IS_BROWSER } from "@constants/index";
 
 interface LocationFilterProps {
   title: string;
   items: Array<{ label: string; value: string }>;
   slug: string;
-  setClickCount: (arg: number) => void;
+  setClickCount: React.Dispatch<React.SetStateAction<number>>;
   clickCount: number;
 }
 
@@ -43,10 +44,12 @@ export function LocationFilter({
   };
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const regionParams = queryParams.getAll(slug);
-    const regionCount = regionParams.length;
-    setNumberOfTags(regionCount);
+    if (IS_BROWSER) {
+      const queryParams = new URLSearchParams(window?.location.search);
+      const regionParams = queryParams.getAll(slug);
+      const regionCount = regionParams.length;
+      setNumberOfTags(regionCount);
+    }
   }, [clickCount]);
 
   return (
