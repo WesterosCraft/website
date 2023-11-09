@@ -32,17 +32,17 @@ const { Content } = await location?.render();
   ogTitle={`${location?.data.title} - WesterosCraft`}
   ogImage={location?.data?.locationImages?.[0]?.src}
 >
-  <BackToLocationsLink slot='back-to-locations' />
+  <BackToLocationsLink slot="back-to-locations" />
   {
     location?.data && (
       <ProjectDetailsCard
-        slot='location-details'
+        slot="location-details"
         projectDetails={location?.data}
       />
     )
   }
-  <Fragment slot='location-image'>
-    <div class='h-[430px]'>
+  <Fragment slot="location-image">
+    <div class="mb-6">
       <Carousel
         showDots
         slides={location?.data?.locationImages?.map((img) => ({
@@ -54,10 +54,10 @@ const { Content } = await location?.render();
       />
     </div>
   </Fragment>
-  <Fragment slot='location-content'>
+  <Fragment slot="location-content">
     {
       Content && (
-        <div class='pb-12 break-words'>
+        <div class="pb-12 break-words">
           <Prose>
             <Content />
           </Prose>
