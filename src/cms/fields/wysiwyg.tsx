@@ -27,6 +27,22 @@ const CalloutPreview = (props: any) => {
   );
 };
 
+const AccordionPreview = (props: any) => {
+  return (
+    <div>
+      <NotEditable>
+        <ul>
+          {props?.fields?.items?.elements?.map((item) => (
+            <li key={item?.key}>
+              <p className='text-sm'>{item.fields.itemTrigger?.value}</p>
+            </li>
+          ))}
+        </ul>
+      </NotEditable>
+    </div>
+  );
+};
+
 export const wysiwyg = fields.document({
   label: "Content",
   formatting: true,
@@ -82,6 +98,30 @@ export const wysiwyg = fields.document({
           ],
           defaultValue: "default",
         }),
+      },
+    }),
+    accordion: component({
+      preview: (args) => <AccordionPreview {...args} />,
+      label: "Accordion",
+      schema: {
+        items: fields.array(
+          fields.object({
+            itemTrigger: fields.text({
+              label: "Item Trigger",
+              description:
+                "The text that goes inside the accordion button. EX: A question",
+            }),
+            itemContent: fields.text({
+              label: "Item Content",
+              description:
+                "The content of the accordion item. EX: An answer to a question",
+            }),
+          }),
+          {
+            label: "Accordion Items",
+            itemLabel: (props) => props.fields.itemTrigger.value,
+          }
+        ),
       },
     }),
   },

@@ -145,46 +145,46 @@ export function Search({
 
   const renderList = show && Boolean(value);
 
-  // const icon = window && (
-  //   <Transition
-  //     show={true && (!show || Boolean(value))}
-  //     as={Fragment}
-  //     enter='transition-opacity'
-  //     enterFrom='opacity-0'
-  //     enterTo='opacity-100'
-  //     leave='transition-opacity'
-  //     leaveFrom='opacity-100'
-  //     leaveTo='opacity-0'
-  //   >
-  //     <kbd
-  //       className={cn(
-  //         "absolute my-1.5 select-none right-1.5",
-  //         "h-5 bg-primaryLightShade px-1.5 font-mono text-[10px] font-medium text-gray-500",
-  //         "border border-primaryLightBorder",
-  //         "contrast-more:border-current contrast-more:text-current contrast-more:dark:border-current",
-  //         "items-center gap-1 transition-opacity",
-  //         value
-  //           ? "z-20 flex cursor-pointer hover:opacity-70"
-  //           : "pointer-events-none hidden sm:flex"
-  //       )}
-  //       title={value ? "Clear" : undefined}
-  //       onClick={() => {
-  //         onChange("");
-  //       }}
-  //     >
-  //       {value && focused
-  //         ? "ESC"
-  //         : true &&
-  //           (window?.navigator.userAgent.includes("Macintosh") ? (
-  //             <>
-  //               <span className='text-xs'>⌘</span>K
-  //             </>
-  //           ) : (
-  //             "CTRL K"
-  //           ))}
-  //     </kbd>
-  //   </Transition>
-  // );
+  const icon = IS_BROWSER && (
+    <Transition
+      show={true && (!show || Boolean(value))}
+      as={Fragment}
+      enter='transition-opacity'
+      enterFrom='opacity-0'
+      enterTo='opacity-100'
+      leave='transition-opacity'
+      leaveFrom='opacity-100'
+      leaveTo='opacity-0'
+    >
+      <kbd
+        className={cn(
+          "absolute my-1.5 select-none right-1.5",
+          "h-5 bg-primaryLightShade px-1.5 font-mono text-[10px] font-medium text-gray-500",
+          "border border-primaryLightBorder",
+          "contrast-more:border-current contrast-more:text-current contrast-more:dark:border-current",
+          "items-center gap-1 transition-opacity",
+          value
+            ? "z-20 flex cursor-pointer hover:opacity-70"
+            : "pointer-events-none hidden sm:flex"
+        )}
+        title={value ? "Clear" : undefined}
+        onClick={() => {
+          onChange("");
+        }}
+      >
+        {value && focused
+          ? "ESC"
+          : true &&
+            (window?.navigator.userAgent.includes("Macintosh") ? (
+              <>
+                <span className='text-xs'>⌘</span>K
+              </>
+            ) : (
+              "CTRL K"
+            ))}
+      </kbd>
+    </Transition>
+  );
 
   return (
     <div className={cn("relative", className)}>
@@ -213,7 +213,7 @@ export function Search({
           placeholder={renderString(placeholder || "Search docs...")}
           onKeyDown={handleKeyDown}
         />
-        {/* {window && icon} */}
+        {/* {icon} */}
       </div>
 
       <Transition

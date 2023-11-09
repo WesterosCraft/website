@@ -26,5 +26,19 @@ export default defineMarkdocConfig({
         type: { type: String, default: "default" },
       },
     },
+    accordion: {
+      render: component("./src/components/rich-text/richtext-accordion.astro"),
+      attributes: {
+        // Markdoc requires type defs for each attribute.
+        // These should mirror the `Props` type of the component
+        // you are rendering.
+        // See Markdoc's documentation on defining attributes
+        // https://markdoc.dev/docs/attributes#defining-attributes
+        items: {
+          type: Array,
+        },
+        type: { type: String, default: "default" },
+      },
+    },
   },
 });

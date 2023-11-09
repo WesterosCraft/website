@@ -1,0 +1,9 @@
+---
+import { Accordion } from "./base-accordion";
+
+const { items } = Astro.props;
+---
+
+<div class='not-prose w-full'>
+  <Accordion data={items} client:idle />
+</div>
