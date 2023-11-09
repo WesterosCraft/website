@@ -31,17 +31,17 @@ const slides = await Promise.all(
   }
 </style>
 <div
-  class='px-5 lg:px-8 py-5 lg:py-12 grid grid-cols-10 gap-6 lg:gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,76vh))] lg:min-h-0 max-w-[1920px]'
+  class="px-5 lg:px-8 py-5 lg:py-12 grid grid-cols-10 gap-6 lg:gap-8 w-full min-h-[100vh] lg:h-[min(880px,max(630px,85vh))] lg:min-h-0 max-w-[1920px]"
 >
-  <div class='bg-primaryDark col-span-10 lg:col-span-5 xl:col-span-4'>
+  <div class="bg-primaryDark col-span-10 lg:col-span-5 xl:col-span-4">
     <div
-      class='flex flex-col items-center justify-center h-full max-w-4xl px-6 py-8 md:p-8 text-center'
+      class="flex flex-col items-center justify-center h-full max-w-4xl px-6 py-8 md:p-8 text-center"
     >
-      <TypographyH2 className='uppercase text-primaryRed'>
+      <TypographyH2 className="uppercase text-primaryRed">
         {data?.heading || "Explore the world of"}
       </TypographyH2>
       <h1
-        class='font-esmeralda tracking-tight scroll-m-20 mt-2 mb-10 text-5xl md:text-6xl font-extrabold xl:text-7xl 2xl:text-8xl text-primaryLight'
+        class="font-esmeralda tracking-tight scroll-m-20 mt-2 mb-10 text-5xl md:text-6xl font-extrabold xl:text-7xl 2xl:text-8xl text-primaryLight"
         style={{
           textShadow: "3px 3px 0 #9B2C2C",
         }}
@@ -49,7 +49,7 @@ const slides = await Promise.all(
         {data?.highlighted || "Westeros Inside Minecraft"}
       </h1>
       <p
-        class='text-white text-lg lg:text-xl lg:max-w-[430px] xl:max-w-[560px]'
+        class="text-white text-lg lg:text-xl lg:max-w-[430px] xl:max-w-[560px]"
       >
         {
           data?.subheading ||
@@ -60,8 +60,8 @@ const slides = await Promise.all(
         data?.buttons?.map((button) => (
           <a href={button?.isExternal?.value}>
             <Button
-              size='lg'
-              className='hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
+              size="lg"
+              className="hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8"
             >
               {button.buttonText}
             </Button>
@@ -71,7 +71,7 @@ const slides = await Promise.all(
     </div>
   </div>
   <div
-    class='bg-yellow-600 relative col-span-10 lg:col-start-6 lg:col-end-11 xl:col-start-5'
+    class="bg-yellow-600 relative col-span-10 lg:col-start-6 lg:col-end-11 xl:col-start-5"
   >
     <Carousel slides={slides} hideLeftArrow client:load />
   </div>
