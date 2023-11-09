@@ -5,6 +5,7 @@ import { slugify, camel2title } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import Prose from "@components/prose.astro";
 import BackToLocationsLink from "@components/back-to-locations-link.astro";
+import Carousel from "@components/home/carousel";
 
 export async function getStaticPaths() {
   const locations = await getCollection("locations");
@@ -26,7 +27,11 @@ const { location } = Astro.props;
 const { Content } = await location?.render();
 ---
 
-<LocationLayout title={`${location?.data.title} - WesterosCraft`}>
+<LocationLayout
+  title={`${location?.data.title} - WesterosCraft`}
+  ogTitle={`${location?.data.title} - WesterosCraft`}
+  ogImage={location?.data?.locationImages?.[0]?.src}
+>
   <BackToLocationsLink slot='back-to-locations' />
   {
     location?.data && (
@@ -37,18 +42,17 @@ const { Content } = await location?.render();
     )
   }
   <Fragment slot='location-image'>
-    {
-      location?.data?.locationImages &&
-        location?.data?.locationImages.length && (
-          <div class='relative flex w-full h-[400px] overflow-hidden shadow-md mb-12'>
-            <img
-              class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover'
-              src={location?.data?.locationImages[0]?.src as string}
-              alt={location?.data.title || "Images"}
-            />
-          </div>
-        )
-    }
+    <div class='h-[430px]'>
+      <Carousel
+        showDots
+        slides={location?.data?.locationImages?.map((img) => ({
+          image: img.src,
+        }))}
+        client:load
+        slideHeight={400}
+        linkImageExternally
+      />
+    </div>
   </Fragment>
   <Fragment slot='location-content'>
     {

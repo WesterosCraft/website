@@ -19,6 +19,7 @@ import {
 import hammerSmash from "../../assets/icons/hammer-smash.svg";
 import messageQuestion from "../../assets/icons/message-question.svg";
 import book from "../../assets/icons/book.svg";
+import { Image } from "astro:assets";
 
 const featuredLocations = await getCollection(
   "locations",
@@ -114,7 +115,10 @@ const iconMap = {
               <a href={`/locations/${getSlug(loc?.data?.region)}/${loc?.slug}`}>
                 <CardHeader className='pl-0 pr-0 pt-0'>
                   <div class='relative flex h-[180px]'>
-                    <img
+                    <Image
+                      width={302}
+                      height={180}
+                      alt={loc?.slug}
                       decoding='async'
                       loading='lazy'
                       src={loc?.data?.locationImages?.[0]?.src || ""}
