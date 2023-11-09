@@ -113,6 +113,7 @@ export const wysiwyg = fields.document({
             }),
             itemContent: fields.text({
               label: "Item Content",
+              multiline: true,
               description:
                 "The content of the accordion item. EX: An answer to a question",
             }),

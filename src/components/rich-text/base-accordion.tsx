@@ -23,9 +23,10 @@ export function Accordion({ data }: Props) {
           <AccordionItem key={i} value={`item-${i.toFixed()}`}>
             <AccordionTrigger>{item?.itemTrigger || ""}</AccordionTrigger>
             <AccordionContent>
-              <Prose>
+              {item?.itemContent}
+              {/* <Prose>
                 <slot />
-              </Prose>
+              </Prose> */}
             </AccordionContent>
           </AccordionItem>
         );
