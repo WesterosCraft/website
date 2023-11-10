@@ -38,11 +38,11 @@ export function LocationFilterOptions({
     }
   }, [IS_BROWSER && window.location.search]);
 
-  const clearButton = () => {
+  const clearButton = async () => {
     if (IS_BROWSER) {
       const newUrl = `/locations`;
-      window?.history.replaceState(null, "", newUrl);
-      setClickCount((prevClickCount: number) => prevClickCount + 1);
+      await window?.history.replaceState(null, "", newUrl);
+      setClickCount((prevClickCount: number) => (prevClickCount || 0) + 1);
     }
   };
   return (

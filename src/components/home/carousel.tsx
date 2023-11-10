@@ -64,16 +64,16 @@ export default function Carousel({
 
   return (
     <div>
-      <div ref={sliderRef} className="keen-slider relative">
+      <div ref={sliderRef} className='keen-slider relative'>
         {slides?.map((slide, idx) => (
-          <div key={idx} className="keen-slider__slide lazy__slide relative">
+          <div key={idx} className='keen-slider__slide lazy__slide relative'>
             <img
               className={clsx(
                 `object-cover bg-transparent`,
                 loaded[idx] ? "bg-transparent" : "hidden",
                 slideHeight ? `h-[${slideHeight}px]` : "h-[var(--slideHeight)]"
               )}
-              sizes="60vw"
+              sizes='60vw'
               src={loaded[idx] ? slide.image : ""}
               width={1100}
               height={slideHeight ? `${slideHeight}px` : "var(--slideHeight)"}
@@ -81,16 +81,16 @@ export default function Carousel({
               style={{ opacity: opacities[idx] }}
             />
             {slide?.alt && (
-              <p className="font-esmeralda absolute text-3xl bottom-4 left-4 text-white">
+              <p className='font-esmeralda absolute text-3xl bottom-4 left-4 text-white'>
                 {slide.alt || ""}
               </p>
             )}
             {linkImageExternally && (
-              <div className="absolute top-2 right-2 fill-white">
-                <a href={slide.image} target="_blank" rel="noreferrer">
+              <div className='absolute top-2 right-2 fill-white'>
+                <a href={slide.image} target='_blank' rel='noreferrer'>
                   <Button
-                    variant="ghost"
-                    className="p-2 rounded-full h-auto hover:bg-slate-50/50 text-white"
+                    variant='ghost'
+                    className='p-2 rounded-full h-auto hover:bg-slate-50/50 text-white'
                   >
                     <ExternalLink />
                   </Button>
@@ -99,10 +99,10 @@ export default function Carousel({
             )}
           </div>
         ))}
-        {created && instanceRef.current && (
+        {created && instanceRef.current && slides?.length > 1 && (
           <>
             {!hideLeftArrow && (
-              <div className="arrow-button absolute bottom-4 left-4 w-7 h-7 fill-white cursor-pointer">
+              <div className='arrow-button absolute bottom-4 left-4 w-7 h-7 fill-white cursor-pointer'>
                 <Arrow
                   left
                   onClick={(e: any) =>
@@ -112,7 +112,7 @@ export default function Carousel({
                 />
               </div>
             )}
-            <div className="arrow-button absolute bottom-4 right-4 w-7 h-7 fill-white cursor-pointer">
+            <div className='arrow-button absolute bottom-4 right-4 w-7 h-7 fill-white cursor-pointer'>
               <Arrow
                 onClick={(e: any) =>
                   e.stopPropagation() || instanceRef.current?.next()
@@ -127,8 +127,8 @@ export default function Carousel({
           </>
         )}
       </div>
-      {showDots && loaded && instanceRef.current && (
-        <div className="dots">
+      {showDots && loaded && instanceRef.current && slides?.length > 1 && (
+        <div className='dots'>
           {[
             ...Array(
               instanceRef.current.track.details.slides &&
@@ -163,14 +163,14 @@ function Arrow(props: {
       className={`arrow ${
         props.left ? "left-[5px]" : "arrow--right"
       } ${disabeld}`}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
     >
       {props.left && (
-        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+        <path d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z' />
       )}
       {!props.left && (
-        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+        <path d='M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z' />
       )}
     </svg>
   );

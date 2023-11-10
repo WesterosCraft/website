@@ -58,10 +58,10 @@ const slides = await Promise.all(
       </p>
       {
         data?.buttons?.map((button) => (
-          <a href={button?.isExternal?.value}>
+          <a href={button?.isExternal?.value} class='mt-8'>
             <Button
               size='lg'
-              className='hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark mt-8'
+              className='hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark'
             >
               {button.buttonText}
             </Button>

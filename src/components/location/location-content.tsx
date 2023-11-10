@@ -39,6 +39,7 @@ export function LocationContent({
           <LocationCards
             view={view}
             filteredLocations={filteredLocations}
+            allLocations={allLocations}
             clickCount={clickCount}
           />
         </div>

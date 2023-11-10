@@ -1,7 +1,6 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "moduleResolution": "NodeNext",
     "strictNullChecks": true,
     "allowJs": true,
     "jsx": "react",

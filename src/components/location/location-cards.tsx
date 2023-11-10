@@ -12,6 +12,7 @@ import {
 } from "@components/ui/table";
 import { camel2title } from "@lib/utils";
 import slugify from "slugify";
+import { IS_BROWSER } from "@constants/index";
 import { LocationCard } from "./location-card.tsx";
 
 function getSlug(str: string) {
@@ -20,6 +21,7 @@ function getSlug(str: string) {
 
 interface LocationCardsProps {
   filteredLocations: any[];
+  allLocations: any[];
   clickCount: number;
   view: "card" | "table";
 }
@@ -28,39 +30,45 @@ export function LocationCards({
   filteredLocations,
   clickCount,
   view = "card",
+  allLocations,
 }: LocationCardsProps) {
   const [locations, setLocations] = useState(filteredLocations || []);
 
   useEffect(() => {
-    if (window) {
+    if (IS_BROWSER) {
       const searchParams = new URLSearchParams(window.location.search);
-      const filters = {};
 
-      searchParams.forEach((value, key) => {
-        if (!filters[key]) {
-          filters[key] = [];
-        }
-        filters[key].push(value.toLowerCase());
-      });
+      // If the CLEAR button is hit, this useEffect triggers.
+      if (searchParams?.size === 0) {
+        setLocations(allLocations);
+      } else {
+        const filters = {};
+        searchParams.forEach((value, key) => {
+          if (!filters[key]) {
+            filters[key] = [];
+          }
+          filters[key].push(value.toLowerCase());
+        });
 
-      const filtered = filteredLocations?.filter((location) => {
-        let includeLocation = true;
+        const filtered = filteredLocations?.filter((location) => {
+          let includeLocation = true;
 
-        for (const key in filters) {
-          if (Object.prototype.hasOwnProperty.call(filters, key)) {
-            const filterValues = filters[key];
+          for (const key in filters) {
+            if (Object.prototype.hasOwnProperty.call(filters, key)) {
+              const filterValues = filters[key];
 
-            if (!filterValues.includes(location.data[key]?.toLowerCase())) {
-              includeLocation = false;
-              break;
+              if (!filterValues.includes(location.data[key]?.toLowerCase())) {
+                includeLocation = false;
+                break;
+              }
             }
           }
-        }
 
-        return includeLocation;
-      });
+          return includeLocation;
+        });
 
-      setLocations(filtered);
+        setLocations(filtered);
+      }
     }
   }, [clickCount]);
 

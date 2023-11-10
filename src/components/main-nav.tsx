@@ -28,11 +28,11 @@ export const MainNav = ({ navigation }: any) => {
           {navigation.data?.items?.map((n: any) =>
             n.isDropdown.discriminant ? (
               <NavigationMenuItem key={n.text}>
-                <NavigationMenuTrigger className='bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:bg-transparent focus:text-yellow-300'>
+                <NavigationMenuTrigger className='bg-transparent text-white hover:bg-primaryDark-light hover:text-primaryGold-300 focus:bg-primaryDark-light focus:text-primaryGold-400 rounded-none'>
                   {n.text}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className='bg-primaryDark'>
-                  <ul className='grid gap-3 p-6 md:w-[400px]'>
+                <NavigationMenuContent className='bg-primaryDark rounded-none'>
+                  <ul className='grid gap-3 p-6 md:w-[400px] rounded-none'>
                     {n.isDropdown?.value?.map((x: any) => (
                       <ListItem key={x.text} href={x.link} title={x.text}>
                         {x.description}
@@ -45,7 +45,7 @@ export const MainNav = ({ navigation }: any) => {
               <NavigationMenuItem key={n.text}>
                 <NavigationMenuLink
                   asChild
-                  className={`${navigationMenuTriggerStyle()} bg-transparent text-white hover:bg-transparent hover:text-yellow-200 focus:bg-transparent focus:text-yellow-300`}
+                  className={`${navigationMenuTriggerStyle()} rounded-none bg-transparent text-white hover:bg-primaryDark-light hover:text-primaryGold-300 focus:bg-primaryDark-light focus:text-primaryGold-400`}
                 >
                   <a href={n.isDropdown.value.link}>{n.text}</a>
                 </NavigationMenuLink>
@@ -78,7 +78,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "text-white block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-primaryRed focus:bg-accent focus:text-accent-foreground",
+            "text-white block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-primaryRed focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}

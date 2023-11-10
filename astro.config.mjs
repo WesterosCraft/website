@@ -9,13 +9,17 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
-  site: "https://website-amber-six.vercel.app",
+  site: "https://westeroscraft.com",
   integrations: [react(), tailwind(), markdoc(), keystatic()],
   adapter: vercel(),
   redirects: {
     "/modpack": {
       status: 302,
       destination: "/join",
+    },
+    "/progress": {
+      status: 302,
+      destination: "/locations",
     },
   },
 });
