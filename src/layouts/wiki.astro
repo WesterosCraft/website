@@ -8,7 +8,7 @@ import { makeWikiNav } from "@lib/utils";
 
 const pathname = Astro.url.pathname;
 
-const { title, description, ogTitle, ogType, ogImage, ogUrl } =
+const { title, description, ogTitle, ogType, ogImage, ogUrl, hideBreadcrumbs } =
   Astro.props.frontmatter || Astro.props;
 
 const filteredDocs = await getCollection("docs");
@@ -46,7 +46,7 @@ const wikiNav = makeWikiNav(filteredDocs);
       class='min-w-0 max-w-2xl flex-auto px-4 py-8 md:py-16 lg:max-w-none lg:pr-0 lg:pl-8 xl:px-16'
     >
       <article>
-        {pathname !== "/wiki" && <Breadcrumbs />}
+        {!hideBreadcrumbs && <Breadcrumbs />}
         <Prose>
           <slot />
         </Prose>
