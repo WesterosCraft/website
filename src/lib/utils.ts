@@ -3,7 +3,6 @@ import { clsx } from "clsx";
 import type { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import slgfy from "slugify";
-import { DOC_CATEGORIES } from "@constants/index";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -134,4 +133,18 @@ export function filterLocationsBySearchParam(
 
     return true; // Include the location if it matches all filters
   });
+}
+
+// common function to grab an image locally
+// use like this: const a = await imp('/assets/home/hero.jpg')
+// taken from astro discord here: https://discord.com/channels/830184174198718474/1161019402620248266/1171687655528988702
+export async function imp(filePath: string) {
+  const images = import.meta.glob("/src/**/*.{jpeg,jpg,png,gif,webp}");
+  const keys = Object.keys(images);
+  const key = keys.find((key) => key.includes(filePath));
+
+  if (!key) throw new Error(`Image ${filePath} not found`);
+
+  const image = await images[key]();
+  return image.default;
 }

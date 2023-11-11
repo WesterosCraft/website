@@ -1,8 +1,16 @@
 ---
 import RootLayout from "@layouts/root.astro";
 
-const { title, description, ogTitle, ogType, ogImage, ogUrl } =
-  Astro.props.frontmatter || Astro.props;
+const {
+  title,
+  description,
+  ogTitle,
+  ogType,
+  ogImage,
+  ogUrl,
+  ogImageAlt,
+  twitterDescription,
+} = Astro.props.frontmatter || Astro.props;
 ---
 
 <RootLayout
@@ -12,6 +20,8 @@ const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   ogType={ogType}
   ogImage={ogImage}
   ogUrl={ogUrl}
+  ogImageAlt={ogImageAlt}
+  twitterDescription={twitterDescription}
   includeTransitions
 >
   <div

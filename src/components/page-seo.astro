@@ -2,24 +2,45 @@
 import { SEO } from "astro-seo";
 import defaultOgImage from "../assets/og.jpg";
 
-const { title, description, ogTitle, ogType, ogImage, ogUrl } = Astro.props;
+const defaults = {
+  title: "WesterosCraft",
+  description:
+    "Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms",
+  ogTitle: "WesterosCraft - Explore the world of Westeros made in Minecraft",
+  ogType: "website",
+  ogUrl: "https://www.westeroscraft.com",
+};
+
+const {
+  title,
+  description,
+  ogTitle,
+  ogType,
+  ogImage,
+  ogUrl,
+  ogImageAlt,
+  twitterDescription,
+} = Astro.props;
 ---
 
 <SEO
-  title={title || "WesterosCraft"}
-  description={description ||
-    "Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms"}
+  title={title || defaults.title}
+  description={description || defaults.description}
   openGraph={{
     basic: {
-      title:
-        ogTitle ||
-        "WesterosCraft - Explore the world of Westeros made in Minecraft",
-      type: ogType || "website",
+      title: ogTitle || defaults.ogTitle,
+      type: ogType || defaults.ogType,
       image: ogImage || defaultOgImage.src,
-      url: ogUrl || Astro.url || "https://www.westeroscraft.com",
+      url: ogUrl || Astro.url || defaults.ogUrl,
     },
   }}
   twitter={{
     creator: "@WesterosCraft",
+    card: "summary_large_image",
+    title: title || "WesterosCraft",
+    image: ogImage || defaultOgImage.src,
+    imageAlt: ogImageAlt || defaults.ogTitle,
+    description: twitterDescription || defaults.description,
+    site: "@WesterosCraft",
   }}
 />

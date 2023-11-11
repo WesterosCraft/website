@@ -6,10 +6,17 @@ import Breadcrumbs from "@components/breadcrumbs.astro";
 import { getCollection } from "astro:content";
 import { makeWikiNav } from "@lib/utils";
 
-const pathname = Astro.url.pathname;
-
-const { title, description, ogTitle, ogType, ogImage, ogUrl, hideBreadcrumbs } =
-  Astro.props.frontmatter || Astro.props;
+const {
+  title,
+  description,
+  ogTitle,
+  ogType,
+  ogImage,
+  ogUrl,
+  hideBreadcrumbs,
+  ogImageAlt,
+  twitterDescription,
+} = Astro.props.frontmatter || Astro.props;
 
 const filteredDocs = await getCollection("docs");
 const wikiNav = makeWikiNav(filteredDocs);
@@ -22,6 +29,8 @@ const wikiNav = makeWikiNav(filteredDocs);
   ogType={ogType}
   ogImage={ogImage}
   ogUrl={ogUrl}
+  ogImageAlt={ogImageAlt}
+  twitterDescription={twitterDescription}
 >
   <div
     class='relative mx-auto flex max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12 w-full'

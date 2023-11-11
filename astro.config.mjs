@@ -3,14 +3,25 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
-
 import vercel from "@astrojs/vercel/serverless";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
   site: "https://westeroscraft.com",
-  integrations: [react(), tailwind(), markdoc(), keystatic()],
+  integrations: [
+    react(),
+    tailwind(),
+    markdoc(),
+    keystatic(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   adapter: vercel(),
   redirects: {
     "/modpack": {
