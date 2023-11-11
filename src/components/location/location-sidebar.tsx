@@ -76,11 +76,6 @@ export function LocationSidebar({
 
   return (
     <div className='sidebar hidden lg:block w-[222px] mr-12'>
-      <LocationFilterOptions
-        view={view}
-        setView={setView}
-        setClickCount={setClickCount}
-      />
       <div>
         <div className='flex flex-row justify-between space-x-4'>
           <TypographyP className='font-semibold text-sm'>
@@ -97,6 +92,11 @@ export function LocationSidebar({
           }))}
         />
       </div>
+      <LocationFilterOptions
+        view={view}
+        setView={setView}
+        setClickCount={setClickCount}
+      />
       <div className='my-4'></div>
       <div className='divide-y-2 divide-primaryLightBorder/60'>
         <div></div>

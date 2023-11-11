@@ -46,7 +46,7 @@ export function LocationFilterOptions({
     }
   };
   return (
-    <div className='flex flex-row justify-between items-end mb-4'>
+    <div className='flex flex-row justify-between items-end mt-4'>
       <div>
         <TypographyP className='font-semibold text-sm'>Change View</TypographyP>
         <Select
