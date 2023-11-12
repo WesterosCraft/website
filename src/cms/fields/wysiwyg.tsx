@@ -48,7 +48,17 @@ export const wysiwyg = fields.document({
   formatting: true,
   dividers: true,
   links: true,
-  images: true,
+  layouts: [[1], [1, 1]],
+  images: {
+    directory: "src/content/docs/_images",
+    publicPath: "/src/content/docs/_images/",
+    schema: {
+      title: fields.text({
+        label: "Caption",
+        description: "The text to display under the image in a caption.",
+      }),
+    },
+  },
   tables: true,
   componentBlocks: {
     video: component({

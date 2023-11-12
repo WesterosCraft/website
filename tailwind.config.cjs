@@ -147,15 +147,6 @@ module.exports = {
         "8xl": "90rem",
       },
     },
-    // typography: {
-    //   DEFAULT: {
-    //     css: {
-    //       a: {
-    //         color: "primaryRed",
-    //       },
-    //     },
-    //   },
-    // },
   },
   plugins: [
     require("tailwindcss/nesting"),
