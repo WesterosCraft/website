@@ -11,6 +11,9 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   output: "hybrid",
   site: "https://westeroscraft.com",
+  image: {
+    domains: ["westeroscraft.com", "bxf03rev1vvg.keystatic.net"],
+  },
   integrations: [
     react(),
     tailwind(),
