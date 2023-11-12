@@ -50,8 +50,8 @@ export const wysiwyg = fields.document({
   links: true,
   layouts: [[1], [1, 1]],
   images: {
-    directory: "src/content/docs/_images",
-    publicPath: "/src/content/docs/_images/",
+    directory: "src/content/docs",
+    publicPath: "../",
     schema: {
       title: fields.text({
         label: "Caption",
