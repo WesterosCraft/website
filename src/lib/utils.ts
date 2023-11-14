@@ -62,10 +62,13 @@ export const makeDocsWikiNav = (docs: any[]) => {
   const result = [] as any;
 
   for (const category in categories) {
-    result.push({
-      title: category,
-      links: categories[category],
-    });
+    // Don't show archived category in the nav
+    if (category !== "Archived") {
+      result.push({
+        title: category,
+        links: categories[category],
+      });
+    }
   }
 
   return result;
@@ -80,6 +83,7 @@ export const makeWikiNav = (docs: any[]) => {
     "Rules And Guidelines",
     "Resources",
     "Miscellaneous",
+    "Archived",
   ];
 
   normalizedDocs.sort((a, b) => {

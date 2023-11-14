@@ -163,6 +163,7 @@ export const DOC_CATEGORIES = [
   { label: "Rules & Guidelines", value: "rulesAndGuidelines" },
   { label: "Resources", value: "resources" },
   { label: "Miscellaneous", value: "miscellaneous" },
+  { label: "Archived", value: "archived" },
 ];
 
 export const REGIONS = [
