@@ -25,7 +25,10 @@ const { doc } = Astro.props;
 const { Content } = await doc?.render();
 ---
 
-<WikiLayout title={`${doc?.data.title} - WesterosCraft`}>
+<WikiLayout
+  title={`${doc?.data.title} - WesterosCraft`}
+  ogTitle={`${doc?.data.title} - WesterosCraft`}
+>
   <h1>{doc?.data.title}</h1>
   <Content />
 </WikiLayout>
