@@ -97,6 +97,6 @@ export const locations = collection({
       description:
         "The link to a zoomed in location on Dynmap. To get the link, zoom to the location you want and click the link icon in bottom left of dynmap.",
     }),
-    content: wysiwyg,
+    content: wysiwyg("src/content/locations"),
   },
 });
