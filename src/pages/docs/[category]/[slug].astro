@@ -28,6 +28,8 @@ const { Content } = await doc?.render();
 <WikiLayout
   title={`${doc?.data.title} - WesterosCraft`}
   ogTitle={`${doc?.data.title} - WesterosCraft`}
+  description={doc?.data?.description}
+  twitterDescription={doc?.data?.description}
 >
   <h1>{doc?.data.title}</h1>
   <Content />
