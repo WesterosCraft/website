@@ -24,6 +24,6 @@ export const docs = collection({
       options: DOC_CATEGORIES,
       defaultValue: "gettingStarted",
     }),
-    content: wysiwyg,
+    content: wysiwyg("src/content/docs"),
   },
 });
