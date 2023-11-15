@@ -6,6 +6,7 @@ import ProjectDetailsCard from "@components/project-details-card.astro";
 import Prose from "@components/prose.astro";
 import BackToLocationsLink from "@components/back-to-locations-link.astro";
 import Carousel from "@components/home/carousel";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const locations = await getCollection("locations");
@@ -23,26 +24,33 @@ export async function getStaticPaths() {
   });
 }
 
+interface Props {
+  location: CollectionEntry<"locations">;
+}
+
 const { location } = Astro.props;
+
 const { Content } = await location?.render();
 ---
 
 <LocationLayout
-  title={`${location?.data.title} - WesterosCraft`}
-  ogTitle={`${location?.data.title} - WesterosCraft`}
+  title={`${location?.data?.title} - WesterosCraft`}
+  ogTitle={`${location?.data?.title} - WesterosCraft`}
+  description={location?.data?.description}
+  twitterDescription={location?.data?.description}
   ogImage={location?.data?.locationImages?.[0]?.src}
 >
-  <BackToLocationsLink slot="back-to-locations" />
+  <BackToLocationsLink slot='back-to-locations' />
   {
     location?.data && (
       <ProjectDetailsCard
-        slot="location-details"
+        slot='location-details'
         projectDetails={location?.data}
       />
     )
   }
-  <Fragment slot="location-image">
-    <div class="mb-6">
+  <Fragment slot='location-image'>
+    <div class='mb-6'>
       <Carousel
         showDots
         slides={location?.data?.locationImages?.map((img) => ({
@@ -54,10 +62,10 @@ const { Content } = await location?.render();
       />
     </div>
   </Fragment>
-  <Fragment slot="location-content">
+  <Fragment slot='location-content'>
     {
       Content && (
-        <div class="pb-12 break-words">
+        <div class='pb-12 break-words'>
           <Prose>
             <Content />
           </Prose>
