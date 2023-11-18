@@ -79,7 +79,7 @@ export default function Carousel({
           <div key={idx} className='keen-slider__slide lazy__slide relative'>
             <img
               className={clsx(
-                `object-cover bg-transparent min-h-full`,
+                `object-cover bg-transparent min-h-full min-w-full`,
                 loaded[idx] ? "bg-transparent" : "hidden"
               )}
               sizes='60vw'
