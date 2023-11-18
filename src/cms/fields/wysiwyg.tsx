@@ -136,5 +136,34 @@ export const wysiwyg = (imageFolderLocation: string) =>
           ),
         },
       }),
+      stepper: component({
+        preview: (args) => <AccordionPreview {...args} />,
+        label: "Stepper",
+        schema: {
+          orientation: fields.select({
+            label: "Orientation",
+            defaultValue: "vertical",
+            options: [
+              { label: "Vertical", value: "vertical" },
+              { label: "Horizontal", value: "horizontal" },
+            ],
+          }),
+          steps: fields.array(
+            fields.object({
+              label: fields.text({
+                label: "Step Label",
+              }),
+              content: fields.text({
+                label: "Step Content",
+                multiline: true,
+              }),
+            }),
+            {
+              label: "Steps",
+              itemLabel: (props) => props.fields.label.value,
+            }
+          ),
+        },
+      }),
     },
   });

@@ -1,0 +1,74 @@
+---
+import { cn } from "@lib/utils";
+import { cva } from "class-variance-authority";
+import Connector from "./connector.astro";
+
+const stepVariants = cva("relative flex flex-row gap-2", {
+  variants: {
+    isVertical: {
+      true: "flex-col",
+      false: "items-center",
+    },
+  },
+});
+
+interface Props {
+  orientation?: "horizontal" | "vertical";
+  labelOrientation?: "horizontal" | "vertical";
+  className?: string;
+  label?: string;
+  description?: string;
+  index?: number;
+}
+
+const {
+  orientation = "vertical",
+  labelOrientation,
+  className,
+  label,
+  description,
+  index,
+  ...rest
+} = Astro.props;
+
+const isLabelVertical =
+  orientation !== "vertical" && labelOrientation === "vertical";
+---
+
+<div
+  {...rest}
+  class={cn(
+    stepVariants({
+      isVertical: orientation === "vertical",
+    }),
+    className
+  )}
+>
+  <div class={cn("flex items-center gap-2", isLabelVertical ? "flex-col" : "")}>
+    <div
+      class={cn(
+        "aspect-square h-12 w-12 rounded-full bg-primaryRed text-white",
+        "flex items-center justify-center",
+        "text-xl font-semibold"
+      )}
+    >
+      {index || null}
+    </div>
+    <div
+      class={cn(
+        "flex w-max flex-col justify-center",
+        isLabelVertical ? "items-center text-center" : "items-start text-left"
+      )}
+    >
+      {!!label && <p>{label}</p>}
+      {
+        !!description && (
+          <p class={cn("text-sm text-muted-foreground")}>{description}</p>
+        )
+      }
+    </div>
+  </div>
+  <Connector hasLabel={!!label || !!description}>
+    <slot />
+  </Connector>
+</div>

@@ -30,5 +30,19 @@ export default defineMarkdocConfig({
         type: { type: String, default: "default" },
       },
     },
+    stepper: {
+      render: component("./src/components/rich-text/stepper/stepper.astro"),
+      attributes: {
+        steps: {
+          type: Array,
+        },
+        orientation: {
+          type: String,
+          default: "vertical",
+          required: true,
+          matches: ["vertical", "horizontal"],
+        },
+      },
+    },
   },
 });
