@@ -8,6 +8,7 @@ import { Button } from "@components/ui/button";
 interface Slide {
   image: string;
   alt: string;
+  slideText: string;
 }
 
 interface CarouselProps {
@@ -80,9 +81,9 @@ export default function Carousel({
               alt={slide.alt || ""}
               style={{ opacity: opacities[idx] }}
             />
-            {slide?.alt && (
+            {slide?.slideText && (
               <p className='font-esmeralda absolute text-3xl bottom-4 left-4 text-white'>
-                {slide.alt || ""}
+                {slide.slideText || ""}
               </p>
             )}
             {linkImageExternally && (

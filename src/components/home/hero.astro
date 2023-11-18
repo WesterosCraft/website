@@ -2,22 +2,21 @@
 import { Button } from "@components/ui/button";
 import { TypographyH2 } from "@components/typography";
 import Carousel from "./carousel";
+import { urlBuilder } from "../../lib/utils";
 
 const { data } = Astro.props;
 
-const sliderImages = import.meta.glob(
-  "../../assets/pages/home/hero/sliderImages/*/*"
-);
-
-const slides = await Promise.all(
-  data?.sliderImages?.map(async (slide) => {
-    const img = await sliderImages[`../../assets/pages/home/${slide?.image}`]();
-    return {
-      image: img.default?.src,
-      alt: slide?.alt || "",
-    };
-  })
-);
+const slides = data?.sliderImages?.map((slide) => {
+  return {
+    image: urlBuilder(slide?.cloudImage?.src, {
+      height: 660,
+      format: "webp",
+      fit: "cover",
+    }),
+    alt: slide?.cloudImage?.alt || slide?.alt || "",
+    slideText: slide?.slideText || "",
+  };
+});
 ---
 
 <style is:global define:vars={{ slideHeight: "660px" }}>
