@@ -1,8 +1,8 @@
+import { fields, singleton } from "@keystatic/core";
 import { link, links } from "./../fields/links";
 import { featuredServers } from "./../fields/featured-servers";
 import { bannerGrid } from "../fields/banner-grid";
 import { animatedHeader } from "../fields/animated-header";
-import { fields, singleton } from "@keystatic/core";
 import { buttons } from "../fields";
 
 export const home = singleton({
@@ -12,16 +12,18 @@ export const home = singleton({
     hero: fields.object({
       sliderImages: fields.array(
         fields.object({
-          image: fields.image({
-            label: "Slide image",
-            directory: "src/assets/pages/home",
+          cloudImage: fields.cloudImage({
+            label: "Cloud slide image",
           }),
-          alt: fields.text({ label: "Alt" }),
+          slideText: fields.text({
+            label: "Slide Text",
+            description: "Appears on bottom right of slider.",
+          }),
         }),
 
         {
           label: "Slider Images",
-          itemLabel: (props) => "Slide: " + props?.fields?.alt?.value,
+          itemLabel: (props) => "Slide: " + props?.fields?.slideText?.value,
           validation: {
             length: {
               min: 2,

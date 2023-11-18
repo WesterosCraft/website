@@ -6,29 +6,29 @@ settings:
 
 dependencies:
   '@astrojs/markdoc':
-    specifier: ^0.7.1
-    version: 0.7.1(@types/react@18.2.5)(astro@3.5.3)(react@18.2.0)
+    specifier: ^0.7.2
+    version: 0.7.2(@types/react@18.2.5)(astro@3.5.5)(react@18.2.0)
   '@astrojs/partytown':
     specifier: ^2.0.2
     version: 2.0.2
   '@astrojs/react':
-    specifier: ^3.0.4
-    version: 3.0.4(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
+    specifier: ^3.0.5
+    version: 3.0.5(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
   '@astrojs/tailwind':
     specifier: ^5.0.2
-    version: 5.0.2(astro@3.5.3)(tailwindcss@3.3.3)(ts-node@10.9.1)
+    version: 5.0.2(astro@3.5.5)(tailwindcss@3.3.3)(ts-node@10.9.1)
   '@astrojs/vercel':
     specifier: ^5.2.0
-    version: 5.2.0(astro@3.5.3)
+    version: 5.2.0(astro@3.5.5)
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/astro':
     specifier: ^2.0.0
-    version: 2.0.0(@keystatic/core@0.2.1)(astro@3.5.3)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.0.0(@keystatic/core@0.2.3)(astro@3.5.5)(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/core':
-    specifier: ^0.2.1
-    version: 0.2.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.2.3
+    version: 0.2.3(react-dom@18.2.0)(react@18.2.0)
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
     version: 1.1.2(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)
@@ -78,8 +78,8 @@ dependencies:
     specifier: ^18.2.3
     version: 18.2.3
   astro:
-    specifier: ^3.5.3
-    version: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+    specifier: ^3.5.5
+    version: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
   astro-seo:
     specifier: ^0.8.0
     version: 0.8.0
@@ -114,8 +114,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   react-player:
-    specifier: ^2.12.0
-    version: 2.12.0(react@18.2.0)
+    specifier: ^2.13.0
+    version: 2.13.0(react@18.2.0)
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
@@ -209,8 +209,8 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/markdoc@0.7.1(@types/react@18.2.5)(astro@3.5.3)(react@18.2.0):
-    resolution: {integrity: sha512-M5yyEJSl5fUJW2EaXebJaw0Zq/nVb60ufq0Tu+mwpYAXcMZJuCXG/k7MF29AM46XvtbtSYdohp1QTKZFi3LKKg==}
+  /@astrojs/markdoc@0.7.2(@types/react@18.2.5)(astro@3.5.5)(react@18.2.0):
+    resolution: {integrity: sha512-naLCb2cqq+tTCn3jgXEVr7PG5TUWMTQVvUmrGj1vdQxTrTJcsDQw212K2u7wwuwmUxRTNaHnN3DEVeldlG37jg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^3.0.0
@@ -218,7 +218,7 @@ packages:
       '@astrojs/internal-helpers': 0.2.1
       '@astrojs/prism': 3.0.0
       '@markdoc/markdoc': 0.3.0(@types/react@18.2.5)(react@18.2.0)
-      astro: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
       esbuild: 0.19.2
       github-slugger: 2.0.0
       gray-matter: 4.0.3
@@ -231,13 +231,13 @@ packages:
       - react
     dev: false
 
-  /@astrojs/markdown-remark@3.4.0(astro@3.5.3):
-    resolution: {integrity: sha512-uzLSKBQ4e70aH8gEbBHZ2pnv/KOJKB3WrXFBOF0U5Uwjcr2LNWeIBLjPRQjA4tbtteELh84YPBHny21mhvBGVA==}
+  /@astrojs/markdown-remark@3.5.0(astro@3.5.5):
+    resolution: {integrity: sha512-q7vdIqzYhxpsfghg2YmkmSXCfp4w7lBTYP+SSHw89wVhC5Riltr3u8w2otBRxNLSByNi+ht/gGkFC23Shetytw==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -269,8 +269,8 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react@3.0.4(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9):
-    resolution: {integrity: sha512-v+qltrm5nfqqm8C5ymYDBxrGlvNouRr+iCLcUWvNX65abVz8GzUqquhPQjmCTDXphn1Qc558Uxzc4s79l02skw==}
+  /@astrojs/react@3.0.5(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9):
+    resolution: {integrity: sha512-2tqKtSuN7eKlOsBka7RTxOeoSMti6W4IMHYWpAJlg96P49uTg3CCO3BNGIuoxmTXglpRa0O3CmcgXFjB8AlN9g==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       '@types/react': ^17.0.50 || ^18.0.21
@@ -289,13 +289,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.2(astro@3.5.3)(tailwindcss@3.3.3)(ts-node@10.9.1):
+  /@astrojs/tailwind@5.0.2(astro@3.5.5)(tailwindcss@3.3.3)(ts-node@10.9.1):
     resolution: {integrity: sha512-oXqeqmBlkQmsltrsU9nEWeXOtrZIAHW8dcmX7BCdrjzPnU6dPwWzAwhddNQ9ihKiWwsLnlbwQZIo2CDigcZlIA==}
     peerDependencies:
       astro: ^3.2.4
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)(ts-node@10.9.1)
@@ -319,7 +319,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@5.2.0(astro@3.5.3):
+  /@astrojs/vercel@5.2.0(astro@3.5.5):
     resolution: {integrity: sha512-WUMgiVLbDsh2uRaMcjqx3Br7lWNvKSvDqbLwDeR21lJ4UIBB+1PYbQ3cLYLXl6GiksxPx8rg9dry9CDsPcA0nA==}
     peerDependencies:
       astro: ^3.0.0
@@ -327,7 +327,7 @@ packages:
       '@astrojs/internal-helpers': 0.2.1
       '@vercel/analytics': 1.0.2
       '@vercel/nft': 0.23.1
-      astro: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
       esbuild: 0.19.2
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -1295,8 +1295,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: false
 
-  /@keystar/ui@0.4.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-yqeOvDxoyaxabFu2n6A7xQdMPRFjs3vRDdBMDasovORbIvAs6wECLSTyDzSNG6d/Fmc1CWhJO7KLWMQaruwnYQ==}
+  /@keystar/ui@0.4.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8xGGjy7f/GOINHSSKhuqn3jhW5IYaucOhyMqEqaOEdzHk48iT884miGuziZKEsvukPVzdOXDi4OEPXa017NSvA==}
     peerDependencies:
       next: 13 || 14
       react: ^18.2.0
@@ -1391,7 +1391,7 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@keystatic/astro@2.0.0(@keystatic/core@0.2.1)(astro@3.5.3)(react-dom@18.2.0)(react@18.2.0):
+  /@keystatic/astro@2.0.0(@keystatic/core@0.2.3)(astro@3.5.5)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tx3hnSQOkUXgIsR+h6QpmfDIOkYoTn2EslbRe+J24hNgUILUKiqWC3w05jrKcygh4hquYlvFrll6lPvHq4Q0rQ==}
     peerDependencies:
       '@keystatic/core': '*'
@@ -1400,17 +1400,17 @@ packages:
       react-dom: ^18.2.0
     dependencies:
       '@babel/runtime': 7.22.6
-      '@keystatic/core': 0.2.1(react-dom@18.2.0)(react@18.2.0)
+      '@keystatic/core': 0.2.3(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.17
-      astro: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
       cookie: 0.5.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       set-cookie-parser: 2.6.0
     dev: false
 
-  /@keystatic/core@0.2.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-SDqxfDebBQR4d5aOpfhbLKQ/mekZwyHwyauIEO5DhuxbuOvsYT1nMjNvsUUKc0hVkoexjZswU+J9QQO5y8tlmg==}
+  /@keystatic/core@0.2.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-caRHL3L518VXC6X8ty8pc7e011383TCKmy+MrG/K9kib1p42Z7sjAoY5HnOfnJPUWBRREYQoKrPF9kLBVDEjCw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1421,7 +1421,7 @@ packages:
       '@emotion/weak-memoize': 0.3.1
       '@floating-ui/react': 0.24.8(react-dom@18.2.0)(react@18.2.0)
       '@internationalized/string': 3.1.1
-      '@keystar/ui': 0.4.2(react-dom@18.2.0)(react@18.2.0)
+      '@keystar/ui': 0.4.3(react-dom@18.2.0)(react@18.2.0)
       '@markdoc/markdoc': 0.3.0(@types/react@18.2.17)(react@18.2.0)
       '@react-aria/focus': 3.15.0(react@18.2.0)
       '@react-aria/i18n': 3.9.0(react@18.2.0)
@@ -4370,14 +4370,14 @@ packages:
     resolution: {integrity: sha512-7gq6lhibCM8FuzZIJlbLLWP5EJ9KL2/4XqeFrAg9O6ZK2xMFxJ5ubKf+a0VJwwTu8W8Xr421CmpiXu6Hq7n/7Q==}
     dev: false
 
-  /astro@3.5.3(@types/node@20.4.6)(typescript@5.1.6):
-    resolution: {integrity: sha512-08ya96yvQLdZjwYYpylzDTUGcyuA+Kw9zIT2RHfL7VzXtLTL1ZxhQjSo6CiTBH8Tcrdam88Fez+Q1awwKKajGw==}
+  /astro@3.5.5(@types/node@20.4.6)(typescript@5.1.6):
+    resolution: {integrity: sha512-zJDZhO8XheXzpqkZgBXlP8e3j8psf0A21fh5Bq4HNR6gOmgOnM62Pok3O2ClbGygabfl2Preeun0pBRFn5+y0A==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.3.0
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 3.4.0(astro@3.5.3)
+      '@astrojs/markdown-remark': 3.5.0(astro@3.5.5)
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10
@@ -7906,8 +7906,8 @@ packages:
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  /react-player@2.12.0(react@18.2.0):
-    resolution: {integrity: sha512-rymLRz/2GJJD+Wc01S7S+i9pGMFYnNmQibR2gVE3KmHJCBNN8BhPAlOPTGZtn1uKpJ6p4RPLlzPQ1OLreXd8gw==}
+  /react-player@2.13.0(react@18.2.0):
+    resolution: {integrity: sha512-gkY7ZdbVFztlKFFhCPcnDrFQm+L399b8fhWsKatZ+b2wpKJwfUHBXQFMRxqYQGT0ic1/wQ7D7EZEWy7ZBqk2pw==}
     peerDependencies:
       react: '>=16.6.0'
     dependencies:

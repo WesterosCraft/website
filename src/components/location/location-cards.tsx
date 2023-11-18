@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@components/ui/table";
-import { camel2title } from "@lib/utils";
+import { camel2title, urlBuilder } from "@lib/utils";
 import slugify from "slugify";
 import { IS_BROWSER } from "@constants/index";
 import { LocationCard } from "./location-card.tsx";
@@ -83,7 +83,15 @@ export function LocationCards({
             link={`/locations/${getSlug(location?.data?.region)}/${
               location?.slug
             }`}
-            imageUrl={location?.data?.locationImages?.[0]?.src}
+            imageUrl={
+              location?.data?.locationImages?.[0]?.src
+                ? urlBuilder(location?.data?.locationImages?.[0]?.src, {
+                    fit: "cover",
+                    format: "webp",
+                    height: 180,
+                  })
+                : undefined
+            }
             title={location.data.title}
             region={camel2title(location.data.region)}
             projectStatus={camel2title(location.data?.projectStatus)}

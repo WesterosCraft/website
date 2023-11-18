@@ -152,3 +152,30 @@ export async function imp(filePath: string) {
   const image = await images[key]();
   return image.default;
 }
+
+export type Params = {
+  fit?: "scale-down" | "contain" | "cover" | "crop";
+  format?: "png" | "avif" | "webp" | "jpeg";
+  quality?: number; // between 1 and 100
+  height?: number; // between 1 and 10240
+  width?: number; // between 1 and 10240
+};
+
+/**
+ * Used to build a correct url using Cloudflare params
+ * @param url
+ * @param params
+ * @returns
+ */
+export function urlBuilder(url: string, params?: Params) {
+  const queryParams = [] as string[];
+
+  if (params?.fit) queryParams.push(`fit=${params.fit}`);
+  if (params?.format) queryParams.push(`format=${params.format}`);
+  if (params?.quality) queryParams.push(`quality=${params.quality}`);
+  if (params?.height) queryParams.push(`height=${params.height}`);
+  if (params?.width) queryParams.push(`width=${params.width}`);
+
+  const queryString = queryParams.join("&");
+  return queryString ? `${url}?${queryString}` : url;
+}

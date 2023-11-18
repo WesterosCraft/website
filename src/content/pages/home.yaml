@@ -1,11 +1,26 @@
 hero:
   sliderImages:
-    - image: hero/sliderImages/0/image.jpg
-      alt: King's Landing
-    - image: hero/sliderImages/1/image.jpg
-      alt: Pyke
-    - image: hero/sliderImages/2/image.jpg
-      alt: Winterfell
+    - cloudImage:
+        src: >-
+          https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/d1zl3qmsft76/kings-landing-hero
+        alt: Kings Landing from a Game of Thrones, built in Minecraft
+        height: 660
+        width: 1173
+      slideText: King's Landing
+    - cloudImage:
+        src: >-
+          https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/oge27b56bde0/pyke-hero
+        alt: Pyke built in Minecraft
+        height: 660
+        width: 1173
+      slideText: Pyke
+    - cloudImage:
+        src: >-
+          https://bxf03rev1vvg.keystatic.net/cm4n7v612uoj/images/iftd93zdu6my/winterfell
+        alt: Winterfell built in Minecraft
+        height: 660
+        width: 1173
+      slideText: Winterfell
   heading: EXPLORE THE WORLD OF
   highlighted: Westeros Inside Minecraft
   subheading: >-
