@@ -12,6 +12,7 @@ const slides = data?.sliderImages?.map((slide) => {
       height: 660,
       format: "webp",
       fit: "cover",
+      quality: 100,
     }),
     alt: slide?.cloudImage?.alt || slide?.alt || "",
     slideText: slide?.slideText || "",

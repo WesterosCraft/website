@@ -9,6 +9,7 @@ interface Slide {
   image: string;
   alt: string;
   slideText: string;
+  originalUrl?: string;
 }
 
 interface CarouselProps {
@@ -65,19 +66,24 @@ export default function Carousel({
 
   return (
     <div>
-      <div ref={sliderRef} className='keen-slider relative'>
+      <div
+        ref={sliderRef}
+        className={clsx(
+          "keen-slider relative",
+          slideHeight
+            ? `min-h-[${slideHeight}px]`
+            : "min-h-[var(--slideHeight)]"
+        )}
+      >
         {slides?.map((slide, idx) => (
           <div key={idx} className='keen-slider__slide lazy__slide relative'>
             <img
               className={clsx(
-                `object-cover bg-transparent`,
-                loaded[idx] ? "bg-transparent" : "hidden",
-                slideHeight ? `h-[${slideHeight}px]` : "h-[var(--slideHeight)]"
+                `object-cover bg-transparent min-h-full`,
+                loaded[idx] ? "bg-transparent" : "hidden"
               )}
               sizes='60vw'
               src={loaded[idx] ? slide.image : ""}
-              width={1100}
-              height={slideHeight ? `${slideHeight}px` : "var(--slideHeight)"}
               alt={slide.alt || ""}
               style={{ opacity: opacities[idx] }}
             />
@@ -88,7 +94,7 @@ export default function Carousel({
             )}
             {linkImageExternally && (
               <div className='absolute top-2 right-2 fill-white'>
-                <a href={slide.image} target='_blank' rel='noreferrer'>
+                <a href={slide?.originalUrl} target='_blank' rel='noreferrer'>
                   <Button
                     variant='ghost'
                     className='p-2 rounded-full h-auto hover:bg-slate-50/50 text-white'

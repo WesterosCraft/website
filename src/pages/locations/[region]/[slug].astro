@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import LocationLayout from "@layouts/location.astro";
-import { slugify, camel2title } from "@lib/utils";
+import { slugify, camel2title, urlBuilder } from "@lib/utils";
 import ProjectDetailsCard from "@components/project-details-card.astro";
 import Prose from "@components/prose.astro";
 import BackToLocationsLink from "@components/back-to-locations-link.astro";
@@ -54,10 +54,15 @@ const { Content } = await location?.render();
       <Carousel
         showDots
         slides={location?.data?.locationImages?.map((img) => ({
-          image: img.src,
+          image: urlBuilder(img.src, {
+            format: "webp",
+            height: 432,
+            fit: "cover",
+          }),
+          originalUrl: img?.src,
         }))}
         client:load
-        slideHeight={400}
+        slideHeight={432}
         linkImageExternally
       />
     </div>
