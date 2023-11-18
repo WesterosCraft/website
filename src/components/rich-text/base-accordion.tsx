@@ -6,19 +6,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@components/ui/accordion";
-import Prose from "@components/prose.astro";
 
 interface Props {
-  data: {
+  items: {
     itemTrigger: string;
     itemContent: string;
   }[];
 }
 
-export function Accordion({ data }: Props) {
+export function Accordion({ items }: Props) {
   return (
     <BaseAccordion type='single' collapsible className='w-full'>
-      {data?.map((item, i) => {
+      {items?.map((item, i) => {
         return (
           <AccordionItem key={i} value={`item-${i.toFixed()}`}>
             <AccordionTrigger>{item?.itemTrigger || ""}</AccordionTrigger>
