@@ -1,0 +1,32 @@
+---
+import Steps from "./steps.astro";
+import Step from "./step.astro";
+
+interface Props {
+  steps: { label: string; content: string }[];
+  orientation?: "horizontal" | "vertical";
+  labelOrientation?: "horizontal" | "vertical";
+  className?: string;
+}
+
+const { orientation, labelOrientation, className, steps, ...rest } =
+  Astro.props;
+---
+
+<Steps orientation={orientation} className={className} {...rest}>
+  {
+    steps?.map((step, index) => (
+      <Step
+        orientation={orientation}
+        labelOrientation={labelOrientation}
+        index={index + 1}
+        description='this is descriptiuon'
+        {...step}
+      >
+        <div class='h-40 w-full rounded-lg bg-slate-100 p-4 text-slate-900 dark:bg-slate-300'>
+          <p>{step?.content}</p>
+        </div>
+      </Step>
+    ))
+  }
+</Steps>

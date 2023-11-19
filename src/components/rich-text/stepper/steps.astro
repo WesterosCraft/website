@@ -1,0 +1,21 @@
+---
+import { cn } from "@lib/utils";
+
+interface Props {
+  orientation?: "horizontal" | "vertical";
+  className?: string;
+}
+const { orientation, className, ...props } = Astro.props;
+---
+
+<div
+  {...props}
+  class={cn(
+    "flex w-full flex-1 justify-between gap-4 text-center",
+    "not-prose",
+    orientation === "vertical" ? "flex-col" : "flex-row",
+    className
+  )}
+>
+  <slot />
+</div>

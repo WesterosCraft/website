@@ -1,0 +1,30 @@
+---
+import { Separator } from "@components/ui/separator";
+import { cn } from "@lib/utils";
+
+interface Props {
+  orientation?: "horizontal" | "vertical";
+  hasLabel?: boolean;
+}
+
+const { orientation = "vertical", hasLabel, ...rest } = Astro.props;
+---
+
+{
+  orientation === "vertical" ? (
+    <div
+      class={cn(
+        "ms-6 mt-1 flex h-auto min-h-[2rem] flex-1 self-stretch border-l-2 ps-8"
+      )}
+    >
+      <div class='my-4 block h-auto w-full'>
+        <slot />
+      </div>
+    </div>
+  ) : (
+    <Separator
+      className='flex h-[2px] min-h-[auto] flex-1 self-auto bg-green-700'
+      orientation='horizontal'
+    />
+  )
+}

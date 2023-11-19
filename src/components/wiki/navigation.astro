@@ -1,13 +1,13 @@
 ---
 import { MatchSorterSearch } from "@components/match-sorter-search";
+import { Button } from "@components/ui/button";
 import clsx from "clsx";
-const { navigation, className } = Astro.props;
-const pathname = Astro.url.pathname;
+import { getCollection } from "astro:content";
 import { slugify, camel2title } from "@lib/utils";
 import { NavSection } from "./nav-section";
-import { getCollection } from "astro:content";
-import { Button } from "@components/ui/button";
 
+const { navigation, className } = Astro.props;
+const pathname = Astro.url.pathname;
 const docsdirectories = await getCollection("docs");
 
 const normalizedDocs = docsdirectories?.map((x) => ({
@@ -33,9 +33,9 @@ const normalizedDirectories = normalizedDocs;
           href='/docs'
           class={clsx("py-2 px-2 block w-full", {
             "font-semibold text-primaryRed bg-primaryRed/10":
-              pathname === "/docs",
+              pathname === "/docs" || pathname === "/docs/",
             "text-slate-600 first-letter:hover:text-slate-700 hover:bg-primaryLightBorder/30":
-              pathname !== "/docs",
+              pathname !== "/docs" && pathname !== "/docs/",
           })}
         >
           Introduction
@@ -49,7 +49,7 @@ const normalizedDirectories = normalizedDocs;
           <NavSection
             client:only='react'
             title={section?.title}
-            pathname={pathname}
+            pathName={pathname}
             links={section?.links}
           />
         </li>
