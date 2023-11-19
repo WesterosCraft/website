@@ -157,6 +157,12 @@ export const wysiwyg = (imageFolderLocation: string) =>
                 label: "Step Content",
                 multiline: true,
               }),
+              // content: fields.document({
+              //   label: 'Document',
+              //   formatting: true,
+              //   links: true,
+              //   images: true
+              // })
             }),
             {
               label: "Steps",

@@ -1,12 +1,13 @@
 ---
 import { MatchSorterSearch } from "@components/match-sorter-search";
+import { Button } from "@components/ui/button";
 import clsx from "clsx";
-const { navigation, className } = Astro.props;
-const pathname = Astro.url.pathname;
+import { getCollection } from "astro:content";
 import { slugify, camel2title } from "@lib/utils";
 import { NavSection } from "./nav-section";
-import { getCollection } from "astro:content";
-import { Button } from "@components/ui/button";
+
+const { navigation, className } = Astro.props;
+const pathname = Astro.url.pathname;
 
 const docsdirectories = await getCollection("docs");
 

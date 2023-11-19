@@ -11,6 +11,8 @@ import clsx from "clsx";
 import { Button } from "@components/ui/button";
 
 export const NavSection = ({ title, pathname, links }: any) => {
+  console.log("NavSection : pathname:", pathname);
+
   const [isOpen, setIsOpen] = React.useState(
     title === "Getting Started" || title === "Guides" ? true : false
   );
