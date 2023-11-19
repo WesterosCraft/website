@@ -8,9 +8,6 @@ import { NavSection } from "./nav-section";
 
 const { navigation, className } = Astro.props;
 const pathname = Astro.url.pathname;
-
-console.log("pathname:", pathname);
-
 const docsdirectories = await getCollection("docs");
 
 const normalizedDocs = docsdirectories?.map((x) => ({
