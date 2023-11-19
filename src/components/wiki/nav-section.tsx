@@ -9,12 +9,17 @@ import {
 import { ChevronRight, ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import { Button } from "@components/ui/button";
+import slugify from "slugify";
 
 export const NavSection = ({ title, pathName, links }: any) => {
   const pathname = window?.location?.pathname || pathName;
 
   const [isOpen, setIsOpen] = React.useState(
-    title === "Getting Started" || title === "Guides" ? true : false
+    pathname === "/docs" ||
+      pathname === `/docs/` ||
+      pathname.includes(slugify(title?.toLowerCase()))
+      ? true
+      : false
   );
 
   return (
@@ -44,10 +49,10 @@ export const NavSection = ({ title, pathName, links }: any) => {
                   className={clsx(
                     "ml-1 py-2 px-2 block w-full before:pointer-events-none before:absolute before:-left-2 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
                     {
-                      "font-semibold text-primaryRed before:bg-primaryRed bg-primaryRed/10 hover:bg-primaryRed/10 hover:text-primaryRed":
+                      "font-semibold text-primaryRed before:bg-primaryRed bg-primaryRed/10 hover:bg-primaryRed/10":
                         link.href === pathname || link.href === `${pathname}/`,
                       "text-slate-600 before:hidden before:bg-primaryLightBorder hover:text-slate-700 hover:before:block hover:bg-primaryLightBorder/30":
-                        link.href !== pathname || link.href !== `${pathname}/`,
+                        link.href !== pathname && link.href !== `${pathname}/`,
                     }
                   )}
                 >
