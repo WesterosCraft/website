@@ -10,8 +10,8 @@ import { ChevronRight, ChevronDown } from "lucide-react";
 import clsx from "clsx";
 import { Button } from "@components/ui/button";
 
-export const NavSection = ({ title, pathname, links }: any) => {
-  console.log("NavSection : pathname:", pathname);
+export const NavSection = ({ title, pathName, links }: any) => {
+  const pathname = window?.location?.pathname || pathName;
 
   const [isOpen, setIsOpen] = React.useState(
     title === "Getting Started" || title === "Guides" ? true : false
