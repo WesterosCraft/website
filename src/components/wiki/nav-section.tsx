@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { Button } from "@components/ui/button";
 import slugify from "slugify";
 
-export const NavSection = ({ title, pathName, links, isDev }: any) => {
+export const NavSection = ({ title, pathName, links }: any) => {
   const pathname = window?.location?.pathname || pathName;
 
   const [isOpen, setIsOpen] = React.useState(
