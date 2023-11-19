@@ -9,6 +9,8 @@ import { NavSection } from "./nav-section";
 const { navigation, className } = Astro.props;
 const pathname = Astro.url.pathname;
 
+console.log("pathname:", pathname);
+
 const docsdirectories = await getCollection("docs");
 
 const normalizedDocs = docsdirectories?.map((x) => ({
@@ -34,9 +36,9 @@ const normalizedDirectories = normalizedDocs;
           href='/docs'
           class={clsx("py-2 px-2 block w-full", {
             "font-semibold text-primaryRed bg-primaryRed/10":
-              pathname === "/docs",
+              pathname === "/docs" || pathname === "/docs/",
             "text-slate-600 first-letter:hover:text-slate-700 hover:bg-primaryLightBorder/30":
-              pathname !== "/docs",
+              pathname !== "/docs" && pathname !== "/docs/",
           })}
         >
           Introduction

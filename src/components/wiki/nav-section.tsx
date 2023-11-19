@@ -11,8 +11,6 @@ import clsx from "clsx";
 import { Button } from "@components/ui/button";
 
 export const NavSection = ({ title, pathname, links }: any) => {
-  console.log("NavSection : pathname:", pathname);
-
   const [isOpen, setIsOpen] = React.useState(
     title === "Getting Started" || title === "Guides" ? true : false
   );
@@ -45,9 +43,9 @@ export const NavSection = ({ title, pathname, links }: any) => {
                     "ml-1 py-2 px-2 block w-full before:pointer-events-none before:absolute before:-left-2 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full",
                     {
                       "font-semibold text-primaryRed before:bg-primaryRed bg-primaryRed/10 hover:bg-primaryRed/10 hover:text-primaryRed":
-                        link.href === pathname,
+                        link.href === pathname || link.href === pathname + "/",
                       "text-slate-600 before:hidden before:bg-primaryLightBorder hover:text-slate-700 hover:before:block hover:bg-primaryLightBorder/30":
-                        link.href !== pathname,
+                        link.href !== pathname || link.href === pathname + "/",
                     }
                   )}
                 >

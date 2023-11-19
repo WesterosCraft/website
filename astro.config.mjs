@@ -11,7 +11,7 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   output: "hybrid",
   site: "https://westeroscraft.com",
-  trailingSlash: "never",
+
   image: {
     domains: ["westeroscraft.com", "bxf03rev1vvg.keystatic.net"],
   },
