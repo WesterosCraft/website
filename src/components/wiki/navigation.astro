@@ -37,7 +37,7 @@ const IS_DEV = import.meta.env.DEV;
               ? pathname === "/docs"
               : pathname === "/docs/",
             "text-slate-600 first-letter:hover:text-slate-700 hover:bg-primaryLightBorder/30":
-              IS_DEV ? pathname !== "/docs" : pathname !== "/docs/",
+              pathname !== "/docs" && pathname !== "/docs/",
           })}
         >
           Introduction
