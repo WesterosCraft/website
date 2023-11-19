@@ -17,6 +17,7 @@ const normalizedDocs = docsdirectories?.map((x) => ({
 }));
 
 const normalizedDirectories = normalizedDocs;
+const IS_DEV = import.meta.env.DEV;
 ---
 
 <nav class={clsx("text-base lg:text-sm", className)}>
@@ -32,10 +33,11 @@ const normalizedDirectories = normalizedDocs;
         <a
           href='/docs'
           class={clsx("py-2 px-2 block w-full", {
-            "font-semibold text-primaryRed bg-primaryRed/10":
-              pathname === "/docs" || pathname === "/docs/",
+            "font-semibold text-primaryRed bg-primaryRed/10": IS_DEV
+              ? pathname === "/docs"
+              : pathname === "/docs/",
             "text-slate-600 first-letter:hover:text-slate-700 hover:bg-primaryLightBorder/30":
-              pathname !== "/docs" && pathname !== "/docs/",
+              IS_DEV ? pathname !== "/docs" : pathname !== "/docs/",
           })}
         >
           Introduction
@@ -51,6 +53,7 @@ const normalizedDirectories = normalizedDocs;
             title={section?.title}
             pathName={pathname}
             links={section?.links}
+            isDev={IS_DEV}
           />
         </li>
       ))
