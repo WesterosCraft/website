@@ -1,0 +1,30 @@
+---
+import Prose from "@components/prose.astro";
+import {
+  TypographyH1,
+  TypographyH4,
+  TypographyP,
+} from "@components/typography";
+import RootLayout from "@layouts/root.astro";
+---
+
+<RootLayout title='Page not found! - WesterosCraft'>
+  <div class='flex-grow w-full flex flex-col items-center justify-center'>
+    <div
+      class='space-y-6 py-5 flex flex-col justify-center items-center mx-auto max-w-4xl text-center'
+    >
+      <TypographyH1>Valar 404ghulis</TypographyH1>
+      <TypographyH4>This page is lost beyond the Wall</TypographyH4>
+
+      <div class='divide-x font-bold text-primaryRed'>
+        <a class='px-4' href='/docs'>Docs</a>
+        <a class='px-4' href='/locations'>Locations</a>
+        <a
+          class='px-4'
+          href='https://discord.com/invite/pBS5TH4'
+          target='_blank'>Discord</a
+        >
+      </div>
+    </div>
+  </div>
+</RootLayout>

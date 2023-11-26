@@ -29,8 +29,8 @@ module.exports = {
         header: "176px 1fr auto md:1fr auto 1fr",
       },
       fontFamily: {
-        sans: ["GeistVF", defaultTheme.fontFamily.sans],
-        esmeralda: ["EsmeraldaPro", defaultTheme.fontFamily.serif],
+        sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+        esmeralda: ["EsmeraldaPro", ...defaultTheme.fontFamily.serif],
       },
       colors: {
         bgColor: "#f4f4f4",

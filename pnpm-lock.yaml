@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/markdoc':
     specifier: ^0.7.2
-    version: 0.7.2(@types/react@18.2.5)(astro@3.5.5)(react@18.2.0)
+    version: 0.7.2(@types/react@18.2.5)(astro@3.6.0)(react@18.2.0)
   '@astrojs/partytown':
     specifier: ^2.0.2
     version: 2.0.2
@@ -16,16 +16,19 @@ dependencies:
     version: 3.0.5(@types/react-dom@18.2.3)(@types/react@18.2.5)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)
   '@astrojs/tailwind':
     specifier: ^5.0.2
-    version: 5.0.2(astro@3.5.5)(tailwindcss@3.3.3)(ts-node@10.9.1)
+    version: 5.0.2(astro@3.6.0)(tailwindcss@3.3.3)(ts-node@10.9.1)
   '@astrojs/vercel':
     specifier: ^5.2.0
-    version: 5.2.0(astro@3.5.5)
+    version: 5.2.0(astro@3.6.0)
+  '@fontsource/inter':
+    specifier: ^5.0.15
+    version: 5.0.15
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/astro':
     specifier: ^2.0.0
-    version: 2.0.0(@keystatic/core@0.2.4)(astro@3.5.5)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.0.0(@keystatic/core@0.2.4)(astro@3.6.0)(react-dom@18.2.0)(react@18.2.0)
   '@keystatic/core':
     specifier: ^0.2.4
     version: 0.2.4(react-dom@18.2.0)(react@18.2.0)
@@ -78,8 +81,8 @@ dependencies:
     specifier: ^18.2.3
     version: 18.2.3
   astro:
-    specifier: ^3.5.5
-    version: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+    specifier: ^3.6.0
+    version: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
   astro-seo:
     specifier: ^0.8.0
     version: 0.8.0
@@ -209,7 +212,7 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/markdoc@0.7.2(@types/react@18.2.5)(astro@3.5.5)(react@18.2.0):
+  /@astrojs/markdoc@0.7.2(@types/react@18.2.5)(astro@3.6.0)(react@18.2.0):
     resolution: {integrity: sha512-naLCb2cqq+tTCn3jgXEVr7PG5TUWMTQVvUmrGj1vdQxTrTJcsDQw212K2u7wwuwmUxRTNaHnN3DEVeldlG37jg==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -218,7 +221,7 @@ packages:
       '@astrojs/internal-helpers': 0.2.1
       '@astrojs/prism': 3.0.0
       '@markdoc/markdoc': 0.3.0(@types/react@18.2.5)(react@18.2.0)
-      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
       esbuild: 0.19.2
       github-slugger: 2.0.0
       gray-matter: 4.0.3
@@ -231,13 +234,13 @@ packages:
       - react
     dev: false
 
-  /@astrojs/markdown-remark@3.5.0(astro@3.5.5):
+  /@astrojs/markdown-remark@3.5.0(astro@3.6.0):
     resolution: {integrity: sha512-q7vdIqzYhxpsfghg2YmkmSXCfp4w7lBTYP+SSHw89wVhC5Riltr3u8w2otBRxNLSByNi+ht/gGkFC23Shetytw==}
     peerDependencies:
       astro: ^3.0.0
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -289,13 +292,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.2(astro@3.5.5)(tailwindcss@3.3.3)(ts-node@10.9.1):
+  /@astrojs/tailwind@5.0.2(astro@3.6.0)(tailwindcss@3.3.3)(ts-node@10.9.1):
     resolution: {integrity: sha512-oXqeqmBlkQmsltrsU9nEWeXOtrZIAHW8dcmX7BCdrjzPnU6dPwWzAwhddNQ9ihKiWwsLnlbwQZIo2CDigcZlIA==}
     peerDependencies:
       astro: ^3.2.4
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
       autoprefixer: 10.4.15(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.1(postcss@8.4.29)(ts-node@10.9.1)
@@ -319,7 +322,7 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@5.2.0(astro@3.5.5):
+  /@astrojs/vercel@5.2.0(astro@3.6.0):
     resolution: {integrity: sha512-WUMgiVLbDsh2uRaMcjqx3Br7lWNvKSvDqbLwDeR21lJ4UIBB+1PYbQ3cLYLXl6GiksxPx8rg9dry9CDsPcA0nA==}
     peerDependencies:
       astro: ^3.0.0
@@ -327,7 +330,7 @@ packages:
       '@astrojs/internal-helpers': 0.2.1
       '@vercel/analytics': 1.0.2
       '@vercel/nft': 0.23.1
-      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
       esbuild: 0.19.2
       fast-glob: 3.3.1
       set-cookie-parser: 2.6.0
@@ -1158,6 +1161,10 @@ packages:
       tabbable: 6.2.0
     dev: false
 
+  /@fontsource/inter@5.0.15:
+    resolution: {integrity: sha512-/IoWYEXl8lqJEx50JqNPT+bI4VNwxb/bg2oOfvG8PiEsDsmHRFvWBVHlohBNn1+QdBf+KbAjU/gb4vlGOSsVWw==}
+    dev: false
+
   /@formatjs/ecma402-abstract@1.17.0:
     resolution: {integrity: sha512-6ueQTeJZtwKjmh23bdkq/DMqH4l4bmfvtQH98blOSbiXv/OUiyijSW6jU22IT8BNM1ujCaEvJfTtyCYVH38EMQ==}
     dependencies:
@@ -1391,7 +1398,7 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@keystatic/astro@2.0.0(@keystatic/core@0.2.4)(astro@3.5.5)(react-dom@18.2.0)(react@18.2.0):
+  /@keystatic/astro@2.0.0(@keystatic/core@0.2.4)(astro@3.6.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tx3hnSQOkUXgIsR+h6QpmfDIOkYoTn2EslbRe+J24hNgUILUKiqWC3w05jrKcygh4hquYlvFrll6lPvHq4Q0rQ==}
     peerDependencies:
       '@keystatic/core': '*'
@@ -1402,7 +1409,7 @@ packages:
       '@babel/runtime': 7.22.6
       '@keystatic/core': 0.2.4(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.17
-      astro: 3.5.5(@types/node@20.4.6)(typescript@5.1.6)
+      astro: 3.6.0(@types/node@20.4.6)(typescript@5.1.6)
       cookie: 0.5.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -4371,14 +4378,14 @@ packages:
     resolution: {integrity: sha512-7gq6lhibCM8FuzZIJlbLLWP5EJ9KL2/4XqeFrAg9O6ZK2xMFxJ5ubKf+a0VJwwTu8W8Xr421CmpiXu6Hq7n/7Q==}
     dev: false
 
-  /astro@3.5.5(@types/node@20.4.6)(typescript@5.1.6):
-    resolution: {integrity: sha512-zJDZhO8XheXzpqkZgBXlP8e3j8psf0A21fh5Bq4HNR6gOmgOnM62Pok3O2ClbGygabfl2Preeun0pBRFn5+y0A==}
+  /astro@3.6.0(@types/node@20.4.6)(typescript@5.1.6):
+    resolution: {integrity: sha512-mRDzWXsaSBaN+juvunO4Ukq8HQ1WqrULlcZfKzaKEZEXvxiWmMKN9tH0onQH0EaQ7+f4nNR4VN9kYTM26uMrXQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.3.0
       '@astrojs/internal-helpers': 0.2.1
-      '@astrojs/markdown-remark': 3.5.0(astro@3.5.5)
+      '@astrojs/markdown-remark': 3.5.0(astro@3.6.0)
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.22.11
       '@babel/generator': 7.22.10

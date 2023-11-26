@@ -16,7 +16,8 @@ export const docs = collection({
     }),
     description: fields.text({
       label: "Description",
-      description: "A short default description of the doc",
+      description:
+        "A short default description of the doc. Will be used in SEO description.",
     }),
     docCategory: fields.select({
       label: "Category",
