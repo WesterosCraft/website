@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { Button } from "@components/ui/button";
 import { TypographyH1 } from "@components/typography";
 import { urlBuilder } from "@lib/utils";
+import slugify from "slugify";
 
 interface ProjectDetails {
   title: string;
@@ -29,10 +30,11 @@ interface ProjectDetails {
   locationImages?: Array<{ src: string }>;
 }
 interface Props {
+  slug: string;
   projectDetails: ProjectDetails;
 }
 
-const { projectDetails } = Astro.props;
+const { projectDetails, slug } = Astro.props;
 
 const items = [
   { name: "Region", value: camel2title(projectDetails?.region) },
@@ -74,6 +76,7 @@ const items = [
               width: 75,
               height: 150,
               format: "webp",
+              quality: 100,
             })}
             alt={`${projectDetails?.title} Banner`}
           />
@@ -106,6 +109,14 @@ const items = [
           </div>
         ))
       }
+    </div>
+    <div class='flex justify-end mt-2 text-slate-500'>
+      <a
+        target='_blank'
+        href={`https://github.com/WesterosCraft/website/blob/develop/src/content/locations/${slug}/index.mdoc`}
+      >
+        <p class='text-xs'>Edit this page on Github</p>
+      </a>
     </div>
   </div>
 </div>

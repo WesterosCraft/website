@@ -46,6 +46,7 @@ const { Content } = await location?.render();
       <ProjectDetailsCard
         slot='location-details'
         projectDetails={location?.data}
+        slug={location.slug}
       />
     )
   }
