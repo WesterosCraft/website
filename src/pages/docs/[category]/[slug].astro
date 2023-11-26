@@ -33,4 +33,12 @@ const { Content } = await doc?.render();
 >
   <h1>{doc?.data.title}</h1>
   <Content />
+  <div class='flex justify-end mt-8 text-slate-500 not-prose'>
+    <a
+      target='_blank'
+      href={`https://github.com/WesterosCraft/website/blob/develop/src/content/docs/${doc?.slug}/index.mdoc`}
+    >
+      <p class='text-xs'>Edit this page on Github</p>
+    </a>
+  </div>
 </WikiLayout>
