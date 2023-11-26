@@ -162,15 +162,6 @@
 }
 
 @font-face {
-  font-family: "GeistVF";
-  src: url("/fonts/GeistVariableVF.woff2") format("woff2"),
-    url("/fonts/GeistVariableVF.otf") format("otf");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "EsmeraldaPro";
   src: url("/fonts/EsmeraldaPro-Regular.woff2") format("woff2"),
     url("/fonts/EsmeraldaPro-Regular.woff") format("woff"),
