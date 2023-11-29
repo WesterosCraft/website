@@ -14,6 +14,7 @@ import { camel2title, urlBuilder } from "@lib/utils";
 import slugify from "slugify";
 import { IS_BROWSER } from "@constants/index";
 import { LocationCard } from "./location-card.tsx";
+import { LocationIndicator } from "./location-indicator.tsx";
 
 function getSlug(str: string) {
   return slugify(str.replace(/[A-Z]/g, "-$&"), { lower: true });
@@ -132,7 +133,10 @@ export function LocationCards({
               region={location?.data?.region}
               slug={location.slug}
             >
-              {camel2title(location?.data?.projectStatus)}
+              <div className='flex flex-row gap-2 items-center'>
+                <LocationIndicator status={location?.data?.projectStatus} />
+                {camel2title(location?.data?.projectStatus)}
+              </div>
             </TableCellWithLink>
             <TableCellWithLink
               region={location?.data?.region}
