@@ -33,10 +33,29 @@ module.exports = {
         esmeralda: ["EsmeraldaPro", ...defaultTheme.fontFamily.serif],
       },
       colors: {
+        brand: {
+          burgundy: "#800020",
+          black: "#02010A",
+          green: "#0D5F0C",
+          orange: "#F78F44",
+          blue: "#0081A7",
+          brown: "#7F5539",
+          red: "#B62A2A",
+          gray: "#3B3B3B",
+          navy_blue: "#022546",
+          gold: " #D1AF57",
+          teal: "#008080",
+          dusty_rose: "#9F736F",
+          copper: "#8B452D",
+          olive_green: "#BAB86C",
+          plum: "#87407E",
+          mustard: "#FFDB58",
+          navy_gray: "#516278",
+        },
         bgColor: "#f4f4f4",
         primaryLightShade: "#FFFCF1",
         primaryLightBorder: "#d9ceb2",
-        camel: "#f5e4bc",
+        camel: "#8b6e50",
         primaryGold: {
           50: "hsl(49, 67%, 95%)",
           100: "hsl(51, 67%, 88%)",
@@ -51,7 +70,6 @@ module.exports = {
           950: "hsl(21, 58%, 14%)",
           DEFAULT: "hsl(44, 68%, 55%)",
         },
-
         primaryDark: {
           light: "hsl(53, 8%, 22%)",
           DEFAULT: "hsl(50, 8%, 15%)",

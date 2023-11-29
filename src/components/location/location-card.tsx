@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@components/ui/card";
 import squares from "../../assets/bright-squares.png";
+import { LocationIndicator } from "./location-indicator";
 
 export function LocationCard({
   link,
@@ -40,8 +41,11 @@ export function LocationCard({
         </CardContent>
 
         <CardFooter>
-          <div className='flex flex-row justify-between w-full'>
-            <p>{projectStatus}</p>
+          <div className='flex flex-row justify-between w-full text-sm'>
+            <div className='flex flex-row gap-2 items-center'>
+              <LocationIndicator size='sm' status={projectStatus} />
+              <p>{projectStatus}</p>
+            </div>
             <p>{projectType}</p>
           </div>
         </CardFooter>
