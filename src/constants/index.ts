@@ -155,7 +155,7 @@ export const regions = [
       alt: "SummerHall icon",
     },
   },
-];
+] as const;
 
 export const DOC_CATEGORIES = [
   { label: "Getting Started", value: "gettingStarted" },
@@ -164,7 +164,7 @@ export const DOC_CATEGORIES = [
   { label: "Resources", value: "resources" },
   { label: "Miscellaneous", value: "miscellaneous" },
   { label: "Archived", value: "archived" },
-];
+] as const;
 
 export const REGIONS = [
   {
@@ -211,7 +211,7 @@ export const REGIONS = [
     label: "Vale",
     value: "vale",
   },
-];
+] as const;
 
 export const PROJECT_STATUS = [
   { label: "Completed", value: "completed" },
@@ -219,7 +219,7 @@ export const PROJECT_STATUS = [
   { label: "Not started", value: "notStarted" },
   { label: "Abandoned", value: "abandoned" },
   { label: "Redo in progress", value: "redoInProgress" },
-];
+] as const;
 
 export const PROJECT_TYPES = [
   { label: "Castle", value: "castle" },
@@ -234,4 +234,4 @@ export const PROJECT_TYPES = [
   { label: "Clan", value: "clan" },
   { label: "Crannog", value: "crannog" },
   { label: "Miscellaneous", value: "miscellaneous" },
-];
+] as const;
