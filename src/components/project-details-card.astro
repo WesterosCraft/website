@@ -4,9 +4,8 @@ import dayjs from "dayjs";
 import { Button } from "@components/ui/button";
 import { TypographyH1 } from "@components/typography";
 import { urlBuilder } from "@lib/utils";
-import slugify from "slugify";
 
-interface ProjectDetails {
+export interface ProjectDetails {
   title: string;
   region: string;
   projectStatus: string;
