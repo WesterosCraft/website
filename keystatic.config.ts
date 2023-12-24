@@ -8,6 +8,13 @@ import { locations, docs } from "./src/cms/collections";
 import { rookery, home } from "./src/cms/singletons";
 
 export default config({
+  ui: {
+    brand: { name: "WesterosCraft" },
+    navigation: {
+      Content: ["locations", "docs", "home", "rookery", "about", "join"],
+      Settings: ["mainnav", "footer", "banner"],
+    },
+  },
   storage: {
     kind: import.meta.env.DEV ? "local" : "cloud",
   },
