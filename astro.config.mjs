@@ -22,6 +22,7 @@ export default defineConfig({
     keystatic(),
     partytown({
       config: {
+        debug: false,
         forward: ["dataLayer.push"],
       },
     }),

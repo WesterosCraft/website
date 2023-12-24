@@ -43,6 +43,14 @@ const AccordionPreview = (props: any) => {
   );
 };
 
+const StepperPreview = (props: any) => {
+  return (
+    <div style={{ padding: "1rem 0" /* styling is up to you */ }}>
+      <pre>{JSON.stringify(props.fields, null, 2)}</pre>
+    </div>
+  );
+};
+
 export const wysiwyg = (imageFolderLocation: string) =>
   fields.document({
     label: "Content",
@@ -137,7 +145,7 @@ export const wysiwyg = (imageFolderLocation: string) =>
         },
       }),
       stepper: component({
-        preview: (args) => <AccordionPreview {...args} />,
+        preview: (args) => <StepperPreview {...args} />,
         label: "Stepper",
         schema: {
           orientation: fields.select({
@@ -148,21 +156,22 @@ export const wysiwyg = (imageFolderLocation: string) =>
               { label: "Horizontal", value: "horizontal" },
             ],
           }),
+
           steps: fields.array(
             fields.object({
               label: fields.text({
                 label: "Step Label",
               }),
-              content: fields.text({
-                label: "Step Content",
-                multiline: true,
+              // content: fields.text({
+              //   label: "Step Content",
+              //   multiline: true,
+              // }),
+              content: fields.child({
+                kind: "block",
+                placeholder: "Quote...",
+                formatting: { inlineMarks: "inherit", softBreaks: "inherit" },
+                links: "inherit",
               }),
-              // content: fields.document({
-              //   label: 'Document',
-              //   formatting: true,
-              //   links: true,
-              //   images: true
-              // })
             }),
             {
               label: "Steps",

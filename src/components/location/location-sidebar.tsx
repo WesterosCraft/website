@@ -104,6 +104,7 @@ export function LocationSidebar({
           <div className='py-3' key={item?.slug}>
             <LocationFilter
               title={item.name}
+              // @ts-ignore
               items={item?.items}
               slug={item?.slug}
               setClickCount={setClickCount}

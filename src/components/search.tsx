@@ -145,6 +145,7 @@ export function Search({
 
   const renderList = show && Boolean(value);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const icon = IS_BROWSER && (
     <Transition
       show={true && (!show || Boolean(value))}
