@@ -51,13 +51,21 @@ const StepperPreview = (props: any) => {
   );
 };
 
+const SpoilerPreview = (props: any) => {
+  return (
+    <div>
+      <div>{props.fields.content.element}</div>
+    </div>
+  );
+};
+
 export const wysiwyg = (imageFolderLocation: string) =>
   fields.document({
     label: "Content",
     formatting: true,
     dividers: true,
     links: true,
-    layouts: [[1], [1, 1]],
+    // layouts: [[1], [1, 1]],
     images: {
       directory: imageFolderLocation,
       publicPath: "../",
@@ -178,6 +186,22 @@ export const wysiwyg = (imageFolderLocation: string) =>
               itemLabel: (props) => props.fields.label.value,
             }
           ),
+        },
+      }),
+      spoiler: component({
+        preview: (args) => <SpoilerPreview {...args} />,
+        label: "Spoiler",
+        schema: {
+          content: fields.child({
+            kind: "block",
+            placeholder: "Content...",
+            formatting: {
+              inlineMarks: "inherit",
+              softBreaks: "inherit",
+              listTypes: "inherit",
+            },
+            links: "inherit",
+          }),
         },
       }),
     },

@@ -44,5 +44,11 @@ export default defineMarkdocConfig({
         },
       },
     },
+    spoiler: {
+      render: component("./src/components/rich-text/spoiler.astro"),
+      attributes: {
+        content: { type: String },
+      },
+    },
   },
 });

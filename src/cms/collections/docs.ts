@@ -18,6 +18,11 @@ export const docs = collection({
       label: "Description",
       description:
         "A short default description of the doc. Will be used in SEO description.",
+      validation: {
+        length: {
+          min: 3,
+        },
+      },
     }),
     docCategory: fields.select({
       label: "Category",
@@ -25,6 +30,11 @@ export const docs = collection({
       options: DOC_CATEGORIES,
       defaultValue: "gettingStarted",
     }),
+    // parentDoc: fields.relationship({
+    //   label: "Parent Doc",
+    //   description: "If applicable, select a parent doc to nest them in the nav",
+    //   collection: "docs",
+    // }),
     content: wysiwyg("src/content/docs"),
   },
 });
