@@ -20,6 +20,7 @@ import hammerSmash from "../../assets/icons/hammer-smash.svg";
 import messageQuestion from "../../assets/icons/message-question.svg";
 import book from "../../assets/icons/book.svg";
 import { Image } from "astro:assets";
+import { LocationIndicator } from "@components/location/location-indicator";
 
 const featuredLocations = await getCollection(
   "locations",
@@ -135,7 +136,13 @@ const iconMap = {
                 </CardContent>
                 <CardFooter className=' px-4 md:px-6'>
                   <div class='flex flex-row justify-between w-full text-sm'>
-                    <p>{camel2title(loc.data?.projectStatus)}</p>
+                    <div class='flex flex-row gap-2 items-center'>
+                      <LocationIndicator
+                        size='sm'
+                        status={loc.data?.projectStatus}
+                      />
+                      <p>{camel2title(loc.data?.projectStatus)}</p>
+                    </div>
                     <p>{camel2title(loc?.data?.projectType)}</p>
                   </div>
                 </CardFooter>
