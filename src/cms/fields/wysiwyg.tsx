@@ -204,5 +204,44 @@ export const wysiwyg = (imageFolderLocation: string) =>
           }),
         },
       }),
+      relationshipCard: component({
+        label: "Relationship Card",
+        preview: () => <div>card</div>,
+        schema: {
+          card: fields.conditional(
+            fields.select({
+              label: "Type",
+              description: "Select a type of relationship",
+              options: [
+                {
+                  label: "Select a type",
+                  value: "none",
+                },
+                {
+                  label: "Location",
+                  value: "location",
+                },
+                {
+                  label: "Doc",
+                  value: "doc",
+                },
+              ],
+              defaultValue: "none",
+            }),
+            {
+              // "none" condition
+              none: fields.empty(),
+              location: fields.relationship({
+                label: "Location",
+                collection: "locations",
+              }),
+              doc: fields.relationship({
+                label: "Doc",
+                collection: "docs",
+              }),
+            }
+          ),
+        },
+      }),
     },
   });

@@ -50,5 +50,16 @@ export default defineMarkdocConfig({
         content: { type: String },
       },
     },
+    relationshipCard: {
+      render: component("./src/components/rich-text/relationship-card.astro"),
+      attributes: {
+        card: {
+          type: Object,
+          // default: "none",
+          // required: true,
+          // matches: ["location", "doc", "none"],
+        },
+      },
+    },
   },
 });

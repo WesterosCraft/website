@@ -1,0 +1,60 @@
+---
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@components/ui/card";
+import { camel2title, getSlug } from "@lib/utils";
+import { Image } from "astro:assets";
+import { LocationIndicator } from "@components/location/location-indicator";
+import hammerSmash from "../assets/icons/hammer-smash.svg";
+import messageQuestion from "../assets/icons/message-question.svg";
+import book from "../assets/icons/book.svg";
+
+const iconMap = {
+  "basic-building-guide-for-applicants": hammerSmash,
+  "frequently-asked-questions": messageQuestion,
+  "community-rules": book,
+};
+
+const { cardData } = Astro.props;
+---
+
+<Card
+  className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'
+>
+  <a href={`/locations/${getSlug(cardData?.data?.region)}/${cardData?.slug}`}>
+    <CardHeader className='pl-0 pr-0 pt-0'>
+      <div class='relative flex h-[180px]'>
+        <Image
+          width={302}
+          height={180}
+          alt={cardData?.slug || ""}
+          decoding='async'
+          loading='lazy'
+          src={cardData?.data?.locationImages?.[0]?.src || ""}
+          sizes='25vw'
+          class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
+        />
+      </div>
+    </CardHeader>
+    <CardContent className='pt-0 px-4 md:px-6 pb-3'>
+      <CardTitle>{cardData?.data?.title || ""}</CardTitle>
+      <CardDescription className='mt-1'>
+        {camel2title(cardData?.data?.region) || ""}
+      </CardDescription>
+    </CardContent>
+    <CardFooter className=' px-4 md:px-6'>
+      <div class='flex flex-row justify-between w-full text-sm'>
+        <div class='flex flex-row gap-2 items-center'>
+          <LocationIndicator size='sm' status={cardData?.data?.projectStatus} />
+          <p>{camel2title(cardData?.data?.projectStatus || "")}</p>
+        </div>
+        <p>{camel2title(cardData?.data?.projectType)}</p>
+      </div>
+    </CardFooter>
+  </a>
+</Card>

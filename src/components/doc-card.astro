@@ -1,0 +1,43 @@
+---
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@components/ui/card";
+import { camel2title, getSlug } from "@lib/utils";
+import hammerSmash from "../assets/icons/hammer-smash.svg";
+import messageQuestion from "../assets/icons/message-question.svg";
+import book from "../assets/icons/book.svg";
+
+const iconMap = {
+  "basic-building-guide-for-applicants": hammerSmash,
+  "frequently-asked-questions": messageQuestion,
+  "community-rules": book,
+};
+
+const { cardData } = Astro.props;
+---
+
+<Card
+  className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'
+>
+  <a
+    class='h-full flex flex-col justify-center'
+    href={`/docs/${getSlug(cardData?.data?.docCategory)}/${cardData?.slug}`}
+  >
+    <CardHeader>
+      <CardTitle>{cardData?.data?.title || ""}</CardTitle>
+      <CardDescription className='mt-1'>
+        {camel2title(cardData?.data?.docCategory)}
+      </CardDescription>
+    </CardHeader>
+    <CardFooter
+      className='flex-1 flex flex-col justify-end items-end fill-red-800'
+    >
+      <img src={iconMap[cardData?.slug]?.src} class='w-8 h-8' />
+    </CardFooter>
+  </a>
+</Card>

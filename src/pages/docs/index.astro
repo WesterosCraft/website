@@ -1,16 +1,7 @@
 ---
 import WikiLayout from "@layouts/wiki.astro";
 import { Button } from "@components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@components/ui/card";
 import { getCollection } from "astro:content";
-import { camel2title, getSlug } from "@lib/utils";
 import {
   TypographyH1,
   TypographyH2,
@@ -19,8 +10,8 @@ import {
 import hammerSmash from "../../assets/icons/hammer-smash.svg";
 import messageQuestion from "../../assets/icons/message-question.svg";
 import book from "../../assets/icons/book.svg";
-import { Image } from "astro:assets";
-import { LocationIndicator } from "@components/location/location-indicator";
+import DocCard from "@components/doc-card.astro";
+import LocationCard from "@components/location-card.astro";
 
 const featuredLocations = await getCollection(
   "locations",
@@ -75,26 +66,7 @@ const iconMap = {
         </div>
       </div>
       <div class='grid grid-cols-2 sm:grid-cols-3 gap-4 not-prose mt-6'>
-        {
-          featuredDocs?.map((doc) => (
-            <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'>
-              <a
-                class='h-full flex flex-col justify-center '
-                href={`/docs/${getSlug(doc?.data?.docCategory)}/${doc?.slug}`}
-              >
-                <CardHeader>
-                  <CardTitle>{doc?.data?.title || ""}</CardTitle>
-                  <CardDescription className='mt-1'>
-                    {camel2title(doc?.data?.docCategory)}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className='flex-1 flex flex-col justify-end items-end fill-red-800'>
-                  <img src={iconMap[doc?.slug]?.src} class='w-8 h-8' />
-                </CardFooter>
-              </a>
-            </Card>
-          ))
-        }
+        {featuredDocs?.map((doc) => <DocCard cardData={doc} />)}
       </div>
     </div>
     <div>
@@ -110,46 +82,7 @@ const iconMap = {
         </div>
       </div>
       <div class='grid grid-cols-2 sm:grid-cols-3 gap-4 not-prose mt-6'>
-        {
-          featuredLocations?.map((loc) => (
-            <Card className='max-w-[340px] w-full hover:shadow-md overflow-hidden rounded-none bg-primaryLightShade border-primaryLightBorder/70 hover:border-primaryLightBorder'>
-              <a href={`/locations/${getSlug(loc?.data?.region)}/${loc?.slug}`}>
-                <CardHeader className='pl-0 pr-0 pt-0'>
-                  <div class='relative flex h-[180px]'>
-                    <Image
-                      width={302}
-                      height={180}
-                      alt={loc?.slug}
-                      decoding='async'
-                      loading='lazy'
-                      src={loc?.data?.locationImages?.[0]?.src || ""}
-                      sizes='25vw'
-                      class='absolute h-full w-full left-0 top-0 right-0 bottom-0 object-cover text-transparent'
-                    />
-                  </div>
-                </CardHeader>
-                <CardContent className='pt-0 px-4 md:px-6 pb-3'>
-                  <CardTitle>{loc?.data?.title || ""}</CardTitle>
-                  <CardDescription className='mt-1'>
-                    {camel2title(loc?.data?.region) || ""}
-                  </CardDescription>
-                </CardContent>
-                <CardFooter className=' px-4 md:px-6'>
-                  <div class='flex flex-row justify-between w-full text-sm'>
-                    <div class='flex flex-row gap-2 items-center'>
-                      <LocationIndicator
-                        size='sm'
-                        status={loc.data?.projectStatus}
-                      />
-                      <p>{camel2title(loc.data?.projectStatus)}</p>
-                    </div>
-                    <p>{camel2title(loc?.data?.projectType)}</p>
-                  </div>
-                </CardFooter>
-              </a>
-            </Card>
-          ))
-        }
+        {featuredLocations?.map((loc) => <LocationCard cardData={loc} />)}
       </div>
     </div>
     <div class='text-center pt-12 sm:pt-16 px-4'>
