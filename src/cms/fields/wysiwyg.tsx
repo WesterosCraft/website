@@ -197,10 +197,13 @@ export const wysiwyg = (imageFolderLocation: string) =>
             }),
             {
               label: "Clues",
-              itemLabel: (props) =>
-                `${
-                  props?.fields?.label?.value
-                }: ${props?.fields?.content?.value?.slice(0, 80)}`,
+              itemLabel: (props) => {
+                return `${
+                  props?.fields?.label?.value ||
+                  // @ts-ignore
+                  `Clue ${parseInt(props?.key) + 1}`
+                }: ${props?.fields?.content?.value?.slice(0, 80)}`;
+              },
             }
           ),
         },

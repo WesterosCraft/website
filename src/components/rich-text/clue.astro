@@ -1,0 +1,17 @@
+---
+import { ClueAccordion } from "@components/clue-accordion";
+
+interface Props {
+  steps: { label: string; content: string; description?: string }[];
+  orientation?: "horizontal" | "vertical";
+  labelOrientation?: "horizontal" | "vertical";
+  className?: string;
+}
+
+const { orientation, labelOrientation, className, steps, ...rest } =
+  Astro.props;
+---
+
+<div class='not-prose'>
+  <ClueAccordion steps={steps} client:load />
+</div>

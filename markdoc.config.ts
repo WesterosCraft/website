@@ -62,7 +62,7 @@ export default defineMarkdocConfig({
       },
     },
     clue: {
-      render: component("./src/components/rich-text/stepper/clue.astro"),
+      render: component("./src/components/rich-text/clue.astro"),
       attributes: {
         steps: {
           type: Array,
