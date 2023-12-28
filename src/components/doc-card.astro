@@ -4,13 +4,13 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
   CardFooter,
 } from "@components/ui/card";
 import { camel2title, getSlug } from "@lib/utils";
-import hammerSmash from "../assets/icons/hammer-smash.svg";
-import messageQuestion from "../assets/icons/message-question.svg";
-import book from "../assets/icons/book.svg";
+import hammerSmash from "@assets/icons/hammer-smash.svg";
+import messageQuestion from "@assets/icons/message-question.svg";
+import book from "@assets/icons/book.svg";
+import personHiking from "@assets/icons/person-hiking.svg";
 
 const iconMap = {
   "basic-building-guide-for-applicants": hammerSmash,
@@ -37,7 +37,10 @@ const { cardData } = Astro.props;
     <CardFooter
       className='flex-1 flex flex-col justify-end items-end fill-red-800'
     >
-      <img src={iconMap[cardData?.slug]?.src} class='w-8 h-8' />
+      <img
+        src={iconMap[cardData?.slug]?.src || personHiking.src}
+        class='w-8 h-8'
+      />
     </CardFooter>
   </a>
 </Card>

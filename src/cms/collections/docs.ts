@@ -30,6 +30,10 @@ export const docs = collection({
       options: DOC_CATEGORIES,
       defaultValue: "gettingStarted",
     }),
+    isHidden: fields.checkbox({
+      label: "Is Hidden",
+      description: "Hides this doc from the navigation bar",
+    }),
     // parentDoc: fields.relationship({
     //   label: "Parent Doc",
     //   description: "If applicable, select a parent doc to nest them in the nav",

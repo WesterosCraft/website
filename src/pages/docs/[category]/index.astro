@@ -10,7 +10,7 @@ import { DOC_CATEGORIES } from "@constants/index";
 import WikiLayout from "@layouts/wiki.astro";
 import { slugify, titleizeASlug, camel2title, getSlug } from "@lib/utils";
 import { getCollection } from "astro:content";
-import book from "../../../assets/icons/book.svg";
+import book from "@assets/icons/book.svg";
 
 export async function getStaticPaths() {
   const routes = DOC_CATEGORIES.map((cat) => {
