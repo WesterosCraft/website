@@ -30,6 +30,18 @@ const featuredDocs = await getCollection(
     x.slug === "prism-launcher-setup" ||
     x.slug === "at-launcher-setup"
 );
+const order = [
+  "curseforge-launcher-setup",
+  "prism-launcher-setup",
+  "at-launcher-setup",
+  "manually-building-the-modpack",
+];
+
+const sortedDocs = featuredDocs.sort((a, b) => {
+  const indexA = order.indexOf(a.slug);
+  const indexB = order.indexOf(b.slug);
+  return indexA - indexB;
+});
 ---
 
 <RootLayout title='Join WesterosCraft'>
@@ -126,7 +138,7 @@ const featuredDocs = await getCollection(
 
           <div class='flex flex-col space-y-4 w-full'>
             {
-              featuredDocs.map((doc) => (
+              sortedDocs.map((doc) => (
                 <Card className='w-full bg-primaryLightShade border border-primaryLightBorder rounded-none hover:shadow-md hover:border-primaryLightBorder'>
                   <a
                     href={`/docs/${getSlug(doc?.data?.docCategory)}/${
