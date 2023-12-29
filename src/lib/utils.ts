@@ -53,10 +53,12 @@ export const makeDocsWikiNav = (docs: any[]) => {
       categories[category] = [];
     }
 
-    categories[category].push({
-      title: doc.data.title,
-      href: `/docs/${slugify(category)}/${doc.slug}`,
-    });
+    if (!doc.data.isHidden) {
+      categories[category].push({
+        title: doc.data.title,
+        href: `/docs/${slugify(category)}/${doc.slug}`,
+      });
+    }
   });
 
   const result = [] as any;

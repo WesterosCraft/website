@@ -1,63 +1,13 @@
 import React from "react";
 import { fields, component, NotEditable } from "@keystatic/core";
 
-const VideoPreview = (props: any) => {
-  return (
-    <NotEditable>
-      <div>
-        <h4>{`URL: ${props?.fields?.id?.value}`}</h4>
-        <img
-          src={`https://i1.ytimg.com/vi/${props?.fields?.id?.value
-            ?.split?.("/")
-            ?.pop()}/default.jpg`}
-        />
-      </div>
-    </NotEditable>
-  );
-};
-
-const CalloutPreview = (props: any) => {
-  return (
-    <div>
-      <NotEditable>
-        <h4>{`Type: ${props?.fields?.type?.value}`}</h4>
-      </NotEditable>
-      <div>{props.fields.content.element}</div>
-    </div>
-  );
-};
-
-const AccordionPreview = (props: any) => {
-  return (
-    <div>
-      <NotEditable>
-        <ul>
-          {props?.fields?.items?.elements?.map((item) => (
-            <li key={item?.key}>
-              <p className='text-sm'>{item.fields.itemTrigger?.value}</p>
-            </li>
-          ))}
-        </ul>
-      </NotEditable>
-    </div>
-  );
-};
-
-const StepperPreview = (props: any) => {
-  return (
-    <div style={{ padding: "1rem 0" /* styling is up to you */ }}>
-      <pre>{JSON.stringify(props.fields, null, 2)}</pre>
-    </div>
-  );
-};
-
 export const wysiwyg = (imageFolderLocation: string) =>
   fields.document({
     label: "Content",
     formatting: true,
     dividers: true,
     links: true,
-    layouts: [[1], [1, 1]],
+    // layouts: [[1], [1, 1]],
     images: {
       directory: imageFolderLocation,
       publicPath: "../",
@@ -156,29 +106,207 @@ export const wysiwyg = (imageFolderLocation: string) =>
               { label: "Horizontal", value: "horizontal" },
             ],
           }),
-
+          step: fields.object({
+            label: fields.text({
+              label: "Step Label",
+            }),
+            content: fields.child({
+              kind: "block",
+              placeholder: "Quote...",
+              formatting: { inlineMarks: "inherit", softBreaks: "inherit" },
+              links: "inherit",
+            }),
+          }),
+        },
+      }),
+      spoiler: component({
+        preview: (args) => <SpoilerPreview {...args} />,
+        label: "Spoiler",
+        schema: {
+          content: fields.child({
+            kind: "block",
+            placeholder: "Content...",
+            formatting: {
+              inlineMarks: "inherit",
+              softBreaks: "inherit",
+              listTypes: "inherit",
+            },
+            links: "inherit",
+          }),
+        },
+      }),
+      relationshipCard: component({
+        label: "Relationship Card",
+        preview: (args) => <RelationshipCardPreview {...args} />,
+        schema: {
+          card: fields.conditional(
+            fields.select({
+              label: "Type",
+              description: "Select a type of relationship",
+              options: [
+                {
+                  label: "Select a type",
+                  value: "none",
+                },
+                {
+                  label: "Location",
+                  value: "location",
+                },
+                {
+                  label: "Doc",
+                  value: "doc",
+                },
+              ],
+              defaultValue: "none",
+            }),
+            {
+              // "none" condition
+              none: fields.empty(),
+              location: fields.relationship({
+                label: "Location",
+                collection: "locations",
+              }),
+              doc: fields.relationship({
+                label: "Doc",
+                collection: "docs",
+              }),
+            }
+          ),
+        },
+      }),
+      clue: component({
+        preview: (args) => <CluePreview {...args} />,
+        label: "Clue",
+        schema: {
           steps: fields.array(
             fields.object({
               label: fields.text({
-                label: "Step Label",
+                label: "Clue Label",
               }),
-              // content: fields.text({
-              //   label: "Step Content",
-              //   multiline: true,
+              description: fields.text({
+                label: "Clue Description",
+              }),
+              content: fields.text({
+                label: "Clue content",
+                multiline: true,
+              }),
+              // image: fields.cloudImage({
+              //   label: "Clue image",
+              //   description: "A banner associated with the location",
               // }),
-              content: fields.child({
-                kind: "block",
-                placeholder: "Quote...",
-                formatting: { inlineMarks: "inherit", softBreaks: "inherit" },
-                links: "inherit",
-              }),
             }),
             {
-              label: "Steps",
-              itemLabel: (props) => props.fields.label.value,
+              label: "Clues",
+              itemLabel: (props) => {
+                return `${
+                  props?.fields?.label?.value ||
+                  // @ts-ignore
+                  `Clue ${parseInt(props?.key) + 1}`
+                }: ${props?.fields?.content?.value?.slice(0, 80)}`;
+              },
             }
           ),
         },
       }),
     },
   });
+
+const RelationshipCardPreview = (props) => {
+  return (
+    <NotEditable>
+      <div>
+        <p>{`Card: ${props?.fields.card.value.value}`}</p>
+      </div>
+    </NotEditable>
+  );
+};
+
+const VideoPreview = (props) => {
+  return (
+    <NotEditable>
+      <div>
+        <h4>{`URL: ${props?.fields?.id?.value}`}</h4>
+        <img
+          src={`https://i1.ytimg.com/vi/${props?.fields?.id?.value
+            ?.split?.("/")
+            ?.pop()}/default.jpg`}
+        />
+      </div>
+    </NotEditable>
+  );
+};
+
+const CalloutPreview = (props) => {
+  return (
+    <div>
+      <NotEditable>
+        <h4>{`Type: ${props?.fields?.type?.value}`}</h4>
+      </NotEditable>
+      <div>{props.fields.content.element}</div>
+    </div>
+  );
+};
+
+const AccordionPreview = (props) => {
+  return (
+    <div>
+      <NotEditable>
+        <ul>
+          {props?.fields?.items?.elements?.map((item) => (
+            <li key={item?.key}>
+              <p className='text-sm'>{item.fields.itemTrigger?.value}</p>
+            </li>
+          ))}
+        </ul>
+      </NotEditable>
+    </div>
+  );
+};
+
+const StepperPreview = (props) => {
+  return (
+    <div>
+      <NotEditable>
+        <h4>{`${props?.fields?.step?.fields?.label?.value}`}</h4>
+      </NotEditable>
+      <div>{props?.fields?.step?.fields?.content?.element}</div>
+    </div>
+  );
+};
+
+const SpoilerPreview = (props) => {
+  return (
+    <div>
+      <div>{props.fields.content.element}</div>
+    </div>
+  );
+};
+
+const CluePreview = (props) => {
+  return (
+    <div>
+      <NotEditable>
+        <ul>
+          {props?.fields?.steps?.elements?.map((step, index) => (
+            <li key={step?.key}>
+              <p
+                style={{
+                  fontSize: "14px",
+                }}
+              >
+                {step.fields?.label?.value || `Clue ${index + 1}`}
+              </p>
+              <p
+                style={{
+                  fontSize: "12px",
+                }}
+              >
+                {step.fields?.content?.value?.slice(0, 80)}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </NotEditable>
+    </div>
+  );
+};
