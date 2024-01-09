@@ -4,14 +4,15 @@ import { mainnav } from "./src/cms/singletons/main-nav";
 import { join } from "./src/cms/singletons/join";
 import { about } from "./src/cms/singletons/about";
 import { banner } from "./src/cms/singletons/banner";
-import { locations, docs } from "./src/cms/collections";
+import { locations, docs, projects } from "./src/cms/collections";
 import { rookery, home } from "./src/cms/singletons";
 
 export default config({
   ui: {
     brand: { name: "WesterosCraft" },
     navigation: {
-      Content: ["locations", "docs", "home", "rookery", "about", "join"],
+      Collections: ["projects", "locations", "docs"],
+      Pages: ["home", "rookery", "about", "join"],
       Settings: ["mainnav", "footer", "banner"],
     },
   },
@@ -33,5 +34,6 @@ export default config({
   collections: {
     locations,
     docs,
+    projects,
   },
 });
