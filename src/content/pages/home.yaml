@@ -78,7 +78,7 @@ featuredServers:
           isExternal:
             discriminant: true
             value: >-
-              https://forum.westeroscraft.com/form/builder-application-form.3/select
+              https://westeroscraft.com/docs/getting-started/apply-to-build
     - icon: featuredServers/items/1/icon.png
       subheading: Hang Out
       description: >-
