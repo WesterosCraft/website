@@ -2,9 +2,11 @@
 import { Button } from "@components/ui/button";
 import { TypographyH2 } from "@components/typography";
 import Carousel from "./carousel";
-import { urlBuilder } from "../../lib/utils";
+import { cn, urlBuilder } from "../../lib/utils";
 
 const { data } = Astro.props;
+
+console.log("data:", data?.buttons);
 
 const slides = data?.sliderImages?.map((slide) => {
   return {
@@ -57,18 +59,26 @@ const slides = data?.sliderImages?.map((slide) => {
             `Explore a meticulously crafted virtual realm inspired by George R.R. Martin's epic fantasy world. From King's Landing to Winterfell, our immersive Minecraft server offers a stunning, player-driven recreation of the Seven Kingdoms.`
         }
       </p>
-      {
-        data?.buttons?.map((button) => (
-          <a href={button?.isExternal?.value} class='mt-8'>
-            <Button
-              size='lg'
-              className='hover:bg-primaryGold-300 font-semibold rounded-none text-md bg-primaryGold text-primaryDark'
-            >
-              {button.buttonText}
-            </Button>
-          </a>
-        ))
-      }
+      <div class='flex flex-col md:flex-row gap-6 md:gap-8 mt-8'>
+        {
+          data?.buttons?.map((button) => (
+            <a href={button?.isExternal?.value}>
+              <Button
+                size='lg'
+                variant={button?.buttonType || "default"}
+                className={cn(
+                  "font-semibold rounded-none text-md",
+                  button?.buttonType === "default"
+                    ? "hover:bg-primaryGold-300 bg-primaryGold text-primaryDark"
+                    : "bg-transparent text-white"
+                )}
+              >
+                {button.buttonText}
+              </Button>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
   <div

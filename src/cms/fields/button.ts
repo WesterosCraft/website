@@ -5,10 +5,11 @@ export const button = fields.object({
   buttonText: fields.text({ label: "Button Text" }),
   buttonType: fields.select({
     label: "Button Type",
-    defaultValue: "primary",
+    defaultValue: "default",
     options: [
-      { value: "primary", label: "Primary" },
+      { value: "default", label: "Primary" },
       { value: "secondary", label: "Secondary" },
+      { value: "outline", label: "Outline" },
     ],
   }),
   isExternal: fields.conditional(
@@ -22,8 +23,8 @@ export const button = fields.object({
       true: fields.url({ label: "External Link" }),
       // Empty fields are useful to show... no fields!
       false: fields.relationship({
-        label: "Internal Link",
-        collection: "locations",
+        label: "Doc Link",
+        collection: "docs",
       }),
     }
   ),

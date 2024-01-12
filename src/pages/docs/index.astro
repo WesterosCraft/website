@@ -46,9 +46,9 @@ const iconMap = {
       > book series, popularly known for its television adaptation <i
         >Game of Thrones</i
       >.<br /><br />
-       These docs attempt to compile everything that may be useful for our
-      project - from application guidelines, to custom mods and blocks, to how
-      we plan our terrain and more.
+      These docs attempt to compile everything that may be useful for our project
+      - from application guidelines, to custom mods and blocks, to how we plan our
+      terrain and more.
     </p>
   </div>
   <div class='space-y-12 divide-y divide-primaryLightBorder/70 pb-20'>
@@ -96,13 +96,24 @@ const iconMap = {
         well on our way to having a fully explorable map.`
         }
       </TypographyP>
-      <div class='mt-8'>
+
+      <div
+        class='flex flex-col md:flex-row gap-6 md:gap-8 mt-8 not-prose justify-center'
+      >
         <a href='/join'>
           <Button
             size='lg'
             className='rounded-none text-lg bg-primaryRed text-white hover:bg-primaryRed/95'
           >
-            {`Join the Server`}
+            Join the Server
+          </Button>
+        </a>
+        <a href='/docs/getting-started/apply-to-build'>
+          <Button
+            size='lg'
+            className='border border-primaryDark rounded-none text-lg bg-transparent text-primaryDark hover:bg-primaryLightBorder'
+          >
+            Apply To Build
           </Button>
         </a>
       </div>
