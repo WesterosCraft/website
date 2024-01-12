@@ -6,9 +6,7 @@ import { UserNav } from "../components/projects/user-nav";
 import { ProjectTable } from "../components/projects/project-table";
 import { columns } from "../components/projects/columns";
 
-const locations = await getCollection("locations");
-
-const normalized = locations.map((loc) => ({ ...loc.data }));
+const projects = await getCollection("projects");
 ---
 
 <RootLayout
@@ -27,7 +25,7 @@ const normalized = locations.map((loc) => ({ ...loc.data }));
         <UserNav client:load />
       </div>
     </div>
-    <ProjectTable data={normalized} columns={columns} />
+    <!-- <ProjectTable data={projects} columns={columns} /> -->
     <!-- <DataTable data={tasks} columns={columns} /> -->
   </div>
 </RootLayout>

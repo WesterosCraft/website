@@ -3,15 +3,27 @@ import RootLayout from "@layouts/root.astro";
 import { getCollection } from "astro:content";
 import { Button } from "@components/ui/button";
 import { LocationContent } from "@components/location/location-content";
-import { filterLocationsBySearchParam } from "@lib/utils";
+import { filterProjectsBySearchParam } from "@lib/utils";
 import { TypographyH1, TypographyP } from "@components/typography";
 
 const { title, description, ogTitle, ogType, ogImage, ogUrl } =
   Astro.props.frontmatter || Astro.props;
 
 const query = Astro.url.searchParams;
-const locations = await getCollection("locations");
-const filteredLocations = filterLocationsBySearchParam(locations, query);
+
+const projects = await getCollection("projects", ({ data }) => {
+  return data.projectType?.discriminant === "build";
+});
+
+const normalized = projects.map((project) => ({
+  ...project,
+  data: {
+    title: project?.data?.title,
+    ...project?.data?.projectType?.value,
+  },
+}));
+
+const filteredProjects = filterProjectsBySearchParam(normalized, query);
 ---
 
 <RootLayout
@@ -35,8 +47,8 @@ const filteredLocations = filterLocationsBySearchParam(locations, query);
       <p class='mt-6 max-w-2xl text-xl text-gray-800'>
         Discover the iconic locations of Westeros from the <i
           >A Song of Ice and Fire</i
-        > series, built from scratch in Minecraft. With over 450 planned or
-        in-progress builds on our server, we've kept track of them all here!
+        > series, built from scratch in Minecraft. With over 450 planned or in-progress
+        builds on our server, we've kept track of them all here!
       </p>
       <div class='mt-8'>
         <a href='/docs'>
@@ -58,8 +70,8 @@ const filteredLocations = filterLocationsBySearchParam(locations, query);
     <div class='flex w-full'>
       <LocationContent
         client:load
-        allLocations={locations}
-        filteredLocations={filteredLocations}
+        allLocations={normalized}
+        filteredLocations={filteredProjects}
       />
     </div>
   </div>

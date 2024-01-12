@@ -141,6 +141,51 @@ export function filterLocationsBySearchParam(
   });
 }
 
+export function filterProjectsBySearchParam(
+  projects: any[],
+  query: URLSearchParams
+) {
+  console.log("PROJECT:", projects[0]);
+  return projects.filter((location) => {
+    const queryRegion = query
+      .getAll("region")
+      .map((region) => region.toLowerCase());
+
+    const queryStatus = query
+      .getAll("status")
+      .map((status) => status.toLowerCase());
+
+    const queryType = query.getAll("type").map((type) => type.toLowerCase());
+
+    // Filter based on the "region" parameter
+    if (queryRegion.length > 0) {
+      if (
+        !queryRegion.includes(
+          location.data?.projectType?.value?.region?.toLowerCase()
+        )
+      ) {
+        return false;
+      }
+    }
+
+    // Filter based on the "status" parameter
+    if (queryStatus.length > 0) {
+      if (!queryStatus.includes(location.data?.projectStatus?.toLowerCase())) {
+        return false;
+      }
+    }
+
+    // Filter based on the "type" parameter
+    if (queryType.length > 0) {
+      if (!queryType.includes(location.data?.projectType?.toLowerCase())) {
+        return false;
+      }
+    }
+
+    return true; // Include the location if it matches all filters
+  });
+}
+
 // common function to grab an image locally
 // use like this: const a = await imp('/assets/home/hero.jpg')
 // taken from astro discord here: https://discord.com/channels/830184174198718474/1161019402620248266/1171687655528988702

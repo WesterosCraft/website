@@ -10,9 +10,18 @@ import type { CollectionEntry } from "astro:content";
 import { LocationCarousel } from "@components/location-carousel";
 
 export async function getStaticPaths() {
-  const locations = await getCollection("locations");
+  const projects = await getCollection("projects", ({ data }) => {
+    return data.projectType?.discriminant === "build";
+  });
+  const normalized = projects.map((project) => ({
+    ...project,
+    data: {
+      title: project?.data?.title,
+      ...project?.data?.projectType?.value,
+    },
+  }));
 
-  return locations.map((location) => {
+  return normalized.map((location) => {
     return {
       params: {
         region: slugify(camel2title(location.data.region)),
