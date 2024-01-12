@@ -11,6 +11,10 @@ items:
           link: /rookery
           description: Our quarterly newsletter
           isExternal: false
+        - text: Apply
+          link: /docs/getting-started/apply-to-build
+          description: Join the effort to build Westeros
+          isExternal: false
         - text: Forums
           link: https://forum.westeroscraft.com/
           description: Where we plan all of our builds

@@ -30,10 +30,15 @@ hero:
     the Seven Kingdoms.
   buttons:
     - buttonText: Explore Westeros
-      buttonType: primary
+      buttonType: default
       isExternal:
         discriminant: true
         value: /join
+    - buttonText: Apply To Build
+      buttonType: outline
+      isExternal:
+        discriminant: true
+        value: /docs/getting-started/apply-to-build
 animatedHeader1: Start Your Journey
 bannerGrid:
   bannerHeading: >-
@@ -77,8 +82,7 @@ featuredServers:
         - linkText: Apply to Build
           isExternal:
             discriminant: true
-            value: >-
-              https://westeroscraft.com/docs/getting-started/apply-to-build
+            value: https://westeroscraft.com/docs/getting-started/apply-to-build
     - icon: featuredServers/items/1/icon.png
       subheading: Hang Out
       description: >-
