@@ -3,13 +3,13 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
-import vercel from "@astrojs/vercel/serverless";
+import cloudflare from "@astrojs/cloudflare";
 
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   site: "https://westeroscraft.com",
 
   image: {
@@ -27,7 +27,7 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: vercel(),
+  adapter: cloudflare(),
   redirects: {
     "/modpack": {
       status: 302,
