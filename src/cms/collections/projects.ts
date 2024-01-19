@@ -61,6 +61,26 @@ const locationSchema = fields.object({
       // itemLabel: (props) => props.value,
     }
   ),
+  //   server builds
+  // mega builds
+  // canon projects
+  // immersion build
+  // mini builds (aka sub project)
+  // special builds
+  category: fields.select({
+    label: "Category",
+    description:
+      "A categorization of the location in order to more accurately calculate overall project completion",
+    options: [
+      { label: "Server Builds", value: "1" },
+      { label: "Mega Builds", value: "2" },
+      { label: "Canon Builds", value: "3" },
+      { label: "Immersion Builds", value: "4" },
+      { label: "Mini Builds", value: "5" },
+      { label: "Special Builds", value: "6" },
+    ],
+    defaultValue: "1",
+  }),
   difficultyLevel: fields.select({
     label: "Difficulty Level",
     description:

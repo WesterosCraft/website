@@ -6,8 +6,6 @@ import { cn, urlBuilder } from "../../lib/utils";
 
 const { data } = Astro.props;
 
-console.log("data:", data?.buttons);
-
 const slides = data?.sliderImages?.map((slide) => {
   return {
     image: urlBuilder(slide?.cloudImage?.src, {
