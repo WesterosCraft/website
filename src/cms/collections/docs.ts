@@ -14,6 +14,10 @@ export const docs = collection({
         label: "Title",
       },
     }),
+    image: fields.cloudImage({
+      label: "Image",
+      description: "Used in SEO",
+    }),
     description: fields.text({
       label: "Description",
       description:
