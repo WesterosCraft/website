@@ -146,7 +146,7 @@ editions:
       url: https://indd.adobe.com/view/dc69bb24-d702-4116-a556-d97cb1e04ff8
       isExternal: true
     thumbnail: editions/16/thumbnail.webp
-  - isLatest: true
+  - isLatest: false
     title:
       name: Autumn 2023
       slug: autumn-2023
@@ -154,6 +154,14 @@ editions:
       url: https://indd.adobe.com/view/3ff9e5f7-fdc5-46b8-9247-7ffa333598b4
       isExternal: true
     thumbnail: editions/17/thumbnail.png
+  - isLatest: true
+    title:
+      name: Winter 2023
+      slug: winter-2023
+    link:
+      url: https://indd.adobe.com/view/6db22058-e1a4-49e1-a45d-78ad47ac85bc
+      isExternal: true
+    thumbnail: editions/18/thumbnail.jpg
 cta:
   link:
     isExternal:
