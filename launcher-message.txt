@@ -1,1 +1,1 @@
-This text is sourced from a Github repo and can change on a whim!
+The first "Fill the Gaps" update has been released! View the changelog in Discord.
