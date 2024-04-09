@@ -154,7 +154,7 @@ editions:
       url: https://indd.adobe.com/view/3ff9e5f7-fdc5-46b8-9247-7ffa333598b4
       isExternal: true
     thumbnail: editions/17/thumbnail.png
-  - isLatest: true
+  - isLatest: false
     title:
       name: Winter 2023
       slug: winter-2023
@@ -162,6 +162,14 @@ editions:
       url: https://indd.adobe.com/view/6db22058-e1a4-49e1-a45d-78ad47ac85bc
       isExternal: true
     thumbnail: editions/18/thumbnail.jpg
+  - isLatest: true
+    title:
+      name: Spring 2024
+      slug: spring-2024
+    link:
+      url: https://indd.adobe.com/view/e878cf02-4be0-4382-8fa6-9b26a6bfbf7f
+      isExternal: true
+    thumbnail: editions/19/thumbnail.jpg
 cta:
   link:
     isExternal:
