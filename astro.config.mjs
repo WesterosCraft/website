@@ -33,9 +33,7 @@ export default defineConfig({
       status: 302,
       destination: "/join",
     },
-    "/progress": {
-      status: 302,
-      destination: "/locations",
-    },
+    "/progress":
+      "https://docs.google.com/spreadsheets/d/1sOtwUZZW2ct1vQ-dAhQXdiwZ4U9TGg-T-CSQv-6vgWE/edit?usp=sharing",
   },
 });
