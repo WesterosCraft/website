@@ -17,11 +17,15 @@ export default config({
     },
   },
   storage: {
-    kind: import.meta.env.DEV ? "local" : "cloud",
+    kind: "github",
+    repo: {
+      owner: "WesterosCraft",
+      name: "website",
+    },
   },
-  cloud: {
-    project: "westeroscraft/website",
-  },
+  // cloud: {
+  //   project: "westeroscraft/website",
+  // },
   singletons: {
     rookery,
     home,

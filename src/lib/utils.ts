@@ -145,7 +145,6 @@ export function filterProjectsBySearchParam(
   projects: any[],
   query: URLSearchParams
 ) {
-  console.log("PROJECT:", projects[0]);
   return projects.filter((location) => {
     const queryRegion = query
       .getAll("region")
