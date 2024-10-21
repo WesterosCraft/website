@@ -168,8 +168,24 @@ editions:
       slug: spring-2024
     link:
       url: https://indd.adobe.com/view/e878cf02-4be0-4382-8fa6-9b26a6bfbf7f
-      isExternal: true
+      isExternal: false
     thumbnail: editions/19/thumbnail.jpg
+  - isLatest: false
+    title:
+      name: Summer 2024
+      slug: summer-2024
+    link:
+      url: https://indd.adobe.com/view/7e6790e4-170d-41f1-ba65-0cfd1fa56223
+      isExternal: true
+    thumbnail: editions/20/thumbnail.jpg
+  - isLatest: true
+    title:
+      name: Autumn 2024
+      slug: autumn-2024
+    link:
+      url: https://indd.adobe.com/view/0448477f-ce56-4b85-b878-5a5e9d89ee68
+      isExternal: true
+    thumbnail: editions/21/thumbnail.jpg
 cta:
   link:
     isExternal:
