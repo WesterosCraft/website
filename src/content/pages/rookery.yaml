@@ -162,7 +162,7 @@ editions:
       url: https://indd.adobe.com/view/6db22058-e1a4-49e1-a45d-78ad47ac85bc
       isExternal: true
     thumbnail: editions/18/thumbnail.jpg
-  - isLatest: true
+  - isLatest: false
     title:
       name: Spring 2024
       slug: spring-2024
