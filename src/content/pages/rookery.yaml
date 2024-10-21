@@ -162,14 +162,6 @@ editions:
       url: https://indd.adobe.com/view/6db22058-e1a4-49e1-a45d-78ad47ac85bc
       isExternal: true
     thumbnail: editions/18/thumbnail.jpg
-  - isLatest: false
-    title:
-      name: Summer 2024
-      slug: summer-2024
-    link:
-      url: https://indd.adobe.com/view/7e6790e4-170d-41f1-ba65-0cfd1fa56223
-      isExternal: true
-    thumbnail: editions/19/thumbnail.jpg
   - isLatest: true
     title:
       name: Spring 2024
@@ -177,6 +169,14 @@ editions:
     link:
       url: https://indd.adobe.com/view/e878cf02-4be0-4382-8fa6-9b26a6bfbf7f
       isExternal: false
+    thumbnail: editions/19/thumbnail.jpg
+  - isLatest: false
+    title:
+      name: Summer 2024
+      slug: summer-2024
+    link:
+      url: https://indd.adobe.com/view/7e6790e4-170d-41f1-ba65-0cfd1fa56223
+      isExternal: true
     thumbnail: editions/20/thumbnail.jpg
   - isLatest: true
     title:
